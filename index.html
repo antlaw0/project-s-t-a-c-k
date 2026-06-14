@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project S.T.A.C.K. Prototype</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header id="appHeader">
+    <div class="gameTitleContainer">
+        <label for="gameName">Game Name</label>
+        <input
+            type="text"
+            id="gameName"
+            value="New Adventure"
+            aria-label="Game Name">
+    </div>
+
+    <div class="saveControls">
+        <button id="newGameBtn">New Game</button>
+        <button id="saveGameBtn">Save</button>
+        <button id="loadGameBtn">Load</button>
+        <button id="exportGameBtn">Export</button>
+        <button id="importGameBtn">Import</button>
+    </div>
+</header>
+
+<nav id="mainTabs" aria-label="Main Navigation">
+    <button class="tabButton active" data-tab="boardTab">Board</button>
+    <button class="tabButton" data-tab="playersTab">Players</button>
+    <button class="tabButton" data-tab="encounterTab">Encounter</button>
+    <button class="tabButton" data-tab="databaseTab">Database</button>
+</nav>
+
+<main>
+
+    <section id="boardTab" class="tabPanel active">
+
+        <aside id="boardSidebar">
+
+            <h2>Board Controls</h2>
+
+            <div class="controlGroup">
+                <label for="gridWidth">Grid Width</label>
+                <input type="number" id="gridWidth" min="1" value="20">
+            </div>
+
+            <div class="controlGroup">
+                <label for="gridHeight">Grid Height</label>
+                <input type="number" id="gridHeight" min="1" value="20">
+            </div>
+
+            <button id="resizeGridBtn">Resize Grid</button>
+
+            <hr>
+
+            <h2>Selected Tile</h2>
+
+            <div class="controlGroup">
+                <label for="tileName">Tile Name</label>
+                <input type="text" id="tileName">
+            </div>
+
+            <div class="controlGroup">
+                <label for="tileType">Tile Type</label>
+                <input type="text" id="tileType">
+            </div>
+
+            <div class="controlGroup">
+                <label for="tileColor">Tile Color</label>
+                <input type="color" id="tileColor" value="#333333">
+            </div>
+
+            <div class="controlGroup">
+                <label for="tileNotes">Tile Notes</label>
+                <textarea id="tileNotes" rows="5"></textarea>
+            </div>
+
+            <button id="saveTileBtn">Save Tile</button>
+
+            <hr>
+
+            <h2>Entities On Tile</h2>
+
+            <ul id="tileOccupants" aria-label="Entities On Tile"></ul>
+
+            <button id="addEntityBtn">Add Entity</button>
+
+        </aside>
+
+        <section id="boardArea">
+
+            <div id="boardToolbar">
+                <button id="zoomInBtn">Zoom In</button>
+                <button id="zoomOutBtn">Zoom Out</button>
+                <button id="centerBoardBtn">Center Board</button>
+            </div>
+
+            <div id="gridContainer">
+                <div id="boardGrid" aria-label="Game Board"></div>
+            </div>
+
+        </section>
+
+    </section>
+
+    <section id="playersTab" class="tabPanel">
+        <h2>Players</h2>
+    </section>
+
+    <section id="encounterTab" class="tabPanel">
+        <h2>Encounter</h2>
+    </section>
+
+    <section id="databaseTab" class="tabPanel">
+        <h2>Database</h2>
+    </section>
+
+</main>
+
+<!-- ✅ CRITICAL LOAD ORDER -->
+<script src="js/store.js"></script>
+<script src="js/state.js"></script>
+
+<script src="js/app.js"></script>
+<script src="js/board.js"></script>
+<script src="js/entities.js"></script>
+<script src="js/cards.js"></script>
+<script src="js/decks.js"></script>
+<script src="js/encounters.js"></script>
+<script src="js/players.js"></script>
+<script src="js/database.js"></script>
+
+</body>
+</html>

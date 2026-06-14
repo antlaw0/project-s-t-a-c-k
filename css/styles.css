@@ -1,0 +1,205 @@
+:root {
+    --bg: #000000;
+    --panel: #111111;
+    --border: #ffffff;
+    --text: #ffffff;
+    --tile-size: 64px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+button,
+input,
+textarea,
+select {
+    background: #000;
+    color: #fff;
+    border: 2px solid #fff;
+    padding: 6px;
+}
+
+button {
+    cursor: pointer;
+}
+
+#appHeader {
+    border-bottom: 3px solid white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.gameTitleContainer {
+    display: flex;
+    flex-direction: column;
+    min-width: 250px;
+}
+
+#gameName {
+    font-size: 1.25rem;
+}
+
+.saveControls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+#mainTabs {
+    display: flex;
+    border-bottom: 3px solid white;
+}
+
+.tabButton {
+    border: none;
+    border-right: 2px solid white;
+    padding: 12px 20px;
+}
+
+.tabButton.active {
+    font-weight: bold;
+}
+
+main {
+    flex: 1;
+    overflow: hidden;
+}
+
+.tabPanel {
+    display: none;
+    height: 100%;
+}
+
+.tabPanel.active {
+    display: flex;
+}
+
+#boardSidebar {
+    width: 350px;
+    border-right: 3px solid white;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+#boardArea {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+#boardToolbar {
+    border-bottom: 3px solid white;
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+#gridContainer {
+    flex: 1;
+    overflow: auto;
+}
+
+#boardGrid {
+    display: grid;
+    width: max-content;
+    background: black;
+}
+
+.boardTile {
+    width: var(--tile-size);
+    height: var(--tile-size);
+    border: 2px solid white;
+    background: #222;
+    position: relative;
+    overflow: hidden;
+}
+
+.tileCoordinate {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    font-size: 10px;
+}
+
+.tileName {
+    position: absolute;
+    bottom: 2px;
+    left: 2px;
+    right: 2px;
+    font-size: 10px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.tileSelected {
+    outline: 4px solid yellow;
+}
+
+.entityMarker {
+    width: 12px;
+    height: 12px;
+    border: 1px solid white;
+    display: inline-block;
+    margin: 1px;
+}
+
+.controlGroup {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+hr {
+    border: 1px solid white;
+    margin: 20px 0;
+}
+
+#tileOccupants {
+    padding-left: 20px;
+}
+.tileType {
+    position: absolute;
+    top: 18px;
+    left: 2px;
+    font-size: 9px;
+    opacity: 0.8;
+}
+
+.tileOccupants {
+    position: absolute;
+    bottom: 18px;
+    left: 2px;
+    right: 2px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+}
+
+.entityMarker {
+    width: 10px;
+    height: 10px;
+    border: 1px solid white;
+}
