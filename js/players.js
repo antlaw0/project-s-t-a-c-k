@@ -5,6 +5,7 @@ const PLAYER_SPECIAL_SLOTS = PLAYER_COLUMNS * PLAYER_SPECIAL_ROWS;
 const PLAYER_TOTAL_SLOTS = PLAYER_SPECIAL_SLOTS + (PLAYER_COLUMNS * PLAYER_INVENTORY_ROWS);
 const PLAYER_INVENTORY_START = PLAYER_SPECIAL_SLOTS;
 const PLAYER_DRAG_TYPE = "application/x-projectstack-player-card";
+let activePlayerId = null;
 
 document.addEventListener("DOMContentLoaded", initializePlayersTab);
 
@@ -54,8 +55,9 @@ function initializePlayersTab() {
 function renderPlayersTab() {
 	const playersArea = document.getElementById("playersArea");
 	const emptyNote = document.getElementById("playersEmptyNote");
+	const playersToolbar = document.getElementById("playersToolbar");
 
-	if (!playersArea || !emptyNote) return;
+	if (!playersArea || !emptyNote || !playersToolbar) return;
 
 	const players = getOrderedPlayers();
 
@@ -63,8 +65,57 @@ function renderPlayersTab() {
 
 	playersArea.innerHTML = "";
 
+	if (!players.length) {
+		activePlayerId = null;
+		renderPlayerTabSet(playersToolbar, players);
+		return;
+	}
+
+	if (!activePlayerId || !players.some(player => player.id === activePlayerId)) {
+		activePlayerId = players[0].id;
+	}
+
+	renderPlayerTabSet(playersToolbar, players);
+
+	const activePlayer = players.find(player => player.id === activePlayerId);
+
+	if (!activePlayer) return;
+
+	playersArea.appendChild(buildPlayerPanel(activePlayer));
+}
+
+function renderPlayerTabSet(playersToolbar, players) {
+	let tabSet = document.getElementById("playersTabSet");
+	const emptyNote = document.getElementById("playersEmptyNote");
+
+	if (!tabSet) {
+		tabSet = document.createElement("div");
+		tabSet.id = "playersTabSet";
+		tabSet.className = "playersTabSet";
+
+		if (emptyNote) {
+			playersToolbar.insertBefore(tabSet, emptyNote);
+		} else {
+			playersToolbar.appendChild(tabSet);
+		}
+	}
+
+	tabSet.innerHTML = "";
+
 	players.forEach(player => {
-		playersArea.appendChild(buildPlayerPanel(player));
+		const tabBtn = document.createElement("button");
+		tabBtn.type = "button";
+		tabBtn.className = "playerTabButton";
+		tabBtn.textContent = player.name;
+		tabBtn.setAttribute("aria-label", `Show ${player.name}`);
+		tabBtn.setAttribute("aria-selected", player.id === activePlayerId ? "true" : "false");
+		tabBtn.classList.toggle("active", player.id === activePlayerId);
+		tabBtn.addEventListener("click", () => {
+			activePlayerId = player.id;
+			renderPlayersTab();
+		});
+
+		tabSet.appendChild(tabBtn);
 	});
 }
 
@@ -90,14 +141,75 @@ function buildPlayerPanel(player) {
 	header.appendChild(title);
 	header.appendChild(removeBtn);
 
+	const statsBar = buildStatsBar(player);
 	const specialGrid = buildGrid(player, 0, PLAYER_SPECIAL_SLOTS, "special");
 	const inventoryGrid = buildGrid(player, PLAYER_INVENTORY_START, PLAYER_TOTAL_SLOTS, "inventory");
 
 	panel.appendChild(header);
+	panel.appendChild(statsBar);
 	panel.appendChild(specialGrid);
 	panel.appendChild(inventoryGrid);
 
 	return panel;
+}
+
+function buildStatsBar(player) {
+	const bar = document.createElement("div");
+	bar.className = "playerStatsBar";
+
+	const stats = [
+		{ key: "damage",   label: "Damage" },
+		{ key: "currency", label: "Currency" },
+		{ key: "heat",     label: "Heat" }
+	];
+
+	stats.forEach(({ key, label }) => {
+		const group = document.createElement("div");
+		group.className = "playerStatGroup";
+
+		const valueEl = document.createElement("span");
+		valueEl.className = "playerStatValue";
+		valueEl.textContent = `${label}: ${player[key] ?? 0}`;
+		valueEl.dataset.statKey = key;
+
+		const decBtn = document.createElement("button");
+		decBtn.type = "button";
+		decBtn.className = "playerStatBtn";
+		decBtn.textContent = "−";
+		decBtn.setAttribute("aria-label", `Decrease ${label}`);
+		decBtn.addEventListener("click", () => adjustPlayerStat(player.id, key, -1));
+
+		const incBtn = document.createElement("button");
+		incBtn.type = "button";
+		incBtn.className = "playerStatBtn";
+		incBtn.textContent = "+";
+		incBtn.setAttribute("aria-label", `Increase ${label}`);
+		incBtn.addEventListener("click", () => adjustPlayerStat(player.id, key, 1));
+
+		group.appendChild(valueEl);
+		group.appendChild(decBtn);
+		group.appendChild(incBtn);
+		bar.appendChild(group);
+	});
+
+	return bar;
+}
+
+function adjustPlayerStat(playerId, statKey, delta) {
+	const state = store.getState();
+	const players = { ...state.players };
+	const player = players[playerId];
+
+	if (!player) return;
+
+	const current = player[statKey] ?? 0;
+
+	players[playerId] = {
+		...player,
+		[statKey]: current + delta
+	};
+
+	store.update("players", players);
 }
 
 function buildGrid(player, startIndex, endIndex, gridType) {
@@ -274,8 +386,13 @@ function addPlayer() {
 		id: playerId,
 		number: nextNumber,
 		name: `Player ${nextNumber}`,
+		damage: 0,
+		currency: 0,
+		heat: 0,
 		slots: createEmptyPlayerSlots()
 	};
+
+	activePlayerId = playerId;
 
 	store.update("players", players);
 }
@@ -407,6 +524,7 @@ function ensureDefaultPlayers() {
 }
 
 function resetToDefaultPlayers() {
+	activePlayerId = "player_1";
 	store.update("players", buildDefaultPlayers());
 }
 
@@ -416,12 +534,18 @@ function buildDefaultPlayers() {
 			id: "player_1",
 			number: 1,
 			name: "Player 1",
+			damage: 0,
+			currency: 0,
+			heat: 0,
 			slots: createEmptyPlayerSlots()
 		},
 		player_2: {
 			id: "player_2",
 			number: 2,
 			name: "Player 2",
+			damage: 0,
+			currency: 0,
+			heat: 0,
 			slots: createEmptyPlayerSlots()
 		}
 	};

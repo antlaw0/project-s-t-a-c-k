@@ -239,6 +239,30 @@ hr {
     font-size: 0.9rem;
 }
 
+.playersTabSet {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    min-width: 220px;
+    overflow-x: auto;
+    padding: 2px 0;
+}
+
+.playerTabButton {
+    border: 2px solid #ffffff;
+    background: #000000;
+    color: #ffffff;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-weight: 600;
+}
+
+.playerTabButton.active {
+    background: #ffffff;
+    color: #000000;
+}
+
 #playersArea {
     flex: 1;
     overflow: auto;
@@ -273,6 +297,40 @@ hr {
 
 .playerPanelHeader h3 {
     margin: 0;
+}
+
+.playerStatsBar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 8px 0;
+    border-bottom: 2px solid #555;
+    align-items: center;
+    width: 100%;
+}
+
+.playerStatGroup {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex: 1;
+    min-width: 180px;
+}
+
+.playerStatValue {
+    font-size: 1rem;
+    font-weight: bold;
+    white-space: nowrap;
+    flex: 1;
+}
+
+.playerStatBtn {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    font-size: 1.2rem;
+    line-height: 1;
+    flex-shrink: 0;
 }
 
 .playerGrid {

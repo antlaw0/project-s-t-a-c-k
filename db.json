@@ -3,15 +3,37 @@
     {
       "id": "enemy_goblin_raider",
       "type": "enemy",
+	  "deckId": "goblin",
       "name": "Goblin Raider",
       "header": "HP 6",
       "image": "goblin_raider.png",
       "body": "Attack: Rusty Blade\nDeal 2 damage.\n\nLoot:\n1 Coin",
       "backText": "Difficulty Rating: 1\nTier: 1"
     },
+	{
+      "id": "enemy_goblin_archer",
+      "type": "enemy",
+	  "deckId": "goblin",
+      "name": "Goblin Archer",
+      "header": "HP 4",
+      "image": "goblin_raider.png",
+      "body": "Attack: Shortbow\nDeal 2 damage., ranged\n\nLoot:\n1 Coin",
+      "backText": "Difficulty Rating: 1\nTier: 1"
+    },
+	{
+      "id": "rat",
+      "type": "enemy",
+	  "deckId": "beast",
+      "name": "Rat",
+      "header": "HP 2",
+      "image": "goblin_raider.png",
+      "body": "Attack: Bite\nDeal 1 damage.\n\nLoot:\n1 Coin",
+      "backText": "Difficulty Rating: 1\nTier: 1"
+    },
     {
       "id": "enemy_wolf",
       "type": "enemy",
+	  "deckId": "beast",
       "name": "Wolf",
       "header": "HP 5",
       "image": "wolf.png",
