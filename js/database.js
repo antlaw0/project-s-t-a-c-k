@@ -140,14 +140,25 @@ function mapDbJsonCardToRecord(source) {
 	const header = name || String(source.header || "Untitled Card").trim();
 	const topText = String(source.header || source.type || "").trim();
 	const image = resolveDbImagePath(source.image);
+	const deckId = String(source.deckId || "").trim();
+	const backText = String(source.backText || "").trim();
+	const type = String(source.type || "").trim();
 
-	return window.CardComponent.createCardRecord({
+	const record = window.CardComponent.createCardRecord({
 		id: source.id || window.CardComponent.buildCardId(),
 		header,
 		topText,
 		image,
 		body: String(source.body || "")
 	});
+
+	return {
+		...record,
+		name,
+		type,
+		deckId,
+		backText
+	};
 }
 
 function resolveDbImagePath(imageValue) {

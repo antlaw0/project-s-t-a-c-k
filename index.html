@@ -107,17 +107,49 @@
     </section>
 
     <section id="playersTab" class="tabPanel">
-        <div id="playersToolbar">
+        <div id="playersToolbar" class="playersToolbar">
             <span class="playersToolbarLabel">Players</span>
             <button id="addPlayerBtn">Add Player</button>
             <p id="playersEmptyNote">No players added yet.</p>
         </div>
 
-        <section id="playersArea" aria-label="Player Areas"></section>
+        <section id="playersArea" class="playersArea" aria-label="Player Areas"></section>
     </section>
 
     <section id="encounterTab" class="tabPanel">
-        <h2>Encounter</h2>
+        <div id="encounterToolbar">
+            <span class="encounterToolbarLabel">Encounters</span>
+            <button id="addEncounterBtn" type="button">Add Encounter</button>
+            <button id="deleteEncounterBtn" type="button">Delete Encounter</button>
+
+            <div id="encounterTabSet" aria-label="Encounter Tabs"></div>
+
+            <label for="encounterNameInput">Name</label>
+            <input id="encounterNameInput" type="text" placeholder="Encounter Name">
+
+            <label for="encounterDeckIdInput">Dungeon Deck ID</label>
+            <input id="encounterDeckIdInput" type="text" placeholder="beast">
+            <button id="loadEncounterDeckBtn" type="button">Load Deck ID</button>
+
+            <label for="encounterDeckSelect">Available Decks</label>
+            <select id="encounterDeckSelect"></select>
+            <button id="useSelectedDeckBtn" type="button">Use Selected</button>
+
+            <button id="shuffleEncounterDeckBtn" type="button">Shuffle Active Deck</button>
+        </div>
+
+        <section id="encounterArea" aria-label="Encounter Area">
+            <div id="encounterGrid"></div>
+
+            <section id="encounterPlayersPanel" aria-label="Encounter Players">
+                <div id="encounterPlayersToolbar" class="playersToolbar">
+                    <span class="playersToolbarLabel">Players</span>
+                    <button id="addEncounterPlayerBtn" type="button">Add Player</button>
+                    <p id="encounterPlayersEmptyNote">No players added yet.</p>
+                </div>
+                <section id="encounterPlayersArea" class="playersArea" aria-label="Encounter Player Areas"></section>
+            </section>
+        </section>
     </section>
 
     <section id="databaseTab" class="tabPanel">

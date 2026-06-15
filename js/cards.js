@@ -27,6 +27,8 @@ function createCardElement(cardData, options = {}) {
 	image.className = "gameCardImage";
 	image.alt = card.header;
 	image.src = card.image;
+	image.draggable = false;
+	image.setAttribute("draggable", "false");
 	image.addEventListener("error", () => {
 		if (image.src.endsWith(DEFAULT_CARD_IMAGE)) return;
 		image.src = DEFAULT_CARD_IMAGE;

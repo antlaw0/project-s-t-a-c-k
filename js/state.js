@@ -16,6 +16,7 @@ const initialState = {
     encounters: {},
 
     ui: {
+        activeEncounterId: null,
         selectedEntity: null,
         editMode: false
     }
