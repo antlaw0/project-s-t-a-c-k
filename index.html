@@ -107,7 +107,13 @@
     </section>
 
     <section id="playersTab" class="tabPanel">
-        <h2>Players</h2>
+        <div id="playersToolbar">
+            <span class="playersToolbarLabel">Players</span>
+            <button id="addPlayerBtn">Add Player</button>
+            <p id="playersEmptyNote">No players added yet.</p>
+        </div>
+
+        <section id="playersArea" aria-label="Player Areas"></section>
     </section>
 
     <section id="encounterTab" class="tabPanel">
@@ -115,8 +121,84 @@
     </section>
 
     <section id="databaseTab" class="tabPanel">
-        <h2>Database</h2>
+        <aside id="databaseSidebar">
+            <h2>Card Database</h2>
+
+            <div class="controlGroup">
+                <label for="cardHeaderInput">Header</label>
+                <input type="text" id="cardHeaderInput" placeholder="Card Name">
+            </div>
+
+            <div class="controlGroup">
+                <label for="cardTopTextInput">Top Text</label>
+                <input type="text" id="cardTopTextInput" placeholder="Type / Tags / Stats">
+            </div>
+
+            <div class="controlGroup">
+                <label for="cardImageInput">Image Path (PNG/JPG)</label>
+                <input type="text" id="cardImageInput" placeholder="assets/images/default.png">
+            </div>
+
+            <div class="controlGroup">
+                <label for="cardBodyInput">Body Text</label>
+                <textarea id="cardBodyInput" rows="8" placeholder="Fire Slash: 5 DMG, melee&#10;Fire Blast: 6 DMG, ranged"></textarea>
+            </div>
+
+            <button id="createCardBtn">Create Card</button>
+        </aside>
+
+        <section id="databaseArea" aria-label="Card Library">
+            <p id="cardLibraryEmptyNote">No cards created yet.</p>
+            <div id="cardLibraryGrid"></div>
+        </section>
     </section>
+
+    <div id="cardPickerModalOverlay" class="modalOverlay" hidden>
+        <div
+            id="cardPickerModal"
+            class="modalDialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="cardPickerTitle"
+            aria-describedby="cardPickerHelp">
+
+            <header class="modalHeader">
+                <h2 id="cardPickerTitle">Send Card To Player</h2>
+                <button id="cardPickerCloseBtn" type="button" aria-label="Close dialog">Close</button>
+            </header>
+
+            <p id="cardPickerHelp">Type to search cards from db.json, select one result, choose a player, then submit.</p>
+
+            <div class="controlGroup">
+                <label for="cardSearchInput">Card Search</label>
+                <input
+                    id="cardSearchInput"
+                    type="text"
+                    autocomplete="off"
+                    aria-controls="cardSearchResults"
+                    aria-autocomplete="list"
+                    placeholder="Search by name, type, text, or id">
+            </div>
+
+            <div
+                id="cardSearchResults"
+                class="cardSearchResults"
+                role="listbox"
+                aria-label="Matching cards"></div>
+
+            <div class="controlGroup">
+                <label for="cardTargetPlayerSelect">Target Player</label>
+                <select id="cardTargetPlayerSelect"></select>
+            </div>
+
+            <p id="cardPickerStatus" class="modalStatus" aria-live="polite"></p>
+
+            <footer class="modalFooter">
+                <button id="cardPickerSubmitBtn" type="button">Submit</button>
+                <button id="cardPickerCancelBtn" type="button">Cancel</button>
+            </footer>
+        </div>
+    </div>
 
 </main>
 

@@ -1,0 +1,103 @@
+{
+  "cards": [
+    {
+      "id": "enemy_goblin_raider",
+      "type": "enemy",
+      "name": "Goblin Raider",
+      "header": "HP 6",
+      "image": "goblin_raider.png",
+      "body": "Attack: Rusty Blade\nDeal 2 damage.\n\nLoot:\n1 Coin",
+      "backText": "Difficulty Rating: 1\nTier: 1"
+    },
+    {
+      "id": "enemy_wolf",
+      "type": "enemy",
+      "name": "Wolf",
+      "header": "HP 5",
+      "image": "wolf.png",
+      "body": "Attack: Bite\nDeal 2 damage.\n\nPack Hunter:\n+1 damage if another Wolf is present.",
+      "backText": "Difficulty Rating: 1\nTier: 1"
+    },
+    {
+      "id": "equipment_iron_sword",
+      "type": "equipment",
+      "name": "Iron Sword",
+      "header": "Equipment",
+      "image": "iron_sword.png",
+      "body": "Weapon\n\nAttack:\nDeal 3 damage to a target.",
+      "backText": ""
+    },
+    {
+      "id": "equipment_leather_armor",
+      "type": "equipment",
+      "name": "Leather Armor",
+      "header": "Equipment",
+      "image": "leather_armor.png",
+      "body": "Armor\n\nReduce incoming damage by 1.",
+      "backText": ""
+    },
+    {
+      "id": "item_health_potion",
+      "type": "item",
+      "name": "Health Potion",
+      "header": "Item",
+      "image": "health_potion.png",
+      "body": "Consume:\nRestore 5 HP.",
+      "backText": ""
+    },
+    {
+      "id": "item_fire_gem",
+      "type": "item",
+      "name": "Fire Gem",
+      "header": "Crafting Item",
+      "image": "fire_gem.png",
+      "body": "A gem infused with elemental fire.\nUsed in advanced crafting recipes.",
+      "backText": ""
+    },
+    {
+      "id": "ability_dodge",
+      "type": "ability",
+      "name": "Dodge",
+      "header": "Ability",
+      "image": "dodge.png",
+      "body": "Reaction:\nPrevent all damage from one attack.\nDiscard after use.",
+      "backText": ""
+    },
+    {
+      "id": "ability_second_wind",
+      "type": "ability",
+      "name": "Second Wind",
+      "header": "Ability",
+      "image": "second_wind.png",
+      "body": "Gain 3 HP.\nCan only be used once per encounter.",
+      "backText": ""
+    },
+    {
+      "id": "skill_power_strike",
+      "type": "skill",
+      "name": "Power Strike",
+      "header": "Skill",
+      "image": "power_strike.png",
+      "body": "Deal 5 damage.\nDiscard after use.",
+      "backText": ""
+    },
+    {
+      "id": "blueprint_flaming_sword",
+      "type": "blueprint",
+      "name": "Flaming Sword",
+      "header": "Blueprint",
+      "image": "flaming_sword_blueprint.png",
+      "body": "Requirements:\nIron Sword\nFire Gem\n\nCraft:\nFlaming Sword",
+      "backText": ""
+    },
+    {
+      "id": "equipment_flaming_sword",
+      "type": "equipment",
+      "name": "Flaming Sword",
+      "header": "Equipment",
+      "image": "flaming_sword.png",
+      "body": "Weapon\n\nAttack:\nDeal 5 damage.\nBurn:\nDeal 1 additional damage at the start of the target's next turn.",
+      "backText": ""
+    }
+  ]
+}
