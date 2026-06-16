@@ -227,6 +227,8 @@ function wireCardPickerModal() {
 function toggleCardPicker(open) {
 	const overlay = document.getElementById("cardPickerModalOverlay");
 	const searchInput = document.getElementById("cardSearchInput");
+	const header = document.querySelector("header");
+	const nav = document.querySelector("nav");
 
 	if (!overlay || !searchInput) return;
 
@@ -236,7 +238,12 @@ function toggleCardPicker(open) {
 		cardPickerState.selectedCardId = null;
 		cardPickerState.searchTerm = "";
 
+		// Apply inert only to header/nav (modal is inside main, so don't inert it)
+		if (header) header.inert = true;
+		if (nav) nav.inert = true;
+
 		overlay.hidden = false;
+		overlay.setAttribute("aria-hidden", "false");
 		clearCardPickerStatus();
 		searchInput.value = "";
 
@@ -249,6 +256,11 @@ function toggleCardPicker(open) {
 
 	cardPickerState.isOpen = false;
 	overlay.hidden = true;
+	overlay.setAttribute("aria-hidden", "true");
+
+	// Remove inert from background elements
+	if (header) header.inert = false;
+	if (nav) nav.inert = false;
 
 	if (cardPickerState.lastFocusedElement && typeof cardPickerState.lastFocusedElement.focus === "function") {
 		cardPickerState.lastFocusedElement.focus();
@@ -270,6 +282,7 @@ function renderCardSearchResults() {
 		resultsEl.appendChild(empty);
 		return;
 	}
+	let selectedButton = null;
 
 	matches.forEach((card, index) => {
 		const option = document.createElement("button");
@@ -297,8 +310,25 @@ function renderCardSearchResults() {
 			setCardPickerStatus(`Selected card: ${card.header}`);
 		});
 
+		// Handle arrow keys and Enter within search results
+		option.addEventListener("keydown", event => {
+			if (event.key === "ArrowDown" || event.key === "ArrowUp" || event.key === "Enter") {
+				handleSearchOptionKeys(event);
+			}
+		});
+
 		resultsEl.appendChild(option);
+
+		// Track the selected button to focus it after all buttons are created
+		if (card.id === cardPickerState.selectedCardId) {
+			selectedButton = option;
+		}
 	});
+
+	// Restore focus to the selected button
+	if (selectedButton) {
+		selectedButton.focus();
+	}
 }
 
 function getMatchingCards(searchTerm) {
@@ -352,6 +382,38 @@ function handleSearchInputKeys(event) {
 
 	if (event.key === "ArrowUp") {
 		nextIndex = selectedIndex <= 0 ? 0 : selectedIndex - 1;
+	}
+
+	const nextOption = options[nextIndex];
+	if (!nextOption) return;
+
+	nextOption.focus();
+	nextOption.click();
+}
+
+function handleSearchOptionKeys(event) {
+	const options = Array.from(document.querySelectorAll(".cardSearchOption"));
+	if (!options.length) return;
+
+	const currentButton = event.currentTarget;
+	const currentIndex = Array.from(options).indexOf(currentButton);
+
+	if (event.key === "Enter") {
+		event.preventDefault();
+		currentButton.click();
+		return;
+	}
+
+	event.preventDefault();
+
+	let nextIndex = currentIndex;
+
+	if (event.key === "ArrowDown") {
+		nextIndex = Math.min(currentIndex + 1, options.length - 1);
+	}
+
+	if (event.key === "ArrowUp") {
+		nextIndex = Math.max(currentIndex - 1, 0);
 	}
 
 	const nextOption = options[nextIndex];
@@ -436,31 +498,47 @@ function clearCardPickerStatus() {
 
 function trapModalFocus(event) {
 	const modal = document.getElementById("cardPickerModal");
-	if (!modal) return;
+	if (!modal || !cardPickerState.isOpen) return;
 
 	const selectors = [
+		"a[href]",
 		"button:not([disabled])",
 		"input:not([disabled])",
 		"select:not([disabled])",
 		"textarea:not([disabled])",
-		"[tabindex]:not([tabindex='-1'])"
+		"[tabindex]:not([tabindex='-1'])",
+		"[role='button']:not([disabled])",
+		"[role='option']"
 	];
 
-	const focusable = Array.from(modal.querySelectorAll(selectors.join(",")));
-	if (!focusable.length) return;
-
-	const first = focusable[0];
-	const last = focusable[focusable.length - 1];
-	const active = document.activeElement;
-
-	if (event.shiftKey && active === first) {
+	const focusableElements = Array.from(modal.querySelectorAll(selectors.join(",")));
+	
+	if (!focusableElements.length) {
 		event.preventDefault();
-		last.focus();
 		return;
 	}
 
-	if (!event.shiftKey && active === last) {
+	const firstElement = focusableElements[0];
+	const lastElement = focusableElements[focusableElements.length - 1];
+	const activeElement = document.activeElement;
+
+	// Shift+Tab on first element: move to last
+	if (event.shiftKey && activeElement === firstElement) {
 		event.preventDefault();
-		first.focus();
+		lastElement.focus();
+		return;
+	}
+
+	// Tab on last element: move to first
+	if (!event.shiftKey && activeElement === lastElement) {
+		event.preventDefault();
+		firstElement.focus();
+		return;
+	}
+
+	// If focus is outside the modal, force it back inside
+	if (!modal.contains(activeElement)) {
+		event.preventDefault();
+		firstElement.focus();
 	}
 }
