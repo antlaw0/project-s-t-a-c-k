@@ -34,6 +34,10 @@ function initializeBoard() {
         store.getState().grid.height
     );
 
+    window.BoardAPI = {
+        rebuildGrid
+    };
+
     // Re-render whenever state changes
     store.subscribe(() => {
         renderAllTiles();
@@ -87,6 +91,16 @@ function createGrid(width, height) {
     } // closes y loop
 
 } // closes createGrid
+
+function rebuildGrid(width, height) {
+    createGrid(width, height);
+
+    const selectedTile = store.getState().selectedTile;
+
+    if (selectedTile) {
+        highlightSelectedTile(selectedTile);
+    }
+}
 
 
 function renderAllTiles() {

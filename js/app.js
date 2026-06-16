@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", initializeTabs);
-
 function initializeTabs() {
 	const tabButtons = document.querySelectorAll(".tabButton");
 	const newGameBtn = document.getElementById("newGameBtn");

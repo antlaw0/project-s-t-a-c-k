@@ -209,7 +209,7 @@ function buildEncounterSlot(encounter, slotIndex) {
 		const cardEl = buildEncounterCard(cardState);
 		cardEl.draggable = true;
 		cardEl.setAttribute("draggable", "true");
-		cardEl.setAttribute("aria-hidden", "true");
+		
 		cardEl.dataset.slotIndex = String(slotIndex);
 		cardEl.dataset.encounterId = encounter?.id || "";
 		cardEl.addEventListener("dragover", handleEncounterSlotDragOver);

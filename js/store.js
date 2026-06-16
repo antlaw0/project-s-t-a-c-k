@@ -1,7 +1,7 @@
 (function () {
 
     function createStore(initialState) {
-        let state = initialState;
+        let state = structuredClone(initialState);
 
         const listeners = [];
 
@@ -46,7 +46,9 @@
         };
     }
 
-    // 🔥 FORCE GLOBAL AVAILABILITY
+    // expose store
     window.createStore = createStore;
 
 })();
+
+    
