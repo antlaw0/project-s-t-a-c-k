@@ -159,10 +159,7 @@ function buildEncounterRowTable(encounter, rowIndex, tableName) {
 	table.className = "cardGridTable";
 	table.setAttribute("aria-label", tableName);
 
-	const caption = document.createElement("caption");
-	caption.className = "srOnly";
-	caption.textContent = tableName;
-	table.appendChild(caption);
+	
 
 	const tbody = document.createElement("tbody");
 	const row = document.createElement("tr");
@@ -407,14 +404,81 @@ function handleEncounterCardDamageControlPointerDown(event) {
 	event.stopPropagation();
 }
 
-function buildEncounterDragPayload(sourceEncounterId, sourceSlotIndex) {
-	return {
-		sourceContext: "encounter",
-		sourceEncounterId,
-		sourceSlotIndex
-	};
-}
+function buildEncounterSlot(encounter, slotIndex) {
+    const slot = document.createElement("td");
+    slot.className = "encounterSlot";
+    slot.dataset.slotIndex = String(slotIndex);
 
+    const cardState = encounter && Array.isArray(encounter.slots)
+        ? encounter.slots[slotIndex]
+        : null;
+
+    if (slotIndex === ENCOUNTER_DECK_SLOT_INDEX) {
+        slot.setAttribute("aria-label", "Dungeon Deck");
+        slot.classList.add("encounterDeckSlot");
+        renderDeckSlotContent(slot, encounter);
+        return slot;
+    }
+
+    slot.addEventListener("dragover", handleEncounterSlotDragOver);
+    slot.addEventListener("dragleave", handleEncounterSlotDragLeave);
+    slot.addEventListener("drop", handleEncounterSlotDrop);
+    slot.addEventListener("pointerup", handleEncounterSlotPointerUp);
+
+    if (!cardState) {
+        slot.setAttribute("aria-label", "Empty");
+        return slot;
+    }
+
+    const cardRecord = getCardById(cardState.cardId);
+
+    const cardName = cardRecord?.header || "Card";
+    const cardTopText = cardRecord?.topText || "";
+    const cardBody = cardRecord?.body || "";
+
+    const accessibleText = [
+        cardName,
+        cardTopText,
+        cardBody
+    ]
+        .filter(Boolean)
+        .join(". ");
+
+    slot.setAttribute("aria-label", accessibleText);
+
+    const srText = document.createElement("div");
+    srText.className = "srOnly";
+    srText.textContent = accessibleText;
+    slot.appendChild(srText);
+
+    const cardEl = buildEncounterCard(cardState);
+
+    cardEl.draggable = true;
+    cardEl.setAttribute("draggable", "true");
+
+    // IMPORTANT:
+    // REMOVED aria-hidden="true"
+
+    cardEl.dataset.slotIndex = String(slotIndex);
+    cardEl.dataset.encounterId = encounter?.id || "";
+
+    cardEl.addEventListener("dragover", handleEncounterSlotDragOver);
+    cardEl.addEventListener("dragleave", handleEncounterSlotDragLeave);
+    cardEl.addEventListener("drop", handleEncounterSlotDrop);
+    cardEl.addEventListener("click", handleEncounterCardDamageControlClick);
+    cardEl.addEventListener("pointerdown", handleEncounterCardDamageControlPointerDown);
+    cardEl.addEventListener("pointerdown", handleEncounterCardPointerDown);
+    cardEl.addEventListener("dragstart", handleEncounterCardDragStart);
+    cardEl.addEventListener("dragend", clearEncounterDragState);
+
+    cardEl.addEventListener("dblclick", () => {
+        toggleEncounterCardFace(slotIndex);
+    });
+
+    slot.appendChild(cardEl);
+
+    return slot;
+}
 function clearEncounterDragState() {
 	document.querySelectorAll(".encounterCard.dragging").forEach(card => {
 		card.classList.remove("dragging");

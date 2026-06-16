@@ -307,10 +307,10 @@ function buildGridTable(player, startRowIndex, rowCount, gridType, tableName) {
 	table.className = "cardGridTable";
 	table.setAttribute("aria-label", tableName);
 
-	const caption = document.createElement("caption");
-	caption.className = "srOnly";
-	caption.textContent = tableName;
-	table.appendChild(caption);
+	
+	
+
+	
 
 	const tbody = document.createElement("tbody");
 
@@ -364,7 +364,7 @@ function buildSlot(playerId, slotIndex, card, gridType) {
 		draggable: true
 	});
 	cardEl.setAttribute("draggable", "true");
-	cardEl.setAttribute("aria-hidden", "true");
+	
 	cardEl.dataset.playerId = playerId;
 	cardEl.dataset.slotIndex = String(slotIndex);
 	cardEl.dataset.cardInstanceId = card.instanceId || "";
