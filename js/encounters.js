@@ -175,6 +175,8 @@ function renderEncounterGrid(grid, encounter) {
 			cardEl.addEventListener("dragover", handleEncounterSlotDragOver);
 			cardEl.addEventListener("dragleave", handleEncounterSlotDragLeave);
 			cardEl.addEventListener("drop", handleEncounterSlotDrop);
+			cardEl.addEventListener("click", handleEncounterCardDamageControlClick);
+			cardEl.addEventListener("pointerdown", handleEncounterCardDamageControlPointerDown);
 			cardEl.addEventListener("pointerdown", handleEncounterCardPointerDown);
 			cardEl.addEventListener("dragstart", handleEncounterCardDragStart);
 			cardEl.addEventListener("dragend", clearEncounterDragState);
@@ -214,6 +216,7 @@ function renderDeckSlotContent(slot, encounter) {
 
 function buildEncounterCard(cardState) {
 	const cardRecord = getCardById(cardState.cardId);
+	const isEnemyCard = isEnemyCardRecord(cardRecord);
 	const cardData = cardRecord || {
 		id: cardState.cardId,
 		header: cardState.cardId,
@@ -229,6 +232,15 @@ function buildEncounterCard(cardState) {
 			compact: true,
 			draggable: false
 		});
+
+		if (isEnemyCard) {
+			const imageWrap = front.querySelector(".gameCardImageWrap");
+			if (imageWrap) {
+				const damageOverlay = buildEnemyDamageOverlay(cardState.damage || 0);
+				imageWrap.appendChild(damageOverlay);
+			}
+		}
+
 		return front;
 	}
 
@@ -248,6 +260,40 @@ function buildEncounterCard(cardState) {
 	return back;
 }
 
+function buildEnemyDamageOverlay(damage) {
+	const overlay = document.createElement("div");
+	overlay.className = "enemyDamageOverlay";
+
+	const label = document.createElement("span");
+	label.className = "enemyDamageLabel";
+	label.textContent = `DMG: ${Math.max(0, Number(damage) || 0)}`;
+
+	const decrementBtn = document.createElement("button");
+	decrementBtn.type = "button";
+	decrementBtn.className = "enemyDamageBtn";
+	decrementBtn.dataset.damageDelta = "-1";
+	decrementBtn.setAttribute("aria-label", "Decrease enemy damage");
+	decrementBtn.textContent = "-";
+
+	const incrementBtn = document.createElement("button");
+	incrementBtn.type = "button";
+	incrementBtn.className = "enemyDamageBtn";
+	incrementBtn.dataset.damageDelta = "1";
+	incrementBtn.setAttribute("aria-label", "Increase enemy damage");
+	incrementBtn.textContent = "+";
+
+	overlay.appendChild(label);
+	overlay.appendChild(decrementBtn);
+	overlay.appendChild(incrementBtn);
+
+	return overlay;
+}
+
+function isEnemyCardRecord(cardRecord) {
+	const type = String(cardRecord?.type || cardRecord?.cardType || "").trim().toLowerCase();
+	return type === "enemy";
+}
+
 function handleEncounterCardDragStart(event) {
 	const cardEl = event.currentTarget;
 	const sourceEncounterId = cardEl.dataset.encounterId;
@@ -264,6 +310,7 @@ function handleEncounterCardDragStart(event) {
 }
 
 function handleEncounterCardPointerDown(event) {
+	if (event.target.closest(".enemyDamageOverlay")) return;
 	if (event.button !== 0) return;
 
 	const cardEl = event.currentTarget;
@@ -273,6 +320,29 @@ function handleEncounterCardPointerDown(event) {
 
 	window.__projectStackCardDragPayload = payload;
 	cardEl.classList.add("dragging");
+}
+
+function handleEncounterCardDamageControlClick(event) {
+	const control = event.target.closest(".enemyDamageBtn");
+	if (!control) return;
+
+	event.preventDefault();
+	event.stopPropagation();
+
+	const cardEl = event.currentTarget;
+	const encounterId = cardEl.dataset.encounterId;
+	const slotIndex = Number(cardEl.dataset.slotIndex);
+	const delta = Number(control.dataset.damageDelta || 0);
+
+	if (!encounterId || Number.isNaN(slotIndex) || !delta) return;
+
+	adjustEncounterCardDamage(encounterId, slotIndex, delta);
+}
+
+function handleEncounterCardDamageControlPointerDown(event) {
+	if (!event.target.closest(".enemyDamageBtn")) return;
+	event.preventDefault();
+	event.stopPropagation();
 }
 
 function buildEncounterDragPayload(sourceEncounterId, sourceSlotIndex) {
@@ -380,6 +450,34 @@ function processDropToEncounterSlot(payload, targetSlotIndex) {
 		if (!sourcePlayerId) return;
 		movePlayerCardToEncounter(sourcePlayerId, sourceSlotIndex, targetEncounterId, targetSlotIndex);
 	}
+}
+
+function adjustEncounterCardDamage(encounterId, slotIndex, delta) {
+	const state = store.getState();
+	const encounters = { ...(state.encounters || {}) };
+	const encounter = encounters[encounterId];
+
+	if (!encounter) return;
+	if (slotIndex <= ENCOUNTER_DECK_SLOT_INDEX || slotIndex >= ENCOUNTER_TOTAL_SLOTS) return;
+
+	const slots = Array.isArray(encounter.slots) ? [...encounter.slots] : createEncounterSlots();
+	const cardState = slots[slotIndex];
+	if (!cardState) return;
+
+	const currentDamage = Math.max(0, Number(cardState.damage) || 0);
+	const nextDamage = Math.max(0, currentDamage + delta);
+
+	slots[slotIndex] = {
+		...cardState,
+		damage: nextDamage
+	};
+
+	encounters[encounterId] = {
+		...encounter,
+		slots
+	};
+
+	store.update("encounters", encounters);
 }
 
 function swapOrMoveEncounterCards(sourceEncounterId, sourceSlotIndex, targetEncounterId, targetSlotIndex) {
