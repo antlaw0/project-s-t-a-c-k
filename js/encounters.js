@@ -147,47 +147,86 @@ function renderDeckSelect(select, activeDeckId) {
 function renderEncounterGrid(grid, encounter) {
 	grid.innerHTML = "";
 
-	for (let i = 0; i < ENCOUNTER_TOTAL_SLOTS; i++) {
-		const slot = document.createElement("div");
-		slot.className = "encounterSlot";
-		slot.dataset.slotIndex = String(i);
+	grid.appendChild(buildEncounterRowTable(encounter, 0, "Enemy Back Line"));
+	grid.appendChild(buildEncounterRowTable(encounter, 1, "Enemy Front Line"));
+}
 
-		if (i === ENCOUNTER_DECK_SLOT_INDEX) {
-			slot.classList.add("encounterDeckSlot");
-			renderDeckSlotContent(slot, encounter);
-			grid.appendChild(slot);
-			continue;
-		}
+function buildEncounterRowTable(encounter, rowIndex, tableName) {
+	const wrap = document.createElement("div");
+	wrap.className = "encounterGridRow";
 
-		const cardState = encounter && Array.isArray(encounter.slots) ? encounter.slots[i] : null;
+	const table = document.createElement("table");
+	table.className = "cardGridTable";
+	table.setAttribute("aria-label", tableName);
 
-		slot.addEventListener("dragover", handleEncounterSlotDragOver);
-		slot.addEventListener("dragleave", handleEncounterSlotDragLeave);
-		slot.addEventListener("drop", handleEncounterSlotDrop);
-		slot.addEventListener("pointerup", handleEncounterSlotPointerUp);
+	const caption = document.createElement("caption");
+	caption.className = "srOnly";
+	caption.textContent = tableName;
+	table.appendChild(caption);
 
-		if (cardState) {
-			const cardEl = buildEncounterCard(cardState);
-			cardEl.draggable = true;
-			cardEl.setAttribute("draggable", "true");
-			cardEl.dataset.slotIndex = String(i);
-			cardEl.dataset.encounterId = encounter?.id || "";
-			cardEl.addEventListener("dragover", handleEncounterSlotDragOver);
-			cardEl.addEventListener("dragleave", handleEncounterSlotDragLeave);
-			cardEl.addEventListener("drop", handleEncounterSlotDrop);
-			cardEl.addEventListener("click", handleEncounterCardDamageControlClick);
-			cardEl.addEventListener("pointerdown", handleEncounterCardDamageControlPointerDown);
-			cardEl.addEventListener("pointerdown", handleEncounterCardPointerDown);
-			cardEl.addEventListener("dragstart", handleEncounterCardDragStart);
-			cardEl.addEventListener("dragend", clearEncounterDragState);
-			cardEl.addEventListener("dblclick", () => {
-				toggleEncounterCardFace(i);
-			});
-			slot.appendChild(cardEl);
-		}
+	const tbody = document.createElement("tbody");
+	const row = document.createElement("tr");
 
-		grid.appendChild(slot);
+	for (let colIndex = 0; colIndex < ENCOUNTER_COLUMNS; colIndex++) {
+		const slotIndex = (rowIndex * ENCOUNTER_COLUMNS) + colIndex;
+		row.appendChild(buildEncounterSlot(encounter, slotIndex));
 	}
+
+	tbody.appendChild(row);
+	table.appendChild(tbody);
+	wrap.appendChild(table);
+
+	return wrap;
+}
+
+function buildEncounterSlot(encounter, slotIndex) {
+	const slot = document.createElement("td");
+	slot.className = "encounterSlot";
+	slot.dataset.slotIndex = String(slotIndex);
+
+	const cardState = encounter && Array.isArray(encounter.slots) ? encounter.slots[slotIndex] : null;
+	const accessibleName = getEncounterSlotAccessibleName(slotIndex, cardState, encounter);
+
+	slot.setAttribute("aria-label", accessibleName);
+
+	const spokenText = document.createElement("span");
+	spokenText.className = "srOnly";
+	spokenText.textContent = accessibleName;
+	slot.appendChild(spokenText);
+
+	if (slotIndex === ENCOUNTER_DECK_SLOT_INDEX) {
+		slot.classList.add("encounterDeckSlot");
+		renderDeckSlotContent(slot, encounter);
+		return slot;
+	}
+
+	slot.addEventListener("dragover", handleEncounterSlotDragOver);
+	slot.addEventListener("dragleave", handleEncounterSlotDragLeave);
+	slot.addEventListener("drop", handleEncounterSlotDrop);
+	slot.addEventListener("pointerup", handleEncounterSlotPointerUp);
+
+	if (cardState) {
+		const cardEl = buildEncounterCard(cardState);
+		cardEl.draggable = true;
+		cardEl.setAttribute("draggable", "true");
+		cardEl.setAttribute("aria-hidden", "true");
+		cardEl.dataset.slotIndex = String(slotIndex);
+		cardEl.dataset.encounterId = encounter?.id || "";
+		cardEl.addEventListener("dragover", handleEncounterSlotDragOver);
+		cardEl.addEventListener("dragleave", handleEncounterSlotDragLeave);
+		cardEl.addEventListener("drop", handleEncounterSlotDrop);
+		cardEl.addEventListener("click", handleEncounterCardDamageControlClick);
+		cardEl.addEventListener("pointerdown", handleEncounterCardDamageControlPointerDown);
+		cardEl.addEventListener("pointerdown", handleEncounterCardPointerDown);
+		cardEl.addEventListener("dragstart", handleEncounterCardDragStart);
+		cardEl.addEventListener("dragend", clearEncounterDragState);
+		cardEl.addEventListener("dblclick", () => {
+			toggleEncounterCardFace(slotIndex);
+		});
+		slot.appendChild(cardEl);
+	}
+
+	return slot;
 }
 
 function renderDeckSlotContent(slot, encounter) {
@@ -292,6 +331,29 @@ function buildEnemyDamageOverlay(damage) {
 function isEnemyCardRecord(cardRecord) {
 	const type = String(cardRecord?.type || cardRecord?.cardType || "").trim().toLowerCase();
 	return type === "enemy";
+}
+
+function getEncounterSlotAccessibleName(slotIndex, cardState, encounter) {
+	if (slotIndex === ENCOUNTER_DECK_SLOT_INDEX) {
+		return "Dungeon Deck";
+	}
+
+	if (!cardState) return "Empty";
+
+	const cardRecord = getCardById(cardState.cardId);
+	const header = String(cardRecord?.header || "").trim();
+	if (header) return header;
+
+	const name = String(cardRecord?.name || "").trim();
+	if (name) return name;
+
+	const cardId = String(cardState.cardId || cardState.instanceId || "").trim();
+	if (cardId) return cardId;
+
+	const encounterName = String(encounter?.name || "").trim();
+	if (encounterName) return encounterName;
+
+	return "Card";
 }
 
 function handleEncounterCardDragStart(event) {

@@ -316,9 +316,13 @@ hr {
 }
 
 #encounterGrid {
-    display: grid;
-    grid-template-columns: repeat(10, var(--card-width));
-    grid-template-rows: repeat(2, var(--card-height));
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: max-content;
+}
+
+.encounterGridRow {
     width: max-content;
 }
 
@@ -466,17 +470,26 @@ hr {
 }
 
 .playerGrid {
-    display: grid;
-    grid-template-columns: repeat(10, var(--card-width));
+    display: block;
     width: max-content;
 }
 
 .playerGrid.special {
-    grid-template-rows: repeat(3, var(--card-height));
+    margin: 0;
 }
 
 .playerGrid.inventory {
-    grid-template-rows: repeat(10, var(--card-height));
+    margin: 0;
+}
+
+.cardGridTable {
+    border-collapse: collapse;
+    border-spacing: 0;
+    table-layout: fixed;
+}
+
+.cardGridTable caption {
+    margin-bottom: 4px;
 }
 
 .playerSlot {
@@ -492,6 +505,12 @@ hr {
 
 .playerSlot.inventory {
     border: 2px solid #ffffff;
+}
+
+.playerSlot,
+.encounterSlot {
+    padding: 0;
+    vertical-align: top;
 }
 
 .playerSlot.dragOver {
@@ -776,4 +795,16 @@ hr {
     display: flex;
     flex-direction: column;
     min-height: 300px;
+}
+
+.srOnly {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }

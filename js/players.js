@@ -225,12 +225,16 @@ function buildPlayerPanel(player) {
 	header.appendChild(removeBtn);
 
 	const statsBar = buildStatsBar(player);
-	const specialGrid = buildGrid(player, 0, PLAYER_SPECIAL_SLOTS, "special");
-	const inventoryGrid = buildGrid(player, PLAYER_INVENTORY_START, PLAYER_TOTAL_SLOTS, "inventory");
+	const equipmentGrid = buildGridTable(player, 0, 1, "special", "Equipment");
+	const skillsGrid = buildGridTable(player, 1, 1, "special", "Skills and Abilities");
+	const tacticalReserveGrid = buildGridTable(player, 2, 1, "special", "Tactical Reserve");
+	const inventoryGrid = buildGridTable(player, 3, PLAYER_INVENTORY_ROWS, "inventory", "Inventory");
 
 	panel.appendChild(header);
 	panel.appendChild(statsBar);
-	panel.appendChild(specialGrid);
+	panel.appendChild(equipmentGrid);
+	panel.appendChild(skillsGrid);
+	panel.appendChild(tacticalReserveGrid);
 	panel.appendChild(inventoryGrid);
 
 	return panel;
@@ -295,20 +299,45 @@ function adjustPlayerStat(playerId, statKey, delta) {
 	store.update("players", players);
 }
 
-function buildGrid(player, startIndex, endIndex, gridType) {
-	const gridEl = document.createElement("div");
-	gridEl.className = `playerGrid ${gridType}`;
+function buildGridTable(player, startRowIndex, rowCount, gridType, tableName) {
+	const tableWrap = document.createElement("div");
+	tableWrap.className = `playerGrid ${gridType}`;
 
-	for (let slotIndex = startIndex; slotIndex < endIndex; slotIndex++) {
-		const slotCard = player.slots[slotIndex] || null;
-		gridEl.appendChild(buildSlot(player.id, slotIndex, slotCard, gridType));
+	const table = document.createElement("table");
+	table.className = "cardGridTable";
+	table.setAttribute("aria-label", tableName);
+
+	const caption = document.createElement("caption");
+	caption.className = "srOnly";
+	caption.textContent = tableName;
+	table.appendChild(caption);
+
+	const tbody = document.createElement("tbody");
+
+	for (let rowOffset = 0; rowOffset < rowCount; rowOffset++) {
+		const row = document.createElement("tr");
+		const rowIndex = startRowIndex + rowOffset;
+
+		for (let colIndex = 0; colIndex < PLAYER_COLUMNS; colIndex++) {
+			const slotIndex = (rowIndex * PLAYER_COLUMNS) + colIndex;
+			const slotCard = player.slots[slotIndex] || null;
+			row.appendChild(buildSlot(player.id, slotIndex, slotCard, gridType));
+		}
+
+		tbody.appendChild(row);
 	}
 
-	return gridEl;
+	table.appendChild(tbody);
+	tableWrap.appendChild(table);
+
+	return tableWrap;
 }
 
 function buildSlot(playerId, slotIndex, card, gridType) {
-	const slot = document.createElement("div");
+	const slot = document.createElement("td");
+	const accessibleName = card ? getCardAccessibleName(card) : "Empty";
+
+	slot.setAttribute("aria-label", accessibleName);
 
 	slot.className = `playerSlot ${gridType}`;
 	slot.dataset.playerId = playerId;
@@ -320,6 +349,11 @@ function buildSlot(playerId, slotIndex, card, gridType) {
 	slot.addEventListener("pointerup", handleSlotPointerUp);
 	slot.addEventListener("mouseup", handleSlotMouseUp);
 
+	const spokenText = document.createElement("span");
+	spokenText.className = "srOnly";
+	spokenText.textContent = accessibleName;
+	slot.appendChild(spokenText);
+
 	if (!card) {
 		return slot;
 	}
@@ -330,6 +364,7 @@ function buildSlot(playerId, slotIndex, card, gridType) {
 		draggable: true
 	});
 	cardEl.setAttribute("draggable", "true");
+	cardEl.setAttribute("aria-hidden", "true");
 	cardEl.dataset.playerId = playerId;
 	cardEl.dataset.slotIndex = String(slotIndex);
 	cardEl.dataset.cardInstanceId = card.instanceId || "";
@@ -345,6 +380,21 @@ function buildSlot(playerId, slotIndex, card, gridType) {
 	slot.appendChild(cardEl);
 
 	return slot;
+}
+
+function getCardAccessibleName(card) {
+	if (!card) return "Empty";
+
+	const header = String(card.header || "").trim();
+	if (header) return header;
+
+	const name = String(card.name || "").trim();
+	if (name) return name;
+
+	const id = String(card.id || card.instanceId || "").trim();
+	if (id) return id;
+
+	return "Card";
 }
 
 function handleCardDragStart(event) {
