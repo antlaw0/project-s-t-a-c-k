@@ -1,0 +1,189 @@
+## Combat Domains
+1. **Biomancy**
+
+   * Life manipulation
+   * Healing, regeneration, adaptation, biological effects
+
+2. **Necromancy**
+
+   * Death manipulation
+   * Undead, life drain, decay, curses
+
+3. **Elementalism**
+
+   * Fire, water, air, earth, and other elemental forces
+   * Offensive, defensive, utility, battlefield control
+
+4. **Illusion**
+
+   * Perception manipulation
+   * Concealment, deception, sensory distortion
+
+5. **Transfiguration**
+
+   * Alteration and transmutation
+   * Matter and form manipulation
+
+6. **Divination**
+
+   * Knowledge, foresight, revelation, detection
+
+---
+
+# ⚔️ Warrior Discipline
+
+1. **Barbarian**
+
+   * Rage
+   * High offense with tradeoffs
+
+2. **Knight**
+
+   * Defense
+   * Ally protection
+   * Tanking and guarding
+
+3. **Monk**
+
+   * Unarmed combat
+   * Mobility
+   * Evasion
+   * Body mastery
+
+4. **Ninja**
+
+   * Stealth combat
+   * Distraction
+   * Sneak attacks
+   * Shuriken, staff, agile weapons
+
+5. **Marksman**
+
+   * Bows
+   * Crossbows
+   * Precision ranged combat
+
+6. **Commander**
+
+   * Leadership
+   * Tactical support
+   * Battlefield coordination
+
+---
+
+# 🕶️ Rogue Discipline
+
+1. **Thief**
+
+   * Stealing
+   * Infiltration
+   * Sleight of hand
+   * Lock bypass
+
+2. **Assassin**
+
+   * High-risk, high-reward damage
+   * Single-target elimination
+
+3. **Saboteur**
+
+   * Trap disruption
+   * Debuffs
+   * System sabotage
+
+4. **Skirmisher**
+
+   * Hit-and-run combat
+   * Mobility
+   * Positioning
+   * Evasion
+
+---
+
+# ✨ Cleric Discipline
+
+1. **Divine Aid**
+
+   * Healing
+   * Blessings
+   * Restoration through divine power
+
+2. **Exorcist**
+
+   * Anti-undead
+   * Anti-demon
+   * Purification
+   * Banishment
+
+3. **Judgment**
+
+   * Divine offense
+   * Smites
+   * Curses
+   * Tribulations
+
+4. **Angelology**
+
+   * Angel summons
+   * Celestial allies
+   * Divine gifts
+
+5. **Oracle**
+
+   * Prophecy
+   * Revelation
+   * Divine insight
+
+6. **Templar**
+
+   * Holy wards
+   * Sacred auras
+   * Protection
+
+7. **Paladin**
+
+   * Faith-powered martial combat
+   * Holy warrior
+   * Oaths and smites
+
+🌿 Druid
+1. 
+Beastmaster
+2. 
+Verdancy
+3. 
+Geomancy
+4. 
+Weathercraft
+5. 
+Herbalism
+6. 
+Wildshape
+ 
+## Trades/Professions
+1. Alchemy
+A. Potion Making
+B. Poisoncraft
+C. Explosives
+
+2. Blacksmithing
+A. Weaponsmithing
+B. Armorer
+C. Artisan
+D. Exotic Alloys
+
+3. Speechcraft
+A. Diplomacy
+B. Merchantile
+C. Intimidation
+D. Persuasion
+
+## Ability Cards
+Biomancy
+
+1. Heal Minor Wounds
+Restore 1 HP of one ally or self
+2. Heal Moderate Wounds
+Heal 2 HP only to allies
+3. Heal Major Wounds
+Heal 3 Hp distributed among two allies

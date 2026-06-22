@@ -1,0 +1,1489 @@
+What is still missing or needs a final decision
+These are the items I would resolve next, roughly in priority order. They are the gears that make the rulebook actually run, rather than just look impressive on the workbench.
+1. Damage and Defense
+You have Armor and Defense values, but not the actual damage formula.
+Decide whether Defense:
+• 
+Reduces every damage instance by that amount.
+• 
+Reduces only melee damage.
+• 
+Has a minimum of 1 damage taken.
+• 
+Works differently for armor-piercing, magic, poison, or true damage.
+This is probably the most important missing combat rule because every weapon, enemy, and armor card depends on it.
+
+# Damage, Defense, and Resistance
+
+## Damage Effects
+
+A damaging card or effect should state:
+
+* Its Delivery.
+* Its Damage Type.
+* Its damage amount.
+* Any relevant Keywords.
+
+Example:
+
+```text
+Iron Spear
+Melee Attack
+
+Deal 4 Physical damage.
+Keyword: Piercing.
+```
+
+```text
+Fireball
+Spell Attack
+
+Deal 3 Fire damage.
+```
+
+---
+
+# Delivery
+
+Delivery describes how an effect is used.
+
+Common Delivery types include:
+
+* Melee
+* Ranged
+* Spell
+* Item
+
+Delivery determines targeting and other card interactions.
+
+For example, Melee attacks can normally target only cards in the opposing Front Row.
+
+Delivery is not a Damage Type.
+
+A Spell may deal Fire, Frost, Lightning, Force, Physical, or another type of damage.
+
+---
+
+# Damage Types
+
+The starting Damage Types are:
+
+* Physical
+* Fire
+* Frost
+* Lightning
+* Poison
+* Force
+
+## Physical Damage
+
+Physical damage represents weapon strikes, arrows, claws, falling debris, crushing force, and similar mundane harm.
+
+Physical damage is reduced by Defense.
+
+Physical damage may also have one or more Keywords, such as:
+
+* Piercing
+* Slashing
+* Blunt
+
+Keywords have no universal effect unless another card specifically refers to them.
+
+Example:
+
+```text
+Padded Undergarment
+
++1 Defense against Piercing attacks.
+```
+
+---
+
+## Fire Damage
+
+Fire damage represents flames, burning weapons, explosions, lava, and magical fire.
+
+Fire damage is reduced by Fire Resistance.
+
+Normal Defense does not reduce Fire damage unless a card specifically says otherwise.
+
+---
+
+## Frost Damage
+
+Frost damage represents freezing cold, ice magic, freezing winds, and similar effects.
+
+Frost damage is reduced by Frost Resistance.
+
+Normal Defense does not reduce Frost damage unless a card specifically says otherwise.
+
+---
+
+## Lightning Damage
+
+Lightning damage represents electrical attacks, storms, magical lightning, and similar effects.
+
+Lightning damage is reduced by Lightning Resistance.
+
+Normal Defense does not reduce Lightning damage unless a card specifically says otherwise.
+
+---
+
+## Poison Damage
+
+Poison damage represents venom, toxins, disease-like effects, and similar harmful substances.
+
+Poison damage is reduced by Poison Resistance.
+
+Normal Defense does not reduce Poison damage unless a card specifically says otherwise.
+
+> A card may give Poison additional rules, such as dealing damage at the end of a round or preventing healing.
+
+---
+
+## Force Damage
+
+Force damage represents raw magical impact, telekinetic force, arcane energy, or other non-elemental magical harm.
+
+Force damage is reduced by Force Resistance.
+
+Normal Defense does not reduce Force damage unless a card specifically says otherwise.
+
+Force is intended for generic spells such as Magic Bolt or Arcane Bolt.
+
+Example:
+
+```text
+Magic Bolt
+Spell Attack
+
+Deal 2 Force damage to one enemy in either opposing row.
+```
+
+---
+
+# Defense
+
+Defense reduces Physical damage.
+
+```text
+Physical Damage Taken = Physical Damage − applicable Defense
+```
+
+Physical damage cannot be reduced below 0 unless a card specifically says otherwise.
+
+Example:
+
+```text
+Attack: 4 Physical damage.
+Target Defense: 3.
+
+4 − 3 = 1 damage taken.
+```
+
+A character or enemy with enough Defense may reduce a Physical attack to 0 damage.
+
+---
+
+# Resistance
+
+Resistance reduces damage of its matching Damage Type.
+
+```text
+Damage Taken = Damage Amount − matching Resistance
+```
+
+Damage cannot be reduced below 0 unless a card specifically says otherwise.
+
+Example:
+
+```text
+Attack: 4 Fire damage.
+Target Fire Resistance: 1.
+
+4 − 1 = 3 damage taken.
+```
+
+A target's normal Defense does not reduce non-Physical damage unless a card specifically says otherwise.
+
+---
+
+# Damage Keywords
+
+Keywords provide additional detail about an attack.
+
+Common keywords include:
+
+* Piercing
+* Slashing
+* Blunt
+* Magical
+* Fire
+* Poison
+
+Keywords do nothing by themselves unless a card specifically references them.
+
+Example:
+
+```text
+Crushing Blow
+Melee Attack
+
+Deal 4 Physical damage.
+Keyword: Blunt.
+Ignore 1 Defense.
+```
+
+Example:
+
+```text
+Padded Undergarment
+
++1 Defense against Piercing attacks.
+```
+
+---
+
+# Mixed Damage
+
+Some effects deal more than 1 type of damage.
+
+When an effect deals multiple Damage Types, resolve each type separately. Apply the appropriate Defense or Resistance to each damage type, then add the remaining damage together.
+
+Example:
+
+```text
+Fire Sword
+Melee Attack
+
+Deal 2 Physical damage.
+Deal 2 Fire damage.
+Keywords: Slashing, Fire.
+```
+
+Target:
+
+```text
+Defense: 2
+Fire Resistance: 1
+```
+
+Resolve the attack:
+
+```text
+Physical damage: 2 − 2 Defense = 0
+Fire damage: 2 − 1 Fire Resistance = 1
+
+Total damage taken: 1
+```
+
+A card may deal multiple Damage Types only when its text specifically says so.
+
+Mixed damage is intended primarily for enchanted weapons, elemental ammunition, powerful spells, and special abilities.
+
+---
+
+# Special Damage Rules
+
+A card may override the normal damage rules.
+
+Examples:
+
+* Ignore 1 Defense.
+* Ignore Fire Resistance.
+* This damage cannot be reduced below 1.
+* This damage cannot be prevented.
+* Deal +1 damage to a target with Frost Resistance.
+* This attack deals double damage to a target with the Undead tag.
+
+Card text overrides these general damage rules.
+
+
+
+2. Exact Dungeon Objective and Reset Rules
+You need a universal answer for:
+• 
+What happens when a Loot Card is drawn in a dungeon?
+• 
+Who claims it?
+whichever player character turn it is. can always trade later if desired.
+• 
+What if every Inventory is full?
+• 
+Does retreating preserve found loot?
+• 
+When a dungeon resets, do all cards return to their original configuration?
+• 
+Does a cleared dungeon stay cleared forever?
+yes, but can have additionaly difficulty options making it so dungeons repopulate if taking too long turns in game
+• 
+What happens if the Dungeon Deck runs out before its objective is complete?
+dungeon deck designed against this. defeating enemies wittles down available cards to draw so does drawing loot cards and trap cards. eventually all that is left is increasing likelihood of drawing quest item card needed to complete dungeon/boss or drawing the boss card, etc
+
+# Dungeon Loot and Inventory Capacity
+
+## Loot Area
+
+Each active dungeon has a Loot Area.
+
+When a Loot Card is drawn from a Dungeon Deck, place it face up in that dungeon's Loot Area unless the card says to resolve it immediately.
+
+Loot Cards in the Loot Area do not belong to any character yet.
+
+Characters do not add Loot Cards to Inventory when they are drawn.
+
+Inventory capacity is not checked while a dungeon encounter is active.
+
+---
+
+## Currency Cards
+
+When a Currency Card is drawn from a Dungeon Deck, resolve it immediately.
+
+Currency does not count against Inventory capacity.
+
+Unless the card says otherwise, currency gained in a dungeon may be divided among the participating characters in any way the players agree.
+
+---
+
+## Immediate Loot
+
+Some Loot Cards have the `Immediate` keyword.
+
+An Immediate Loot Card is resolved as soon as it is drawn.
+
+After resolving an Immediate Loot Card, follow its card instructions. It may be discarded, remain in play, add progress to the dungeon objective, or create another effect.
+
+Immediate Loot does not enter the Loot Area unless its card says otherwise.
+
+---
+
+## Clearing a Dungeon
+
+When a dungeon objective is completed, all cards in that dungeon's Loot Area become Recovered Loot.
+
+Recovered Loot represents treasure carried out of the cleared dungeon by the party.
+
+Recovered Loot is not part of any character's Inventory and may not be used, equipped, traded, or sold until the party reaches a settlement.
+
+---
+
+## Resolving Recovered Loot
+
+At a settlement, players resolve Recovered Loot.
+
+Players may:
+
+* Add a card to a character's Inventory, if that character has available Inventory capacity.
+* Sell a card.
+* Store a card.
+* Trade an eligible card after it has entered a character's Inventory.
+* Discard a card.
+
+Recovered Loot from the most recently cleared dungeon must be resolved before the party may enter another dungeon.
+
+---
+
+## Failed or Abandoned Dungeons
+
+If all participating characters retreat from a dungeon before completing its objective:
+
+* All cards in that dungeon's Loot Area are lost.
+* The dungeon resets according to its reset rules.
+
+If at least 1 character remains in the dungeon, the Loot Area remains with that active dungeon.
+
+---
+
+## Inventory Capacity Reminder
+
+A character with a full Inventory may still participate in a dungeon and discover loot.
+
+Inventory capacity is checked only when Recovered Loot is claimed at a settlement, not when Loot Cards are drawn during an encounter.
+
+
+3. World Turn Structure Versus Dungeon Turn Structure
+You have strong individual rules, but still need the master clock.
+Decide:
+• 
+Does every player take one World Turn before anyone takes another?
+yes
+• 
+When does an active dungeon resolve relative to players moving on the map?
+if player 1 in dungeon and player 2 in town, player 2 takes turn bying and selling maybe moving out of town, then player 1 turn takes encounter turn in dungeon, draw dungeon card, enemies attack, player 1 turn to attack, then back to player 2
+• 
+Can one player travel on the map while another resolves a dungeon encounter?
+yes, see previous answer
+• 
+Does each dungeon encounter round count toward a global time limit?
+yes
+• 
+Can a player join a dungeon immediately, or only at the start of a new encounter round?
+not sure, depends on initiative
+mage 12 hp, warrior 20 hp, rogue 18 hp, cleric 16 hp, druid 14 hp
+all class character cards allow free equipping and unequipping of skill cards pertaining to that class's domain.
+
+4. Starting Characters
+Each class still needs:
+• 
+Maximum HP.
+• 
+Starting equipment.
+• 
+Starting Skill Cards.
+• 
+Starting Spell or Ability Cards.
+• 
+Native skill categories.
+• 
+Core class trait that changes or bends a normal rule.
+• 
+Basic attack option, especially when no weapon or relevant ability is equipped.
+5. Skill Training Costs and Restrictions
+The broad direction is clear, but the exact economy is not.
+Decide:
+• 
+Does equipping a Native Skill cost anything?
+• 
+Does equipping an Off-Class Skill cost currency?
+• 
+Can an Off-Class Skill only be equipped at its matching settlement specialty?
+• 
+Does removing an Off-Class Skill always discard it, even at the matching specialty?
+• 
+Can special loot alter those rules?
+• 
+What exact card tags count as Mage, Warrior, Rogue, Cleric, or Druid cards for discounts and training?
+6. Settlement Medical Care
+You need exact Standard Mode values.
+For example:
+Service
+Possible Rule to Decide
+Medicine Man
+Cost and maximum HP restored
+Temple of Healing
+Cost, whether it can restore all HP
+General Hospital
+Cost, full recovery, revival access
+Copy table
+You should also decide whether a settlement may treat a Downed character who was rescued from a dungeon, or whether all revival must happen inside the dungeon.
+7. Market Selling Rules
+You need rules for:
+• 
+How much currency a sold card gives.
+• 
+Whether sold cards enter the settlement market, the Loot Discard Pile, or are removed from the game.
+• 
+Whether players can buy cards from another player's sale.
+• 
+Whether a settlement market refreshes only after purchases or also at a later time.
+8. Map Construction and Tile Distribution
+The exploration rules are solid, but the map-generation procedure is still incomplete.
+You need to define:
+• 
+How many total tiles a standard map contains.
+You need to define:
+• 
+How many total tiles a standard map contains.
+• 
+How many of each terrain type are included.
+• 
+How terrain tiles are placed or drawn.
+• 
+How many dungeons appear at each difficulty.
+• 
+Where the starting region is placed.
+• 
+Whether map edges are impassable.
+• 
+Whether rivers, lakes, roads, and mountain chains require special placement rules to avoid nonsensical maps.
+
+
+• 
+How many of each terrain type are included.
+• 
+How terrain tiles are placed or drawn.
+• 
+How many dungeons appear at each difficulty.
+• 
+Where the starting region is placed.
+• 
+Whether map edges are impassable.
+• 
+Whether rivers, lakes, roads, and mountain chains require special placement rules to avoid nonsensical maps.
+no road or river yet. world chunking, small map 10x10, standard 12x12, large 14x14, upto 20x20. so 12x12 gives 9 chunked regions players should start in center. Each chunk is a biome, wetlands, tundra, forest, etc. you gather the biome tiles and include settlements and dungeons, shuffle them face down, then place for the chunk. so first chunk is forest, need 16 forest tiles but sub out one for a settlement or two and maybe a dungeon. randomization handled by rules but app assisted randomization can generate much better maps and this is where roads and rivers can come into play.
+
+9. Water Travel and Large Vehicles
+Canoes are mostly defined, but you still need rules for:
+• 
+Embarking and disembarking.
+• 
+Passenger turns and movement.
+• 
+Rivers versus lakes versus oceans.
+• 
+Boats, ships, warships, steamships, and other large transport.
+• 
+Whether ships are Transportation Cards, map entities, or special tiles.
+• 
+What happens when a player reaches water without carrying a portable watercraft.
+saving for later
+10. Heat Edge Cases
+Decide:
+• 
+How Heat ties are resolved.
+• 
+What an enemy does if the highest-Heat character is an illegal target.
+• 
+Whether enemies may target Downed characters.
+• 
+Whether healing, buffs, taunts, summons, or stealth affect Heat.
+• 
+Whether Heat is shared between player-controlled summons and their owner.
+11. Summons and Companions
+You have the slot rule, but summons need their own small rule set:
+• 
+Who controls them?
+• 
+Do they receive an action?
+• 
+Do they have Heat?
+• 
+Do they take damage normally?
+• 
+How long do they remain?
+• 
+What happens when their owner retreats or is Downed?
+• 
+Can they occupy the Back Row?
+• 
+Can a solo character build an entire allied formation with summons?
+# NPC Allies, Hirelings, and Summons
+
+Allied creature cards represent characters or creatures that fight alongside a player character.
+
+Examples include:
+
+* Hirelings.
+* Mercenaries.
+* Companions.
+* Story allies.
+* Skeletal summons.
+* Animal summons.
+* Constructs.
+* Familiars.
+* Other card-defined allies.
+
+All allied cards occupy normal Player Row slots during encounters.
+
+The Player Front Row has 4 slots.
+
+The Player Back Row has 4 slots.
+
+A slot may contain only 1 card.
+
+All players and their groups share these 8 Player Row slots when participating in the same dungeon.
+
+---
+
+# Player Groups
+
+Each player has their own group.
+
+A player's group may include:
+
+* That player's Character Card.
+* Hirelings.
+* Companions.
+* Summons.
+* Other allied cards controlled by that player.
+
+When multiple players enter the same dungeon, their groups combine into 1 shared allied formation.
+
+All cards in the combined formation must fit within the shared 8 Player Row slots.
+
+No player has reserved slots. Any allied card may occupy any legal empty Player Row slot.
+
+---
+
+# Ally Limits
+
+Each player group may normally have:
+
+* 1 Character Card.
+* Up to 1 persistent Hireling or Companion.
+* Up to 2 active Summons.
+
+Cards may increase or reduce these limits.
+
+An ally cannot enter play if there is no eligible empty Player Row slot.
+
+> The final summon limit may be changed later if Skill Card capacity and playtesting show that a different limit is needed.
+
+---
+
+# Allied Card Types
+
+## Controlled Summons
+
+Controlled Summons are directly commanded by their owner.
+
+A Controlled Summon lists its own stats, HP, Defense, actions, tags, damage types, and special rules.
+
+The owner chooses which listed action the summon uses when that summon is commanded.
+
+Examples include:
+
+* Skeletal Warrior.
+* Skeletal Archer.
+* Skeletal Spider.
+* Wolf Spirit.
+* Vine Guardian.
+* Elemental.
+* Construct.
+
+---
+
+## Autonomous Hirelings
+
+Autonomous Hirelings use an action priority list, similar to Enemy Cards.
+
+When a Hireling is activated, resolve the first legal action on its card.
+
+The controlling player chooses when to activate the Hireling, but does not choose which legal priority action it performs.
+
+Examples include:
+
+* Mercenary Guard.
+* Archer for Hire.
+* Scout.
+* Field Medic.
+* Porter.
+* Guide.
+* Sellsword.
+
+---
+
+## Companions and Story Allies
+
+Companions and Story Allies follow the instructions on their cards.
+
+A Companion or Story Ally may be:
+
+* Controlled by a player.
+* Autonomous.
+* Temporary.
+* Persistent.
+* Required by a scenario.
+* Bound to a specific character.
+
+If a Companion or Story Ally conflicts with a general ally rule, follow the card text.
+
+---
+
+# Ally Actions
+
+Each player receives:
+
+* 1 Character Action during their turn.
+* 1 Ally Action during their turn.
+
+A player may use their Ally Action to activate 1 allied card in that player's group.
+
+A player may not activate more than 1 allied card with the same Ally Action.
+
+This means a player with multiple active allies chooses which one acts that turn.
+
+Allies that are not activated remain in their current row and may still be targeted, block slots, provide passive effects, or use reactions allowed by their cards.
+
+---
+
+## Controlled Summon Actions
+
+When a player uses an Ally Action to activate a Controlled Summon:
+
+1. Choose 1 active Controlled Summon in that player's group.
+2. Choose 1 legal action listed on that Summon's card.
+3. Resolve that action.
+
+A Controlled Summon may only use actions printed on its own card unless another card specifically says otherwise.
+
+Example:
+
+```text id="b2y1fe"
+Skeletal Warrior
+Controlled Summon
+
+Bone Blade
+Deal 2 Physical damage to one enemy in the opposing Front Row.
+
+Bone Share
+This summon takes 1 damage.
+Restore 1 HP to another Skeletal Summon.
+
+Reposition
+Move this summon to an empty Player Front Row or Player Back Row slot.
+```
+
+A summon must follow all normal targeting rules unless its card says otherwise.
+
+For example, a Melee action may normally target only the opposing Front Row.
+
+---
+
+## Autonomous Hireling Actions
+
+When a player uses an Ally Action to activate an Autonomous Hireling:
+
+1. Choose 1 active Hireling in that player's group.
+2. Read the Hireling's priority list from top to bottom.
+3. Resolve the first legal action.
+4. Skip any action whose condition is not met or has no legal target.
+
+Example:
+
+```text id="zjwb8i"
+Mercenary Guard
+Autonomous Hireling
+
+1. Protect
+If an allied character in this row has 50% HP or less,
+move to that character's row if possible.
+
+2. Shield Bash
+Deal 2 Physical damage to one enemy in the opposing Front Row.
+
+3. Guard Stance
+Gain +1 Defense until the start of your next turn.
+```
+
+The controlling player chooses when to activate the Hireling, but the Hireling's card determines what the Hireling does.
+
+---
+
+# Summon Cards
+
+Summon Cards are Spell Cards or Ability Cards equipped to a matching Skill Card.
+
+A Summon Card counts against the capacity of the Skill Card to which it is attached.
+
+Example:
+
+```text id="hvo38g"
+Adept Necromancy
+Maximum Equipped Cards: 3
+
+• Skeletal Warrior
+• Skeletal Warrior
+• Skeletal Spider
+```
+
+A character may only summon cards they prepared by equipping them to a matching Skill Card before entering the dungeon.
+
+A character cannot summon an unprepared Summon Card from Inventory while inside a dungeon unless a card specifically says otherwise.
+
+---
+
+## Summoning a Creature
+
+To summon a creature:
+
+1. Spend 1 Character Action.
+2. Choose an equipped Summon Card.
+3. Move that Summon Card from its Skill Card to an eligible empty Player Row slot.
+4. The card becomes an active allied creature.
+
+A newly summoned creature cannot take an Ally Action during the same player turn in which it was summoned unless the Summon Card specifically says otherwise.
+
+The Summon Card remains in the Player Row until it leaves play.
+
+---
+
+## Defeated Summons
+
+When a Summon takes damage equal to or greater than its HP:
+
+1. Remove it from the Player Row.
+2. Place it in that owner's Expended Summons area.
+
+A card in the Expended Summons area:
+
+* Cannot be summoned again during the current dungeon.
+* Cannot be used or accessed during the current dungeon.
+* Is not part of the owner's active Inventory during the dungeon.
+
+When the dungeon ends or the owner leaves the dungeon, move all Expended Summon Cards to that owner's Inventory.
+
+The owner may re-equip those Summon Cards only at a settlement or other card-defined safe zone.
+
+---
+
+## Active Summons When a Dungeon Ends
+
+When a dungeon is cleared or a summon's owner leaves the dungeon:
+
+1. Remove all active Summons owned by that character from the Player Rows.
+2. Return those Summon Cards to the owner's Inventory.
+3. Move all Expended Summons belonging to that character to the owner's Inventory.
+
+A Summon Card must be equipped again before it can be used in another dungeon.
+
+Unless a card says otherwise, Summons do not remain active while traveling on the world map.
+
+---
+
+## Summoning and Full Rows
+
+A Summon cannot enter play if there is no eligible empty Player Row slot.
+
+If a Summon cannot enter play because there is no empty slot:
+
+* The Summon Card remains attached to its Skill Card.
+* The character does not spend the action used to attempt the summon.
+
+> A card may override this rule by creating space, replacing another ally, summoning into a specific slot, or using another special effect.
+
+---
+
+# Hirelings
+
+Hirelings are persistent allied NPCs purchased or gained outside dungeons.
+
+Hirelings are normally purchased from settlement markets or gained through scenario rewards.
+
+A Hireling:
+
+* Belongs to 1 player group.
+* Occupies a Player Row slot during encounters.
+* Has its own HP, Defense, actions, and special rules.
+* Uses an Autonomous Hireling priority list unless its card says otherwise.
+* Does not use the owner's equipment, Skill Cards, Spell Cards, Ability Cards, or Tactical Reserve cards.
+
+Hirelings are intended to be expensive and valuable.
+
+A Hireling is weaker and less flexible than a player character.
+
+---
+
+## Defeated Hirelings
+
+Unless a Hireling Card says otherwise, when a Hireling takes damage equal to or greater than its HP:
+
+1. Remove it from the Player Row.
+2. Discard the Hireling Card.
+
+Hirelings do not use the player-character Downed or Bleed Out rules unless their cards specifically say they do.
+
+---
+
+# Equipment, Skills, and Items
+
+Allied cards use only the equipment, skills, abilities, stats, and actions printed on their own cards.
+
+Unless another card specifically says otherwise, allies cannot:
+
+* Equip player Equipment Cards.
+* Equip Skill Cards.
+* Use player Spell Cards.
+* Use player Ability Cards.
+* Use Tactical Reserve cards.
+* Use Transportation Cards.
+* Receive Ring, Head, Body, Hands, Feet, Neck, or Held Slot equipment.
+
+Specific cards may create exceptions.
+
+Examples:
+
+```text id="cxwqgd"
+Companion Weapon
+May only be equipped by a Hireling.
+```
+
+```text id="0vcl72"
+Bone Charm
+Your Skeletal Summons gain +1 Defense.
+```
+
+```text id="hnpyks"
+Pack Leader
+Your Beast Summons deal +1 Physical damage.
+```
+
+Card text overrides the normal ally restrictions.
+
+---
+
+# Healing and Revival
+
+Unless a card says otherwise:
+
+* Hirelings may be healed by effects that can target allies.
+* Controlled Summons may be healed only by effects that specifically affect their summon type, such as Undead, Beast, Construct, or Summon.
+* Summons cannot be revived after defeat unless a card specifically says otherwise.
+* Hirelings cannot be revived after defeat unless a card specifically says otherwise.
+
+---
+
+# Heat and Targeting
+
+Allies are legal targets for enemy attacks when they occupy a Player Row slot.
+
+Unless an ally card says otherwise:
+
+* Allies do not gain Heat.
+* Allies may be targeted if an enemy effect targets a row, targets all allies, chooses a random legal target, or otherwise does not require Heat.
+* Enemies using normal Heat targeting choose player characters, not allies.
+
+Cards may override this rule.
+
+Example:
+
+```text id="hy82qb"
+Bone Guardian
+Whenever this summon deals damage, gain 1 Heat.
+```
+
+If an ally can gain Heat, enemies may target that ally normally when it has the highest legal Heat.
+
+---
+
+# Owner Leaves the Dungeon
+
+Each ally belongs to 1 player group.
+
+When an ally's owner leaves a dungeon:
+
+* Active Summons owned by that character leave play and return to that owner's Inventory.
+* Expended Summons belonging to that character return to that owner's Inventory.
+* Hirelings and other persistent allies follow their card instructions.
+
+Unless a Hireling Card says otherwise, a Hireling leaves the dungeon with its owner.
+
+---
+
+# Combined Groups
+
+When multiple player groups enter the same dungeon:
+
+* All player characters, allies, hirelings, and summons use the same 8 Player Row slots.
+* Each player keeps control of their own allies.
+* Each player receives only 1 Ally Action during their own turn.
+* Allied cards may support any player character unless their cards say otherwise.
+* No player may exceed their own ally limits, even when groups combine.
+
+This allows cooperation while preventing combined groups from creating unlimited armies.
+
+
+12. Character Death and Retreat Details
+You have the core Bleed Out concept, but still need to decide:
+• 
+Can a party retreat with a Downed ally?
+yes
+• 
+Does retreat remove Bleed tokens?
+yes
+• 
+Can a Downed character be targeted or moved?
+not targeted not move
+• 
+Can a healing spell revive someone, or must a card explicitly say “Revive”?
+has to say 'revive'
+• 
+Is the optional Last Stand action part of the default rules, an optional mode, or removed entirely?
+optinal rule
+
+13. Crafting and Gathering
+These are currently mentioned but have no mechanical rules.
+You will eventually need:
+• 
+Resource types.
+• 
+Resource-gathering locations.
+• 
+Recipe cards.
+• 
+Crafting stations.
+• 
+Crafting costs.
+• 
+Whether crafted cards come from the Loot Deck or are created from separate recipes.
+• 
+How crafting avoids bloating the number of decks and components.
+No resource gathering in version 1. Crafting consists of blueprint/recipe cards that are the actual final product and list required cards to create. For example, Flaming sword requires iron sword and fire gem. once have all three of these cards, you discard the iron sword and fire gem cards back into the loot deck and now you have the flaming sword card. Different skills and skill levels are required to craft for example need blacksmithing skill card equipped in order to make metal stuff. Blacksmith skill card has possible ability cards such as "weaponsmithing", "armorer", "exotic metals", etc which allow for specialization.
+
+14. Equipment Details
+Decide:
+• 
+Whether every character has two Ring slots.
+• 
+How dual-wielding works.
+• 
+Whether shields occupy one Held Slot.
+• 
+Whether armor has class restrictions.
+• 
+Whether equipment can grant or reduce Inventory capacity.
+• 
+Whether broken, cursed, or bound equipment exists.
+• 
+Whether equipment may be traded directly between characters.
+I would **not** give Mages extra Ring slots. It makes the equipment layout and balance asymmetrical for a benefit that can be expressed more cleanly through item design.
+
+Use **two Ring slots for every character**:
+
+* Left Ring
+* Right Ring
+
+That keeps the physical layout symmetrical and lets any class pursue ring-based builds. Mages can still have stronger ring synergy through cards such as:
+
+```text
+Ring of Arcane Focus
+Mage spells deal +1 Force damage.
+```
+
+or:
+
+```text
+Ring of Spell Storage
+Attach 1 additional Spell Card to a Magic Skill Card.
+```
+
+The Mage feels special because of what their rings do, not because they have more fingers available than everyone else.
+
+For dual wielding, I agree it should require a skill. Otherwise every character will eventually just hold two weapons because there is little reason not to.
+
+I would make the baseline:
+
+* A character may hold one weapon, shield, focus, tool, or similar item in each Held Slot.
+* A shield occupies one Held Slot, normally the off-hand.
+* A character may only attack with one weapon at a time unless they have a Dual Wielding Skill or card effect.
+* Dual Wielding allows two one-handed weapons, but the exact benefit comes from the skill or ability card rather than being automatic.
+
+For example:
+
+```text
+Recruit Dual Wielding
+You may equip a one-handed weapon in each Held Slot.
+
+When you use a Melee attack with a one-handed weapon,
+you may add +1 Physical damage if your other Held Slot contains
+a one-handed weapon.
+```
+
+That is easier to balance than making every weapon attack happen twice.
+
+On trading, I would make one correction to keep your safe-zone rule intact:
+
+> Equipment should only be traded at settlements or other safe zones.
+
+Otherwise two players standing in a swamp can strip off armor, hand over weapons, swap horses, and effectively rebuild equipment loadouts without a safe-zone restriction. That undercuts the rule that equipment cannot be changed outside safe areas.
+
+For **field trading**, allow only:
+
+* Currency.
+* Tactical Reserve cards.
+* Quest items specifically marked tradable.
+* Other cards that explicitly say they may be traded in the field.
+
+Then at a settlement, players may trade anything tradable from Inventory, including equipment and transportation.
+
+Here is a polished rules block:
+
+# Equipment Rules
+
+## Equipment Slots
+
+Every character has the following equipment slots:
+
+* Head
+* Neck
+* Body
+* Hands
+* Feet
+* Left Held Slot
+* Right Held Slot
+* Left Ring
+* Right Ring
+* Transportation
+
+All characters use the same equipment-slot layout unless a Character Card specifically says otherwise.
+
+Each character has 2 Ring slots.
+
+Ring slots are not class-specific. Mages, Warriors, Rogues, Clerics, and Druids may all equip up to 2 Rings.
+
+Class identity is represented through class traits, skills, Spell Cards, Ability Cards, and specialized equipment effects rather than different numbers of equipment slots.
+
+---
+
+## Held Slots
+
+The Left Held Slot and Right Held Slot are used for items such as:
+
+* Weapons.
+* Shields.
+* Magical focuses.
+* Tools.
+* Torches.
+* Other hand-held equipment.
+
+A one-handed item occupies 1 Held Slot.
+
+A two-handed item occupies both Held Slots.
+
+A shield occupies 1 Held Slot, normally the off-hand.
+
+A character cannot equip another item in a Held Slot occupied by a two-handed item.
+
+---
+
+## Dual Wielding
+
+A character may equip a one-handed weapon in each Held Slot.
+
+However, a character may not gain the benefits of using two weapons unless they have a Skill Card, Ability Card, or other effect that specifically allows Dual Wielding.
+
+Without a Dual Wielding effect, a character chooses one equipped weapon when making an attack.
+
+A Dual Wielding effect determines any additional benefit.
+
+Example:
+
+```text
+Recruit Dual Wielding
+
+You may equip a one-handed weapon in each Held Slot.
+
+When you use a Melee attack with a one-handed weapon,
+add +1 Physical damage if your other Held Slot contains
+a one-handed weapon.
+```
+
+A card may impose additional restrictions, such as requiring light weapons, preventing shield use, or changing the damage bonus.
+
+---
+
+## Armor Restrictions
+
+Armor has no class restrictions unless an individual card specifically says otherwise.
+
+Any character may equip Clothing, Leather Armor, Scale Mail, Chainmail, Full Plate, or other armor if that character has an available Body slot.
+
+This allows builds such as:
+
+* Armored battlemages.
+* Heavy-armored Clerics.
+* Light-armored Warriors.
+* Rogues wearing protective gear at the cost of other benefits.
+
+Individual armor cards may still include specific drawbacks or requirements.
+
+Examples include:
+
+* Cannot benefit from Stealth.
+* Requires a Strength-related Skill.
+* Reduces movement in certain terrain.
+* Cannot be worn with another named item.
+
+Card text overrides the general no-restriction rule.
+
+---
+
+## Inventory Capacity Effects
+
+Equipment does not normally change Inventory capacity.
+
+Transportation Cards are the primary source of Inventory-capacity bonuses.
+
+Examples include:
+
+* Draft Horse: +5 Inventory capacity.
+* Caravan: +10 Inventory capacity.
+
+Rare Equipment Cards may modify Inventory capacity if their card specifically says so.
+
+Example:
+
+```text
+Traveler's Pack
++2 Inventory capacity.
+```
+
+Inventory-capacity penalties should be rare and used only when they are an important part of a card's identity.
+
+---
+
+## Broken, Cursed, and Bound Equipment
+
+Broken, cursed, and bound equipment are not used in the initial version of the game.
+
+Equipment functions normally unless its card specifically says otherwise.
+
+Future modules may introduce these mechanics through card text or scenario rules.
+
+---
+
+# Trading Equipment and Supplies
+
+## Field Trading
+
+Characters may trade while occupying the same revealed world-map tile.
+
+Field Trading is not allowed inside a dungeon.
+
+While outside a settlement or other safe zone, characters may trade:
+
+* Currency.
+* Tactical Reserve cards.
+* Tradable quest items.
+* Cards that specifically say they may be traded in the field.
+
+Field Trading does not allow characters to access their Inventories.
+
+---
+
+## Settlement Trading
+
+Characters occupying the same settlement or other safe zone may access Inventory and trade any tradable cards.
+
+At a settlement, characters may trade:
+
+* Equipment Cards.
+* Transportation Cards.
+* Tactical Reserve cards.
+* Consumable Items.
+* Crafting materials.
+* Resources.
+* Crafting Plans.
+* Currency.
+* Tradable quest items.
+
+Characters may not trade:
+
+* Character Cards.
+* Skill Cards.
+* Spell Cards.
+* Ability Cards.
+* Attached cards equipped to a Skill Card.
+* Bound cards.
+* Cards that specifically say they cannot be traded.
+
+---
+
+## Equipment Changes
+
+Equipment may only be equipped, removed, or swapped at a settlement or other card-defined safe zone.
+
+Receiving an Equipment Card through trade does not allow the receiving character to equip it immediately unless the trade occurs at a safe zone.
+
+A received Equipment Card is placed in the receiving character's Inventory, provided that character has available Inventory capacity.
+
+The one unresolved detail is whether **Tactical Reserve cards may be traded in the field after a dungeon has begun**. I recommend no. Once characters enter a dungeon, the five-card Tactical Reserve should be locked in until they leave.
+
+15. Difficulty Presets
+You have the beginnings of a great setup system. It would benefit from a one-page difficulty table.
+For example:
+Setting
+Easy
+Standard
+Hardcore
+Settlement Healing
+Free full heal
+Pay per HP
+No HP healing
+Character Death
+Story recovery
+Bleed Out
+Permanent death
+Dungeon Timer
+None
+Optional
+Recommended
+Dungeon Spread
+Off
+Optional
+On
+Copy table
+That makes the game feel adjustable before play without forcing players to invent rules mid-adventure.
+# Difficulty Presets and Campaign Pressure
+
+Before starting a game, players choose 1 Difficulty Preset.
+
+A Difficulty Preset establishes the default rules for healing, character defeat, resurrection, and campaign pressure.
+
+A scenario may override a Difficulty Preset when its rules specifically say so.
+
+---
+
+# Story Mode
+
+Story Mode is intended for learning the game, relaxed exploration, shorter campaigns, and players who want to focus on discovery, character builds, and cooperative adventure.
+
+| Setting            | Story Mode Rule                                                                                   |
+| ------------------ | ------------------------------------------------------------------------------------------------- |
+| Settlement Healing | Characters recover all HP for free when visiting any settlement.                                  |
+| Downed Characters  | A character becomes Downed when Damage equals or exceeds maximum HP.                              |
+| Bleed Out          | A Downed character gains 1 Bleed token at the end of each encounter round.                        |
+| Death              | A character who gains 3 Bleed tokens becomes Unconscious instead of dying.                        |
+| Recovery           | An Unconscious character recovers after the encounter ends or after the party leaves the dungeon. |
+| Resurrection       | Not needed. Characters do not permanently die.                                                    |
+| Campaign Timer     | Off unless required by the scenario.                                                              |
+| Enemy Advance      | Off unless required by the scenario.                                                              |
+
+Story Mode does not remove danger. A Downed character cannot act and may still force the party to retreat or change plans.
+
+---
+
+# Standard Mode
+
+Standard Mode is the default way to play Project S.T.A.C.K.
+
+It is intended to provide meaningful risk, resource decisions, rescue opportunities, and consequences without making a single bad encounter end an entire campaign.
+
+| Setting                  | Standard Mode Rule                                                                                                                            |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| Settlement Healing       | Characters may pay Currency to restore HP at settlements.                                                                                     |
+| Healing Cost             | 1 Currency per HP restored, unless a settlement or card says otherwise.                                                                       |
+| Downed Characters        | A character becomes Downed when Damage equals or exceeds maximum HP.                                                                          |
+| Bleed Out                | A Downed character gains 1 Bleed token at the end of each encounter round.                                                                    |
+| Death                    | A character dies after gaining 3 Bleed tokens.                                                                                                |
+| Revival During Encounter | A Downed character may be revived only by a card effect that specifically allows revival.                                                     |
+| Resurrection After Death | Dead characters may return only through a rare card effect, advanced medical service, or scenario rule that specifically allows resurrection. |
+| Campaign Timer           | Off unless required by the scenario.                                                                                                          |
+| Enemy Advance            | Off unless required by the scenario.                                                                                                          |
+
+Standard Mode uses the normal rules for retreating, dungeon resets, lost dungeon loot, limited Inventory, paid healing, and settlement services.
+
+---
+
+# Hardcore Mode
+
+Hardcore Mode is intended for experienced players who want permanent consequences, difficult recovery, and more aggressive campaign pressure.
+
+| Setting            | Hardcore Mode Rule                                                                                              |
+| ------------------ | --------------------------------------------------------------------------------------------------------------- |
+| Settlement Healing | Settlements do not restore HP.                                                                                  |
+| HP Recovery        | Characters may recover HP only through Spells, Abilities, Items, Tactical Reserve cards, or other card effects. |
+| Downed Characters  | A character becomes Downed when Damage equals or exceeds maximum HP.                                            |
+| Bleed Out          | A Downed character gains 1 Bleed token at the end of each encounter round.                                      |
+| Death              | A character dies after gaining 3 Bleed tokens.                                                                  |
+| Resurrection       | Dead characters cannot be resurrected.                                                                          |
+| Campaign Timer     | Recommended.                                                                                                    |
+| Enemy Advance      | Recommended.                                                                                                    |
+
+Hardcore Mode is intended for campaigns where preparation, retreat, travel routes, healing resources, and character survival matter greatly.
+
+---
+
+# Optional Campaign Settings
+
+The following settings may be added to any Difficulty Preset.
+
+These settings must be chosen before the game begins.
+
+---
+
+## Campaign Timer
+
+A Campaign Timer represents a larger threat that must be stopped before time runs out.
+
+Examples include:
+
+* An enemy army approaching.
+* A ritual nearing completion.
+* An alien invasion escalating.
+* A spreading plague.
+* A villain gathering power.
+
+At the end of each complete World Turn, reduce the Campaign Timer by 1.
+
+If the Campaign Timer reaches 0 before the required scenario objectives are completed, the players lose the game.
+
+The scenario determines the starting value of the Campaign Timer.
+
+Campaign Timers should be used only in scenarios designed around them.
+
+---
+
+## Enemy Advance
+
+Enemy Advance represents hostile forces expanding their territory, influence, strength, or control over the map.
+
+Enemy Advance may be flavored differently by setting:
+
+| Setting          | Example Name                        |
+| ---------------- | ----------------------------------- |
+| Medieval Fantasy | Darkness Spreads or Enemy Influence |
+| Science Fiction  | Alien Expansion                     |
+| Modern           | Hostile Influence                   |
+| Post-Apocalypse  | Contamination Spread                |
+
+When an Enemy Advance occurs, follow the scenario's listed Enemy Advance effect.
+
+Possible Enemy Advance effects include:
+
+* Place a new Dungeon Tile on an adjacent legal map space.
+* Increase the difficulty of an existing dungeon.
+* Add additional Enemy Cards to an active or uncleared Dungeon Deck.
+* Place an Enemy Influence marker on a settlement or terrain tile.
+* Block, tax, or endanger a route between locations.
+* Reduce the Campaign Timer.
+* Add a scenario-specific enemy bonus.
+* Increase a shared Threat Track.
+
+Enemy Advance should only be used when the scenario provides clear placement and resolution rules.
+
+---
+
+## Ironman Death
+
+Ironman Death may be added to Hardcore Mode or used as a special standalone campaign setting.
+
+When Damage equals or exceeds a character's maximum HP:
+
+* That character dies immediately.
+* The character does not become Downed.
+* The character does not receive Bleed tokens.
+* The character cannot be revived.
+
+Ironman Death is intended for short, high-stakes scenarios.
+
+---
+
+## No Resurrection
+
+When No Resurrection is active:
+
+* A dead character cannot return to play.
+* No card, settlement, medical service, or scenario effect may restore that character unless the scenario specifically says otherwise.
+
+No Resurrection is included in Hardcore Mode by default.
+
+---
+
+## Shared Party Defeat
+
+When Shared Party Defeat is active:
+
+* The game ends immediately if every player character is dead, Downed, or otherwise unable to continue.
+
+When Shared Party Defeat is not active:
+
+* Surviving characters may continue the scenario.
+* Surviving characters may attempt to rescue, revive, replace, or recover defeated allies when allowed by the scenario and game rules.
+
+---
+
+# Difficulty Summary
+
+| Setting                  | Story                    | Standard             | Hardcore                  |
+| ------------------------ | ------------------------ | -------------------- | ------------------------- |
+| Settlement Healing       | Free full recovery       | 1 Currency per HP    | No settlement HP recovery |
+| Downed at 0 HP           | Yes                      | Yes                  | Yes                       |
+| Bleed Out                | 3 encounter rounds       | 3 encounter rounds   | 3 encounter rounds        |
+| Result at 3 Bleed        | Unconscious              | Death                | Permanent death           |
+| Revival in Dungeon       | Card effect required     | Card effect required | Card effect required      |
+| Resurrection After Death | Scenario allowed         | Rare and restricted  | Not allowed               |
+| Campaign Timer           | Off                      | Off by default       | Recommended               |
+| Enemy Advance            | Off                      | Off by default       | Recommended               |
+| Intended Experience      | Exploration and learning | Core campaign        | High-stakes survival      |

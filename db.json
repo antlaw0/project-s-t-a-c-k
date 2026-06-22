@@ -21,6 +21,31 @@
       "backText": "Difficulty Rating: 1\nTier: 1"
     },
 	{
+      "id": "goblin_shaman",
+      "type": "enemy",
+	  "deckId": "goblin",
+      "name": "Goblin Shaman",
+      "header": "HP 3",
+      "image": "goblin_raider.png",
+      "body": "1. Dark Bolt\n 2 damage, magic, ranged. \n 2. Staff Slam:  1 DMG, melee \n 3. Healing Herbs:  +1 HP to ally with lowest HP. If all allies and self at max HP, skip and go to first action. ",
+      "backText": "Difficulty Rating: 1\nTier: 1"
+    },
+	{
+      "id": "Goblin Berserker",
+      "type": "enemy",
+	  "deckId": "goblin",
+      "name": "Goblin Berserker",
+      "header": "HP 6",
+      "image": "goblin_raider.png",
+      "body":  
+	  "1. Rage:  If HP <= 3, increase DMG by 1, continue \n
+	  2. Club Smash:  3 DMG, melee \n 
+	  
+	  ",
+      "backText": "Difficulty Rating: 1\nTier: 1"
+    },
+	
+	{
       "id": "rat",
       "type": "enemy",
 	  "deckId": "beast",
