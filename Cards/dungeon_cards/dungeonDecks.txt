@@ -1,0 +1,674 @@
+
+# Actual first-pass cards
+
+These are written as card-ready rules text, with a few notes beneath where needed.
+
+---
+
+# Beast Den / Predator’s Hunting Grounds
+
+A dragon should **not** be the boss here.
+
+A dragon is too important, too mechanically rich, and too much of a spectacle to be “large animal found in wolf cave.” It deserves its own dungeon family later: dragon lair, ancient ruins, volcanic peak, ruined citadel, something with hoard cards, flying attacks, fire, and a dungeon identity built around it.
+
+For Beast Den, use an apex predator.
+
+## Narrow Ravine
+
+**Type:** Location
+
+> When Narrow Ravine enters play, choose one player-controlled entity in the Player Front Line to remain there. Move every other non-Rooted player-controlled entity in the Player Front Line to the Player Back Line.
+>
+> While Narrow Ravine is active, only one player-controlled entity may voluntarily occupy the Player Front Line.
+>
+> Rooted entities cannot be moved by Narrow Ravine.
+
+This gives the player a genuine tactical choke point without pretending Rooted does not exist.
+
+## Falling Rocks
+
+**Type:** Trap
+
+> Each player-controlled entity in the Player Front Line takes 1 physical damage.
+>
+> Discard Falling Rocks.
+
+This is the correct baseline version.
+
+### Later variant: Crushing Cave-In
+
+**Type:** Trap
+
+> The player-controlled entity with the highest Heat in the Player Front Line takes 2 physical damage.
+>
+> If no player-controlled entity occupies the Player Front Line, discard Crushing Cave-In.
+
+That creates a nastier single-target version without making every front-line summon eat 2 damage.
+
+## Predator’s Scent
+
+**Type:** Event
+
+> The active character gains 2 Heat.
+>
+> Reveal the bottom 2 cards of the Dungeon Deck.
+>
+> If a Beast Enemy card was revealed, add the first revealed Beast Enemy to an open enemy formation slot.
+>
+> Shuffle every other revealed card back into the Dungeon Deck.
+
+This gives the Beast dungeon a clean “you have been noticed” effect. It uses Heat correctly and can create an ambush without exposing the upcoming top card.
+
+## Alpha’s Trail
+
+**Type:** Completion Card
+
+> Move Alpha’s Trail to the Dungeon Stash.
+
+This is intentionally simple. It represents finding the apex predator’s lair, blood trail, territorial markings, or nest.
+
+## Ancient Basilisk
+
+**Type:** Boss Enemy
+**Position:** Enemy Front Line
+**HP:** 22
+**Defense:** 2
+
+> **Gate:** If Alpha’s Trail is not in the Dungeon Stash when Ancient Basilisk is drawn, move Ancient Basilisk face down to the bottom of the Dungeon Deck instead of adding it to the encounter.
+>
+> **Petrifying Gaze:** The legal player-controlled entity with the highest Heat gains Rooted. Petrifying Gaze can target either player row.
+>
+> **Crushing Bite:** Deal 4 physical damage to the legal highest-Heat entity in the Player Front Line.
+>
+> **Tail Lash:** Each player-controlled entity in the Player Front Line takes 1 physical damage.
+
+The boss is not yet a full finalized AI package because we still need to settle how bosses choose or rotate abilities. The abilities themselves fit the game.
+
+---
+
+# Goblin Warrens / Scrap Fortress
+
+This dungeon should use three distinct sabotage objectives.
+
+They should not all be “destroy item, receive checkmark.” Each needs to alter the battlefield in a different way while active.
+
+## Tripwire
+
+**Type:** Trap
+
+> A player-controlled character in the active character’s current row with an equipped Rogue skill may disarm Tripwire. If so, discard Tripwire.
+>
+> Otherwise, the active character takes 1 physical damage and gains 2 Heat.
+>
+> Discard Tripwire.
+
+This makes rogue positioning matter. It does not require a new generic “spend an action” rule.
+
+## Goblin Alarm
+
+**Type:** Event
+
+> The active character gains 2 Heat.
+>
+> Reveal the bottom 2 cards of the Dungeon Deck.
+>
+> Add the first revealed Goblin Enemy card to an open enemy formation slot.
+>
+> Shuffle every other revealed card back into the Dungeon Deck.
+
+The alarm creates a reinforcement and marks one character as the obvious target. No meaningless party-wide Heat increase.
+
+## Rolling Scrap Cart
+
+**Type:** Trap
+
+> Each player-controlled entity changes to the opposite line.
+>
+> A Rooted entity cannot move and instead takes 2 physical damage.
+>
+> Discard Rolling Scrap Cart.
+
+This is strong, readable, and gives Rooted a satisfying interaction.
+
+## Goblin Snatch
+
+**Type:** Event
+
+> Choose 1 Currency card or Consumable Loot card in the Dungeon Stash.
+>
+> Move that card face down to the bottom of the Dungeon Deck.
+>
+> Discard Goblin Snatch.
+
+The goblin did not destroy the reward. It re-hid it.
+
+That is much more on-theme and mechanically interesting than simply deleting the party’s progress.
+
+## Mushroom Farm
+
+**Type:** Room Event
+
+> Choose one:
+>
+> **Harvest:** Place 1 Fungal Antidote card into the Dungeon Stash.
+> Fungal Antidote reads: “Discard this card to reduce one Poison status by one stage.”
+>
+> **Burn the Farm:** Each player-controlled entity with a Poison status reduces that Poison status by one stage.
+>
+> Discard Mushroom Farm.
+
+This turns the room into an actual decision rather than “there are mushrooms somewhere, possibly.”
+
+## Goblin Casino
+
+**Type:** Room Event
+
+> You may move 1 Currency card from the Dungeon Stash face down to the bottom of the Dungeon Deck.
+>
+> If you do, reveal the bottom card of the Dungeon Deck:
+>
+> * If it is Loot or Currency, move it to the Dungeon Stash.
+> * If it is a Trap, resolve it.
+> * Otherwise, move it face down to the bottom of the Dungeon Deck.
+>
+> Discard Goblin Casino.
+
+No die roll needed. The dungeon itself becomes the roulette wheel.
+
+## Caged Monster Pen
+
+**Type:** Room Event
+
+> Choose one:
+>
+> **Free the Beast:** Add Starved Cave Bear to the Player Front Line with 2 Heat. At the end of the encounter, discard Starved Cave Bear.
+>
+> **Leave It:** Discard Caged Monster Pen.
+
+### Starved Cave Bear
+
+**Type:** Allied Beast
+**Position:** Player Front Line
+**HP:** 5
+**Defense:** 1
+**Attack:** Claw, 2 melee damage
+**Starting Heat:** 2
+
+It begins with Heat because every enemy immediately sees a furious bear arriving through a broken cage door.
+
+---
+
+## Goblin Fortress objectives
+
+### Alarm Totem
+
+**Type:** Objective Structure
+**Position:** Enemy Back Line
+**HP:** 3
+**Defense:** 0
+
+> While Alarm Totem is in play, Goblin Alarm and War Drums may add 1 additional Goblin Enemy if there is an open enemy formation slot.
+>
+> When destroyed, move Alarm Totem to the Dungeon Stash.
+
+## Powder Cache
+
+**Type:** Objective Structure
+**Position:** Enemy Back Line
+**HP:** 2
+**Defense:** 0
+
+> When Powder Cache is destroyed, every entity in both Front Lines takes 1 fire damage.
+>
+> Then move Powder Cache to the Dungeon Stash.
+
+This is deliberately dangerous to destroy. It can hit goblins, the king, summons, and player front-liners.
+
+## Boss Banner
+
+**Type:** Objective Structure
+**Position:** Enemy Back Line
+**HP:** 4
+**Defense:** 1
+
+> While Boss Banner is in play, Goblin enemies deal +1 damage.
+>
+> When destroyed, move Boss Banner to the Dungeon Stash.
+
+Now the three objectives do different jobs:
+
+| Objective    | What it changes        |
+| ------------ | ---------------------- |
+| Alarm Totem  | Reinforcement quantity |
+| Powder Cache | Destruction explosion  |
+| Boss Banner  | Goblin damage output   |
+
+## Goblin King
+
+**Type:** Boss Enemy
+**Position:** Enemy Front Line
+**HP:** 20
+**Defense:** 2
+
+> **Gate:** If Alarm Totem, Powder Cache, and Boss Banner are not all in the Dungeon Stash when Goblin King is drawn, move Goblin King face down to the bottom of the Dungeon Deck instead of adding it to the encounter.
+>
+> **Crown of Scrap:** Goblin King has +1 Defense while another Goblin occupies the Enemy Front Line. Goblin King deals +1 damage while another Goblin occupies the Enemy Back Line.
+>
+> **Cruel Authority:** The Goblin ally with the lowest current HP immediately performs its basic attack against its legal highest-Heat target. Afterward, that Goblin takes 1 damage.
+>
+> **Scrapstorm:** Every entity other than Goblin King in both Front Lines takes 2 physical damage. Every entity in both Back Lines takes 1 physical damage.
+>
+> **Royal Bludgeon:** Deal 4 physical damage to the legal highest-Heat entity in the Player Front Line. That entity gains Rooted.
+>
+> **War Drums:** Reveal the bottom 3 cards of the Dungeon Deck. Add up to 2 revealed Goblin Enemies to open enemy formation slots. Shuffle all other revealed cards back into the Dungeon Deck.
+
+That creates the intended personality: the king is strongest with goblins around, abuses them as disposable tools, and can still flatten his own troops while trying to hurt the party.
+
+---
+
+# Infernal Rift / Demon-Forged Ruins
+
+## Hellfire Vent: Front Row
+
+**Type:** Hazard
+
+> Each player-controlled entity in the Player Front Line may immediately move to the Player Back Line.
+>
+> Each entity that remains in the Player Front Line takes 1 fire damage.
+>
+> A Rooted entity cannot move and instead takes 2 fire damage.
+>
+> Discard Hellfire Vent.
+
+Create a matching **Hellfire Vent: Back Row** that affects the Player Back Line.
+
+## Tempting Whisper
+
+**Type:** Event
+
+> Choose one:
+>
+> **Accept the Whisper:** Deal 3 infernal damage to any enemy in the encounter. The active character gains Cursed.
+>
+> **Reject the Whisper:** The active character takes 1 damage.
+>
+> Discard Tempting Whisper.
+
+This is deterministic. The temptation is a real tactical offer, not a vague “something unpredictable happens.”
+
+### Cursed status
+
+> Whenever this entity takes damage from an enemy or dungeon card, it gains 1 Heat.
+
+Cursed is unpleasant because getting hurt also makes the victim more likely to keep getting hunted.
+
+## Infernal Contract
+
+**Type:** Condition
+
+> The party may sacrifice Dungeon Stash cards with total printed Value of 2 or more.
+>
+> If they do, place Infernal Contract in the Dungeon Condition slot.
+>
+> The next Enemy or Trap card drawn from the Dungeon Deck is discarded instead of resolved. Then discard Infernal Contract.
+>
+> If the party declines, the active character gains Cursed and Infernal Contract is discarded.
+
+This is your “sacrifice treasure to avoid something dangerous” mechanic in a form that actually has teeth.
+
+## Possessed Relic
+
+**Type:** Room Event
+
+> Place Cinder Idol in the Dungeon Stash.
+>
+> Discard Possessed Relic.
+
+### Cinder Idol
+
+**Type:** Artifact Loot
+**Value:** 3
+
+> While carried, the bearer’s attacks and spells deal +1 damage.
+>
+> At the start of each encounter, the bearer gains 2 Heat.
+
+The drawback is visible rather than secretly sprung on the player later. That is much better for accessibility and strategic planning.
+
+## Demon Forge
+
+**Type:** Room Event
+
+> Place 1 Demon-Forged Component card into the Dungeon Stash.
+>
+> Discard Demon Forge.
+
+### Demon-Forged Component
+
+**Type:** Crafting Material
+**Value:** 3
+**Tag:** Infernal Blueprint Component
+
+This fits your blueprint system. It is not an improvised “your sword is now temporarily +1 flaming.”
+
+## Rift Chamber
+
+Use **two copies**.
+
+**Type:** Completion Location
+
+> The party may sacrifice Dungeon Stash cards with total printed Value of 3 or more.
+>
+> If they do, move Rift Chamber to the Dungeon Stash. It counts as a Sealed Rift.
+>
+> If they do not, Rift Chamber remains in the Dungeon Location slot until replaced.
+
+> When the Dungeon Stash contains 2 Sealed Rifts, choose one:
+>
+> **Seal the Rift:** Immediately complete the dungeon.
+>
+> **Overload the Rift:** Add the Rift Tyrant boss to the encounter. Defeating it completes the dungeon and grants its special reward.
+
+I recommend **not** shuffling a completed Rift Chamber back into the deck.
+
+That would erase the physical evidence of how close the party is to success unless you introduce counters or a separate tracking device. Moving the paid Chamber card into the Stash gives you a visible, tactile completion record with no new bookkeeping system.
+
+## Ash Shrine
+
+**Type:** Room Event
+
+> Choose one player-controlled entity with a negative status.
+>
+> **Cleansing Ash:** Spend 1 Currency card from the Dungeon Stash. Remove one non-Poison negative status, or reduce one Poison status by one stage.
+>
+> **Take the Mark:** Remove one non-Cursed negative status. Give that entity Cursed. Place 1 Ashen Sigil card in the Dungeon Stash.
+>
+> Discard Ash Shrine.
+
+### Ashen Sigil
+
+**Type:** Loot
+**Value:** 2
+
+This is a real trade. You can convert a badly timed Rooted, Weakened, or similar status into Cursed, gain loot, and accept that the character may become an aggression magnet.
+
+---
+
+# Elemental Temples
+
+You had a small identity collision here:
+
+* Your dungeon list says Earth, Air, Fire, Water.
+* Your key list says Earth, Fire, Water, Ice.
+
+I recommend choosing:
+
+1. Earth Temple
+2. Fire Temple
+3. Water Temple
+4. Frost Temple
+
+Then make **Storm Observatory** a fifth future elemental dungeon rather than cramming Air into the first four.
+
+## Important structural recommendation
+
+Do **not** require all four keys inside every elemental dungeon.
+
+Instead:
+
+* Earth Temple awards the Earth Key.
+* Fire Temple awards the Fire Key.
+* Water Temple awards the Water Key.
+* Frost Temple awards the Ice Key.
+* A later Primal Vault, Primal Gate, or Elemental Nexus uses all four keys.
+
+That gives each dungeon its own complete identity and makes the four keys feel like campaign progression rather than four nearly identical checklist cards hiding in one enormous deck.
+
+## Lava Flow
+
+**Type:** Hazard
+
+> Choose one:
+>
+> **Cross the Flow:** Each player-controlled entity in the Player Front Line takes 1 fire damage.
+>
+> **Build a Passage:** Move 1 Dungeon Stash card with Value 1 or greater to the Dungeon Discard.
+>
+> Discard Lava Flow.
+
+“Lose time” does not work unless the game has a meaningful clock or escalating timer. Skipping a dungeon draw can accidentally help players avoid danger, especially outside combat.
+
+## Frozen Ground
+
+**Type:** Condition
+
+> Player-controlled entities cannot voluntarily change lines while Frozen Ground is active.
+>
+> Forced movement resolves normally unless the entity is Rooted.
+>
+> Frozen Ground is discarded when replaced by another Dungeon Condition.
+
+This is simple and immediately changes tactical positioning.
+
+## Static Charge
+
+**Type:** Condition
+
+> Whenever a player-controlled entity deals damage with a ranged attack or spell, it takes 1 lightning damage after that damage resolves.
+>
+> Static Charge is discarded when replaced by another Dungeon Condition.
+
+No rolls. No rebound chart. Ranged characters can still act, but every blast has a little electrical bill attached.
+
+## Crystal Resonance
+
+**Type:** Condition
+
+> Whenever a player-controlled entity casts a spell that deals damage or restores HP, its controller chooses one:
+>
+> * Increase that spell’s damage or healing by 1. The caster gains 2 Heat.
+> * Resolve the spell normally.
+>
+> Crystal Resonance is discarded when replaced by another Dungeon Condition.
+
+This preserves the “magic behaves strangely” theme while giving the player a concrete decision instead of random nonsense.
+
+## Rockfall
+
+**Type:** Hazard
+
+> Each player-controlled entity in the Player Front Line takes 1 physical damage.
+>
+> During the next Dungeon Draw step, do not draw a Dungeon card. Resolve all other normal turn steps.
+>
+> Discard Rockfall.
+
+Keep this only if “skip the next Dungeon Draw” is genuinely costly because enemies, status effects, or combat still continue. Otherwise, remove that second sentence and keep Rockfall as a clean row-damage hazard.
+
+## Elemental Font
+
+Rather than temporary unexplained “boons,” make Fonts produce specific crafting resources.
+
+### Ember Font
+
+**Type:** Room Event
+
+> The active character may take 1 fire damage.
+>
+> If they do, place 1 Ember Core card into the Dungeon Stash.
+>
+> Discard Ember Font.
+
+### Ember Core
+
+**Type:** Crafting Material
+**Value:** 2
+**Tag:** Fire Blueprint Component
+
+Make Frost Fonts, Water Fonts, and Earth Fonts follow the same structure with their own materials.
+
+## Balance Chamber
+
+**Type:** Room Event
+
+> The party may sacrifice Dungeon Stash cards with total printed Value of 2 or more.
+>
+> If they do, reveal the bottom 4 cards of the Dungeon Deck.
+>
+> If the temple’s Elemental Key is among them, move it to the Dungeon Stash.
+>
+> Shuffle every other revealed card back into the Dungeon Deck.
+>
+> Discard Balance Chamber.
+
+This gives players an elegant loot-for-progress exchange without inventing a fake “puzzle” that has no physical rules.
+
+---
+
+# Abandoned Dwarven Mine / Construct Foundry
+
+The mine-cart idea is one of the strongest dungeon-specific mechanics so far. It gives this dungeon its own moving machine, its own positional language, and its own way to turn danger into a weapon.
+
+## The Mine Cart track should be a dedicated physical strip
+
+Use four clearly labeled Cart Track spaces:
+
+1. Player Front Track
+2. Player Back Track
+3. Enemy Front Track
+4. Enemy Back Track
+
+The physical placement of the Mine Cart card tells everyone where it is. No counters. No sideways cards. No memory puzzle.
+
+## Runaway Mine Cart: Front Track
+
+**Type:** Persistent Dungeon Hazard
+
+> If no Mine Cart is active, place Runaway Mine Cart in the Player Front Track space.
+>
+> If a Mine Cart is already active, move it to the Player Front Track space instead.
+>
+> At the start of each Dungeon Draw step, every entity in the Mine Cart’s current row takes 1 physical damage.
+
+## Runaway Mine Cart: Back Track
+
+**Type:** Persistent Dungeon Hazard
+
+> If no Mine Cart is active, place Runaway Mine Cart in the Player Back Track space.
+>
+> If a Mine Cart is already active, move it to the Player Back Track space instead.
+>
+> At the start of each Dungeon Draw step, every entity in the Mine Cart’s current row takes 1 physical damage.
+
+The second card becomes a meaningful reroute rather than an awkward duplicate.
+
+## Track Switch
+
+**Type:** Event
+
+> Move the active Mine Cart to the opposite track on its current side:
+>
+> * Player Front to Player Back
+> * Player Back to Player Front
+> * Enemy Front to Enemy Back
+> * Enemy Back to Enemy Front
+>
+> If no Mine Cart is active, discard Track Switch.
+>
+> Discard Track Switch.
+
+## Collapsing Tunnel
+
+**Type:** Hazard
+
+> Each player-controlled entity in the Player Front Line takes 1 physical damage.
+>
+> During the next Dungeon Draw step, do not draw a Dungeon card. Resolve all other normal turn steps.
+>
+> Discard Collapsing Tunnel.
+
+Again, retain the skipped draw only if the normal combat loop makes that delay dangerous.
+
+## Turret Pressure Plate
+
+**Type:** Trap
+
+> The legal player-controlled entity with the highest Heat takes 2 physical ranged damage.
+>
+> Discard Turret Pressure Plate.
+
+This respects Heat and treats the turret as an enemy-back-line-style ranged threat.
+
+## Poison Gas Pressure Plate
+
+**Type:** Trap
+
+> The active character gains Poisoned.
+>
+> Discard Poison Gas Pressure Plate.
+
+Simple, direct, and naturally interacts with your staged poison-card system.
+
+## Power Core
+
+**Type:** Completion Item
+
+> Move Power Core to the Dungeon Stash.
+
+## Signal Key
+
+**Type:** Completion Item
+
+> Move Signal Key to the Dungeon Stash.
+
+## Engine Room
+
+**Type:** Completion Location
+
+> When Engine Room enters play, the party may move the active Mine Cart to the matching Enemy Track:
+>
+> * Player Front Track becomes Enemy Front Track.
+> * Player Back Track becomes Enemy Back Track.
+>
+> While Engine Room is active, once during each Dungeon Draw step, the party may move the Mine Cart to any Track space.
+>
+> If Power Core and Signal Key are both in the Dungeon Stash while Engine Room is active, the party may immediately complete the dungeon.
+
+This gives the dungeon a distinctive ending:
+
+* The party survives the rails.
+* Finds the components.
+* Reaches the Engine Room.
+* Turns the mine’s own machinery against the dungeon.
+* Escapes or seals the foundry.
+
+I would **not** put a boss in the first version of this dungeon. Test the rail-control completion first. It is already mechanically rich and more distinct than “giant construct with more HP.”
+
+A Foundry Warden can become an advanced variant later, perhaps appearing only when the party chooses to keep mining for bonus rewards instead of immediately leaving.
+
+---
+
+# Cards and ideas to remove or reframe
+
+| Original idea                                 | Better direction                                                                    |
+| --------------------------------------------- | ----------------------------------------------------------------------------------- |
+| Global Heat increase                          | Remove entirely. Heat changes must name specific entities.                          |
+| “Lose time”                                   | Remove unless the game gains an actual dungeon clock or escalating pressure system. |
+| Generic “unpredictable” magic                 | Replace with deterministic choices, bottom-deck reveals, or visible costs.          |
+| Demon Forge upgrades gear temporarily         | Replace with specific blueprint materials or components.                            |
+| Crystal Archive learns spells                 | Remove unless your advancement system explicitly allows dungeon spell acquisition.  |
+| Ore Vault guarded treasure                    | Remove. It does not add a distinctive dungeon rule.                                 |
+| Broken Lift                                   | Remove.                                                                             |
+| Faulty Assembly Line creates random encounter | Remove.                                                                             |
+| Collapsed Worker Shrine                       | Remove.                                                                             |
+| Dragon as Beast Den boss                      | Save for a full dragon-lair dungeon family.                                         |
+
+The overall direction is now much clearer: every dungeon should have **one memorable machine**.
+
+* Beast Den: pressure, choke points, ambushes, apex hunt.
+* Goblin Warrens: sabotage objectives, stolen stash rewards, dirty battlefield chaos.
+* Infernal Rift: bargains, curses, sacrifice, rift sealing.
+* Elemental Temples: one environmental rule that changes tactics.
+* Dwarven Mine: a persistent mine cart that can become a weapon.
+
+That is a strong foundation. 

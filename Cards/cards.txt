@@ -1,0 +1,312 @@
+Definitions:
+Undead- Immune to poison, cannot be healed
+
+
+ 
+## Combat Domains
+1. **Biomancy**
+
+   * Life manipulation
+   * Healing, regeneration, adaptation, biological effects
+
+2. **Necromancy**
+
+   * Death manipulation
+   * Undead, life drain, decay, curses
+
+3. **Elementalism**
+
+   * Fire, water, air, earth, and other elemental forces
+   * Offensive, defensive, utility, battlefield control
+
+4. **Illusion**
+
+   * Perception manipulation
+   * Concealment, deception, sensory distortion
+
+5. **Transfiguration**
+
+   * Alteration and transmutation
+   * Matter and form manipulation
+
+6. **Divination**
+
+   * Knowledge, foresight, revelation, detection
+
+---
+
+# ⚔️ Warrior Discipline
+
+1. **Barbarian**
+
+   * Rage
+   * High offense with tradeoffs
+
+2. **Knight**
+
+   * Defense
+   * Ally protection
+   * Tanking and guarding
+
+3. **Monk**
+
+   * Unarmed combat
+   * Mobility
+   * Evasion
+   * Body mastery
+
+4. **Ninja**
+
+   * Stealth combat
+   * Distraction
+   * Sneak attacks
+   * Shuriken, staff, agile weapons
+
+5. **Marksman**
+
+   * Bows
+   * Crossbows
+   * Precision ranged combat
+
+6. **Commander**
+
+   * Leadership
+   * Tactical support
+   * Battlefield coordination
+
+---
+
+# 🕶️ Rogue Discipline
+
+1. **Thief**
+
+   * Stealing
+   * Infiltration
+   * Sleight of hand
+   * Lock bypass
+
+2. **Assassin**
+
+   * High-risk, high-reward damage
+   * Single-target elimination
+
+3. **Saboteur**
+
+   * Trap disruption
+   * Debuffs
+   * System sabotage
+
+4. **Skirmisher**
+
+   * Hit-and-run combat
+   * Mobility
+   * Positioning
+   * Evasion
+
+---
+
+# ✨ Cleric Discipline
+
+1. **Divine Aid**
+
+   * Healing
+   * Blessings
+   * Restoration through divine power
+
+2. **Exorcist**
+
+   * Anti-undead
+   * Anti-demon
+   * Purification
+   * Banishment
+
+3. **Judgment**
+
+   * Divine offense
+   * Smites
+   * Curses
+   * Tribulations
+
+4. **Angelology**
+
+   * Angel summons
+   * Celestial allies
+   * Divine gifts
+
+5. **Oracle**
+
+   * Prophecy
+   * Revelation
+   * Divine insight
+
+6. **Templar**
+
+   * Holy wards
+   * Sacred auras
+   * Protection
+
+7. **Paladin**
+
+   * Faith-powered martial combat
+   * Holy warrior
+   * Oaths and smites
+
+🌿 Druid
+1. 
+Beastmaster
+2. 
+Verdancy
+3. 
+Geomancy
+4. 
+Weathercraft
+5. 
+Herbalism
+6. 
+Wildshape
+ 
+## Trades/Professions
+1. Alchemy
+A. Potion Making
+B. Poisoncraft
+C. Explosives
+
+2. Blacksmithing
+A. Weaponsmithing
+B. Armorer
+C. Artisan
+D. Exotic Alloys
+
+3. Speechcraft
+A. Diplomacy
+B. Mercantile
+C. Intimidation
+D. Persuasion
+
+## Ability Cards
+Biomancy
+
+1. Heal Minor Wounds
+Restore 1 HP of one ally or self
+2. Heal Moderate Wounds
+Heal 2 HP only to allies
+3. Heal Major Wounds
+Heal 3 Hp distributed among two allies
+Healing Hands
+Heal 4 HP to one ally on same row (touch target)
+** generate spells that remove the different status effects
+### Necromancy
+Deathly Touch
+Novice spell
+deal 2 necrotic damage to one target, melee
+
+Deathly Ray
+Novice spell
+Deal 1 necrotic damage to one target, ranged
+
+Skeletal Rat
+Summon, Novice level
+HP:  2
+front line
+Undead
+1. bite: 1 damage, melee, one target
+
+
+
+	
+
+Skeletal Archer
+Summon, Apprentice level
+HP:  4
+Back line
+Undead
+1. Bone Arrow:  2 damage, ranged, one target
+
+Skeletal Pyromancer
+Summon, Apprentice level
+HP:  3
+Back line
+Undead
+1. Ash Bones:  -1 fire damage when dealt damage from fire
+2. Fire Bolt:  3 fire damage, ranged
+
+Bone Armor
+Apprentice spell
+One ally gains +1 Defense until the end of combat.
+
+Soul Siphon 
+Apprentice level spell
+Deal 2 necrotic damage to one target and heal yourself by 1, melee
+
+## Adept Necromancy
+
+Skeletal Priest
+Adept summon
+Undead
+HP:  3
+back line
+1. Undead Healing:  Restore 1 HP to one undead ally target, ranged spell
+
+
+
+Bone Knight
+Adept summon
+HP 7, Front Line
+Undead
+1.  Bone Greatsword: 3 damage, melee
+
+Wraith
+Adept Summon
+HP: 1
+Back line
+Undead
+Ethereal: The first physical attack against the Wraith each round misses.
+1.  Soul Bolt: 2 shadow damage, ranged, one target.
+
+
+
+## Elementalism
+
+Novice spells:
+
+Fire Bolt
+Deal 1 fire damage to one target.
+The bread-and-butter attack spell.
+ 
+Ice Shard
+Deal 1 damage to one target.
+Simple and reliable. Doesn't have to be fire.
+ 
+Spark
+Deal 1 lightning damage to one target.
+Useful later if some enemies are vulnerable or resistant to certain elements.
+ 
+Arcane Missile
+Deal 1 damage to one target.
+A generic magical attack unaffected by elemental interactions.
+ 
+
+Earthen Shield
+Buff
++1 defense to one ally until that ally takes damage then remove
+
+
+
+Bone Servant
+Discard one defeated enemy from the dungeon discard pile to bypass one obstacle, trap, locked door, 
+
+speak with the dead
+After a dealing the death blow to an enemy, you may ask it to reveal any traps to you. The next trap card drawn from the dungeon deck is automatically avoided
+Gold digger
+After dealing the death blow to an enemy, interigate it to learn where treasure is in the dungeon, receive 1 currency. (scales with levels so adept level version grants 3 currency instead of 1 and so on)
+
+
+Dark Deal
+Return one defeated enemy from the dungeon discard pile back to the dungeon deck to bypass one obstacle, trap, locked door, or hazard.
+This places one enemy card back in play in the deck to pay the price for the positive effect.
+
+Corpse Shield
+Before resolving a trap, discard one defeated enemy from the dungeon discard pile to cancel or reduce that trap.
+
+Whispers from the grave
+Look at the top card from the enemy discard pile and choose whether or not to place it at the bottom of the deck instead.

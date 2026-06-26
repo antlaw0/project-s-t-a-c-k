@@ -1,0 +1,396 @@
+## Tier 1 Goblins
+
+### Goblin Raider
+
+**HP 6**
+
+```text
+Attack: Rusty Blade
+Deal 2 physical damage, melee.
+
+Loot:
+1 Coin
+```
+
+---
+
+### Goblin Archer
+
+**HP 4**
+
+```text
+Attack: Shortbow
+Deal 2 physical damage, ranged.
+
+Loot:
+1 Coin
+```
+
+---
+
+### Goblin Sneak
+
+**HP 4**
+
+```text
+Attack: Backstab
+Deal 2 physical damage, melee.
+
+If the target is in the Back Line,
+deal 3 damage instead.
+
+Loot:
+1 Coin
+```
+
+---
+
+### Goblin Torchbearer
+
+**HP 4**
+
+```text
+Attack: Firebrand
+Deal 2 fire damage, melee.
+
+Target gains Burning.
+
+Loot:
+1 Coin
+```
+
+---
+
+### Goblin Slinger
+
+**HP 3**
+
+```text
+Attack: Stone Throw
+Deal 1 physical damage, ranged.
+
+If the target has a negative status,
+deal 2 damage instead.
+
+Loot:
+1 Coin
+```
+
+---
+
+### Goblin Shaman
+
+**HP 3**
+
+```text
+1. Healing Herbs
+Restore 1 HP to the ally with the lowest HP.
+
+If all allies are at full HP,
+continue.
+
+2. Dark Bolt
+Deal 2 dark magic damage, ranged.
+
+3. Staff Slam
+Deal 1 physical damage, melee.
+```
+
+I moved healing first because support enemies should try to do their “job” before attacking.
+
+---
+
+### Goblin Berserker
+
+**HP 6**
+
+```text
+1. Rage
+If this enemy has 3 HP or less,
+its attacks deal +1 damage.
+
+2. Club Smash
+Deal 3 physical damage, melee.
+```
+
+---
+
+# Tier 2 Goblins
+
+## Goblin Captain
+
+**HP 9**
+
+```text
+1. Rally
+Other Goblins deal +1 damage
+while this enemy is in play.
+
+2. Sword Slash
+Deal 3 physical damage, melee, melee.
+
+Loot:
+3 Coins
+```
+
+Simple, nasty, readable.
+
+---
+
+## Goblin Alchemist
+
+**HP 6**
+
+```text
+1. Acid Flask
+Deal 2 acid damage, ranged.
+
+Target gains Corroded.
+
+2. Dagger
+Deal 1 physical damage, melee.
+```
+
+### Corroded Status
+
+```text
+Corroded
+
+Reduce Defense by 1.
+
+After preventing damage once,
+discard this status.
+```
+
+That makes acid scary but not permanent for the whole dungeon.
+
+---
+
+## Goblin War Drummer
+
+**HP 8**
+
+```text
+1. Coward's Rhythm
+Lower the Heat of all Front Line characters by 1.
+
+2. Warbeat
+Raise the Heat of all Back Line characters by 1.
+
+3. Drumstick
+Deal 2 physical damage, melee.
+```
+
+This is much better than “increase aggression by 2.” It creates the goblin tactic:
+
+> “Ignore the armored wall. Get the wizard.”
+
+Perfect goblin goblinslop.
+
+---
+
+## Goblin Hexer
+
+**HP 6**
+
+```text
+1. Weakness Curse
+Target gains Weakened.
+
+2. Dark Bolt
+Deal 2 dark magic damage, ranged.
+```
+
+### Weakened Status
+
+```text
+Weakened
+
+Your attacks deal -1 damage.
+
+After you attack once,
+discard this status.
+```
+
+Clean, tactile, no counters.
+
+---
+
+## Goblin Trap Tinker
+
+**HP 5**
+
+```text
+1. Tripwire
+Lowest-Heat Front Line target gains Snared.
+
+2. Shiv
+Deal 2 physical damage, melee.
+```
+
+### Snared Status
+
+```text
+Snared
+
+You cannot move between lines.
+
+Discard this status
+at the end of your next turn.
+[I think we need to define status cards. Where does the snared status card come from? This is the same as rooted and other status effects which there is a status card deck players take the indicated status from to place onto the appropriate player or enemy card.]
+```
+
+This replaces the Spearman slot with something more gobliny and more tactical.
+
+---
+
+## Goblin Scrap Roller
+
+**HP 7**
+
+Construct, Goblin-made
+
+```text
+Attack: Rolling Blast
+Deal 3 physical damage
+to every character on the Front Line.
+
+After attacking,
+discard this enemy.
+```
+
+This replaces the Bomber. Now it is not a living suicide goblin. It is a squeaky death barrel with ambition.
+
+---
+
+# Tier 3 Goblins
+
+## Goblin Assassin
+
+**HP 7**
+
+```text
+1. Shadow Strike
+If any character is in the Back Line,
+deal 4 physical damage, melee,
+to the Back Line character with highest Heat.
+
+2. Blade Sweep
+If no characters are in the Back Line,
+deal 2 physical damage, melee,
+to all Front Line characters.
+```
+
+Much cleaner than “attack normally.”
+
+---
+
+## Goblin Beastcaller
+
+**HP 8**
+
+```text
+1. Beast Call
+Summon Beast 3.
+
+2. Spear Jab
+Deal 2 physical damage, melee.
+```
+
+### Summon Beast 3
+
+Draw 3 cards from the bottom of the dungeon deck. Put any **Beast** or **Goblin Beast** enemy cards drawn into play if there is room. Discard the rest.
+
+For this to work, the goblin dungeon needs its own beast-flavored enemies, such as:
+
+* Cave Rat
+* Goblin Hound
+* Mange Wolf
+* Tunnel Bat
+
+Do **not** use the Beast dungeon deck.
+
+---
+
+## Goblin Banner Thief
+
+**HP 6**
+
+```text
+1. Stolen Banner
+Lower the Heat of the highest-Heat Front Line character by 2.
+
+2. Knife Toss
+Deal 2 physical damage, ranged.
+```
+
+This supports the Drummer’s back-line harassment without doing the exact same thing.
+
+---
+
+# Mini-Boss
+
+## Goblin Warlord
+
+**HP 18**
+
+```text
+1. Battle Command
+Other Goblins deal +1 damage
+while this enemy has no negative status cards.
+
+2. Cleave
+Deal 4 physical damage, melee,
+to every character on the Front Line.
+
+3. Brutal Order
+Summon Goblin 2.
+```
+
+I like your condition idea a lot. It gives players a clear counterplay:
+
+> Put any negative status on the Warlord to shut off his command aura.
+
+Very satisfying.
+
+---
+
+# Boss
+
+## Goblin King
+
+**HP 30**
+
+```text
+1. Royal Rage
+If this enemy has 20 HP or less,
+its attacks deal +1 damage.
+
+2. Royal Command
+Summon Goblin 3.
+
+3. Royal Cleave
+Deal 4 physical damage, melee.
+
+4. Royal Hunt
+Deal 3 physical damage, ranged.
+```
+
+Yes, Royal Rage should be first. And 20 HP is better than 15 because the boss’s “phase two” starts earlier and actually matters.
+
+---
+
+# Final Goblin Identity
+
+The goblin dungeon should specialize in:
+
+| Theme                          | Goblin Method                              |
+| ------------------------------ | ------------------------------------------ |
+| Back-line pressure             | Archer, Sneak, Assassin, War Drummer       |
+| Heat manipulation              | War Drummer, Banner Thief                  |
+| Cheap status effects           | Torchbearer, Hexer, Alchemist, Trap Tinker |
+| Swarming                       | Captain, Warlord, Goblin King              |
+| Disposable machines            | Scrap Roller                               |
+| Summons without deck searching | Bottom-of-deck summon rule                 |
+
+My strongest recommendation: **make Heat manipulation one of the goblin dungeon’s signature mechanics.** It gives them a distinct identity beyond “weak green enemies with pointy things.”
