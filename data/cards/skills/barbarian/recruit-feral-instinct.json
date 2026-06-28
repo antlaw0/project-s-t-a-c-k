@@ -1,0 +1,60 @@
+{
+  "id": "skill.barbarian.recruit-feral-instinct",
+  "active": true,
+  "count": 1,
+  "cardType": "skill",
+  "name": "Feral Instinct",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "skill-standard",
+  "tags": [
+    "skill",
+    "discipline",
+    "barbarian",
+    "recruit",
+    "martial",
+    "warrior-native"
+  ],
+  "rulesText": "Barbarian Skill — Recruit\n\nAbility Slots: 2\nMay Equip: Recruit Barbarian abilities.\n\nPassive — Rising Fury\nThe first time this character deals 1 or more HP damage to an enemy during each of their shared activations, gain 1 additional Heat.",
+  "data": {
+    "skillType": "discipline",
+    "discipline": "barbarian",
+    "rank": {
+      "id": "recruit",
+      "order": 1
+    },
+    "nativeClasses": [
+      "character.warrior"
+    ],
+    "attachedCardRules": {
+      "allowedCardTypes": [
+        "ability"
+      ],
+      "requiredDiscipline": "barbarian",
+      "maximumRank": "recruit",
+      "slotCount": 2
+    },
+    "passive": {
+      "id": "rising-fury",
+      "name": "Rising Fury",
+      "trigger": {
+        "event": "hpDamageDealtToEnemy",
+        "minimumHpDamage": 1,
+        "frequency": "firstPerSharedActivation",
+        "actorMustBeSkillOwner": true
+      },
+      "effect": {
+        "type": "gainHeat",
+        "amount": 1,
+        "isAdditionalHeat": true
+      }
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/skill_and_ability_cards/Barbarian.md",
+    "sourceSection": "Barbarian Skill Cards > Recruit: Feral Instinct",
+    "verifiedAgainstRulebook": true,
+    "notes": "This is the rank-one Barbarian Skill Card. Its two slots can only hold Recruit-rank Barbarian Ability Cards. Count 1 is the provisional first-playtest supply."
+  }
+}

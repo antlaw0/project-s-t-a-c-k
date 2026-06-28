@@ -1,0 +1,91 @@
+{
+  "id": "ability.barbarian.recruit-rage",
+  "active": true,
+  "count": 1,
+  "cardType": "ability",
+  "name": "Rage",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "ability-standard",
+  "tags": [
+    "ability",
+    "barbarian",
+    "recruit",
+    "action",
+    "status",
+    "rage",
+    "melee",
+    "martial"
+  ],
+  "rulesText": "Barbarian Ability — Recruit\nAction • Status • Rage\n\nUse this character’s shared activation. Move this card from its equipped Skill Card into this character’s Status Row.\n\nWhile Rage is active:\n• This character’s melee weapon attacks deal +1 damage.\n• This character has -1 Defense.\n• This character cannot cast spells.\n• This character may still use non-spell abilities, reactions, items, and normal weapon attacks.\n\nAt the end of each later shared activation belonging to this character, check whether this character personally dealt 1 or more HP damage to an enemy during that activation.\n• If they did, Rage remains active.\n• If they did not, return Rage to its equipped Skill Card.\n• If the shared activation was entirely lost because this character was Stunned, do not check Rage. Rage remains active.\n\nAt the end of combat, return Rage to its equipped Skill Card.",
+  "data": {
+    "abilityType": "actionStatus",
+    "discipline": "barbarian",
+    "rank": {
+      "id": "recruit",
+      "order": 1
+    },
+    "equipRules": {
+      "allowedSkillDisciplines": [
+        "barbarian"
+      ],
+      "maximumSkillRank": "recruit"
+    },
+    "activation": {
+      "activationCost": "sharedActivation",
+      "moveTo": "ownerStatusRow"
+    },
+    "status": {
+      "statusType": "rage",
+      "owner": "abilityOwner",
+      "modifiers": [
+        {
+          "type": "modifyMeleeWeaponAttackDamage",
+          "amount": 1
+        },
+        {
+          "type": "modifyDefense",
+          "amount": -1
+        }
+      ],
+      "restrictions": [
+        {
+          "type": "cannotCastSpells"
+        }
+      ],
+      "explicitlyAllowedActions": [
+        "nonSpellAbilities",
+        "reactions",
+        "tacticalReserveItems",
+        "normalWeaponAttacks"
+      ]
+    },
+    "maintenance": {
+      "checkTiming": "endOfEachLaterSharedActivation",
+      "requiredCondition": {
+        "event": "hpDamageDealtToEnemy",
+        "minimumHpDamage": 1,
+        "actorMustBeAbilityOwner": true
+      },
+      "onConditionMet": {
+        "type": "remainInStatusRow"
+      },
+      "onConditionNotMet": {
+        "type": "returnToEquippedSkillCard"
+      },
+      "skipCheckWhen": {
+        "sharedActivationLostBecauseOfOwnerStun": true
+      }
+    },
+    "endOfCombat": {
+      "type": "returnToEquippedSkillCard"
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/skill_and_ability_cards/Barbarian.md",
+    "sourceSection": "Recruit Barbarian Ability Cards > Rage",
+    "verifiedAgainstRulebook": true,
+    "notes": "Rage uses the owner’s shared activation to begin, occupies the owner’s Status Row while active, and returns to the exact Skill Card it came from when it ends. Count 1 is the provisional core-alpha supply."
+  }
+}
