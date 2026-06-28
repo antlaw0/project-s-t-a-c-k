@@ -1,0 +1,56 @@
+{
+  "id": "enemy.goblin-raider",
+  "active": true,
+  "count": 4,
+  "cardType": "enemy",
+  "name": "Goblin Raider",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "enemy-standard",
+  "tags": [
+    "enemy",
+    "goblin",
+    "tier-1",
+    "melee",
+    "physical",
+    "goblin-warrens"
+  ],
+  "rulesText": "Rusty Blade\nDeal 2 physical damage, melee.\n\nLoot: 1 Coin.",
+  "data": {
+    "enemyTier": 1,
+    "preferredRow": "enemyFront",
+    "stats": {
+      "hp": 6,
+      "defense": 0
+    },
+    "actions": [
+      {
+        "id": "rusty-blade",
+        "name": "Rusty Blade",
+        "priority": 1,
+        "actionType": "attack",
+        "range": "melee",
+        "targeting": {
+          "mode": "defaultHighestHeatLegalFriendlyEntity"
+        },
+        "damage": {
+          "amount": 2,
+          "damageType": "physical"
+        }
+      }
+    ],
+    "loot": [
+      {
+        "type": "currency",
+        "amount": 1
+      }
+    ]
+  },
+  "source": {
+    "sourceFile": "Cards/dungeon_cards/goblin enemies.txt",
+    "sourceSection": "Tier 1 Goblins > Goblin Raider",
+    "verifiedAgainstRulebook": false,
+    "notes": "HP 6, Rusty Blade for 2 physical melee damage, and 1 Coin loot are migrated from the current Goblin enemy source. Defense 0, Enemy Front Row placement, and count 4 are provisional catalog decisions for the first playtest."
+  }
+}

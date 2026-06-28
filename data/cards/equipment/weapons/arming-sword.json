@@ -1,0 +1,52 @@
+{
+  "id": "equipment.weapon.arming-sword",
+  "active": true,
+  "count": 2,
+  "cardType": "equipment",
+  "name": "Arming Sword",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "equipment-weapon-standard",
+  "tags": [
+    "equipment",
+    "weapon",
+    "melee",
+    "blade",
+    "sword",
+    "one-handed",
+    "physical",
+    "common"
+  ],
+  "rulesText": "Weapon\nMelee • Blade • Sword\n2 Physical Damage\nRequires Blade proficiency.\nHands Required: 1 Hand.",
+  "data": {
+    "equipmentType": "weapon",
+    "equipmentSlot": "weapon",
+    "rangeTag": "melee",
+    "weaponTags": [
+      "blade",
+      "sword"
+    ],
+    "handsRequired": 1,
+    "requiredProficiency": [
+      "blade"
+    ],
+    "damage": {
+      "amount": 2,
+      "damageType": "physical"
+    },
+    "traits": [],
+    "economy": {
+      "equipmentPowerRating": 7,
+      "valueGold": 70,
+      "sellValueGold": 35,
+      "rarity": "common"
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+    "sourceSection": "6. Weapon Cards > Arming Sword",
+    "verifiedAgainstRulebook": false,
+    "notes": "The printed weapon values are migrated from the starter equipment catalog. Count 2 is a provisional first-playtest supply decision."
+  }
+}
