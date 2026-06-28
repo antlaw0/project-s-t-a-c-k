@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://project-stack.local/schemas/card.schema.json",
+  "$id": "card.schema.json",
   "title": "Project S.T.A.C.K. Card Definition",
   "description": "Shared required structure for every Project S.T.A.C.K. card definition.",
   "type": "object",
@@ -112,14 +112,22 @@
             "const": true
           }
         },
-        "required": [
-          "active"
-        ]
+        "required": ["active"]
       },
       "then": {
+        "description": "An active card must have at least 1 copy available.",
         "properties": {
           "count": {
-            "minimum": 1
+            "minimum": 1,
+            "description": "Active cards require count >= 1."
+          }
+        }
+      },
+      "else": {
+        "description": "An inactive card may have count >= 0.",
+        "properties": {
+          "count": {
+            "minimum": 0
           }
         }
       }

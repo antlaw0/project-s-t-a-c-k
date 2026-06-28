@@ -1,10 +1,10 @@
 {
-    "json.schemas":  [
-                         {
-                             "fileMatch":  [
-                                               "/data/cards/**/*.json"
-                                           ],
-                             "url":  "./data/schemas/card.schema.json"
-                         }
-                     ]
+  "json.schemas": [
+    {
+      "url": "./data/schemas/card.schema.json",
+      "fileMatch": [
+        "data/cards/**/*.json"
+      ]
+    }
+  ]
 }

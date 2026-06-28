@@ -1,7 +1,7 @@
 {
   "id": "tactical-reserve.healing-potion",
   "active": true,
-  "count": 10,
+  "count": 0,
   "cardType": "tacticalReserve",
   "name": "Healing Potion",
   "revision": 1,
