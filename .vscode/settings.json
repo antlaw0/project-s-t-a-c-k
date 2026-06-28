@@ -1,10 +1,16 @@
 {
-  "json.schemas": [
-    {
-      "url": "./data/schemas/card.schema.json",
-      "fileMatch": [
-        "data/cards/**/*.json"
-      ]
-    }
-  ]
+    "json.schemas":  [
+                         {
+                             "url":  "./data/schemas/card.schema.json",
+                             "fileMatch":  [
+                                               "data/cards/**/*.json"
+                                           ]
+                         },
+                         {
+                             "fileMatch":  [
+                                               "data/decks/**/*.json"
+                                           ],
+                             "url":  "./data/schemas/deck.schema.json"
+                         }
+                     ]
 }

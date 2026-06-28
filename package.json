@@ -6,7 +6,9 @@
     "main":  "server.js",
     "scripts":  {
                     "start":  "node server.js",
-                    "validate:cards":  "node scripts/validate-card-data.js"
+                    "validate:cards":  "node scripts/validate-card-data.js",
+                    "validate:decks":  "node scripts/validate-deck-data.js",
+                    "validate:data":  "npm run validate:cards \u0026\u0026 npm run validate:decks"
                 },
     "engines":  {
                     "node":  "\u003e=18"
