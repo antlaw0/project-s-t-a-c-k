@@ -1,13 +1,14 @@
 {
-  "name": "projectstack-prototype",
-  "version": "1.0.0",
-  "private": true,
-  "description": "Project S.T.A.C.K. prototype static server",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js"
-  },
-  "engines": {
-    "node": ">=18"
-  }
+    "name":  "projectstack-prototype",
+    "version":  "1.0.0",
+    "private":  true,
+    "description":  "Project S.T.A.C.K. prototype static server",
+    "main":  "server.js",
+    "scripts":  {
+                    "start":  "node server.js",
+                    "validate:cards":  "node scripts/validate-card-data.js"
+                },
+    "engines":  {
+                    "node":  "\u003e=18"
+                }
 }

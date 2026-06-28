@@ -1,0 +1,128 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://project-stack.local/schemas/card.schema.json",
+  "title": "Project S.T.A.C.K. Card Definition",
+  "description": "Shared required structure for every Project S.T.A.C.K. card definition.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "active",
+    "count",
+    "cardType",
+    "name",
+    "revision",
+    "artId",
+    "printTemplate",
+    "tags",
+    "rulesText",
+    "data"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Permanent unique card-definition ID. Never change this after the card is established.",
+      "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$"
+    },
+    "active": {
+      "type": "boolean",
+      "description": "Whether this card may appear in normal playtest setup."
+    },
+    "count": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Total physical and virtual copies available in the current module."
+    },
+    "cardType": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[a-z][A-Za-z0-9]*$",
+      "description": "Broad gameplay category, such as tacticalReserve, enemy, skill, spell, status, equipment, or hireling."
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Exact card name intended for display and printing."
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Design revision number for this card definition."
+    },
+    "moduleId": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$",
+      "description": "Optional module or expansion identifier."
+    },
+    "artId": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$",
+      "description": "Reference to a registered artwork asset."
+    },
+    "printTemplate": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Physical and virtual layout template used for this card."
+    },
+    "tags": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$"
+      },
+      "description": "Machine-readable gameplay, search, and distribution tags."
+    },
+    "rulesText": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Exact player-facing rules text intended for the card face."
+    },
+    "data": {
+      "type": "object",
+      "description": "Card-type-specific structured data, such as healing amount, weapon damage, enemy HP, or spell targeting.",
+      "additionalProperties": true
+    },
+    "source": {
+      "type": "object",
+      "description": "Optional internal migration and design-tracking metadata. It is not player-facing and is not printed.",
+      "additionalProperties": false,
+      "properties": {
+        "sourceFile": {
+          "type": "string"
+        },
+        "sourceSection": {
+          "type": "string"
+        },
+        "verifiedAgainstRulebook": {
+          "type": "boolean"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "active": {
+            "const": true
+          }
+        },
+        "required": [
+          "active"
+        ]
+      },
+      "then": {
+        "properties": {
+          "count": {
+            "minimum": 1
+          }
+        }
+      }
+    }
+  ]
+}

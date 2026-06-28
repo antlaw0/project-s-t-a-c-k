@@ -1,0 +1,34 @@
+{
+  "id": "tactical-reserve.healing-potion",
+  "active": true,
+  "count": 10,
+  "cardType": "tacticalReserve",
+  "name": "Healing Potion",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "tactical-reserve-standard",
+  "tags": [
+    "tactical-reserve",
+    "potion",
+    "healing",
+    "consumable"
+  ],
+  "rulesText": "Restore 3 HP to one friendly entity. After resolving, shuffle this card into the Loot Deck.",
+  "data": {
+    "timing": "your-shared-activation",
+    "target": {
+      "scope": "friendlyEntity",
+      "count": 1
+    },
+    "effect": {
+      "type": "restoreHp",
+      "amount": 3
+    },
+    "destinationAfterUse": "lootDeck"
+  },
+  "source": {
+    "verifiedAgainstRulebook": false,
+    "notes": "Bootstrap sample only. Confirm the final Healing Potion wording and healing amount against the approved Tactical Reserve card design before treating this record as print-ready."
+  }
+}

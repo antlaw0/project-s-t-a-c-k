@@ -1,0 +1,10 @@
+{
+  "assets": [
+    {
+      "id": "art.default-card",
+      "active": true,
+      "filePath": "assets/images/default.png",
+      "description": "Shared placeholder artwork for cards that do not yet have assigned final art."
+    }
+  ]
+}
