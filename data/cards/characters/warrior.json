@@ -1,0 +1,103 @@
+{
+  "id": "character.warrior",
+  "active": true,
+  "count": 1,
+  "cardType": "character",
+  "name": "Warrior",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "character-standard",
+  "tags": [
+    "character",
+    "player-character",
+    "martial",
+    "warrior",
+    "frontline",
+    "core-alpha"
+  ],
+  "rulesText": "Player Character — Martial\n\nMaximum HP: 20\nSuggested First Placement: Player Front Row\n\nClass Trait — Weapon Mastery\nThis character's melee weapon attacks ignore 1 Defense.\n\nNative Skill Domains\nBarbarian; Vanguard; Marksman.",
+  "data": {
+    "entityType": "playerCharacter",
+    "role": "martial",
+    "maximumHp": 20,
+    "suggestedFirstPlacement": "playerFront",
+    "classTrait": {
+      "id": "weapon-mastery",
+      "name": "Weapon Mastery",
+      "effect": {
+        "type": "ignoreDefense",
+        "amount": 1,
+        "appliesTo": "meleeWeaponAttacks"
+      }
+    },
+    "nativeSkillDomains": [
+      "barbarian",
+      "vanguard",
+      "marksman"
+    ],
+    "slotCapacity": {
+      "skillSlots": 5,
+      "tacticalReserveSlots": 5,
+      "inventoryCapacity": 20,
+      "transportationSlots": 1,
+      "statusRowSlots": 5
+    },
+    "activation": {
+      "type": "sharedActivation",
+      "sharedWith": "controlledAllies",
+      "activationsPerEncounterRound": 1
+    },
+    "startingLoadout": {
+      "equipment": [
+        {
+          "cardId": "equipment.weapon.arming-sword",
+          "quantity": 1
+        },
+        {
+          "cardId": "equipment.shield.buckler",
+          "quantity": 1
+        },
+        {
+          "cardId": "equipment.armor.leather-armor",
+          "quantity": 1
+        }
+      ],
+      "skills": [
+        {
+          "cardId": "skill.barbarian.recruit-feral-instinct",
+          "attachedCards": [
+            "ability.barbarian.recruit-rage"
+          ]
+        },
+        {
+          "cardId": "skill.vanguard.recruit-shield-discipline",
+          "attachedCards": [
+            "ability.vanguard.recruit-shield-bash"
+          ]
+        }
+      ],
+      "tacticalReserve": [
+        {
+          "cardId": "tactical-reserve.healing-potion",
+          "quantity": 1
+        },
+        {
+          "cardId": "tactical-reserve.bandage",
+          "quantity": 1
+        },
+        {
+          "cardId": "tactical-reserve.antidote",
+          "quantity": 1
+        }
+      ],
+      "startingDefense": 2
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/character_classes.md",
+    "sourceSection": "Warrior Character Card",
+    "verifiedAgainstRulebook": false,
+    "notes": "Maximum HP, class trait, native skill domains, starting equipment, starter skills, Tactical Reserve cards, and starting Defense are migrated from the first-playtest character roster. Several referenced catalog records have not yet been created and are intentionally retained as future references."
+  }
+}

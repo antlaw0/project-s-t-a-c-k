@@ -1,0 +1,74 @@
+{
+  "id": "status.negative.stunned",
+  "active": true,
+  "count": 4,
+  "cardType": "status",
+  "name": "Stunned",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "status-negative-standard",
+  "tags": [
+    "status",
+    "negative-status",
+    "stun",
+    "non-stacking",
+    "status-deck"
+  ],
+  "rulesText": "Negative Status — Stun\n\nAt the start of the affected entity's next applicable activation, that entity loses its next normal activation. Then discard this card.\n\nPlayer Character: That character's group loses its shared activation and cannot activate a Controlled Ally.\nControlled Ally: This ally cannot be selected for its owner's shared activation. The owner may still act or select another eligible Controlled Ally.\nAutonomous Ally: This ally loses only its independent activation.\n\nStun does not prevent passive effects, statuses, reactions, or triggered abilities unless they require the Stunned entity to take an action.",
+  "data": {
+    "statusCategory": "negative",
+    "sourceZone": "statusDeck",
+    "occupiesStatusRow": true,
+    "stacking": {
+      "allowed": false,
+      "rule": "oneCopyPerEntity"
+    },
+    "canAffect": [
+      "playerCharacter",
+      "controlledAlly",
+      "autonomousAlly",
+      "enemy",
+      "boss"
+    ],
+    "trigger": {
+      "event": "startOfAffectedEntityNextApplicableActivation"
+    },
+    "resolutionByAffectedEntityType": {
+      "playerCharacter": {
+        "type": "loseSharedActivation",
+        "cannotActivateControlledAllies": true
+      },
+      "controlledAlly": {
+        "type": "ineligibleForOwnersSharedActivation"
+      },
+      "autonomousAlly": {
+        "type": "loseIndependentActivation"
+      },
+      "enemy": {
+        "type": "loseNormalActivation"
+      },
+      "boss": {
+        "type": "loseNormalActivation"
+      }
+    },
+    "doesNotPrevent": [
+      "passiveEffects",
+      "statusEffects",
+      "reactions",
+      "triggeredAbilities"
+    ],
+    "exception": {
+      "rule": "An effect remains allowed only when it does not require the Stunned entity to take an action."
+    },
+    "afterResolution": {
+      "type": "discard"
+    }
+  },
+  "source": {
+    "sourceFile": "docs/Project_STACK_Core_Rulebook_v0.10_Alpha_Consolidated.md",
+    "sourceSection": "7.9.1 Negative Status Effects; 7.9.3 Status Timing; 7.9.4 Stun and Activations",
+    "verifiedAgainstRulebook": true,
+    "notes": "Count 4 is a provisional first-playtest Status Deck supply. Stunned does not stack. It is intentionally modeled by affected entity type because player characters, Controlled Allies, Autonomous Allies, enemies, and bosses have different activation structures."
+  }
+}

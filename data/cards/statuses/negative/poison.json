@@ -1,0 +1,53 @@
+{
+  "id": "status.negative.poisoned",
+  "active": true,
+  "count": 8,
+  "cardType": "status",
+  "name": "Poisoned",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "status-negative-standard",
+  "tags": [
+    "status",
+    "negative-status",
+    "poison",
+    "stacking",
+    "status-deck"
+  ],
+  "rulesText": "Negative Status — Poison\n\nAt the start of the affected entity's next applicable activation, that entity takes 1 Poison damage. Then discard this card.\n\nPoisoned stacks. Resolve each Poisoned card separately.",
+  "data": {
+    "statusCategory": "negative",
+    "sourceZone": "statusDeck",
+    "occupiesStatusRow": true,
+    "stacking": {
+      "allowed": true,
+      "rule": "multipleSeparateCards"
+    },
+    "canAffect": [
+      "playerCharacter",
+      "controlledAlly",
+      "autonomousAlly",
+      "enemy",
+      "boss"
+    ],
+    "trigger": {
+      "event": "startOfAffectedEntityNextApplicableActivation"
+    },
+    "effect": {
+      "type": "dealDamage",
+      "amount": 1,
+      "damageType": "poison",
+      "target": "statusOwner"
+    },
+    "afterResolution": {
+      "type": "discard"
+    }
+  },
+  "source": {
+    "sourceFile": "docs/Project_STACK_Core_Rulebook_v0.10_Alpha_Consolidated.md",
+    "sourceSection": "7.9.1 Negative Status Effects",
+    "verifiedAgainstRulebook": true,
+    "notes": "Count 8 is a provisional first-playtest Status Deck supply. Each Poisoned card is a separate stackable status card and resolves independently."
+  }
+}

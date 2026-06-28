@@ -1,0 +1,104 @@
+{
+  "id": "hireling.roadside-sellsword",
+  "active": true,
+  "count": 1,
+  "cardType": "hireling",
+  "name": "Roadside Sellsword",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "hireling-standard",
+  "tags": [
+    "hireling",
+    "mercenary",
+    "autonomous-ally",
+    "market-only",
+    "village",
+    "melee",
+    "sword",
+    "physical"
+  ],
+  "rulesText": "Hireling — Mercenary — Autonomous Ally — Market Only\n\nMinimum Settlement: Village\nCurrency Price: 14\nPreferred Row: Player Front Row\nHP: 6\nDefense: 1\n\nPriority:\n1. Sword Cut\nIf this ally is in the Player Front Row, deal 2 Physical damage to the enemy in the opposing Front Row with the highest printed Attack. Gain 1 Heat.\n\n2. Advance\nIf this ally is in the Player Back Row and an empty Player Front Row slot exists, move to the leftmost empty Player Front Row slot.\n\nDefeat: Put this card into the Loot Discard Pile.",
+  "data": {
+    "entityType": "autonomousAlly",
+    "hirelingType": "mercenary",
+    "preferredRow": "playerFront",
+    "stats": {
+      "hp": 6,
+      "defense": 1
+    },
+    "activation": {
+      "type": "independentActivation",
+      "activationsPerEncounterRound": 1,
+      "followsPrintedPriorityList": true
+    },
+    "marketRules": {
+      "marketOnly": true,
+      "minimumSettlementSize": "village",
+      "currencyPrice": 14,
+      "powerBudget": 6,
+      "neverEligibleForDungeonLoot": true
+    },
+    "ownershipRules": {
+      "assignedToPurchasingCharacterGroup": true,
+      "occupiesPersistentHirelingOrCompanionSpace": true,
+      "countsAgainstInventoryCapacity": false,
+      "maximumPersistentHirelingsOrCompanionsPerOwner": 1,
+      "entersDungeonWithOwner": true,
+      "leavesDungeonWithOwner": true
+    },
+    "aiPriorityList": [
+      {
+        "priority": 1,
+        "id": "sword-cut",
+        "name": "Sword Cut",
+        "condition": {
+          "allyMustBeInRow": "playerFront"
+        },
+        "actionType": "attack",
+        "range": "melee",
+        "targeting": {
+          "scope": "enemy",
+          "requiredRow": "enemyFront",
+          "selectionRule": "highestPrintedAttack"
+        },
+        "damage": {
+          "amount": 2,
+          "damageType": "physical"
+        },
+        "afterResolution": {
+          "type": "gainHeat",
+          "amount": 1
+        }
+      },
+      {
+        "priority": 2,
+        "id": "advance",
+        "name": "Advance",
+        "condition": {
+          "allyMustBeInRow": "playerBack",
+          "requiresEmptyRowSlot": "playerFront"
+        },
+        "actionType": "move",
+        "destination": {
+          "row": "playerFront",
+          "selectionRule": "leftmostEmptySlot"
+        }
+      }
+    ],
+    "defeat": {
+      "destination": "lootDiscardPile",
+      "canBeRevived": false
+    },
+    "dismissal": {
+      "allowedOnlyAtSettlement": true,
+      "destination": "lootDiscardPile"
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/Project_STACK_Mercenary_Hirelings_v0.1.md",
+    "sourceSection": "Mercenary Hireling Cards > Roadside Sellsword",
+    "verifiedAgainstRulebook": true,
+    "notes": "Count 1 is intentional. This is a persistent named market card, not a disposable enemy supply. If dismissed or defeated, it enters the Loot Discard Pile and can become available again when the Loot Deck is reshuffled."
+  }
+}
