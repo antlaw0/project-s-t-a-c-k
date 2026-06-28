@@ -1,8 +1,11 @@
 # Project S.T.A.C.K.
 ## Core Rulebook: Medieval Fantasy Module
-### Version 0.9 Alpha
+### Version 0.10 Alpha: Consolidated Rules Update
+### June 28, 2026
 
-> **Alpha status.** This rulebook establishes the core systems for the first Project S.T.A.C.K. module. A few deliberately deferred systems, such as large watercraft, final starter loadouts, and exact market resale values, are listed in **Appendix C: Deferred and Provisional Rules**. They are not silently treated as finished rules.
+> **Alpha status.** This version consolidates the core systems that have been finalized since Version 0.9 Alpha, including the shared-activation action economy, Friendly Entity terminology, status-card tracking, weapon eligibility, Tactical Reserve lifecycle, and prepared dungeon effects. Deferred systems remain explicitly identified in **Appendix C: Deferred and Provisional Rules** rather than being quietly treated as finished rules.
+
+> **Reading note.** This is a consolidated rulebook, not a replacement game. Rules that remain functional from Version 0.9 Alpha have been preserved. Where a previously published rule conflicts with a later finalized rule, this version uses the later finalized rule.
 
 ---
 
@@ -14,7 +17,7 @@
 4. [Characters, HP, and Defeat](#4-characters-hp-and-defeat)  
 5. [Equipment, Defense, and Trading](#5-equipment-defense-and-trading)  
 6. [Skills, Spells, Abilities, and Tactical Reserve](#6-skills-spells-abilities-and-tactical-reserve)  
-7. [Damage, Defense, Resistance, and Keywords](#7-damage-defense-resistance-and-keywords)  
+7. [Damage, Defense, Resistance, Keywords, and Status Effects](#7-damage-defense-resistance-keywords-and-status-effects)  
 8. [Encounter Layout and Combat](#8-encounter-layout-and-combat)  
 9. [Heat and Enemy Targeting](#9-heat-and-enemy-targeting)  
 10. [Allies, Hirelings, Companions, and Summons](#10-allies-hirelings-companions-and-summons)  
@@ -106,30 +109,34 @@ A card's type, tags, cost, rank, effects, restrictions, and keywords are printed
 
 ## 2.4 Counters and Tokens
 
-Counters or tokens may track:
+Combat uses stackable tactile counters only for numerical tracking that benefits from a changing value:
 
-- Damage
-- HP when a card uses current HP rather than Damage counters
-- Heat
-- Bleed
-- Currency
-- Scenario progress
-- Enemy influence
-- Other card-specific effects
+- **Damage**
+- **Temporary Defense** on player characters when an effect changes Defense
+- **Heat** or **Aggression**
+
+Printed values, such as maximum HP, weapon damage, enemy Defense, Resistance, cost, and Skill capacity, are read from cards rather than duplicated with counters.
+
+Status effects are not tracked with numerical counters. They are represented by cards in an entity's Status Row. Bleed Out uses a card sequence rather than Bleed counters. See [Status Effects](#79-status-effects-and-status-rows).
+
+Scenario progress, currency, and similar non-combat resources use the components defined by the scenario, card, or campaign setup.
 
 ## 2.5 Important Areas and Piles
 
 | Area or Pile | Purpose |
 | --- | --- |
 | **Inventory** | Cards carried or stored for later use. Normally accessible only at safe zones. |
-| **Tactical Reserve** | Prepared consumable and tactical cards usable inside a dungeon. |
-| **Loot Deck** | Shared source of obtainable cards used by settlements and dungeon loot setup. |
+| **Tactical Reserve** | Exactly 5 prepared consumable and tactical cards usable inside a dungeon. |
+| **Status Row** | Each entity's 5 spaces for positive and negative status-effect cards. |
+| **Status Deck** | Shared source of negative status cards. |
+| **Loot Deck** | Shared source of obtainable cards used by settlements and dungeon loot setup. Used Tactical Reserve cards are shuffled into this deck after resolving or expiring. |
 | **Loot Discard Pile** | Discard pile for the shared Loot Deck. Shuffle it into a new Loot Deck when needed. |
 | **Dungeon Deck** | A dungeon's themed encounter deck. |
 | **Dungeon Discard Pile** | Cards removed from a dungeon during its current attempt. |
 | **Dungeon Loot Area** | Face-up non-immediate Loot Cards discovered in an active dungeon. |
 | **Recovered Loot** | Loot carried out after a dungeon is cleared, before players resolve it at a settlement. |
 | **Expended Summons Area** | Summon Cards defeated during the current dungeon. |
+| **Bleed Out Sequence** | A three-stage card sequence beside a Downed player character. It is not a numerical counter and does not use a Status Row space. |
 
 ## 2.6 Discarding and Shuffling Back
 
@@ -138,6 +145,17 @@ Counters or tokens may track:
 A discarded card is removed from its current deck or area. For example, a defeated enemy goes to that dungeon's Dungeon Discard Pile and normally cannot appear again during that dungeon attempt.
 
 A card that is shuffled back into a deck may be drawn again later. For example, if an enemy's preferred row is full when it is drawn, shuffle that enemy back into the Dungeon Deck.
+
+
+## 2.7 Friendly Entity Terms
+
+A **Friendly Entity** is any player-side combat entity in the encounter: a player character, Controlled Ally, or Autonomous Ally.
+
+A **Controlled Ally** is a Friendly Entity directly commanded by a player character, such as a summon, familiar, minion, construct, or companion whose card says it is controlled. A Controlled Ally shares its owner's normal action opportunity.
+
+An **Autonomous Ally** is a Friendly Entity with its own independent activation and printed AI priority list, such as a hireling, rescued NPC, escort, or story companion whose card says it is autonomous.
+
+An **owner** is the player character whose group contains that ally. An ally's card may override this terminology or assignment.
 
 ---
 
@@ -171,18 +189,26 @@ For example, one player may buy, sell, heal, or travel on the world map while an
 
 ## 3.4 Dungeon Encounter Timing
 
-A dungeon encounter resolves as an **Encounter Round** when the next participating character reaches its World Turn.
+A dungeon encounter resolves as an **Encounter Round** when the next participating player character reaches that character's World Turn.
 
 An Encounter Round resolves in this order:
 
 1. Draw and resolve 1 Dungeon Card.
-2. Resolve all enemy turns.
-3. Resolve all participating non-Downed player character turns in table order.
-4. Resolve end-of-round effects, including Bleed Out.
+2. Resolve all enemy activations.
+3. Resolve each participating non-Downed player character's **shared activation** in table order.
+4. Resolve each eligible Autonomous Ally's independent activation in the same owner/table order.
+5. Resolve end-of-round effects, including Bleed Out.
 
-Each participating character receives its normal Character Action and Ally Action during Step 3. A participating character whose action is resolved during that Encounter Round does not receive an additional dungeon action when that character's own World Turn later appears in the same shared encounter sequence.
+A player character and that character's Controlled Allies have exactly 1 shared activation per Encounter Round. During that activation, the player chooses exactly 1 eligible entity from that group to take 1 normal action:
 
-This keeps a shared dungeon as one fight rather than turning it into several disconnected duels.
+- The player character; or
+- 1 Controlled Ally owned by that player character.
+
+All other Controlled Allies in that group do not take a normal action that round. A player character does not take a normal action in a round in which one of that character's Controlled Allies uses the shared activation.
+
+An Autonomous Ally is not part of its owner's shared activation. Each active, non-defeated Autonomous Ally receives 1 independent activation every Encounter Round and follows its own printed AI priority list.
+
+A participating player character whose shared activation is resolved during an Encounter Round does not receive an additional dungeon activation when that character's own World Turn later appears in the same shared encounter sequence. This keeps a shared dungeon as 1 coordinated fight rather than several disconnected duels.
 
 ## 3.5 Joining an Active Dungeon
 
@@ -226,7 +252,7 @@ The default maximum HP values are:
 | --- | ---: |
 | Warrior | 20 |
 | Rogue | 18 |
-| Cleric | 16 |
+| Cleric | 14 |
 | Druid | 14 |
 | Mage | 12 |
 
@@ -240,26 +266,39 @@ When a character's Damage counters equal or exceed its maximum HP, the character
 
 ## 4.3 Downed Characters
 
+When a player character's Damage counters equal or exceed its maximum HP, that character becomes **Downed**, unless an active difficulty rule says that character dies immediately.
+
 A Downed character:
 
-- Cannot take Character Actions or Ally Actions.
+- Cannot take a shared activation.
+- Cannot activate any Controlled Ally.
 - Remains in the encounter unless the party retreats with that character.
 - Keeps all equipped cards and Inventory.
-- Receives a Downed marker.
+- Receives a Downed marker or Downed state card.
 - Cannot normally be targeted, moved, or repositioned.
 - Is not immediately dead in Story, Standard, or Hardcore Mode.
 
+A Controlled Ally that is defeated or otherwise unable to act cannot be selected for its owner's shared activation. An Autonomous Ally that is defeated or otherwise unable to act loses only that ally's own independent activation. See [Stun and Activations](#794-stun-and-activations) for the specific Stunned rules.
+
 ## 4.4 Bleed Out
 
-At the end of each complete Encounter Round, place 1 Bleed token on every Downed character in that dungeon.
+Bleed Out is represented by a 3-stage **Bleed Out Sequence**, not by numerical Bleed counters.
 
-When a Downed character gains its third Bleed token, resolve the death result for the active Difficulty Preset:
+At the end of each complete Encounter Round, advance every Downed player character's Bleed Out Sequence by 1 stage:
+
+1. Place **Bleed Out I** beside the Downed character.
+2. Replace it with **Bleed Out II**.
+3. Replace it with **Bleed Out III** and immediately resolve the active Difficulty Preset's death result.
+
+The sequence is a campaign-defeat tracker, not a normal status effect. It does not occupy a Status Row space.
+
+At the third stage:
 
 - In **Story Mode**, the character becomes Unconscious rather than dying.
 - In **Standard Mode**, the character dies.
 - In **Hardcore Mode**, the character dies permanently.
 
-This gives the party up to three complete Encounter Rounds to revive or withdraw with a Downed ally.
+This gives the party up to 3 complete Encounter Rounds to revive or withdraw with a Downed ally.
 
 ## 4.5 Reviving a Downed Character
 
@@ -269,15 +308,15 @@ A normal healing effect does not revive a Downed character unless it explicitly 
 
 Unless the reviving card says otherwise, revival:
 
-- Removes all Bleed tokens.
-- Removes the Downed marker.
+- Removes the Downed marker or Downed state card.
+- Removes the character's Bleed Out Sequence.
 - Returns the character to 1 HP. Remove Damage counters until the character has 1 HP remaining.
 
 ## 4.6 Retreating with a Downed Ally
 
 A party may retreat with a Downed ally.
 
-A Downed character cannot independently retreat or move. However, when the remaining active party withdraws from the dungeon, remove any Downed allies with the party. Remove all Bleed tokens from a Downed character who leaves the dungeon this way.
+A Downed character cannot independently retreat or move. However, when the remaining active party withdraws from the dungeon, remove any Downed allies with the party. Remove that character's Bleed Out Sequence when the character leaves the dungeon this way.
 
 A rescued Downed character remains Downed until revived by a valid effect or service. The retreat stops Bleed Out because the character is no longer in an active encounter.
 
@@ -346,7 +385,7 @@ A character can normally reach 6 Defense through Full Plate and a +2 shield.
 
 Effects such as Spells, Abilities, or special equipment may raise Defense above 6. A character's Defense can never exceed 10.
 
-See [Damage, Defense, Resistance, and Keywords](#7-damage-defense-resistance-and-keywords) for how Defense reduces damage.
+See [Damage, Defense, Resistance, and Keywords](#7-damage-defense-resistance-keywords-and-status-effects) for how Defense reduces damage.
 
 ## 5.4 Dual Wielding
 
@@ -452,11 +491,18 @@ Receiving an Equipment Card through trade does not allow the receiving character
 
 # 6. Skills, Spells, Abilities, and Tactical Reserve
 
-## 6.1 Skill Slots
+## 6.1 Skill Slots and Specialization
 
-Each character has 5 Skill Slots.
+Each player character has exactly **5 Skill Slots**.
 
 A Skill Card represents training the character is currently maintaining. Spell Cards and Ability Cards represent techniques, knowledge, or powers made available by that training.
+
+A character may use all 5 Skill Slots for the rank-progression cards of a single domain to fully specialize in that domain. A character may instead divide its 5 slots among different domains and ranks.
+
+There is no separate global cap on equipped Spells or Ability Cards beyond:
+
+- The 5 available Skill Slots; and
+- The capacity printed on each equipped Skill Card.
 
 ## 6.2 Equipping Spells and Abilities
 
@@ -476,15 +522,15 @@ Examples:
 
 A Skill Card's rank determines both the highest rank of Spell or Ability Card it can equip and the total number of matching cards it can hold.
 
-| Rank | Maximum Equipped Cards |
+| Rank Position | Maximum Equipped Cards |
 | --- | ---: |
-| Novice | 1 |
-| Apprentice | 2 |
-| Adept | 3 |
-| Master | 4 |
-| Grand Master | 5 |
+| 1 | 1 |
+| 2 | 2 |
+| 3 | 3 |
+| 4 | 4 |
+| 5 | 5 |
 
-For example, a Master Skill Card may equip up to 4 matching Spells or Abilities of Master rank or lower. The attached cards may be any mixture of lower ranks, provided their total number does not exceed 4.
+For example, a rank-4 Skill Card may equip up to 4 matching Spells or Abilities of rank 4 or lower. The attached cards may be any mixture of lower ranks, provided their total number does not exceed 4.
 
 ## 6.4 Rank Names
 
@@ -499,12 +545,12 @@ Magic Skills use these names:
 Warrior Skills use these names:
 
 - Recruit
+- Footsoldier
 - Veteran
-- Hero
+- Elite
 - Champion
-- Legend
 
-Rogue, Cleric, and Druid Skills may use the standard Novice through Grand Master scale until their setting-specific rank names are finalized. Rank position and capacity remain the same regardless of the displayed name.
+Other class domains may use setting-specific labels. Rank position and capacity remain the same regardless of the displayed name.
 
 ## 6.5 Native Skills
 
@@ -534,17 +580,21 @@ This represents no longer maintaining foreign training.
 
 Special loot, a scenario, or a settlement service may alter these removal rules when its text says so.
 
-## 6.7 Skill Changes Inside Dungeons
+## 6.7 Prepared Spells, Abilities, and Skill Changes
 
 Skill Cards cannot normally be equipped or removed inside a dungeon.
 
 A character enters a dungeon with the Skills, Spells, and Abilities it prepared at a safe zone.
 
+There is no general spell-recovery, spell-discard, or once-per-cast rule. A prepared Spell or Ability remains attached to its Skill Card after it resolves unless its own card says otherwise.
+
+The normal time that a prepared Spell or Ability returns to Inventory is when its Skill Card is actively removed at a safe zone. Summon Cards and persistent effects follow their specific rules.
+
 ## 6.8 Tactical Reserve
 
-Each character has 5 Tactical Reserve slots.
+Each player character has exactly **5 Tactical Reserve slots**.
 
-The Tactical Reserve holds consumable or tactical cards such as:
+The Tactical Reserve holds prepared consumable and tactical cards such as:
 
 - Potions
 - Scrolls
@@ -552,9 +602,19 @@ The Tactical Reserve holds consumable or tactical cards such as:
 - Bandages
 - Other single-use items
 
+Tactical Reserve cards occupy these dedicated slots. They do **not** use Skill, Spell, Ability, Equipment, Inventory, or Status Row capacity while prepared.
+
 Characters choose Tactical Reserve cards before entering a dungeon. Once inside a dungeon, a character may use only the Tactical Reserve cards it brought with it.
 
-Using a Tactical Reserve card normally costs 1 Character Action unless the card says otherwise.
+A Tactical Reserve card states its timing:
+
+- **Action:** Use it as the action taken by the owner player character or a Controlled Ally selected for that owner's shared activation. An Autonomous Ally may use it only when the ally's card or the Tactical Reserve card explicitly permits it.
+- **Reaction:** Resolve it immediately when its printed trigger occurs. It does not consume a normal activation unless its card says otherwise.
+- **Prepared Dungeon Effect:** Use the acting player character's shared activation to prepare it, then place it in that character's Status Row while it waits for its printed trigger. See [Prepared Dungeon Effects](#611-prepared-dungeon-effects).
+
+A Scroll in Tactical Reserve is not a school Spell. Unless the Scroll says otherwise, it may be used by any Friendly Entity and does not require a matching magic Skill Card.
+
+After a Tactical Reserve card resolves or expires, shuffle it into the shared **Loot Deck**. It does not enter the Dungeon Discard Pile, Loot Discard Pile, or a separate Tactical Reserve discard pile.
 
 ## 6.9 Inventory
 
@@ -569,7 +629,7 @@ The following do not count against Inventory capacity:
 - Spell and Ability Cards attached to equipped Skill Cards
 - Tactical Reserve cards
 - Currency tokens
-- Damage, Heat, or Bleed tokens
+- Damage, Defense, or Heat counters
 
 Some cards increase Inventory capacity.
 
@@ -595,9 +655,35 @@ A character may create space by:
 
 Dungeon Loot uses a separate Loot Area while a dungeon is active, so a full Inventory never prevents the party from discovering dungeon treasure. See [Dungeons, Dungeon Loot, Objectives, and Retreat](#13-dungeons-dungeon-loot-objectives-and-retreat).
 
----
+## 6.11 Prepared Dungeon Effects
 
-# 7. Damage, Defense, Resistance, and Keywords
+Some Spells, Abilities, and Tactical Reserve cards are cast or used now but resolve only when a condition occurs later in the same Encounter Round.
+
+To use a Prepared Dungeon Effect:
+
+1. Spend the player character's shared activation.
+2. Place the prepared card in the caster's Status Row.
+3. Wait for its printed trigger.
+4. When the first qualifying trigger occurs that Encounter Round, resolve the effect immediately.
+5. Return, shuffle, discard, or otherwise handle the card exactly as its type and printed text require.
+
+If the trigger does not occur before the end of that Encounter Round, the prepared effect expires without resolving unless its card says otherwise. Its shared activation was still spent.
+
+A prepared effect occupies a Status Row space while waiting. This makes delayed dungeon magic visible and prevents a character from preparing unlimited effects at once.
+
+Example:
+
+```text
+Speak to the Dead
+Prepared Dungeon Effect
+
+Use your shared activation. The first time an enemy is defeated
+this Encounter Round, immediately resolve this card's printed effect.
+
+If no enemy is defeated this Encounter Round, this effect expires.
+```
+
+# 7. Damage, Defense, Resistance, Keywords, and Status Effects
 
 ## 7.1 Damage Effects
 
@@ -608,13 +694,16 @@ A damaging card or effect should state:
 - Its damage amount
 - Any relevant **Keywords**
 
+A **weapon attack** uses the printed base damage and printed damage types of 1 equipped weapon, plus any modifiers supplied by the attacking card or effect.
+
 Example:
 
 ```text
 Iron Spear
-Melee Attack
+Weapon: Melee, Spear
 
-Deal 4 Physical damage.
+Melee Weapon Attack
+Deal this weapon's printed Physical damage.
 Keyword: Piercing.
 ```
 
@@ -625,7 +714,7 @@ Spell Attack
 Deal 3 Fire damage.
 ```
 
-## 7.2 Delivery
+## 7.2 Delivery and Weapon Eligibility
 
 Delivery describes how an effect is used. Common Delivery types include:
 
@@ -634,9 +723,40 @@ Delivery describes how an effect is used. Common Delivery types include:
 - Spell
 - Item
 
-Delivery determines targeting and interactions. For example, Melee attacks can normally target only cards in the opposing Front Row.
+Delivery determines targeting and interactions. Delivery is not a Damage Type.
 
-Delivery is not a Damage Type. A Spell may deal Fire, Frost, Lightning, Force, Physical, or another Damage Type.
+Every Weapon Card has:
+
+- 1 range tag: **Melee** or **Ranged**.
+- 1 or more subtype tags, such as **Blunt**, **Sword**, **Axe**, **Dagger**, **Spear**, **Shortbow**, **Longbow**, or **Crossbow**.
+
+A **melee weapon attack** requires an equipped weapon with the **Melee** range tag. It normally targets only an opposing Front Row entity.
+
+A **ranged weapon attack** requires an equipped weapon with the **Ranged** range tag. It normally targets either opposing row.
+
+An Ability or Spell that modifies or makes a weapon attack must explicitly state the required range tag and any required subtype tag. A range-only requirement accepts any subtype within that range. A subtype requirement accepts only weapons with that exact listed subtype tag.
+
+Examples:
+
+```text
+Smashing Blow
+Melee Weapon Attack
+
+Make a melee weapon attack with +1 damage.
+Requires a Melee weapon with the Blunt tag.
+```
+
+```text
+Power Bolt
+Ranged Weapon Attack
+
+Make a ranged weapon attack with +1 damage.
+Requires a Ranged weapon with the Crossbow tag.
+```
+
+A Shortbow has the `Ranged` and `Shortbow` tags. It qualifies for a range-only ranged weapon attack, but it does not qualify for a Crossbow-only effect.
+
+A Spell may deal Fire, Frost, Lightning, Force, Physical, or another Damage Type. The Spell delivery does not make it a weapon attack unless the card specifically says so.
 
 ## 7.3 Damage Types
 
@@ -813,6 +933,70 @@ Examples:
 - Deal +1 damage to a target with Frost Resistance.
 - This attack deals double damage to a target with the Undead tag.
 
+
+## 7.9 Status Effects and Status Rows
+
+Every combat entity has a **Status Row** with exactly 5 spaces. This single row holds both positive and negative status-effect cards.
+
+All status effects are represented by cards, not duration counters, sideways cards, or a separate buff deck.
+
+### 7.9.1 Negative Status Effects
+
+Negative statuses come from the shared **Status Deck** and may affect player characters, Controlled Allies, Autonomous Allies, enemies, and bosses when a card permits it.
+
+Unless a status card says otherwise, it occupies 1 Status Row space. A status cannot be added when the affected entity has no available Status Row space.
+
+A status card states its own trigger, stacking rule, mechanical effect, and removal condition. Common core status behavior is:
+
+| Status | Stack? | Core behavior |
+| --- | --- | --- |
+| Burning | No | At the start of the affected entity's next applicable activation, take 1 Fire damage, then discard Burning. |
+| Poisoned | Yes | At the start of the affected entity's next applicable activation, take 1 Poison damage for each Poisoned card, then discard each resolved Poisoned card. |
+| Bleeding | No | The next time the entity changes rows or makes a Melee attack, resolve the card's bleed effect, then discard Bleeding. |
+| Stunned | No | The entity loses its next normal activation, then discard Stunned. |
+| Immobilized | No | The entity cannot change rows while Immobilized remains. |
+| Blinded | No | The entity cannot make Physical attacks while Blinded remains. |
+| Silenced | No | The entity cannot cast Spells while Silenced remains. |
+| Weakened | Yes | Persistent. Apply the card's printed penalty. |
+| Vulnerable | Yes | Persistent. Apply the card's printed penalty. |
+| Corroded | Yes | Persistent. Apply the card's printed penalty. |
+
+Poison uses stackable **Poisoned** status cards. It does not use an escalating sequence of differently named poison stages.
+
+A card may direct a multi-stage status to replace itself with another named status card. Such replacement uses cards, not counters.
+
+### 7.9.2 Positive Status Effects and Buffs
+
+Positive effects originate from player Skill, Spell, Ability, or Tactical Reserve cards. A persistent positive effect is placed in the target's Status Row while active.
+
+The persistent effect card remains the property of its source owner. When a Spell or Ability effect is consumed, removed, or expires, return it to its original equipped Skill Card unless its own card says otherwise. A Tactical Reserve effect follows the Tactical Reserve return rule and is shuffled into the Loot Deck after it resolves or expires.
+
+Regular enemies normally do not gain positive status cards. Their power comes from printed numbers and abilities. Bosses may gain positive status cards when a Boss Card, scenario, or other effect explicitly says so.
+
+### 7.9.3 Status Timing
+
+Resolve a status when its printed trigger occurs.
+
+For an enemy or Autonomous Ally, “at the start of this entity's activation” means immediately before that entity's activation.
+
+For a player character's group, resolve such a trigger immediately before the group's shared activation. Resolve applicable start-of-activation effects on the player character and that character's Controlled Allies before selecting the entity that will use the shared activation.
+
+### 7.9.4 Stun and Activations
+
+Stun interacts with the shared-activation system as follows:
+
+- A **Stunned player character** loses that character's entire shared activation for the round and cannot activate any Controlled Ally.
+- A **Stunned Controlled Ally** cannot be selected to use its owner's shared activation. The owner may still act personally or select another eligible, unstunned Controlled Ally.
+- A **Stunned Autonomous Ally** loses only that ally's own independent activation.
+
+Stun does not by itself prevent passive effects, statuses, reactions, or triggered abilities unless they require the Stunned entity to take an action.
+
+### 7.9.5 Accessibility and Ownership
+
+Persistent cards are oriented toward their owner. Accessibility kits may use tactile ownership markers on Braille sleeves or another consistent tactile method.
+
+Status tracking must never require a duration counter, a sideways card, or a separate positive-buff deck.
+
 ---
 
 # 8. Encounter Layout and Combat
@@ -837,7 +1021,7 @@ Each character, enemy, summon, pet, companion, hireling, or allied NPC occupies 
 
 When a character enters a dungeon, place that Character Card in an empty Player Front Row or Player Back Row slot.
 
-A character may change rows by spending a Character Action unless a card says otherwise.
+A character may change rows by spending a shared activation unless a card says otherwise.
 
 ## 8.3 Placing Enemies
 
@@ -890,26 +1074,30 @@ Examples include:
 - Lightning Bolt
 - Other ranged abilities
 
-## 8.8 Player Actions
+## 8.8 Shared Activations
 
-During the Player Character portion of an Encounter Round, each participating non-Downed character receives:
+Each participating non-Downed player character receives 1 **shared activation** during the Player Character portion of an Encounter Round.
 
-- 1 **Character Action**
-- 1 **Ally Action**
+During that shared activation, choose exactly 1 eligible entity from that player character's group:
 
-A Character Action may be used to:
+- The player character; or
+- 1 Controlled Ally owned by that player character.
 
-- Attack
+The chosen entity takes 1 normal action. All other Controlled Allies in that group do not take a normal action that round.
+
+A normal action may be used to:
+
+- Make an attack
 - Cast a Spell
 - Use an equipped Ability
-- Use a Tactical Reserve card
+- Use an Action Tactical Reserve card
 - Summon a creature
 - Move from Front Row to Back Row
 - Move from Back Row to Front Row
 - Retreat from the dungeon
 - Take another action permitted by a card
 
-Moving between rows uses the character's entire Character Action unless an effect says otherwise.
+Moving between rows uses that entity's entire normal action unless an effect says otherwise.
 
 Some cards may combine movement and another action.
 
@@ -917,10 +1105,12 @@ Example:
 
 ```text
 Charge Strike
-Move from the Back Row to the Front Row, then deal 4 Physical damage.
+Move from the Back Row to the Front Row, then make a melee weapon attack.
 ```
 
 A card that grants an additional action or permits movement without spending an action overrides the normal action rule.
+
+Autonomous Allies resolve their separate independent activations after player-character shared activations. See [Autonomous Allies](#104-autonomous-allies).
 
 ## 8.9 Enemy Turns
 
@@ -956,75 +1146,68 @@ Defeated enemies do not return during the current dungeon attempt unless a card 
 
 # 9. Heat and Enemy Targeting
 
-Heat represents how threatening a player character appears to enemies.
+Heat represents how threatening a **Friendly Entity** appears to enemies.
 
-Unless an Enemy Card says otherwise, an enemy targets the legal player character with the highest Heat.
+Unless an Enemy Card says otherwise, an enemy targets the legal Friendly Entity with the highest Heat.
 
 ## 9.1 Gaining Heat
 
-Characters gain Heat primarily by dealing damage. The amount of Heat gained is defined by the Spell, Ability, Weapon, or other effect that caused the damage.
+Friendly Entities gain Heat primarily by dealing damage. The amount of Heat gained is defined by the Spell, Ability, Weapon, or other effect that caused the damage.
 
 Cards may also grant Heat through a taunt, defensive action, healing effect, or another stated rule.
 
 ## 9.2 Leaving a Dungeon
 
-When a character leaves a dungeon, remove all Heat tokens from that character.
+When a Friendly Entity leaves a dungeon, remove all Heat counters from that entity.
 
 ## 9.3 Allies and Heat
 
-Allies do not gain Heat by default. Enemies using normal Heat targeting choose player characters, not allies, unless an ally card says otherwise.
+Player characters, Controlled Allies, and Autonomous Allies may all gain Heat, receive status effects, occupy rows, and be targeted by enemies when legal.
 
-Allies remain legal targets for effects that target a row, target all allies, select a random legal target, or otherwise do not require Heat.
+Enemy default targeting uses the highest-Heat legal Friendly Entity, not only player characters.
+
+An enemy action that targets a row, all Friendly Entities, a random legal target, or another specified group follows its own card text rather than the default Heat rule.
 
 ## 9.4 Heat Edge Cases
 
-Some Heat details remain intentionally provisional in this alpha:
-
-- Resolving Heat ties.
-- Choosing a target when the highest-Heat character is not a legal target for the enemy's current action.
-- Whether specific healing, buffs, stealth effects, or summons alter Heat without card text.
-
-Until a scenario or card provides a more specific rule, use the table's agreed consistent resolution and record it for the rest of that campaign. This preserves predictable play while the final Heat reference is completed.
-
----
+The core Heat rule uses the highest-Heat legal Friendly Entity. Heat ties and any special interaction not covered by a card remain provisional until the final Heat reference is published. See [Appendix C](#appendix-c-deferred-and-provisional-rules).
 
 # 10. Allies, Hirelings, Companions, and Summons
 
-Allied creature cards represent characters or creatures that fight alongside a player character.
+Allied creature cards represent Friendly Entities that fight alongside a player character.
 
 Examples include:
 
+- Controlled summons
+- Familiars
+- Constructs
+- Companions
 - Hirelings
 - Mercenaries
-- Companions
+- Rescued NPCs
+- Escorts
 - Story allies
-- Skeletal summons
-- Animal summons
-- Constructs
-- Familiars
-- Other card-defined allies
 
 All allied cards occupy normal Player Row slots.
 
 ## 10.1 Player Groups
 
-Each player has a group. A player's group may include:
+Each player character has a group. A group may include:
 
 - That player's Character Card
-- Hirelings
-- Companions
-- Summons
-- Other allied cards controlled by that player
+- Controlled Allies
+- Autonomous Allies
+- Other allied cards assigned to that player character
 
 When multiple players enter the same dungeon, their groups combine into 1 shared allied formation using the same 8 Player Row slots.
 
-No player has reserved slots. Any allied card may occupy any legal empty Player Row slot.
+No player has reserved slots. Any Friendly Entity may occupy any legal empty Player Row slot.
 
 ## 10.2 Ally Limits
 
 Each player group may normally have:
 
-- 1 Character Card
+- 1 player character
 - Up to 1 persistent Hireling or Companion
 - Up to 2 active Summons
 
@@ -1032,11 +1215,19 @@ Cards may increase or reduce these limits.
 
 An ally cannot enter play if there is no eligible empty Player Row slot.
 
-## 10.3 Controlled Summons
+## 10.3 Controlled Allies
 
-Controlled Summons are directly commanded by their owner. A Controlled Summon lists its own stats, HP, Defense, actions, tags, Damage Types, and special rules.
+A Controlled Ally is directly commanded by its owner and shares that owner's activation economy.
 
-The owner chooses which listed action the Summon uses when that Summon is activated.
+A Controlled Ally lists its own stats, HP, Defense, actions, tags, Damage Types, and special rules.
+
+When the owner uses the shared activation for a Controlled Ally:
+
+1. Choose 1 eligible active Controlled Ally in that player's group.
+2. Choose 1 legal action listed on that ally's card.
+3. Resolve that action.
+
+A Controlled Ally may use only actions printed on its own card unless another card says otherwise. It follows normal targeting rules unless its card says otherwise.
 
 Examples include:
 
@@ -1047,12 +1238,28 @@ Examples include:
 - Vine Guardian
 - Elemental
 - Construct
+- Familiar
 
-## 10.4 Autonomous Hirelings
+## 10.4 Autonomous Allies
 
-Autonomous Hirelings use an action priority list similar to Enemy Cards.
+An Autonomous Ally has its own independent activation each Encounter Round. It does not use its owner's shared activation.
 
-When a Hireling is activated, resolve the first legal action on its card. The controlling player chooses when to activate that Hireling, but does not choose which legal priority action it performs.
+An Autonomous Ally uses a printed AI priority list. During its activation:
+
+1. Read its priority list from top to bottom.
+2. Resolve the first legal line.
+3. Skip a line whose condition is not met or has no legal target.
+
+Every Autonomous Ally behavior line must include explicit target-selection instructions when it needs a target, such as:
+
+- Lowest current HP
+- Greatest missing HP
+- Highest printed Attack
+- Friendly Entity with the highest Heat
+- Nearest legal enemy
+- Another specifically printed selection method
+
+An Autonomous Ally does **not** use the enemy default highest-Heat targeting rule unless its own card explicitly says so.
 
 Examples include:
 
@@ -1063,75 +1270,26 @@ Examples include:
 - Porter
 - Guide
 - Sellsword
+- Rescued NPC
+- Story escort
 
 ## 10.5 Companions and Story Allies
 
-Companions and Story Allies follow the instructions on their cards. A Companion or Story Ally may be controlled, autonomous, temporary, persistent, scenario-required, or bound to a specific character.
+Companions and Story Allies follow the instructions on their cards. A Companion or Story Ally may be Controlled, Autonomous, temporary, persistent, scenario-required, or bound to a specific character.
 
 If a Companion or Story Ally conflicts with a general ally rule, follow its card text.
 
-## 10.6 Ally Actions
+## 10.6 Shared and Independent Activations
 
-Each player receives 1 Ally Action during that player's turn.
+A player character's **shared activation** is the single normal-action opportunity shared by that player character and all of that character's Controlled Allies.
 
-Use an Ally Action to activate 1 allied card in that player's group. A player may not activate more than 1 allied card with the same Ally Action.
+An **independent activation** belongs only to an Autonomous Ally and is resolved once each Encounter Round.
 
-A player with multiple active allies chooses which 1 acts that turn. Allies not activated remain in their current row and may still be targeted, block slots, provide passive effects, or use reactions allowed by their cards.
+A player character receives no separate independent activation. Controlled Allies are not an extra action economy. They are an alternative use of the owner's shared activation.
 
-## 10.7 Controlled Summon Actions
+Allies not taking a normal action remain in their current row and may still be targeted, block slots, provide passive effects, use reactions allowed by their cards, receive Heat, and receive status effects.
 
-When a player uses an Ally Action to activate a Controlled Summon:
-
-1. Choose 1 active Controlled Summon in that player's group.
-2. Choose 1 legal action listed on that Summon's card.
-3. Resolve that action.
-
-A Summon may use only actions printed on its own card unless another card says otherwise. A Summon follows normal targeting rules unless its card says otherwise.
-
-Example:
-
-```text
-Skeletal Warrior
-Controlled Summon
-
-Bone Blade
-Deal 2 Physical damage to one enemy in the opposing Front Row.
-
-Bone Share
-This summon takes 1 damage.
-Restore 1 HP to another Skeletal Summon.
-
-Reposition
-Move this summon to an empty Player Front Row or Player Back Row slot.
-```
-
-## 10.8 Autonomous Hireling Actions
-
-When a player uses an Ally Action to activate an Autonomous Hireling:
-
-1. Choose 1 active Hireling in that player's group.
-2. Read the Hireling's priority list from top to bottom.
-3. Resolve the first legal action.
-4. Skip an action whose condition is not met or has no legal target.
-
-Example:
-
-```text
-Mercenary Guard
-Autonomous Hireling
-
-1. Protect
-If an allied character in this row has 50% HP or less,
-move to that character's row if possible.
-
-2. Shield Bash
-Deal 2 Physical damage to one enemy in the opposing Front Row.
-
-3. Guard Stance
-Gain +1 Defense until the start of your next turn.
-```
-
-## 10.9 Summon Cards and Preparation
+## 10.7 Summon Cards and Preparation
 
 Summon Cards are Spell Cards or Ability Cards equipped to a matching Skill Card. A Summon Card counts against the capacity of the Skill Card to which it is attached.
 
@@ -1148,18 +1306,18 @@ Maximum Equipped Cards: 3
 
 A character may summon only cards prepared by equipping them to a matching Skill Card before entering the dungeon, unless a card specifically says otherwise.
 
-## 10.10 Summoning a Creature
+## 10.8 Summoning a Creature
 
 To summon a creature:
 
-1. Spend 1 Character Action.
+1. Spend the owner player character's shared activation.
 2. Choose an equipped Summon Card.
 3. Move that Summon Card from its Skill Card to an eligible empty Player Row slot.
-4. The card becomes an active allied creature.
+4. The card becomes an active Controlled Ally unless its own card says it is Autonomous.
 
-A newly summoned creature cannot take an Ally Action during the same player turn in which it was summoned unless the Summon Card says otherwise.
+A newly summoned creature cannot take a normal action during the same player-group shared activation in which it was summoned unless the Summon Card says otherwise.
 
-## 10.11 Defeated Summons
+## 10.9 Defeated Summons
 
 When a Summon takes Damage equal to or greater than its HP:
 
@@ -1174,7 +1332,7 @@ A card in the Expended Summons Area:
 
 When the dungeon ends or the owner leaves the dungeon, move all Expended Summon Cards to that owner's Inventory. The owner may re-equip those Summon Cards only at a settlement or another card-defined safe zone.
 
-## 10.12 Active Summons When a Dungeon Ends
+## 10.10 Active Summons When a Dungeon Ends
 
 When a dungeon is cleared or a Summon's owner leaves the dungeon:
 
@@ -1184,41 +1342,43 @@ When a dungeon is cleared or a Summon's owner leaves the dungeon:
 
 A Summon Card must be equipped again before it can be used in another dungeon. Unless a card says otherwise, Summons do not remain active while traveling on the world map.
 
-## 10.13 Summoning and Full Rows
+## 10.11 Summoning and Full Rows
 
 A Summon cannot enter play if there is no eligible empty Player Row slot.
 
 If a Summon cannot enter play because there is no empty slot:
 
 - The Summon Card remains attached to its Skill Card.
-- The character does not spend the attempted Character Action.
+- The character does not spend the attempted shared activation.
 
 A card may override this rule by creating space, replacing another ally, summoning into a specific slot, or using another special effect.
 
-## 10.14 Hirelings
+## 10.12 Hirelings
 
 Hirelings are persistent allied NPCs purchased or gained outside dungeons.
+
+Unless a Hireling Card says otherwise, a Hireling is an Autonomous Ally.
 
 A Hireling:
 
 - Belongs to 1 player group.
 - Occupies a Player Row slot during encounters.
 - Has its own HP, Defense, actions, and special rules.
-- Uses an Autonomous Hireling priority list unless its card says otherwise.
+- Uses an explicit Autonomous Ally priority list unless its card says otherwise.
 - Does not use the owner's Equipment, Skill Cards, Spell Cards, Ability Cards, or Tactical Reserve cards.
 
 Hirelings are intended to be expensive and valuable but weaker and less flexible than player characters.
 
-## 10.15 Defeated Hirelings
+## 10.13 Defeated Hirelings and Autonomous Allies
 
-Unless a Hireling Card says otherwise, when a Hireling takes Damage equal to or greater than its HP:
+Unless an Autonomous Ally Card says otherwise, when an Autonomous Ally takes Damage equal to or greater than its HP:
 
 1. Remove it from the Player Row.
-2. Discard the Hireling Card.
+2. Discard the Autonomous Ally Card.
 
-Hirelings do not use player-character Downed or Bleed Out rules unless their cards specifically say they do.
+Autonomous Allies do not use player-character Downed or Bleed Out rules unless their cards specifically say they do.
 
-## 10.16 Equipment, Skills, and Items for Allies
+## 10.14 Equipment, Skills, and Items for Allies
 
 Allied cards use only the equipment, Skills, Abilities, stats, and actions printed on their own cards.
 
@@ -1231,6 +1391,8 @@ Unless another card says otherwise, allies cannot:
 - Use Tactical Reserve cards.
 - Use Transportation Cards.
 - Receive Ring, Head, Body, Hands, Feet, Neck, or Held Slot equipment.
+
+A Tactical Reserve Scroll is an exception only to the extent stated in [Tactical Reserve](#68-tactical-reserve): it may be used by any Friendly Entity, but it does not become that entity's equipment, Skill, or Spell.
 
 Examples of specific exceptions:
 
@@ -1249,16 +1411,16 @@ Pack Leader
 Your Beast Summons deal +1 Physical damage.
 ```
 
-## 10.17 Healing and Revival of Allies
+## 10.15 Healing and Revival of Allies
 
 Unless a card says otherwise:
 
-- Hirelings may be healed by effects that can target allies.
+- Autonomous Allies may be healed by effects that can target allies.
 - Controlled Summons may be healed only by effects that specifically affect their summon type, such as Undead, Beast, Construct, or Summon.
 - Summons cannot be revived after defeat unless a card specifically says otherwise.
-- Hirelings cannot be revived after defeat unless a card specifically says otherwise.
+- Autonomous Allies cannot be revived after defeat unless a card specifically says otherwise.
 
-## 10.18 Owner Leaves the Dungeon
+## 10.16 Owner Leaves the Dungeon
 
 Each ally belongs to 1 player group.
 
@@ -1266,21 +1428,20 @@ When an ally's owner leaves a dungeon:
 
 - Active Summons owned by that character leave play and return to that owner's Inventory.
 - Expended Summons belonging to that character return to that owner's Inventory.
-- Hirelings and other persistent allies follow their card instructions.
+- Autonomous Allies and other persistent allies follow their card instructions.
 
-Unless a Hireling Card says otherwise, a Hireling leaves the dungeon with its owner.
+Unless an Autonomous Ally Card says otherwise, that ally leaves the dungeon with its owner.
 
-## 10.19 Combined Groups
+## 10.17 Combined Groups
 
 When multiple player groups enter the same dungeon:
 
-- All player characters, allies, hirelings, and summons use the same 8 Player Row slots.
-- Each player controls that player's own allies.
-- Each player receives only 1 Ally Action during that player's turn.
-- Allied cards may support any player character unless their cards say otherwise.
+- All player characters, Controlled Allies, and Autonomous Allies use the same 8 Player Row slots.
+- Each player controls that player's own Controlled Allies.
+- Each player character receives only 1 shared activation per Encounter Round.
+- Each Autonomous Ally receives only 1 independent activation per Encounter Round.
+- Friendly Entities may support any player character unless their cards say otherwise.
 - No player may exceed that player's own ally limits, even when groups combine.
-
----
 
 # 11. World Map, Exploration, Terrain, and Transportation
 
@@ -1750,11 +1911,11 @@ A dungeon normally uses a themed Dungeon Deck, such as:
 
 - Undead
 - Beasts
-- Fire
-- Bandits
-- Cultists
+- Goblins
+- Elementals
 - Demons
 - Machines
+- Other monster-focused themes
 
 A typical Dungeon Deck contains approximately 30 cards, though final deck size is determined by dungeon type or scenario.
 
@@ -1863,17 +2024,19 @@ A dungeon may use this structure to create a search-and-attrition arc: players g
 
 ## 13.12 Retreating
 
-A character may retreat by spending a Character Action unless a card says otherwise.
+A player character may retreat by spending that character's shared activation unless a card says otherwise.
 
-When a character retreats:
+A Controlled Ally cannot independently retreat. When its owner retreats, remove that owner's Controlled Allies from the encounter as described in [Owner Leaves the Dungeon](#1016-owner-leaves-the-dungeon).
+
+When a player character retreats:
 
 - Remove that character from the dungeon encounter.
 - Remove all Heat from that character.
 - Return that character to the world map outside the dungeon.
 
-A dungeon remains active while at least 1 character remains inside it.
+A dungeon remains active while at least 1 player character remains inside it.
 
-If all characters leave, apply the dungeon's reset rule.
+If all player characters leave, apply the dungeon's reset rule.
 
 ---
 
@@ -1944,8 +2107,8 @@ Story Mode is intended for learning the game, relaxed exploration, shorter campa
 | --- | --- |
 | Settlement Healing | Recover all HP for free at any settlement. |
 | Downed Characters | Become Downed when Damage equals or exceeds maximum HP. |
-| Bleed Out | Gain 1 Bleed token at the end of each Encounter Round. |
-| Death | At 3 Bleed, become Unconscious instead of dying. |
+| Bleed Out | Advance the Bleed Out Sequence by 1 stage at the end of each Encounter Round. |
+| Death | At Bleed Out III, become Unconscious instead of dying. |
 | Recovery | Recover after the encounter ends or after the party leaves the dungeon. |
 | Resurrection | Not needed because characters do not permanently die. |
 | Campaign Timer | Off unless required by the scenario. |
@@ -1964,8 +2127,8 @@ It provides meaningful risk, resource decisions, rescue opportunities, and conse
 | Settlement Healing | Pay Currency to restore HP at settlements. |
 | Healing Cost | 1 Currency per HP restored unless a settlement or card says otherwise. |
 | Downed Characters | Become Downed when Damage equals or exceeds maximum HP. |
-| Bleed Out | Gain 1 Bleed token at the end of each Encounter Round. |
-| Death | Die after gaining 3 Bleed tokens. |
+| Bleed Out | Advance the Bleed Out Sequence by 1 stage at the end of each Encounter Round. |
+| Death | Die at Bleed Out III. |
 | Revival During Encounter | Requires a card effect that specifically allows revival. |
 | Resurrection After Death | Allowed only through a rare card effect, advanced medical service, or scenario rule that specifically allows it. |
 | Campaign Timer | Off unless required by the scenario. |
@@ -1982,8 +2145,8 @@ Hardcore Mode is intended for experienced players who want permanent consequence
 | Settlement Healing | Settlements do not restore HP. |
 | HP Recovery | Recover HP only through Spells, Abilities, Items, Tactical Reserve cards, or other card effects. |
 | Downed Characters | Become Downed when Damage equals or exceeds maximum HP. |
-| Bleed Out | Gain 1 Bleed token at the end of each Encounter Round. |
-| Death | Die after gaining 3 Bleed tokens. |
+| Bleed Out | Advance the Bleed Out Sequence by 1 stage at the end of each Encounter Round. |
+| Death | Die at Bleed Out III. |
 | Resurrection | Dead characters cannot be resurrected. |
 | Campaign Timer | Recommended. |
 | Enemy Advance | Recommended. |
@@ -2034,7 +2197,7 @@ When Damage equals or exceeds a character's maximum HP:
 
 - That character dies immediately.
 - The character does not become Downed.
-- The character does not receive Bleed tokens.
+- The character does not begin a Bleed Out Sequence.
 - The character cannot be revived.
 
 Ironman Death is intended for short, high-stakes scenarios.
@@ -2060,8 +2223,8 @@ When Shared Party Defeat is not active, surviving characters may continue the sc
 | --- | --- | --- | --- |
 | Settlement Healing | Free full recovery | 1 Currency per HP | No settlement HP recovery |
 | Downed at 0 HP | Yes | Yes | Yes |
-| Bleed Out | 3 Encounter Rounds | 3 Encounter Rounds | 3 Encounter Rounds |
-| Result at 3 Bleed | Unconscious | Death | Permanent death |
+| Bleed Out | Bleed Out III after 3 Encounter Rounds | Bleed Out III after 3 Encounter Rounds | Bleed Out III after 3 Encounter Rounds |
+| Result at Bleed Out III | Unconscious | Death | Permanent death |
 | Revival in Dungeon | Card effect required | Card effect required | Card effect required |
 | Resurrection After Death | Scenario allowed | Rare and restricted | Not allowed |
 | Campaign Timer | Off | Off by default | Recommended |
@@ -2161,6 +2324,22 @@ Specific accessibility component standards, tactile layout standards, card-forma
 
 ---
 
+# Consolidated Changes Since Version 0.9 Alpha
+
+This version incorporates the following finalized rules:
+
+- **Shared Activation:** A player character and that character's Controlled Allies share 1 normal action. Autonomous Allies act independently through printed AI.
+- **Friendly Entity scope:** Player characters, Controlled Allies, and Autonomous Allies all use rows, Heat, and status effects and may be enemy targets when legal.
+- **Status-card system:** Every entity has 5 shared Status Row spaces. Negative statuses use the Status Deck; persistent positive effects use the originating card. No duration counters, sideways cards, or separate buff deck.
+- **Weapon eligibility:** Weapon Cards use Melee or Ranged range tags plus subtype tags. Weapon-based cards must name their required range and, when applicable, subtype.
+- **Skills:** Player characters have exactly 5 Skill Slots. There is no extra global cap on equipped Spells or Abilities beyond Skill capacity.
+- **Tactical Reserve:** Every player character has exactly 5 slots. Used Tactical Reserve cards shuffle into the Loot Deck.
+- **Prepared Dungeon Effects:** Delayed spells and abilities take the caster's shared activation, wait in the Status Row, and expire at the end of the current Encounter Round if their trigger never occurs.
+- **Bleed Out tracking:** The 3-round Bleed Out limit is tracked with cards rather than numerical Bleed counters.
+- **Warrior ranks and class HP:** The Warrior ladder is Recruit, Footsoldier, Veteran, Elite, Champion. Cleric maximum HP is 14.
+
+---
+
 # Appendix A: Reference Tables
 
 ## A.1 Character HP
@@ -2169,7 +2348,7 @@ Specific accessibility component standards, tactile layout standards, card-forma
 | --- | ---: |
 | Warrior | 20 |
 | Rogue | 18 |
-| Cleric | 16 |
+| Cleric | 14 |
 | Druid | 14 |
 | Mage | 12 |
 
@@ -2202,13 +2381,15 @@ Specific accessibility component standards, tactile layout standards, card-forma
 
 ## A.4 Skill Capacity
 
-| Rank | Capacity |
+| Rank Position | Capacity |
 | --- | ---: |
-| Novice | 1 |
-| Apprentice | 2 |
-| Adept | 3 |
-| Master | 4 |
-| Grand Master | 5 |
+| 1 | 1 |
+| 2 | 2 |
+| 3 | 3 |
+| 4 | 4 |
+| 5 | 5 |
+
+Magic labels are Novice, Apprentice, Adept, Master, and Grand Master. Warrior labels are Recruit, Footsoldier, Veteran, Elite, and Champion.
 
 ## A.5 Terrain Costs by Transportation
 
@@ -2239,29 +2420,39 @@ Specific accessibility component standards, tactile layout standards, card-forma
 
 **Ability Card:** A prepared technique, talent, or power attached to a matching Skill Card.
 
-**Ally Action:** The action a player uses to activate 1 allied card in that player's group during an Encounter Round.
+**Autonomous Ally:** A Friendly Entity with an independent activation and a printed AI priority list.
 
-**Back Row:** The rear row in an encounter. It cannot normally use or be targeted by Melee attacks.
+**Bleed Out Sequence:** Three successive cards, Bleed Out I through Bleed Out III, used to track a Downed player character's time before the difficulty preset resolves a death outcome.
 
-**Character Action:** A player's normal action during an Encounter Round, used for attacks, Spells, Abilities, Tactical Reserve cards, summoning, movement, or retreat.
+**Controlled Ally:** A Friendly Entity directly commanded by its owner. It may take a normal action only when selected for its owner's shared activation.
 
 **Damage Type:** The kind of harm dealt, such as Physical, Fire, Frost, Lightning, Poison, or Force.
 
 **Delivery:** How an effect is used, such as Melee, Ranged, Spell, or Item.
 
-**Downed:** A player character at or above maximum Damage that cannot act and begins gaining Bleed tokens at the end of Encounter Rounds.
+**Downed:** A player character at or above maximum Damage that cannot use a shared activation and begins advancing through the Bleed Out Sequence at the end of Encounter Rounds.
 
 **Dungeon Loot Area:** The face-up area containing non-immediate Loot discovered in an active dungeon.
 
-**Encounter Round:** The complete dungeon sequence of drawing a Dungeon Card, resolving enemies, resolving player turns, and resolving end-of-round effects.
+**Encounter Round:** The complete dungeon sequence of drawing a Dungeon Card, resolving enemies, resolving player-character shared activations, resolving Autonomous Ally activations, and resolving end-of-round effects.
+
+**Friendly Entity:** A player character, Controlled Ally, or Autonomous Ally in the encounter.
 
 **Front Row:** The forward row in an encounter. It may normally use Melee, Ranged, Spells, Items, and Abilities.
 
-**Heat:** A measure of threat used by enemies to choose player-character targets.
+**Heat:** A measure of threat used by enemies to choose the highest-Heat legal Friendly Entity.
 
 **Immediate Loot:** Loot with the `Immediate` keyword that resolves when drawn rather than entering the Dungeon Loot Area.
 
+**Independent Activation:** The one normal activation received by an Autonomous Ally each Encounter Round.
+
 **Inventory:** Cards a character carries or stores for later use. It is normally accessible only at safe zones.
+
+**Melee Weapon Attack:** A weapon attack requiring an equipped Weapon Card with the Melee range tag.
+
+**Prepared Dungeon Effect:** An effect prepared with a shared activation that waits in a Status Row for a printed trigger later in the same Encounter Round.
+
+**Ranged Weapon Attack:** A weapon attack requiring an equipped Weapon Card with the Ranged range tag.
 
 **Recovered Loot:** Loot carried out after clearing a dungeon, pending resolution at a settlement.
 
@@ -2269,17 +2460,25 @@ Specific accessibility component standards, tactile layout standards, card-forma
 
 **Safe Zone:** A settlement or another card-defined location where Inventory and loadout changes are permitted.
 
+**Shared Activation:** The single normal-action opportunity shared by a player character and that character's Controlled Allies during an Encounter Round.
+
 **Skill Card:** Training that holds matching Spells and Abilities.
 
 **Specialty:** The class domain associated with a settlement, such as Mage, Warrior, Rogue, Cleric, or Druid.
 
+**Status Row:** Five spaces belonging to an entity, used for all active positive and negative status-effect cards.
+
 **Tactical Reserve:** Five prepared slots for tactical or consumable cards usable in dungeons.
+
+**Weapon Attack:** An attack that uses 1 equipped weapon's printed base damage and printed damage types, plus applicable modifiers.
+
+**Weapon Range Tag:** The Melee or Ranged tag required for weapon-attack eligibility.
+
+**Weapon Subtype Tag:** A tag such as Blunt, Sword, Axe, Dagger, Shortbow, Longbow, or Crossbow used by card requirements.
 
 **World Round:** The period after every player has completed 1 World Turn.
 
 **World Turn:** A player's turn on the world map, in a settlement, or as part of a dungeon's Encounter Round.
-
----
 
 # Appendix C: Deferred and Provisional Rules
 
@@ -2299,7 +2498,7 @@ Settlements permit selling, but the resale amount, sale destination, player resa
 
 ## C.4 Heat Edge Cases
 
-The core Heat rule is complete, but ties, illegal highest-Heat targets, and non-damage Heat interactions still need a final shared reference.
+The core Heat rule uses the highest-Heat legal Friendly Entity. Heat ties and non-damage Heat interactions still need a final shared reference.
 
 ## C.5 Water Travel and Large Vehicles
 
@@ -2312,6 +2511,7 @@ The core chunk-based biome map system is complete for physical setup. App-assist
 ## C.7 Optional Last Stand Rule
 
 A Last Stand action may become an optional rule, but no default Last Stand action is part of this alpha core ruleset.
+
 
 ## C.8 Broken, Cursed, and Bound Equipment
 
