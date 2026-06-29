@@ -11,7 +11,7 @@
     <div class="page-width">
       <p class="eyebrow">Project S.T.A.C.K. · Manual playtest environment</p>
       <h1>Playtest Table</h1>
-      <p class="lede">A read-only tabletop inspector. It loads a generated runtime state and the card catalog, then shows the current formation, character areas, zones, and log without resolving rules automatically.</p>
+      <p class="lede">A text-first manual tabletop. It loads a generated runtime state and card catalog, then lets you track counters, draw Dungeon Cards, deploy enemies, discard resolved cards, and export the changed playtest state. It does not resolve card rules automatically.</p>
     </div>
   </header>
 
@@ -36,6 +36,36 @@
         </div>
         <dl class="summary-list" id="runtime-summary"></dl>
       </header>
+
+      <section id="manual-controls-section" class="tabletop-section" aria-labelledby="manual-controls-heading">
+        <h3 id="manual-controls-heading">Manual table controls</h3>
+        <p>Resolve all card text manually. Draw one Dungeon Card at a time, then deploy an enemy or discard a resolved trap or event before drawing again.</p>
+        <div class="manual-controls-grid">
+          <section class="control-card" aria-labelledby="dungeon-controls-heading">
+            <h4 id="dungeon-controls-heading">Dungeon Deck</h4>
+            <p id="dungeon-draw-summary">No state loaded.</p>
+            <button id="draw-dungeon-card-button" type="button" disabled>Draw top Dungeon Card</button>
+          </section>
+
+          <section class="control-card" aria-labelledby="currency-controls-heading">
+            <h4 id="currency-controls-heading">Party Currency</h4>
+            <p><output id="party-currency-value" aria-live="polite">0</output> Currency</p>
+            <div class="counter-button-row">
+              <button id="decrease-party-currency-button" type="button" disabled>Decrease Currency</button>
+              <button id="increase-party-currency-button" type="button" disabled>Increase Currency</button>
+            </div>
+            <label for="party-currency-input">Set party Currency</label>
+            <input id="party-currency-input" type="number" min="0" step="1" value="0" disabled>
+          </section>
+
+          <section class="control-card" aria-labelledby="save-controls-heading">
+            <h4 id="save-controls-heading">Save current session</h4>
+            <p>Download the current runtime state after any manual changes. Load that file later through the state-file chooser above.</p>
+            <button id="download-state-button" type="button" disabled>Download current state JSON</button>
+          </section>
+        </div>
+        <p id="manual-control-status" class="status-message" role="status" aria-live="assertive"></p>
+      </section>
 
       <nav class="section-nav" aria-label="Playtest table sections">
         <a href="#formation-section">Formation</a>

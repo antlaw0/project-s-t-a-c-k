@@ -14,7 +14,8 @@
     "test:playtest-state": "node scripts/test-playtest-state.js",
     "build:catalog": "node scripts/build-catalog-index.js",
     "test:catalog-build": "node scripts/test-build-catalog-index.js",
-    "check:playtest-ui": "node --check js/playtest-tabletop.js && node scripts/test-playtest-tabletop.js"
+    "check:playtest-ui": "node --check js/playtest-tabletop.js && node scripts/test-playtest-tabletop.js",
+    "check:playtest-controls": "node --check js/playtest-tabletop.js && node scripts/test-playtest-tabletop.js && node scripts/test-playtest-controls.js"
   },
   "engines": {
     "node": ">=18"

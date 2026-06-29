@@ -25,7 +25,13 @@ button,
   cursor: pointer;
 }
 
-button:hover,
+button:disabled,
+input:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+button:hover:not(:disabled),
 .file-input-label:hover {
   text-decoration: underline;
 }
@@ -57,7 +63,7 @@ input:focus-visible,
 }
 
 .lede {
-  max-width: 70ch;
+  max-width: 76ch;
 }
 
 .loader-panel,
@@ -69,7 +75,10 @@ input:focus-visible,
   padding: 1rem;
 }
 
-.loader-actions {
+.loader-actions,
+.counter-button-row,
+.entity-action-row,
+.zone-action-row {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -121,6 +130,7 @@ input:focus-visible,
   margin-block: 1rem;
 }
 
+.manual-controls-grid,
 .formation-grid,
 .character-areas,
 .zone-summary {
@@ -128,22 +138,29 @@ input:focus-visible,
   gap: 1rem;
 }
 
+.manual-controls-grid,
 .formation-grid {
   grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
 }
 
+.control-card,
 .formation-row,
 .character-panel,
 .zone-card,
-.card-details {
+.card-details,
+.entity-card,
+.counter-controls {
   border: 1px solid currentColor;
   border-radius: 0.35rem;
   padding: 0.85rem;
 }
 
+.control-card h4,
 .formation-row h4,
 .character-panel h4,
-.zone-card h4 {
+.zone-card h4,
+.entity-card h5,
+.counter-controls h6 {
   margin-top: 0;
 }
 
@@ -174,21 +191,44 @@ input:focus-visible,
   font-size: 0.9rem;
 }
 
-.card-actions {
+.card-actions,
+.entity-actions {
   margin-top: 0.5rem;
 }
 
-.card-actions button {
+.card-actions button,
+.entity-actions button,
+.counter-controls button {
   padding: 0.35rem 0.5rem;
+}
+
+.counter-controls {
+  margin-top: 0.75rem;
+}
+
+.counter-controls h6 {
+  font-size: 1rem;
+}
+
+.counter-field {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.45rem;
+  margin-top: 0.75rem;
+}
+
+.counter-field output {
+  font-weight: 700;
+}
+
+.counter-field input {
+  max-width: 14rem;
+  padding: 0.35rem;
 }
 
 .card-rules {
   white-space: pre-wrap;
   overflow-wrap: anywhere;
-}
-
-.definition-details {
-  margin-top: 1rem;
 }
 
 .empty-slot {
