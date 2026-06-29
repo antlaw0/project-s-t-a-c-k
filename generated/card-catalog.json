@@ -1,0 +1,934 @@
+{
+  "catalogVersion": 1,
+  "cardsById": {
+    "ability.barbarian.recruit-rage": {
+      "id": "ability.barbarian.recruit-rage",
+      "active": true,
+      "count": 1,
+      "cardType": "ability",
+      "name": "Rage",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "ability-standard",
+      "tags": [
+        "ability",
+        "barbarian",
+        "recruit",
+        "action",
+        "status",
+        "rage",
+        "melee",
+        "martial"
+      ],
+      "rulesText": "Barbarian Ability — Recruit\nAction • Status • Rage\n\nUse this character’s shared activation. Move this card from its equipped Skill Card into this character’s Status Row.\n\nWhile Rage is active:\n• This character’s melee weapon attacks deal +1 damage.\n• This character has -1 Defense.\n• This character cannot cast spells.\n• This character may still use non-spell abilities, reactions, items, and normal weapon attacks.\n\nAt the end of each later shared activation belonging to this character, check whether this character personally dealt 1 or more HP damage to an enemy during that activation.\n• If they did, Rage remains active.\n• If they did not, return Rage to its equipped Skill Card.\n• If the shared activation was entirely lost because this character was Stunned, do not check Rage. Rage remains active.\n\nAt the end of combat, return Rage to its equipped Skill Card.",
+      "data": {
+        "abilityType": "actionStatus",
+        "discipline": "barbarian",
+        "rank": {
+          "id": "recruit",
+          "order": 1
+        },
+        "equipRules": {
+          "allowedSkillDisciplines": [
+            "barbarian"
+          ],
+          "maximumSkillRank": "recruit"
+        },
+        "activation": {
+          "activationCost": "sharedActivation",
+          "moveTo": "ownerStatusRow"
+        },
+        "status": {
+          "statusType": "rage",
+          "owner": "abilityOwner",
+          "modifiers": [
+            {
+              "type": "modifyMeleeWeaponAttackDamage",
+              "amount": 1
+            },
+            {
+              "type": "modifyDefense",
+              "amount": -1
+            }
+          ],
+          "restrictions": [
+            {
+              "type": "cannotCastSpells"
+            }
+          ],
+          "explicitlyAllowedActions": [
+            "nonSpellAbilities",
+            "reactions",
+            "tacticalReserveItems",
+            "normalWeaponAttacks"
+          ]
+        },
+        "maintenance": {
+          "checkTiming": "endOfEachLaterSharedActivation",
+          "requiredCondition": {
+            "event": "hpDamageDealtToEnemy",
+            "minimumHpDamage": 1,
+            "actorMustBeAbilityOwner": true
+          },
+          "onConditionMet": {
+            "type": "remainInStatusRow"
+          },
+          "onConditionNotMet": {
+            "type": "returnToEquippedSkillCard"
+          },
+          "skipCheckWhen": {
+            "sharedActivationLostBecauseOfOwnerStun": true
+          }
+        },
+        "endOfCombat": {
+          "type": "returnToEquippedSkillCard"
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/skill_and_ability_cards/Barbarian.md",
+        "sourceSection": "Recruit Barbarian Ability Cards > Rage",
+        "verifiedAgainstRulebook": true,
+        "notes": "Rage uses the owner’s shared activation to begin, occupies the owner’s Status Row while active, and returns to the exact Skill Card it came from when it ends. Count 1 is the provisional core-alpha supply."
+      }
+    },
+    "character.warrior": {
+      "id": "character.warrior",
+      "active": true,
+      "count": 1,
+      "cardType": "character",
+      "name": "Warrior",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "character-standard",
+      "tags": [
+        "character",
+        "player-character",
+        "martial",
+        "warrior",
+        "frontline",
+        "core-alpha"
+      ],
+      "rulesText": "Player Character — Martial\n\nMaximum HP: 20\nSuggested First Placement: Player Front Row\n\nClass Trait — Weapon Mastery\nThis character's melee weapon attacks ignore 1 Defense.\n\nNative Skill Domains\nBarbarian; Vanguard; Marksman.",
+      "data": {
+        "entityType": "playerCharacter",
+        "role": "martial",
+        "maximumHp": 20,
+        "suggestedFirstPlacement": "playerFront",
+        "classTrait": {
+          "id": "weapon-mastery",
+          "name": "Weapon Mastery",
+          "effect": {
+            "type": "ignoreDefense",
+            "amount": 1,
+            "appliesTo": "meleeWeaponAttacks"
+          }
+        },
+        "nativeSkillDomains": [
+          "barbarian",
+          "vanguard",
+          "marksman"
+        ],
+        "slotCapacity": {
+          "skillSlots": 5,
+          "tacticalReserveSlots": 5,
+          "inventoryCapacity": 20,
+          "transportationSlots": 1,
+          "statusRowSlots": 5
+        },
+        "activation": {
+          "type": "sharedActivation",
+          "sharedWith": "controlledAllies",
+          "activationsPerEncounterRound": 1
+        },
+        "startingLoadout": {
+          "equipment": [
+            {
+              "cardId": "equipment.weapon.arming-sword",
+              "quantity": 1
+            },
+            {
+              "cardId": "equipment.shield.buckler",
+              "quantity": 1
+            },
+            {
+              "cardId": "equipment.armor.leather-armor",
+              "quantity": 1
+            }
+          ],
+          "skills": [
+            {
+              "cardId": "skill.barbarian.recruit-feral-instinct",
+              "attachedCards": [
+                "ability.barbarian.recruit-rage"
+              ]
+            },
+            {
+              "cardId": "skill.vanguard.recruit-shield-discipline",
+              "attachedCards": [
+                "ability.vanguard.recruit-shield-bash"
+              ]
+            }
+          ],
+          "tacticalReserve": [
+            {
+              "cardId": "tactical-reserve.healing-potion",
+              "quantity": 1
+            },
+            {
+              "cardId": "tactical-reserve.bandage",
+              "quantity": 1
+            },
+            {
+              "cardId": "tactical-reserve.antidote",
+              "quantity": 1
+            }
+          ],
+          "startingDefense": 2
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/character_classes.md",
+        "sourceSection": "Warrior Character Card",
+        "verifiedAgainstRulebook": false,
+        "notes": "Maximum HP, class trait, native skill domains, starting equipment, starter skills, Tactical Reserve cards, and starting Defense are migrated from the first-playtest character roster. Several referenced catalog records have not yet been created and are intentionally retained as future references."
+      }
+    },
+    "dungeon.goblin-warrens.goblin-alarm": {
+      "id": "dungeon.goblin-warrens.goblin-alarm",
+      "active": true,
+      "count": 2,
+      "cardType": "dungeonCard",
+      "name": "Goblin Alarm",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "dungeon-event-standard",
+      "tags": [
+        "dungeon-card",
+        "event",
+        "goblin-warrens",
+        "scrap-fortress",
+        "goblin",
+        "reinforcement",
+        "heat"
+      ],
+      "rulesText": "Event\n\nThe active character gains 2 Heat.\n\nReveal the bottom 2 cards of the Dungeon Deck.\n\nAdd the first revealed Goblin Enemy card to an open Enemy Formation slot.\n\nShuffle every other revealed card back into the Dungeon Deck.",
+      "data": {
+        "dungeonCardType": "event",
+        "dungeonThemes": [
+          "goblin-warrens",
+          "scrap-fortress"
+        ],
+        "resolutionTiming": "immediatelyWhenDrawn",
+        "effects": [
+          {
+            "type": "gainHeat",
+            "target": "activeCharacter",
+            "amount": 2
+          }
+        ],
+        "revealAndDeploy": {
+          "sourceZone": "dungeonDeck",
+          "revealFrom": "bottom",
+          "revealCount": 2,
+          "selectionRule": {
+            "type": "firstMatchingRevealedCard",
+            "criteria": {
+              "cardType": "enemy",
+              "requiredTags": [
+                "goblin"
+              ]
+            }
+          },
+          "onMatchingCardFound": {
+            "type": "addCardToEncounter",
+            "destination": "openEnemyFormationSlot"
+          },
+          "onNoMatchingCardFound": {
+            "type": "shuffleAllRevealedCardsBackIntoDungeonDeck"
+          },
+          "remainingRevealedCards": {
+            "type": "shuffleBackIntoDungeonDeck"
+          }
+        },
+        "afterResolution": {
+          "type": "moveCard",
+          "destination": "dungeonDiscardPile"
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/dungeon_cards/dungeonDecks.txt",
+        "sourceSection": "Goblin Warrens / Scrap Fortress > Goblin Alarm",
+        "verifiedAgainstRulebook": false,
+        "notes": "Rules text migrated from the current Goblin Warrens source. Count 2 is a provisional first-playtest density. The source text does not explicitly state the event card's own post-resolution destination, so dungeonDiscardPile is modeled as the current one-shot dungeon-event default and should be confirmed during deck-rule review."
+      }
+    },
+    "dungeon.goblin-warrens.tripwire": {
+      "id": "dungeon.goblin-warrens.tripwire",
+      "active": true,
+      "count": 2,
+      "cardType": "dungeonCard",
+      "name": "Tripwire",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "dungeon-trap-standard",
+      "tags": [
+        "dungeon-card",
+        "trap",
+        "goblin-warrens",
+        "scrap-fortress",
+        "physical",
+        "heat",
+        "rogue-interaction"
+      ],
+      "rulesText": "Trap\n\nA player-controlled character in the active character's current row with an equipped Rogue skill may disarm Tripwire. If so, discard Tripwire.\n\nOtherwise, the active character takes 1 Physical damage and gains 2 Heat.\n\nDiscard Tripwire.",
+      "data": {
+        "dungeonCardType": "trap",
+        "dungeonThemes": [
+          "goblin-warrens",
+          "scrap-fortress"
+        ],
+        "resolutionTiming": "immediatelyWhenDrawn",
+        "responseOption": {
+          "optional": true,
+          "name": "Disarm Tripwire",
+          "eligibleEntity": {
+            "entityTypes": [
+              "playerCharacter"
+            ],
+            "mustBePlayerControlled": true,
+            "mustBeInSameRowAs": "activeCharacter",
+            "requiresEquippedSkillTag": "rogue"
+          },
+          "onUse": {
+            "type": "moveCard",
+            "destination": "dungeonDiscardPile"
+          }
+        },
+        "otherwise": {
+          "target": "activeCharacter",
+          "effects": [
+            {
+              "type": "dealDamage",
+              "amount": 1,
+              "damageType": "physical"
+            },
+            {
+              "type": "gainHeat",
+              "amount": 2
+            }
+          ]
+        },
+        "afterResolution": {
+          "type": "moveCard",
+          "destination": "dungeonDiscardPile"
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/dungeon_cards/dungeonDecks.txt",
+        "sourceSection": "Goblin Warrens / Scrap Fortress > Tripwire",
+        "verifiedAgainstRulebook": false,
+        "notes": "Rules text migrated from the current Goblin Warrens dungeon-card source. Count 2 is a provisional first-playtest deck-density decision and can be tuned after initial dungeon runs."
+      }
+    },
+    "enemy.goblin-raider": {
+      "id": "enemy.goblin-raider",
+      "active": true,
+      "count": 4,
+      "cardType": "enemy",
+      "name": "Goblin Raider",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "enemy-standard",
+      "tags": [
+        "enemy",
+        "goblin",
+        "tier-1",
+        "melee",
+        "physical",
+        "goblin-warrens"
+      ],
+      "rulesText": "Rusty Blade\nDeal 2 physical damage, melee.\n\nLoot: 1 Coin.",
+      "data": {
+        "enemyTier": 1,
+        "preferredRow": "enemyFront",
+        "stats": {
+          "hp": 6,
+          "defense": 0
+        },
+        "actions": [
+          {
+            "id": "rusty-blade",
+            "name": "Rusty Blade",
+            "priority": 1,
+            "actionType": "attack",
+            "range": "melee",
+            "targeting": {
+              "mode": "defaultHighestHeatLegalFriendlyEntity"
+            },
+            "damage": {
+              "amount": 2,
+              "damageType": "physical"
+            }
+          }
+        ],
+        "loot": [
+          {
+            "type": "currency",
+            "amount": 1
+          }
+        ]
+      },
+      "source": {
+        "sourceFile": "Cards/dungeon_cards/goblin enemies.txt",
+        "sourceSection": "Tier 1 Goblins > Goblin Raider",
+        "verifiedAgainstRulebook": false,
+        "notes": "HP 6, Rusty Blade for 2 physical melee damage, and 1 Coin loot are migrated from the current Goblin enemy source. Defense 0, Enemy Front Row placement, and count 4 are provisional catalog decisions for the first playtest."
+      }
+    },
+    "equipment.weapon.arming-sword": {
+      "id": "equipment.weapon.arming-sword",
+      "active": true,
+      "count": 2,
+      "cardType": "equipment",
+      "name": "Arming Sword",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "equipment-weapon-standard",
+      "tags": [
+        "equipment",
+        "weapon",
+        "melee",
+        "blade",
+        "sword",
+        "one-handed",
+        "physical",
+        "common"
+      ],
+      "rulesText": "Weapon\nMelee • Blade • Sword\n2 Physical Damage\nRequires Blade proficiency.\nHands Required: 1 Hand.",
+      "data": {
+        "equipmentType": "weapon",
+        "equipmentSlot": "weapon",
+        "rangeTag": "melee",
+        "weaponTags": [
+          "blade",
+          "sword"
+        ],
+        "handsRequired": 1,
+        "requiredProficiency": [
+          "blade"
+        ],
+        "damage": {
+          "amount": 2,
+          "damageType": "physical"
+        },
+        "traits": [],
+        "economy": {
+          "equipmentPowerRating": 7,
+          "valueGold": 70,
+          "sellValueGold": 35,
+          "rarity": "common"
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+        "sourceSection": "6. Weapon Cards > Arming Sword",
+        "verifiedAgainstRulebook": false,
+        "notes": "The printed weapon values are migrated from the starter equipment catalog. Count 2 is a provisional first-playtest supply decision."
+      }
+    },
+    "hireling.roadside-sellsword": {
+      "id": "hireling.roadside-sellsword",
+      "active": true,
+      "count": 1,
+      "cardType": "hireling",
+      "name": "Roadside Sellsword",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "hireling-standard",
+      "tags": [
+        "hireling",
+        "mercenary",
+        "autonomous-ally",
+        "market-only",
+        "village",
+        "melee",
+        "sword",
+        "physical"
+      ],
+      "rulesText": "Hireling — Mercenary — Autonomous Ally — Market Only\n\nMinimum Settlement: Village\nCurrency Price: 14\nPreferred Row: Player Front Row\nHP: 6\nDefense: 1\n\nPriority:\n1. Sword Cut\nIf this ally is in the Player Front Row, deal 2 Physical damage to the enemy in the opposing Front Row with the highest printed Attack. Gain 1 Heat.\n\n2. Advance\nIf this ally is in the Player Back Row and an empty Player Front Row slot exists, move to the leftmost empty Player Front Row slot.\n\nDefeat: Put this card into the Loot Discard Pile.",
+      "data": {
+        "entityType": "autonomousAlly",
+        "hirelingType": "mercenary",
+        "preferredRow": "playerFront",
+        "stats": {
+          "hp": 6,
+          "defense": 1
+        },
+        "activation": {
+          "type": "independentActivation",
+          "activationsPerEncounterRound": 1,
+          "followsPrintedPriorityList": true
+        },
+        "marketRules": {
+          "marketOnly": true,
+          "minimumSettlementSize": "village",
+          "currencyPrice": 14,
+          "powerBudget": 6,
+          "neverEligibleForDungeonLoot": true
+        },
+        "ownershipRules": {
+          "assignedToPurchasingCharacterGroup": true,
+          "occupiesPersistentHirelingOrCompanionSpace": true,
+          "countsAgainstInventoryCapacity": false,
+          "maximumPersistentHirelingsOrCompanionsPerOwner": 1,
+          "entersDungeonWithOwner": true,
+          "leavesDungeonWithOwner": true
+        },
+        "aiPriorityList": [
+          {
+            "priority": 1,
+            "id": "sword-cut",
+            "name": "Sword Cut",
+            "condition": {
+              "allyMustBeInRow": "playerFront"
+            },
+            "actionType": "attack",
+            "range": "melee",
+            "targeting": {
+              "scope": "enemy",
+              "requiredRow": "enemyFront",
+              "selectionRule": "highestPrintedAttack"
+            },
+            "damage": {
+              "amount": 2,
+              "damageType": "physical"
+            },
+            "afterResolution": {
+              "type": "gainHeat",
+              "amount": 1
+            }
+          },
+          {
+            "priority": 2,
+            "id": "advance",
+            "name": "Advance",
+            "condition": {
+              "allyMustBeInRow": "playerBack",
+              "requiresEmptyRowSlot": "playerFront"
+            },
+            "actionType": "move",
+            "destination": {
+              "row": "playerFront",
+              "selectionRule": "leftmostEmptySlot"
+            }
+          }
+        ],
+        "defeat": {
+          "destination": "lootDiscardPile",
+          "canBeRevived": false
+        },
+        "dismissal": {
+          "allowedOnlyAtSettlement": true,
+          "destination": "lootDiscardPile"
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/Project_STACK_Mercenary_Hirelings_v0.1.md",
+        "sourceSection": "Mercenary Hireling Cards > Roadside Sellsword",
+        "verifiedAgainstRulebook": true,
+        "notes": "Count 1 is intentional. This is a persistent named market card, not a disposable enemy supply. If dismissed or defeated, it enters the Loot Discard Pile and can become available again when the Loot Deck is reshuffled."
+      }
+    },
+    "skill.barbarian.recruit-feral-instinct": {
+      "id": "skill.barbarian.recruit-feral-instinct",
+      "active": true,
+      "count": 1,
+      "cardType": "skill",
+      "name": "Feral Instinct",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "skill-standard",
+      "tags": [
+        "skill",
+        "discipline",
+        "barbarian",
+        "recruit",
+        "martial",
+        "warrior-native"
+      ],
+      "rulesText": "Barbarian Skill — Recruit\n\nAbility Slots: 2\nMay Equip: Recruit Barbarian abilities.\n\nPassive — Rising Fury\nThe first time this character deals 1 or more HP damage to an enemy during each of their shared activations, gain 1 additional Heat.",
+      "data": {
+        "skillType": "discipline",
+        "discipline": "barbarian",
+        "rank": {
+          "id": "recruit",
+          "order": 1
+        },
+        "nativeClasses": [
+          "character.warrior"
+        ],
+        "attachedCardRules": {
+          "allowedCardTypes": [
+            "ability"
+          ],
+          "requiredDiscipline": "barbarian",
+          "maximumRank": "recruit",
+          "slotCount": 2
+        },
+        "passive": {
+          "id": "rising-fury",
+          "name": "Rising Fury",
+          "trigger": {
+            "event": "hpDamageDealtToEnemy",
+            "minimumHpDamage": 1,
+            "frequency": "firstPerSharedActivation",
+            "actorMustBeSkillOwner": true
+          },
+          "effect": {
+            "type": "gainHeat",
+            "amount": 1,
+            "isAdditionalHeat": true
+          }
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/skill_and_ability_cards/Barbarian.md",
+        "sourceSection": "Barbarian Skill Cards > Recruit: Feral Instinct",
+        "verifiedAgainstRulebook": true,
+        "notes": "This is the rank-one Barbarian Skill Card. Its two slots can only hold Recruit-rank Barbarian Ability Cards. Count 1 is the provisional first-playtest supply."
+      }
+    },
+    "status.negative.poisoned": {
+      "id": "status.negative.poisoned",
+      "active": true,
+      "count": 8,
+      "cardType": "status",
+      "name": "Poisoned",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "status-negative-standard",
+      "tags": [
+        "status",
+        "negative-status",
+        "poison",
+        "stacking",
+        "status-deck"
+      ],
+      "rulesText": "Negative Status — Poison\n\nAt the start of the affected entity's next applicable activation, that entity takes 1 Poison damage. Then discard this card.\n\nPoisoned stacks. Resolve each Poisoned card separately.",
+      "data": {
+        "statusCategory": "negative",
+        "sourceZone": "statusDeck",
+        "occupiesStatusRow": true,
+        "stacking": {
+          "allowed": true,
+          "rule": "multipleSeparateCards"
+        },
+        "canAffect": [
+          "playerCharacter",
+          "controlledAlly",
+          "autonomousAlly",
+          "enemy",
+          "boss"
+        ],
+        "trigger": {
+          "event": "startOfAffectedEntityNextApplicableActivation"
+        },
+        "effect": {
+          "type": "dealDamage",
+          "amount": 1,
+          "damageType": "poison",
+          "target": "statusOwner"
+        },
+        "afterResolution": {
+          "type": "discard"
+        }
+      },
+      "source": {
+        "sourceFile": "docs/Project_STACK_Core_Rulebook_v0.10_Alpha_Consolidated.md",
+        "sourceSection": "7.9.1 Negative Status Effects",
+        "verifiedAgainstRulebook": true,
+        "notes": "Count 8 is a provisional first-playtest Status Deck supply. Each Poisoned card is a separate stackable status card and resolves independently."
+      }
+    },
+    "status.negative.stunned": {
+      "id": "status.negative.stunned",
+      "active": true,
+      "count": 4,
+      "cardType": "status",
+      "name": "Stunned",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "status-negative-standard",
+      "tags": [
+        "status",
+        "negative-status",
+        "stun",
+        "non-stacking",
+        "status-deck"
+      ],
+      "rulesText": "Negative Status — Stun\n\nAt the start of the affected entity's next applicable activation, that entity loses its next normal activation. Then discard this card.\n\nPlayer Character: That character's group loses its shared activation and cannot activate a Controlled Ally.\nControlled Ally: This ally cannot be selected for its owner's shared activation. The owner may still act or select another eligible Controlled Ally.\nAutonomous Ally: This ally loses only its independent activation.\n\nStun does not prevent passive effects, statuses, reactions, or triggered abilities unless they require the Stunned entity to take an action.",
+      "data": {
+        "statusCategory": "negative",
+        "sourceZone": "statusDeck",
+        "occupiesStatusRow": true,
+        "stacking": {
+          "allowed": false,
+          "rule": "oneCopyPerEntity"
+        },
+        "canAffect": [
+          "playerCharacter",
+          "controlledAlly",
+          "autonomousAlly",
+          "enemy",
+          "boss"
+        ],
+        "trigger": {
+          "event": "startOfAffectedEntityNextApplicableActivation"
+        },
+        "resolutionByAffectedEntityType": {
+          "playerCharacter": {
+            "type": "loseSharedActivation",
+            "cannotActivateControlledAllies": true
+          },
+          "controlledAlly": {
+            "type": "ineligibleForOwnersSharedActivation"
+          },
+          "autonomousAlly": {
+            "type": "loseIndependentActivation"
+          },
+          "enemy": {
+            "type": "loseNormalActivation"
+          },
+          "boss": {
+            "type": "loseNormalActivation"
+          }
+        },
+        "doesNotPrevent": [
+          "passiveEffects",
+          "statusEffects",
+          "reactions",
+          "triggeredAbilities"
+        ],
+        "exception": {
+          "rule": "An effect remains allowed only when it does not require the Stunned entity to take an action."
+        },
+        "afterResolution": {
+          "type": "discard"
+        }
+      },
+      "source": {
+        "sourceFile": "docs/Project_STACK_Core_Rulebook_v0.10_Alpha_Consolidated.md",
+        "sourceSection": "7.9.1 Negative Status Effects; 7.9.3 Status Timing; 7.9.4 Stun and Activations",
+        "verifiedAgainstRulebook": true,
+        "notes": "Count 4 is a provisional first-playtest Status Deck supply. Stunned does not stack. It is intentionally modeled by affected entity type because player characters, Controlled Allies, Autonomous Allies, enemies, and bosses have different activation structures."
+      }
+    },
+    "tactical-reserve.healing-potion": {
+      "id": "tactical-reserve.healing-potion",
+      "active": true,
+      "count": 1,
+      "cardType": "tacticalReserve",
+      "name": "Healing Potion",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "tactical-reserve-standard",
+      "tags": [
+        "tactical-reserve",
+        "potion",
+        "healing",
+        "consumable"
+      ],
+      "rulesText": "Restore 3 HP to one friendly entity. After resolving, shuffle this card into the Loot Deck.",
+      "data": {
+        "timing": "your-shared-activation",
+        "target": {
+          "scope": "friendlyEntity",
+          "count": 1
+        },
+        "effect": {
+          "type": "restoreHp",
+          "amount": 3
+        },
+        "destinationAfterUse": "lootDeck"
+      },
+      "source": {
+        "verifiedAgainstRulebook": false,
+        "notes": "Bootstrap sample only. Confirm the final Healing Potion wording and healing amount against the approved Tactical Reserve card design before treating this record as print-ready."
+      }
+    }
+  },
+  "decksById": {
+    "deck.goblin-warrens-catalog-smoke-test": {
+      "id": "deck.goblin-warrens-catalog-smoke-test",
+      "active": true,
+      "deckType": "dungeon",
+      "name": "Goblin Warrens Catalog Smoke Test",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "tags": [
+        "deck",
+        "dungeon",
+        "goblin-warrens",
+        "smoke-test",
+        "catalog-validation"
+      ],
+      "rulesText": "A minimal Dungeon Deck used to test initial catalog loading, card-instance creation, shuffling, drawing, immediate trap and event resolution, Goblin reinforcement deployment, and Dungeon Discard behavior.",
+      "data": {
+        "dungeonTheme": "goblin-warrens",
+        "intendedUse": "catalogSmokeTest",
+        "setup": {
+          "shuffleBeforePlay": true,
+          "drawZone": "dungeonDeck",
+          "discardZone": "dungeonDiscardPile",
+          "lootZone": "dungeonLootArea"
+        },
+        "cardEntries": [
+          {
+            "cardId": "enemy.goblin-raider",
+            "quantity": 4
+          },
+          {
+            "cardId": "dungeon.goblin-warrens.tripwire",
+            "quantity": 2
+          },
+          {
+            "cardId": "dungeon.goblin-warrens.goblin-alarm",
+            "quantity": 2
+          }
+        ],
+        "totalCardCount": 8,
+        "knownLimitations": [
+          "This deck is not a complete dungeon.",
+          "This deck has no boss, dungeon objective, loot card, special room, or completion condition.",
+          "Use it only to test catalog loading and core Dungeon Deck interactions."
+        ]
+      },
+      "source": {
+        "verifiedAgainstRulebook": false,
+        "notes": "First deck-definition test. Every entry quantity is intentionally equal to or below the corresponding active card definition count."
+      }
+    }
+  },
+  "scenariosById": {
+    "scenario.solo-warrior-goblin-warrens-smoke-test": {
+      "id": "scenario.solo-warrior-goblin-warrens-smoke-test",
+      "active": true,
+      "scenarioType": "playtest",
+      "name": "Solo Warrior: Goblin Warrens Smoke Test",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "tags": [
+        "scenario",
+        "solo",
+        "manual-playtest",
+        "warrior",
+        "goblin-warrens",
+        "catalog-smoke-test"
+      ],
+      "rulesText": "A minimal manual playtest setup for validating scenario loading, card-instance creation, equipment, Skill Card attachments, Tactical Reserve placement, Dungeon Deck shuffling, manual drawing, enemy deployment, and Dungeon Discard behavior.",
+      "data": {
+        "playMode": "soloManual",
+        "automationPolicy": {
+          "automateRulesResolution": false,
+          "allowManualCardMovement": true,
+          "allowManualCounterChanges": true,
+          "allowManualOverrides": true
+        },
+        "runtimeSetupPolicy": {
+          "spawnCardInstancesFromDefinitions": true,
+          "enforceActiveDefinitionsOnly": true,
+          "enforceDefinitionCopyCounts": true,
+          "shuffleReferencedDecksAtSetup": true
+        },
+        "participants": [
+          {
+            "id": "participant.solo-playtester",
+            "controlledCharacterSetups": [
+              {
+                "id": "setup.warrior-001",
+                "characterCardId": "character.warrior",
+                "startingRow": "playerFront",
+                "startingState": {
+                  "damage": 0,
+                  "heat": 0
+                },
+                "equipment": [
+                  {
+                    "cardId": "equipment.weapon.arming-sword",
+                    "slot": "weapon"
+                  }
+                ],
+                "skills": [
+                  {
+                    "cardId": "skill.barbarian.recruit-feral-instinct",
+                    "slot": 1,
+                    "attachedAbilityCardIds": [
+                      "ability.barbarian.recruit-rage"
+                    ]
+                  }
+                ],
+                "tacticalReserve": [
+                  {
+                    "cardId": "tactical-reserve.healing-potion",
+                    "slot": 1
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "dungeonSetup": {
+          "deckId": "deck.goblin-warrens-catalog-smoke-test",
+          "drawMode": "manual",
+          "drawZone": "dungeonDeck",
+          "discardZone": "dungeonDiscardPile",
+          "lootZone": "dungeonLootArea"
+        },
+        "endCondition": {
+          "type": "manualStop",
+          "notes": "This is a catalog and tabletop smoke test, not a complete dungeon. Stop when the intended card, deck, row, counter, and discard interactions have been tested."
+        },
+        "knownLimitations": [
+          "This scenario does not yet include a full starting loadout.",
+          "This scenario does not yet include a boss, dungeon objective, or normal dungeon-completion condition.",
+          "This scenario intentionally begins with only one filled Tactical Reserve slot.",
+          "Combat, targeting, damage, Heat, and status resolution remain manually controlled during this early playtest stage."
+        ]
+      },
+      "source": {
+        "verifiedAgainstRulebook": false,
+        "notes": "First scenario-definition test. It references only currently cataloged active card and deck definitions, and intentionally avoids the Warrior card's unconverted starter-loadout references."
+      }
+    }
+  },
+  "activeCardIds": [
+    "ability.barbarian.recruit-rage",
+    "character.warrior",
+    "dungeon.goblin-warrens.goblin-alarm",
+    "dungeon.goblin-warrens.tripwire",
+    "enemy.goblin-raider",
+    "equipment.weapon.arming-sword",
+    "hireling.roadside-sellsword",
+    "skill.barbarian.recruit-feral-instinct",
+    "status.negative.poisoned",
+    "status.negative.stunned",
+    "tactical-reserve.healing-potion"
+  ],
+  "activeDeckIds": [
+    "deck.goblin-warrens-catalog-smoke-test"
+  ],
+  "activeScenarioIds": [
+    "scenario.solo-warrior-goblin-warrens-smoke-test"
+  ]
+}

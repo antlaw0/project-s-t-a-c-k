@@ -11,7 +11,9 @@
     "validate:data": "npm run validate:cards && npm run validate:decks && npm run validate:scenarios",
     "validate:scenarios": "node scripts/validate-scenario-data.js",
     "create:playtest-state": "node scripts/create-playtest-state.js",
-    "test:playtest-state": "node scripts/test-playtest-state.js"
+    "test:playtest-state": "node scripts/test-playtest-state.js",
+    "build:catalog": "node scripts/build-catalog-index.js",
+    "test:catalog-build": "node scripts/test-build-catalog-index.js"
   },
   "engines": {
     "node": ">=18"
