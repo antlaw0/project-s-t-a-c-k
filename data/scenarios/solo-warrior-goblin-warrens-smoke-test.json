@@ -1,0 +1,90 @@
+{
+  "id": "scenario.solo-warrior-goblin-warrens-smoke-test",
+  "active": true,
+  "scenarioType": "playtest",
+  "name": "Solo Warrior: Goblin Warrens Smoke Test",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "tags": [
+    "scenario",
+    "solo",
+    "manual-playtest",
+    "warrior",
+    "goblin-warrens",
+    "catalog-smoke-test"
+  ],
+  "rulesText": "A minimal manual playtest setup for validating scenario loading, card-instance creation, equipment, Skill Card attachments, Tactical Reserve placement, Dungeon Deck shuffling, manual drawing, enemy deployment, and Dungeon Discard behavior.",
+  "data": {
+    "playMode": "soloManual",
+    "automationPolicy": {
+      "automateRulesResolution": false,
+      "allowManualCardMovement": true,
+      "allowManualCounterChanges": true,
+      "allowManualOverrides": true
+    },
+    "runtimeSetupPolicy": {
+      "spawnCardInstancesFromDefinitions": true,
+      "enforceActiveDefinitionsOnly": true,
+      "enforceDefinitionCopyCounts": true,
+      "shuffleReferencedDecksAtSetup": true
+    },
+    "participants": [
+      {
+        "id": "participant.solo-playtester",
+        "controlledCharacterSetups": [
+          {
+            "id": "setup.warrior-001",
+            "characterCardId": "character.warrior",
+            "startingRow": "playerFront",
+            "startingState": {
+              "damage": 0,
+              "heat": 0
+            },
+            "equipment": [
+              {
+                "cardId": "equipment.weapon.arming-sword",
+                "slot": "weapon"
+              }
+            ],
+            "skills": [
+              {
+                "cardId": "skill.barbarian.recruit-feral-instinct",
+                "slot": 1,
+                "attachedAbilityCardIds": [
+                  "ability.barbarian.recruit-rage"
+                ]
+              }
+            ],
+            "tacticalReserve": [
+              {
+                "cardId": "tactical-reserve.healing-potion",
+                "slot": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "dungeonSetup": {
+      "deckId": "deck.goblin-warrens-catalog-smoke-test",
+      "drawMode": "manual",
+      "drawZone": "dungeonDeck",
+      "discardZone": "dungeonDiscardPile",
+      "lootZone": "dungeonLootArea"
+    },
+    "endCondition": {
+      "type": "manualStop",
+      "notes": "This is a catalog and tabletop smoke test, not a complete dungeon. Stop when the intended card, deck, row, counter, and discard interactions have been tested."
+    },
+    "knownLimitations": [
+      "This scenario does not yet include a full starting loadout.",
+      "This scenario does not yet include a boss, dungeon objective, or normal dungeon-completion condition.",
+      "This scenario intentionally begins with only one filled Tactical Reserve slot.",
+      "Combat, targeting, damage, Heat, and status resolution remain manually controlled during this early playtest stage."
+    ]
+  },
+  "source": {
+    "verifiedAgainstRulebook": false,
+    "notes": "First scenario-definition test. It references only currently cataloged active card and deck definitions, and intentionally avoids the Warrior card's unconverted starter-loadout references."
+  }
+}

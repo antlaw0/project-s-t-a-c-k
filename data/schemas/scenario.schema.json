@@ -1,0 +1,342 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://project-stack.local/schemas/scenario.schema.json",
+  "title": "Project S.T.A.C.K. Scenario Definition",
+  "description": "Shared structure for a Project S.T.A.C.K. playtest scenario. Cross-catalog and copy-supply checks are performed by the repository validator.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "active",
+    "scenarioType",
+    "name",
+    "revision",
+    "tags",
+    "rulesText",
+    "data"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$"
+    },
+    "active": {
+      "type": "boolean"
+    },
+    "scenarioType": {
+      "type": "string",
+      "pattern": "^[a-z][A-Za-z0-9]*$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "moduleId": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$"
+    },
+    "tags": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$"
+      }
+    },
+    "rulesText": {
+      "type": "string",
+      "minLength": 1
+    },
+    "data": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "playMode",
+        "automationPolicy",
+        "runtimeSetupPolicy",
+        "participants",
+        "dungeonSetup",
+        "endCondition"
+      ],
+      "properties": {
+        "playMode": {
+          "type": "string",
+          "minLength": 1
+        },
+        "automationPolicy": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "automateRulesResolution",
+            "allowManualCardMovement",
+            "allowManualCounterChanges",
+            "allowManualOverrides"
+          ],
+          "properties": {
+            "automateRulesResolution": {
+              "type": "boolean"
+            },
+            "allowManualCardMovement": {
+              "type": "boolean"
+            },
+            "allowManualCounterChanges": {
+              "type": "boolean"
+            },
+            "allowManualOverrides": {
+              "type": "boolean"
+            }
+          }
+        },
+        "runtimeSetupPolicy": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "spawnCardInstancesFromDefinitions",
+            "enforceActiveDefinitionsOnly",
+            "enforceDefinitionCopyCounts",
+            "shuffleReferencedDecksAtSetup"
+          ],
+          "properties": {
+            "spawnCardInstancesFromDefinitions": {
+              "type": "boolean"
+            },
+            "enforceActiveDefinitionsOnly": {
+              "type": "boolean"
+            },
+            "enforceDefinitionCopyCounts": {
+              "type": "boolean"
+            },
+            "shuffleReferencedDecksAtSetup": {
+              "type": "boolean"
+            }
+          }
+        },
+        "participants": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "controlledCharacterSetups"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$"
+              },
+              "controlledCharacterSetups": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "id",
+                    "characterCardId",
+                    "startingRow",
+                    "startingState",
+                    "equipment",
+                    "skills",
+                    "tacticalReserve"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$"
+                    },
+                    "characterCardId": {
+                      "type": "string",
+                      "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$"
+                    },
+                    "startingRow": {
+                      "type": "string",
+                      "enum": [
+                        "playerFront",
+                        "playerBack"
+                      ]
+                    },
+                    "startingState": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "damage",
+                        "heat"
+                      ],
+                      "properties": {
+                        "damage": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "heat": {
+                          "type": "integer",
+                          "minimum": 0
+                        }
+                      }
+                    },
+                    "equipment": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "cardId",
+                          "slot"
+                        ],
+                        "properties": {
+                          "cardId": {
+                            "type": "string",
+                            "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$"
+                          },
+                          "slot": {
+                            "type": "string",
+                            "pattern": "^[a-z][A-Za-z0-9]*$"
+                          }
+                        }
+                      }
+                    },
+                    "skills": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "cardId",
+                          "slot",
+                          "attachedAbilityCardIds"
+                        ],
+                        "properties": {
+                          "cardId": {
+                            "type": "string",
+                            "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$"
+                          },
+                          "slot": {
+                            "type": "integer",
+                            "minimum": 1,
+                            "maximum": 5
+                          },
+                          "attachedAbilityCardIds": {
+                            "type": "array",
+                            "uniqueItems": true,
+                            "items": {
+                              "type": "string",
+                              "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "tacticalReserve": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "cardId",
+                          "slot"
+                        ],
+                        "properties": {
+                          "cardId": {
+                            "type": "string",
+                            "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$"
+                          },
+                          "slot": {
+                            "type": "integer",
+                            "minimum": 1,
+                            "maximum": 5
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "dungeonSetup": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "deckId",
+            "drawMode",
+            "drawZone",
+            "discardZone",
+            "lootZone"
+          ],
+          "properties": {
+            "deckId": {
+              "type": "string",
+              "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$"
+            },
+            "drawMode": {
+              "type": "string",
+              "minLength": 1
+            },
+            "drawZone": {
+              "type": "string",
+              "minLength": 1
+            },
+            "discardZone": {
+              "type": "string",
+              "minLength": 1
+            },
+            "lootZone": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "endCondition": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "notes"
+          ],
+          "properties": {
+            "type": {
+              "type": "string",
+              "minLength": 1
+            },
+            "notes": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "knownLimitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "sourceFile": {
+          "type": "string"
+        },
+        "sourceSection": {
+          "type": "string"
+        },
+        "verifiedAgainstRulebook": {
+          "type": "boolean"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

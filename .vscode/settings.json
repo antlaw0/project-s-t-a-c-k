@@ -1,16 +1,22 @@
 {
-    "json.schemas":  [
-                         {
-                             "url":  "./data/schemas/card.schema.json",
-                             "fileMatch":  [
-                                               "data/cards/**/*.json"
-                                           ]
-                         },
-                         {
-                             "fileMatch":  [
-                                               "data/decks/**/*.json"
-                                           ],
-                             "url":  "./data/schemas/deck.schema.json"
-                         }
-                     ]
+  "json.schemas": [
+    {
+      "url": "./data/schemas/card.schema.json",
+      "fileMatch": [
+        "data/cards/**/*.json"
+      ]
+    },
+    {
+      "fileMatch": [
+        "data/decks/**/*.json"
+      ],
+      "url": "./data/schemas/deck.schema.json"
+    },
+    {
+      "url": "./data/schemas/scenario.schema.json",
+      "fileMatch": [
+        "data/scenarios/**/*.json"
+      ]
+    }
+  ]
 }
