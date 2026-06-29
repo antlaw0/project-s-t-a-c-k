@@ -249,3 +249,11 @@ input:focus-visible,
     grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
   }
 }
+
+.status-row-panel {
+  margin-top: 0.75rem;
+}
+
+.status-row-panel h6 {
+  margin-bottom: 0.5rem;
+}

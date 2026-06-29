@@ -11,7 +11,7 @@
     <div class="page-width">
       <p class="eyebrow">Project S.T.A.C.K. · Manual playtest environment</p>
       <h1>Playtest Table</h1>
-      <p class="lede">A text-first manual tabletop. It loads a generated runtime state and card catalog, then lets you track counters, draw Dungeon Cards, deploy enemies, discard resolved cards, and export the changed playtest state. It does not resolve card rules automatically.</p>
+      <p class="lede">A text-first manual tabletop. It loads a generated runtime state and card catalog, then lets you track counters, draw Dungeon and Status Cards, move persistent Ability Cards to Status Rows, discard resolved negative statuses, and export the changed playtest state. It does not resolve card rules automatically.</p>
     </div>
   </header>
 
@@ -45,6 +45,13 @@
             <h4 id="dungeon-controls-heading">Dungeon Deck</h4>
             <p id="dungeon-draw-summary">No state loaded.</p>
             <button id="draw-dungeon-card-button" type="button" disabled>Draw top Dungeon Card</button>
+          </section>
+
+          <section class="control-card" aria-labelledby="status-controls-heading">
+            <h4 id="status-controls-heading">Status Deck</h4>
+            <p id="status-draw-summary">No state loaded.</p>
+            <button id="draw-status-card-button" type="button" disabled>Draw top Status Card</button>
+            <p class="hint">Negative status cards are drawn one at a time. Place the revealed card on a legal entity's Status Row, then resolve its printed trigger manually.</p>
           </section>
 
           <section class="control-card" aria-labelledby="currency-controls-heading">

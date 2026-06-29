@@ -70,11 +70,15 @@ This migration exists only in the browser's current session until the tester dow
 
 This layer does not:
 
-- resolve card rules, targeting, attacks, damage, Heat, or statuses automatically;
+- resolve card rules, targeting, attacks, damage, Heat, or Status Card triggers automatically;
 - select enemy AI actions;
 - enforce legal row targeting;
-- attach, remove, or replace Status Cards;
+- decide when a Status Card should be attached, removed, or replaced; those are manual choices tracked by the Status Row controls;
 - save state onto the server;
 - use drag-and-drop or mouse-only controls.
 
 Those remain later, separately testable improvements.
+
+## Status Row extension
+
+The companion document `Playtest_Status_Row_Controls_v0.1.md` describes the manual Status Deck, Status Row placement, return-to-Skill-Card, and negative-status discard controls added after this initial manual-controls layer.

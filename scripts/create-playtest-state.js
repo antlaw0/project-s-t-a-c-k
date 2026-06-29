@@ -177,6 +177,22 @@ function getRequiredDefinition(definitionsById, definitionId, expectedCardType, 
   return definition;
 } // end getRequiredDefinition
 
+function getActiveNegativeStatusDefinitions(cardDefinitionsById) {
+  return [...cardDefinitionsById.values()]
+    .filter(function filterNegativeStatusDefinition(definition) {
+      return Boolean(
+        definition &&
+        definition.active === true &&
+        definition.cardType === "status" &&
+        definition.data &&
+        definition.data.statusCategory === "negative"
+      );
+    }) // end negative-status filtering
+    .sort(function sortByDefinitionId(first, second) {
+      return first.id.localeCompare(second.id);
+    }); // end negative-status sorting
+} // end getActiveNegativeStatusDefinitions function
+
 function createCardInstanceFactory(cardDefinitionsById) {
   const nextSequenceByDefinitionId = new Map();
   const usageByDefinitionId = new Map();
@@ -474,6 +490,22 @@ function buildScenarioState(options) {
   } // end deck-entry loop
 
   const shuffledDungeonDeck = shuffleCopy(dungeonCardInstanceIds, random);
+  const statusCardInstanceIds = [];
+  const negativeStatusDefinitions = getActiveNegativeStatusDefinitions(cardDefinitionsById);
+
+  for (const statusDefinition of negativeStatusDefinitions) {
+    for (let quantityIndex = 0; quantityIndex < statusDefinition.count; quantityIndex += 1) {
+      const statusCardInstance = cardFactory.createCardInstance(statusDefinition.id, {
+        referenceLabel: "Shared Status Deck",
+        zone: "statusDeck",
+        zoneDetail: "sharedStatusDeck",
+        faceUp: false
+      });
+      statusCardInstanceIds.push(statusCardInstance.id);
+    } // end status-copy creation loop
+  } // end negative-status-definition loop
+
+  const shuffledStatusDeck = shuffleCopy(statusCardInstanceIds, random);
   const primaryParticipant = participantStates[0];
   const primaryEntityId = primaryParticipant.controlledEntityIds[0] || null;
 
@@ -505,7 +537,10 @@ function buildScenarioState(options) {
       dungeonLootArea: [],
       lootDeck: [],
       lootDiscardPile: [],
-      expendedSummons: []
+      expendedSummons: [],
+      statusDeck: shuffledStatusDeck,
+      statusRevealArea: [],
+      statusDiscardPile: []
     },
     encounter: {
       round: 1,
@@ -546,6 +581,7 @@ function main() {
   console.log(`Scenario: ${state.scenarioId}`);
   console.log(`Card instances: ${Object.keys(state.cardInstances).length}`);
   console.log(`Dungeon Deck cards: ${state.zones.dungeonDeck.length}`);
+  console.log(`Status Deck cards: ${state.zones.statusDeck.length}`);
   console.log(`Active character: ${state.activeCharacterEntityId || "none"}`);
 } // end main
 

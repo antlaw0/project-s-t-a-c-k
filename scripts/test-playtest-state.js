@@ -15,6 +15,36 @@ function assert(condition, message) {
   } // end assertion failure guard
 } // end assert
 
+function expectedNegativeStatusCardCount() {
+  const cardsDirectory = path.join(PROJECT_ROOT, "data", "cards");
+  const stack = [cardsDirectory];
+  let total = 0;
+
+  while (stack.length > 0) {
+    const currentDirectory = stack.pop();
+    const entries = fs.readdirSync(currentDirectory, { withFileTypes: true });
+
+    for (const entry of entries) {
+      const entryPath = path.join(currentDirectory, entry.name);
+      if (entry.isDirectory()) {
+        stack.push(entryPath);
+        continue;
+      } // end nested-directory branch
+
+      if (!entry.isFile() || !entry.name.toLowerCase().endsWith(".json")) {
+        continue;
+      } // end non-json-file branch
+
+      const card = JSON.parse(fs.readFileSync(entryPath, "utf8"));
+      if (card.active === true && card.cardType === "status" && card.data && card.data.statusCategory === "negative") {
+        total += card.count;
+      } // end negative-status-card branch
+    } // end directory-entry loop
+  } // end card-directory traversal loop
+
+  return total;
+} // end expectedNegativeStatusCardCount function
+
 function main() {
   const temporaryDirectory = fs.mkdtempSync(path.join(os.tmpdir(), "project-stack-state-test-"));
   const outputPath = path.join(temporaryDirectory, "runtime-state.json");
@@ -47,12 +77,18 @@ function main() {
     assert(state.seed === TEST_SEED, "State seed does not match the requested seed.");
     assert(entityIds.length === 1, `Expected 1 player entity but found ${entityIds.length}.`);
     assert(state.zones.playerFormation.frontRow.filter(Boolean).length === 1, "Expected one entity in the Player Front Row.");
+    const statusDeckCardCount = expectedNegativeStatusCardCount();
+    const expectedCardInstanceCount = 13 + statusDeckCardCount;
     assert(state.zones.dungeonDeck.length === 8, `Expected 8 Dungeon Deck cards but found ${state.zones.dungeonDeck.length}.`);
-    assert(cardInstanceIds.length === 13, `Expected 13 runtime card instances but found ${cardInstanceIds.length}.`);
+    assert(state.zones.statusDeck.length === statusDeckCardCount, `Expected ${statusDeckCardCount} Status Deck cards but found ${state.zones.statusDeck.length}.`);
+    assert(state.zones.statusRevealArea.length === 0, "Status Reveal Area should start empty.");
+    assert(state.zones.statusDiscardPile.length === 0, "Status Discard Pile should start empty.");
+    assert(cardInstanceIds.length === expectedCardInstanceCount, `Expected ${expectedCardInstanceCount} runtime card instances but found ${cardInstanceIds.length}.`);
     assert(state.zones.dungeonDeck.every((instanceId) => state.cardInstances[instanceId].faceUp === false), "Every Dungeon Deck card should start face down.");
+    assert(state.zones.statusDeck.every((instanceId) => state.cardInstances[instanceId].faceUp === false), "Every Status Deck card should start face down.");
 
     console.log("Playtest-state generator test passed.");
-    console.log(`Verified scenario ${TEST_SCENARIO_ID}, 13 card instances, and an 8-card shuffled Dungeon Deck.`);
+    console.log(`Verified scenario ${TEST_SCENARIO_ID}, ${expectedCardInstanceCount} card instances, an 8-card shuffled Dungeon Deck, and a ${statusDeckCardCount}-card shared Status Deck.`);
   } finally {
     fs.rmSync(temporaryDirectory, { recursive: true, force: true });
   } // end temporary-directory cleanup

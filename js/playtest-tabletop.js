@@ -8,6 +8,7 @@
     "controlledAlly",
     "autonomousAlly"
   ]); // end friendly-entity-types set
+  const DEFAULT_STATUS_ROW_SLOT_COUNT = 5;
 
   const application = {
     catalog: null,
@@ -26,6 +27,8 @@
     runtimeSummary: document.getElementById("runtime-summary"),
     drawDungeonCardButton: document.getElementById("draw-dungeon-card-button"),
     dungeonDrawSummary: document.getElementById("dungeon-draw-summary"),
+    drawStatusCardButton: document.getElementById("draw-status-card-button"),
+    statusDrawSummary: document.getElementById("status-draw-summary"),
     partyCurrencyValue: document.getElementById("party-currency-value"),
     decreasePartyCurrencyButton: document.getElementById("decrease-party-currency-button"),
     increasePartyCurrencyButton: document.getElementById("increase-party-currency-button"),
@@ -112,6 +115,19 @@
     return Number.isInteger(value) && value >= 0 ? value : fallbackValue;
   } // end getNumericValue function
 
+  function normalizeStatusRow(statusRow) {
+    const source = Array.isArray(statusRow) ? statusRow.slice(0, DEFAULT_STATUS_ROW_SLOT_COUNT) : [];
+    const normalized = source.map(function normalizeStatusSlot(cardInstanceId) {
+      return typeof cardInstanceId === "string" ? cardInstanceId : null;
+    }); // end status-row-slot normalization
+
+    while (normalized.length < DEFAULT_STATUS_ROW_SLOT_COUNT) {
+      normalized.push(null);
+    } // end status-row padding loop
+
+    return normalized;
+  } // end normalizeStatusRow function
+
   function normalizeRuntimeState(state) {
     state.log = Array.isArray(state.log) ? state.log : [];
     state.entities = state.entities && typeof state.entities === "object" ? state.entities : {};
@@ -126,7 +142,10 @@
       "dungeonLootArea",
       "lootDeck",
       "lootDiscardPile",
-      "expendedSummons"
+      "expendedSummons",
+      "statusDeck",
+      "statusRevealArea",
+      "statusDiscardPile"
     ]; // end required-array-zones array
 
     requiredArrayZones.forEach(function normalizeZoneArray(zoneName) {
@@ -154,6 +173,7 @@
 
     Object.values(state.entities).forEach(function normalizeEntity(entity) {
       entity.damage = getNumericValue(entity.damage, 0);
+      entity.statusRow = normalizeStatusRow(entity.statusRow);
       if (isFriendlyEntity(entity)) {
         entity.heat = getNumericValue(entity.heat, 0);
       } // end friendly-entity branch
@@ -445,6 +465,14 @@
     } // end enemy-defeat-action branch
 
     item.append(name, details, createEntityCounterControls(entity, `formation-${rowLabel}-${slotIndex + 1}`), actions);
+
+    if (entity.entityType === "enemy" || entity.entityType === "boss") {
+      const statusHeading = createElement("h6", { text: "Status Row" });
+      const statusList = createElement("ol", { className: "card-list" });
+      renderStatusRow(entity, statusList, `formation-status-${rowLabel}-${slotIndex + 1}`);
+      item.append(statusHeading, statusList);
+    } // end enemy-status-row branch
+
     return item;
   } // end createFormationEntityItem function
 
@@ -536,6 +564,270 @@
     } // end equipment-entry loop
   } // end renderEquipment function
 
+  function getStatusRowSlotIndex(entity, cardInstanceId) {
+    return Array.isArray(entity.statusRow) ? entity.statusRow.indexOf(cardInstanceId) : -1;
+  } // end getStatusRowSlotIndex function
+
+  function getFirstOpenStatusRowSlotIndex(entity) {
+    entity.statusRow = normalizeStatusRow(entity.statusRow);
+    return entity.statusRow.indexOf(null);
+  } // end getFirstOpenStatusRowSlotIndex function
+
+  function findSkillSlotContainingAttachedCard(entity, cardInstanceId) {
+    const skillSlots = Array.isArray(entity.skillSlots) ? entity.skillSlots : [];
+
+    for (const skillSlot of skillSlots) {
+      if (!skillSlot || !Array.isArray(skillSlot.attachedAbilityInstanceIds)) {
+        continue;
+      } // end invalid-skill-slot branch
+
+      if (skillSlot.attachedAbilityInstanceIds.includes(cardInstanceId)) {
+        return skillSlot;
+      } // end attached-card-match branch
+    } // end skill-slot lookup loop
+
+    return null;
+  } // end findSkillSlotContainingAttachedCard function
+
+  function definitionMovesToOwnerStatusRow(definition) {
+    return Boolean(
+      definition &&
+      definition.data &&
+      definition.data.activation &&
+      definition.data.activation.moveTo === "ownerStatusRow"
+    );
+  } // end definitionMovesToOwnerStatusRow function
+
+  function moveSkillAttachmentToOwnerStatusRow(entityId, cardInstanceId, focusControlId) {
+    const entity = getEntity(entityId);
+    const instance = getCardInstance(cardInstanceId);
+    const definition = getDefinitionForInstance(cardInstanceId);
+
+    if (!entity || !instance || !definition) {
+      setManualControlStatus("The selected card, owner, or card definition could not be found.", "error");
+      restoreFocusAfterRender(focusControlId);
+      return;
+    } // end missing-move-source branch
+
+    if (!definitionMovesToOwnerStatusRow(definition)) {
+      setManualControlStatus(`${definition.name} does not declare an owner Status Row destination in its catalog data.`, "error");
+      restoreFocusAfterRender(focusControlId);
+      return;
+    } // end unsupported-status-move branch
+
+    if (instance.ownerEntityId !== entity.id || instance.zone !== "skillAttachment") {
+      setManualControlStatus(`${definition.name} is not currently attached to ${entity.name}'s Skill Card.`, "error");
+      restoreFocusAfterRender(focusControlId);
+      return;
+    } // end invalid-attachment-source branch
+
+    const skillSlot = findSkillSlotContainingAttachedCard(entity, cardInstanceId);
+    if (!skillSlot) {
+      setManualControlStatus(`${definition.name} could not be found in ${entity.name}'s attached Ability Cards.`, "error");
+      restoreFocusAfterRender(focusControlId);
+      return;
+    } // end missing-skill-attachment branch
+
+    const statusSlotIndex = getFirstOpenStatusRowSlotIndex(entity);
+    if (statusSlotIndex === -1) {
+      setManualControlStatus(`${entity.name}'s Status Row has no open space.`, "error");
+      restoreFocusAfterRender(focusControlId);
+      return;
+    } // end full-status-row branch
+
+    const attachmentIndex = skillSlot.attachedAbilityInstanceIds.indexOf(cardInstanceId);
+    skillSlot.attachedAbilityInstanceIds.splice(attachmentIndex, 1);
+    entity.statusRow[statusSlotIndex] = cardInstanceId;
+    instance.statusReturn = {
+      type: "skillAttachment",
+      skillCardInstanceId: skillSlot.skillCardInstanceId,
+      ownerEntityId: entity.id
+    }; // end status-return object
+    updateCardInstanceZone(cardInstanceId, "statusRow", `${entity.id}:slot${statusSlotIndex + 1}`, true);
+    appendLog("statusActivated", `${definition.name} moved from its equipped Skill Card to ${entity.name}'s Status Row, slot ${statusSlotIndex + 1}. Resolve its activation cost and rules text manually.`);
+    rerenderAfterStateChange(`${definition.name} is now in ${entity.name}'s Status Row.`, "success", focusControlId);
+  } // end moveSkillAttachmentToOwnerStatusRow function
+
+  function returnStatusCardToSkillAttachment(entityId, cardInstanceId, focusControlId) {
+    const entity = getEntity(entityId);
+    const instance = getCardInstance(cardInstanceId);
+    const definition = getDefinitionForInstance(cardInstanceId);
+    const returnTarget = instance && instance.statusReturn;
+
+    if (!entity || !instance || !definition || !returnTarget || returnTarget.type !== "skillAttachment") {
+      setManualControlStatus("This status card does not have an equipped Skill Card return destination.", "error");
+      restoreFocusAfterRender(focusControlId);
+      return;
+    } // end invalid-status-return branch
+
+    if (returnTarget.ownerEntityId !== entity.id || getStatusRowSlotIndex(entity, cardInstanceId) === -1) {
+      setManualControlStatus(`${definition.name} is not in ${entity.name}'s Status Row.`, "error");
+      restoreFocusAfterRender(focusControlId);
+      return;
+    } // end invalid-status-row-source branch
+
+    const skillSlot = (entity.skillSlots || []).find(function findReturnSkillSlot(candidateSlot) {
+      return candidateSlot && candidateSlot.skillCardInstanceId === returnTarget.skillCardInstanceId;
+    }); // end return-skill-slot lookup
+
+    if (!skillSlot) {
+      setManualControlStatus(`The original Skill Card for ${definition.name} is no longer equipped by ${entity.name}.`, "error");
+      restoreFocusAfterRender(focusControlId);
+      return;
+    } // end missing-return-skill-slot branch
+
+    const statusSlotIndex = getStatusRowSlotIndex(entity, cardInstanceId);
+    entity.statusRow[statusSlotIndex] = null;
+    if (!Array.isArray(skillSlot.attachedAbilityInstanceIds)) {
+      skillSlot.attachedAbilityInstanceIds = [];
+    } // end attached-ability-array initialization
+    skillSlot.attachedAbilityInstanceIds.push(cardInstanceId);
+    updateCardInstanceZone(cardInstanceId, "skillAttachment", skillSlot.skillCardInstanceId, true);
+    delete instance.statusReturn;
+    appendLog("statusReturned", `${definition.name} returned from ${entity.name}'s Status Row to its original equipped Skill Card.`);
+    rerenderAfterStateChange(`${definition.name} returned to its equipped Skill Card.`, "success", focusControlId);
+  } // end returnStatusCardToSkillAttachment function
+
+  function definitionAllowsEntity(definition, entity) {
+    const permittedTypes = definition && definition.data && Array.isArray(definition.data.canAffect)
+      ? definition.data.canAffect
+      : [];
+    return permittedTypes.length === 0 || permittedTypes.includes(entity.entityType);
+  } // end definitionAllowsEntity function
+
+  function statusAllowsStacking(definition) {
+    return Boolean(definition && definition.data && definition.data.stacking && definition.data.stacking.allowed === true);
+  } // end statusAllowsStacking function
+
+  function entityAlreadyHasStatusDefinition(entity, definitionId) {
+    return (entity.statusRow || []).some(function checkStatusSlot(cardInstanceId) {
+      const instance = cardInstanceId ? getCardInstance(cardInstanceId) : null;
+      return Boolean(instance && instance.definitionId === definitionId);
+    }); // end status-row scan
+  } // end entityAlreadyHasStatusDefinition function
+
+  function placeRevealedNegativeStatus(cardInstanceId, targetEntityId, focusControlId) {
+    const instance = getCardInstance(cardInstanceId);
+    const definition = getDefinitionForInstance(cardInstanceId);
+    const targetEntity = getEntity(targetEntityId);
+
+    if (!instance || !definition || !targetEntity) {
+      setManualControlStatus("The status card or chosen target entity could not be found.", "error");
+      restoreFocusAfterRender(focusControlId);
+      return;
+    } // end missing-status-placement-data branch
+
+    if (instance.zone !== "statusRevealArea") {
+      setManualControlStatus(`${definition.name} is not currently waiting in the Status Reveal Area.`, "error");
+      restoreFocusAfterRender(focusControlId);
+      return;
+    } // end invalid-status-reveal-zone branch
+
+    if (definition.cardType !== "status" || !definition.data || definition.data.statusCategory !== "negative") {
+      setManualControlStatus("Only a revealed negative Status Card can be placed from the Status Deck.", "error");
+      restoreFocusAfterRender(focusControlId);
+      return;
+    } // end invalid-negative-status branch
+
+    if (!definitionAllowsEntity(definition, targetEntity)) {
+      setManualControlStatus(`${definition.name} cannot affect ${targetEntity.name} according to its catalog data.`, "error");
+      restoreFocusAfterRender(focusControlId);
+      return;
+    } // end unsupported-status-target branch
+
+    if (!statusAllowsStacking(definition) && entityAlreadyHasStatusDefinition(targetEntity, definition.id)) {
+      setManualControlStatus(`${targetEntity.name} already has ${definition.name}. This status does not stack.`, "error");
+      restoreFocusAfterRender(focusControlId);
+      return;
+    } // end nonstacking-status branch
+
+    const statusSlotIndex = getFirstOpenStatusRowSlotIndex(targetEntity);
+    if (statusSlotIndex === -1) {
+      setManualControlStatus(`${targetEntity.name}'s Status Row has no open space.`, "error");
+      restoreFocusAfterRender(focusControlId);
+      return;
+    } // end full-target-status-row branch
+
+    removeCardFromZoneArray("statusRevealArea", cardInstanceId);
+    targetEntity.statusRow[statusSlotIndex] = cardInstanceId;
+    instance.ownerEntityId = targetEntity.id;
+    updateCardInstanceZone(cardInstanceId, "statusRow", `${targetEntity.id}:slot${statusSlotIndex + 1}`, true);
+    appendLog("negativeStatusPlaced", `${definition.name} was placed on ${targetEntity.name}'s Status Row, slot ${statusSlotIndex + 1}.`);
+    rerenderAfterStateChange(`${definition.name} was placed on ${targetEntity.name}.`, "success", focusControlId);
+  } // end placeRevealedNegativeStatus function
+
+  function discardNegativeStatusFromRow(entityId, cardInstanceId, focusControlId) {
+    const entity = getEntity(entityId);
+    const instance = getCardInstance(cardInstanceId);
+    const definition = getDefinitionForInstance(cardInstanceId);
+
+    if (!entity || !instance || !definition || definition.cardType !== "status" || !definition.data || definition.data.statusCategory !== "negative") {
+      setManualControlStatus("Only a negative Status Card in a Status Row can be discarded to the Status Discard Pile.", "error");
+      restoreFocusAfterRender(focusControlId);
+      return;
+    } // end invalid-negative-status-discard branch
+
+    const statusSlotIndex = getStatusRowSlotIndex(entity, cardInstanceId);
+    if (statusSlotIndex === -1) {
+      setManualControlStatus(`${definition.name} is not in ${entity.name}'s Status Row.`, "error");
+      restoreFocusAfterRender(focusControlId);
+      return;
+    } // end missing-status-row-card branch
+
+    entity.statusRow[statusSlotIndex] = null;
+    instance.ownerEntityId = null;
+    application.runtimeState.zones.statusDiscardPile.push(cardInstanceId);
+    updateCardInstanceZone(cardInstanceId, "statusDiscardPile", null, true);
+    appendLog("negativeStatusDiscarded", `${definition.name} was discarded from ${entity.name}'s Status Row to the Status Discard Pile.`);
+    rerenderAfterStateChange(`${definition.name} was discarded to the Status Discard Pile.`, "success", focusControlId);
+  } // end discardNegativeStatusFromRow function
+
+  function createStatusRowCardItem(entity, cardInstanceId, slotLabel, controlPrefix) {
+    const item = createCardListItem(cardInstanceId, slotLabel);
+    const definition = getDefinitionForInstance(cardInstanceId);
+    const actions = createElement("div", { className: "zone-action-row" });
+
+    if (definition && definition.cardType === "status" && definition.data && definition.data.statusCategory === "negative") {
+      const buttonId = `${controlPrefix}-${sanitizeIdPart(cardInstanceId)}-discard-negative-status`;
+      actions.append(createCounterButton(
+        `Discard ${definition.name} from ${entity.name}'s Status Row`,
+        buttonId,
+        function handleDiscardNegativeStatus() {
+          discardNegativeStatusFromRow(entity.id, cardInstanceId, buttonId);
+        }
+      )); // end discard-negative-status button
+    } else {
+      const instance = getCardInstance(cardInstanceId);
+      if (instance && instance.statusReturn && instance.statusReturn.type === "skillAttachment") {
+        const buttonId = `${controlPrefix}-${sanitizeIdPart(cardInstanceId)}-return-to-skill`;
+        actions.append(createCounterButton(
+          `Return ${definition ? definition.name : formatCardLabel(cardInstanceId)} to its equipped Skill Card`,
+          buttonId,
+          function handleReturnToSkill() {
+            returnStatusCardToSkillAttachment(entity.id, cardInstanceId, buttonId);
+          }
+        )); // end return-to-skill button
+      } // end skill-return branch
+    } // end status-card-action branch
+
+    if (actions.childElementCount > 0) {
+      item.append(actions);
+    } // end status-card-actions branch
+
+    return item;
+  } // end createStatusRowCardItem function
+
+  function renderStatusRow(entity, list, controlPrefix) {
+    const statusRow = normalizeStatusRow(entity.statusRow);
+    entity.statusRow = statusRow;
+    statusRow.forEach(function renderStatusSlot(cardInstanceId, index) {
+      const slotLabel = `Status row slot ${index + 1}`;
+      list.append(cardInstanceId
+        ? createStatusRowCardItem(entity, cardInstanceId, slotLabel, controlPrefix)
+        : createEmptySlotItem(slotLabel));
+    }); // end status-slot loop
+  } // end renderStatusRow function
+
   function renderSkillSlots(entity, list) {
     (entity.skillSlots || []).forEach(function renderSkillSlot(skillSlot, index) {
       const slotLabel = `Skill slot ${index + 1}`;
@@ -553,7 +845,21 @@
         }); // end attached-abilities heading
         const nestedList = createElement("ul", { className: "card-list" });
         abilityIds.forEach(function renderAttachedAbility(abilityInstanceId) {
-          nestedList.append(createCardListItem(abilityInstanceId));
+          const abilityItem = createCardListItem(abilityInstanceId);
+          const abilityDefinition = getDefinitionForInstance(abilityInstanceId);
+          if (definitionMovesToOwnerStatusRow(abilityDefinition)) {
+            const buttonId = `skill-${sanitizeIdPart(entity.id)}-${sanitizeIdPart(abilityInstanceId)}-move-to-status`;
+            const actions = createElement("div", { className: "zone-action-row" });
+            actions.append(createCounterButton(
+              `Move ${abilityDefinition.name} to ${entity.name}'s Status Row`,
+              buttonId,
+              function handleMoveAbilityToStatusRow() {
+                moveSkillAttachmentToOwnerStatusRow(entity.id, abilityInstanceId, buttonId);
+              }
+            )); // end move-ability-to-status button
+            abilityItem.append(actions);
+          } // end status-ability branch
+          nestedList.append(abilityItem);
         }); // end attached-ability loop
         item.append(nestedHeading, nestedList);
       } // end attached-abilities branch
@@ -567,13 +873,6 @@
       list.append(cardInstanceId ? createCardListItem(cardInstanceId, slotLabel) : createEmptySlotItem(slotLabel));
     }); // end tactical-reserve-slot loop
   } // end renderTacticalReserveSlots function
-
-  function renderStatusRow(entity, list) {
-    (entity.statusRow || []).forEach(function renderStatusSlot(cardInstanceId, index) {
-      const slotLabel = `Status row slot ${index + 1}`;
-      list.append(cardInstanceId ? createCardListItem(cardInstanceId, slotLabel) : createEmptySlotItem(slotLabel));
-    }); // end status-slot loop
-  } // end renderStatusRow function
 
   function renderCharacterPanel(entity) {
     const panel = createElement("article", { className: "character-panel" });
@@ -598,7 +897,7 @@
 
     const statusHeading = createElement("h5", { text: "Status Row" });
     const statusList = createElement("ol", { className: "card-list" });
-    renderStatusRow(entity, statusList);
+    renderStatusRow(entity, statusList, `character-status-${sanitizeIdPart(entity.id)}`);
 
     panel.append(
       heading,
@@ -692,7 +991,7 @@
       damage: 0,
       maximumHp: getNumericValue(printedStats.hp, 1),
       defense: getNumericValue(printedStats.defense, 0),
-      statusRow: []
+      statusRow: normalizeStatusRow([])
     }; // end enemy-entity object
 
     removeCardFromZoneArray("dungeonRevealArea", cardInstanceId);
@@ -736,6 +1035,30 @@
     }); // end enemy-formation-row loop
   } // end removeEnemyFromFormation function
 
+  function discardNegativeStatusesFromDefeatedEntity(entity) {
+    const discardedNames = [];
+
+    normalizeStatusRow(entity.statusRow).forEach(function discardNegativeStatusOnDefeat(cardInstanceId, index) {
+      if (!cardInstanceId) {
+        return;
+      } // end empty-status-slot branch
+
+      const instance = getCardInstance(cardInstanceId);
+      const definition = getDefinitionForInstance(cardInstanceId);
+      if (!instance || !definition || definition.cardType !== "status" || !definition.data || definition.data.statusCategory !== "negative") {
+        return;
+      } // end non-negative-status branch
+
+      entity.statusRow[index] = null;
+      instance.ownerEntityId = null;
+      application.runtimeState.zones.statusDiscardPile.push(cardInstanceId);
+      updateCardInstanceZone(cardInstanceId, "statusDiscardPile", null, true);
+      discardedNames.push(definition.name);
+    }); // end defeated-entity-status loop
+
+    return discardedNames;
+  } // end discardNegativeStatusesFromDefeatedEntity function
+
   function defeatEnemyEntity(entityId, focusControlId) {
     const entity = getEntity(entityId);
     if (!entity || entity.entityType !== "enemy") {
@@ -745,11 +1068,15 @@
 
     const cardInstanceId = entity.characterCardInstanceId;
     const definition = getDefinitionForInstance(cardInstanceId);
+    const discardedStatuses = discardNegativeStatusesFromDefeatedEntity(entity);
     removeEnemyFromFormation(entityId);
     delete application.runtimeState.entities[entityId];
     application.runtimeState.zones.dungeonDiscardPile.push(cardInstanceId);
     updateCardInstanceZone(cardInstanceId, "dungeonDiscardPile", null, true);
-    appendLog("enemyDefeated", `${entity.name} was manually defeated and moved to the Dungeon Discard Pile.`);
+    const statusSuffix = discardedStatuses.length > 0
+      ? ` Negative statuses moved to Status Discard: ${discardedStatuses.join(", ")}.`
+      : "";
+    appendLog("enemyDefeated", `${entity.name} was manually defeated and moved to the Dungeon Discard Pile.${statusSuffix}`);
     rerenderAfterStateChange(`${definition ? definition.name : entity.name} was defeated and discarded.`, "success", focusControlId);
   } // end defeatEnemyEntity function
 
@@ -775,6 +1102,60 @@
     appendLog("dungeonCardDrawn", `Drew ${definition ? definition.name : cardInstanceId} from the Dungeon Deck into the Dungeon Reveal Area.`);
     rerenderAfterStateChange(`Drew ${definition ? definition.name : "a Dungeon Card"}. Resolve it manually.`, "success", "draw-dungeon-card-button");
   } // end drawDungeonCard function
+
+  function drawStatusCard() {
+    const state = application.runtimeState;
+    const statusDeck = state.zones.statusDeck;
+    const revealArea = state.zones.statusRevealArea;
+
+    if (revealArea.length > 0) {
+      setManualControlStatus("Place or discard the Status Card already in the Status Reveal Area before drawing another.", "error");
+      return;
+    } // end unresolved-status-reveal branch
+
+    if (statusDeck.length === 0) {
+      setManualControlStatus("The Status Deck is empty. There is no negative Status Card to draw.", "error");
+      return;
+    } // end empty-status-deck branch
+
+    const cardInstanceId = statusDeck.pop();
+    const definition = getDefinitionForInstance(cardInstanceId);
+    revealArea.push(cardInstanceId);
+    updateCardInstanceZone(cardInstanceId, "statusRevealArea", null, true);
+    appendLog("statusCardDrawn", `Drew ${definition ? definition.name : cardInstanceId} from the Status Deck into the Status Reveal Area.`);
+    rerenderAfterStateChange(`Drew ${definition ? definition.name : "a negative Status Card"}. Choose a legal target manually.`, "success", "draw-status-card-button");
+  } // end drawStatusCard function
+
+  function createStatusRevealAreaActions(cardInstanceId) {
+    const definition = getDefinitionForInstance(cardInstanceId);
+    const actions = createElement("div", { className: "zone-action-row" });
+
+    if (!definition || definition.cardType !== "status" || !definition.data || definition.data.statusCategory !== "negative") {
+      return actions;
+    } // end unsupported-status-reveal branch
+
+    const entities = Object.values(application.runtimeState.entities || {}).filter(function filterEligibleTargets(entity) {
+      return definitionAllowsEntity(definition, entity);
+    }); // end eligible-status-target filtering
+
+    if (entities.length === 0) {
+      actions.append(createElement("p", { text: "No current entity is a legal target for this status card." }));
+      return actions;
+    } // end no-eligible-status-target branch
+
+    entities.forEach(function createPlaceStatusButton(entity) {
+      const buttonId = `status-reveal-${sanitizeIdPart(cardInstanceId)}-place-on-${sanitizeIdPart(entity.id)}`;
+      actions.append(createCounterButton(
+        `Place ${definition.name} on ${entity.name}`,
+        buttonId,
+        function handlePlaceStatusOnEntity() {
+          placeRevealedNegativeStatus(cardInstanceId, entity.id, buttonId);
+        }
+      )); // end place-status button
+    }); // end eligible-status-target loop
+
+    return actions;
+  } // end createStatusRevealAreaActions function
 
   function setPartyCurrency(requestedValue, focusControlId) {
     const newValue = Number(requestedValue);
@@ -849,7 +1230,11 @@
         const item = createCardListItem(cardInstanceId);
         if (zoneKey === "dungeonRevealArea") {
           item.append(createRevealAreaActions(cardInstanceId));
-        } // end reveal-area-actions branch
+        } // end dungeon-reveal-actions branch
+
+        if (zoneKey === "statusRevealArea") {
+          item.append(createStatusRevealAreaActions(cardInstanceId));
+        } // end status-reveal-actions branch
         list.append(item);
       }); // end zone-card loop
       card.append(list);
@@ -868,7 +1253,10 @@
       ["Dungeon Loot Area", "dungeonLootArea", zones.dungeonLootArea || [], false],
       ["Loot Deck", "lootDeck", zones.lootDeck || [], true],
       ["Loot Discard Pile", "lootDiscardPile", zones.lootDiscardPile || [], false],
-      ["Expended Summons", "expendedSummons", zones.expendedSummons || [], false]
+      ["Expended Summons", "expendedSummons", zones.expendedSummons || [], false],
+      ["Status Deck", "statusDeck", zones.statusDeck || [], true],
+      ["Status Reveal Area", "statusRevealArea", zones.statusRevealArea || [], false],
+      ["Status Discard Pile", "statusDiscardPile", zones.statusDiscardPile || [], false]
     ]; // end zone-configurations array
 
     zoneConfigurations.forEach(function renderZoneConfiguration(configuration) {
@@ -886,6 +1274,7 @@
       ["Round", state.encounter && state.encounter.round ? String(state.encounter.round) : "Not recorded"],
       ["Phase", state.encounter && state.encounter.phase ? state.encounter.phase : "Not recorded"],
       ["Dungeon Deck", `${state.zones.dungeonDeck.length} face-down card(s)`],
+      ["Status Deck", `${state.zones.statusDeck.length} face-down card(s)`],
       ["Party Currency", String(getNumericValue(state.resources.currency, 0))]
     ]; // end summary-entries array
 
@@ -904,6 +1293,8 @@
     const state = application.runtimeState;
     const deckCount = stateLoaded ? state.zones.dungeonDeck.length : 0;
     const revealCount = stateLoaded ? state.zones.dungeonRevealArea.length : 0;
+    const statusDeckCount = stateLoaded ? state.zones.statusDeck.length : 0;
+    const statusRevealCount = stateLoaded ? state.zones.statusRevealArea.length : 0;
     const currency = stateLoaded ? getNumericValue(state.resources.currency, 0) : 0;
 
     elements.drawDungeonCardButton.disabled = !stateLoaded || deckCount === 0 || revealCount > 0;
@@ -912,6 +1303,13 @@
       : "Draw top Dungeon Card";
     elements.dungeonDrawSummary.textContent = stateLoaded
       ? `Dungeon Deck: ${deckCount} face-down card(s). Dungeon Reveal Area: ${revealCount} card(s).`
+      : "No state loaded.";
+    elements.drawStatusCardButton.disabled = !stateLoaded || statusDeckCount === 0 || statusRevealCount > 0;
+    elements.drawStatusCardButton.textContent = statusDeckCount === 0 && stateLoaded
+      ? "Status Deck is empty"
+      : "Draw top Status Card";
+    elements.statusDrawSummary.textContent = stateLoaded
+      ? `Status Deck: ${statusDeckCount} face-down card(s). Status Reveal Area: ${statusRevealCount} card(s).`
       : "No state loaded.";
     elements.partyCurrencyValue.textContent = String(currency);
     elements.partyCurrencyInput.value = String(currency);
@@ -1104,6 +1502,7 @@
   function bindEvents() {
     elements.loadLocalStateButton.disabled = true;
     elements.drawDungeonCardButton.addEventListener("click", drawDungeonCard);
+    elements.drawStatusCardButton.addEventListener("click", drawStatusCard);
     elements.decreasePartyCurrencyButton.addEventListener("click", function handleDecreaseCurrency() {
       changePartyCurrency(-1, "decrease-party-currency-button");
     }); // end decrease-currency listener
