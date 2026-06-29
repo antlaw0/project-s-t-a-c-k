@@ -1,0 +1,211 @@
+:root {
+  color-scheme: light dark;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.5;
+}
+
+body {
+  margin: 0;
+  background: Canvas;
+  color: CanvasText;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button,
+.file-input-label {
+  border: 1px solid currentColor;
+  border-radius: 0.35rem;
+  padding: 0.6rem 0.8rem;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+button:hover,
+.file-input-label:hover {
+  text-decoration: underline;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+.file-input-label:focus-within {
+  outline: 3px solid Highlight;
+  outline-offset: 3px;
+}
+
+.page-width {
+  width: min(100% - 2rem, 82rem);
+  margin-inline: auto;
+}
+
+.site-header {
+  border-bottom: 1px solid currentColor;
+  padding-block: 1.5rem;
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.lede {
+  max-width: 70ch;
+}
+
+.loader-panel,
+.tabletop-section,
+.tabletop-header {
+  margin-block: 1.5rem;
+  border: 1px solid currentColor;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.loader-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+#state-file-input {
+  max-width: 100%;
+}
+
+.hint,
+.status-message {
+  max-width: 75ch;
+}
+
+.status-message[data-status="error"] {
+  font-weight: 700;
+}
+
+.tabletop-header {
+  display: grid;
+  gap: 1rem;
+}
+
+.summary-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: 0.75rem;
+  margin: 0;
+}
+
+.summary-list div {
+  border-inline-start: 0.3rem solid currentColor;
+  padding-inline-start: 0.6rem;
+}
+
+.summary-list dt {
+  font-weight: 700;
+}
+
+.summary-list dd {
+  margin: 0;
+}
+
+.section-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-block: 1rem;
+}
+
+.formation-grid,
+.character-areas,
+.zone-summary {
+  display: grid;
+  gap: 1rem;
+}
+
+.formation-grid {
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+}
+
+.formation-row,
+.character-panel,
+.zone-card,
+.card-details {
+  border: 1px solid currentColor;
+  border-radius: 0.35rem;
+  padding: 0.85rem;
+}
+
+.formation-row h4,
+.character-panel h4,
+.zone-card h4 {
+  margin-top: 0;
+}
+
+.slot-list,
+.card-list,
+.playtest-log {
+  display: grid;
+  gap: 0.6rem;
+  padding-inline-start: 1.4rem;
+}
+
+.slot-list {
+  list-style: none;
+  padding-inline-start: 0;
+}
+
+.slot-list li,
+.card-list li,
+.playtest-log li {
+  border: 1px solid currentColor;
+  border-radius: 0.25rem;
+  padding: 0.6rem;
+}
+
+.slot-label,
+.card-meta {
+  display: block;
+  font-size: 0.9rem;
+}
+
+.card-actions {
+  margin-top: 0.5rem;
+}
+
+.card-actions button {
+  padding: 0.35rem 0.5rem;
+}
+
+.card-rules {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.definition-details {
+  margin-top: 1rem;
+}
+
+.empty-slot {
+  font-style: italic;
+}
+
+@media (min-width: 58rem) {
+  .tabletop-header {
+    grid-template-columns: minmax(0, 1fr) minmax(20rem, 0.9fr);
+    align-items: start;
+  }
+
+  .character-areas {
+    grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+  }
+
+  .zone-summary {
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  }
+}
