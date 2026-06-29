@@ -11,7 +11,7 @@
     <div class="page-width">
       <p class="eyebrow">Project S.T.A.C.K. · Manual playtest environment</p>
       <h1>Playtest Table</h1>
-      <p class="lede">A text-first manual tabletop. It loads a generated runtime state and card catalog, then lets you track counters, draw Dungeon and Status Cards, move persistent Ability Cards to Status Rows, discard resolved negative statuses, and export the changed playtest state. It does not resolve card rules automatically.</p>
+      <p class="lede">A text-first virtual tabletop for manually testing Project S.T.A.C.K. cards and rules. It preserves deck order unless you explicitly shuffle, records every state change in the playtest log, and does not resolve rules, targeting, or AI automatically.</p>
     </div>
   </header>
 
@@ -24,7 +24,7 @@
         <label class="file-input-label" for="state-file-input">Or choose a runtime-state JSON file</label>
         <input id="state-file-input" type="file" accept="application/json,.json">
       </div>
-      <p class="hint">The local button looks for <code>playtest-saves/scenario.solo-warrior-goblin-warrens-smoke-test.initial.json</code>. The file chooser works with any generated runtime-state JSON file.</p>
+      <p class="hint">The local button loads the default generated smoke-test state. Downloaded sessions can be loaded again through the JSON file chooser.</p>
       <p id="load-status" class="status-message" role="status" aria-live="assertive"></p>
     </section>
 
@@ -39,19 +39,36 @@
 
       <section id="manual-controls-section" class="tabletop-section" aria-labelledby="manual-controls-heading">
         <h3 id="manual-controls-heading">Manual table controls</h3>
-        <p>Resolve all card text manually. Draw one Dungeon Card at a time, then deploy an enemy or discard a resolved trap or event before drawing again.</p>
+        <p>All controls change only the loaded runtime state. Resolve the card text yourself, then record the resulting movement, counters, and status changes here.</p>
         <div class="manual-controls-grid">
           <section class="control-card" aria-labelledby="dungeon-controls-heading">
             <h4 id="dungeon-controls-heading">Dungeon Deck</h4>
             <p id="dungeon-draw-summary">No state loaded.</p>
-            <button id="draw-dungeon-card-button" type="button" disabled>Draw top Dungeon Card</button>
+            <div class="counter-button-row">
+              <button id="draw-dungeon-card-button" type="button" disabled>Draw top Dungeon Card</button>
+              <button id="draw-bottom-dungeon-card-button" type="button" disabled>Draw bottom Dungeon Card</button>
+              <button id="shuffle-dungeon-deck-button" type="button" disabled>Shuffle Dungeon Deck</button>
+            </div>
+            <p class="hint">Top is the top card of the physical deck. Cards returned to the Dungeon Deck are always placed on its bottom. The deck order changes only when you choose Shuffle.</p>
+          </section>
+
+          <section class="control-card" aria-labelledby="dungeon-discard-controls-heading">
+            <h4 id="dungeon-discard-controls-heading">Dungeon Discard Pile</h4>
+            <p id="dungeon-discard-summary">No state loaded.</p>
+            <div class="counter-button-row">
+              <button id="draw-dungeon-discard-top-button" type="button" disabled>Draw top Dungeon Discard</button>
+              <button id="draw-dungeon-discard-bottom-button" type="button" disabled>Draw bottom Dungeon Discard</button>
+              <button id="shuffle-dungeon-discard-button" type="button" disabled>Shuffle Dungeon Discard Pile</button>
+            </div>
           </section>
 
           <section class="control-card" aria-labelledby="status-controls-heading">
             <h4 id="status-controls-heading">Status Deck</h4>
             <p id="status-draw-summary">No state loaded.</p>
-            <button id="draw-status-card-button" type="button" disabled>Draw top Status Card</button>
-            <p class="hint">Negative status cards are drawn one at a time. Place the revealed card on a legal entity's Status Row, then resolve its printed trigger manually.</p>
+            <div class="counter-button-row">
+              <button id="draw-status-card-button" type="button" disabled>Draw top Status Card</button>
+              <button id="shuffle-status-deck-button" type="button" disabled>Shuffle Status Deck</button>
+            </div>
           </section>
 
           <section class="control-card" aria-labelledby="currency-controls-heading">
@@ -67,16 +84,90 @@
 
           <section class="control-card" aria-labelledby="save-controls-heading">
             <h4 id="save-controls-heading">Save current session</h4>
-            <p>Download the current runtime state after any manual changes. Load that file later through the state-file chooser above.</p>
+            <p>Download the changed runtime state. The downloaded JSON is a playtest save and can be loaded back into this page later.</p>
             <button id="download-state-button" type="button" disabled>Download current state JSON</button>
           </section>
         </div>
         <p id="manual-control-status" class="status-message" role="status" aria-live="assertive"></p>
       </section>
 
+      <section id="entity-management-section" class="tabletop-section" aria-labelledby="entity-management-heading">
+        <h3 id="entity-management-heading">Participants and friendly entities</h3>
+        <p>Create additional player characters, Autonomous Hirelings, or Controlled Summons from active cards in the catalog. Card copy counts are enforced. A card type with no active definitions will show no choices until you add its JSON records to the catalog.</p>
+        <div class="entity-management-grid">
+          <section class="control-card" aria-labelledby="add-player-heading">
+            <h4 id="add-player-heading">Add player character</h4>
+            <label for="new-player-controller-select">Controller</label>
+            <select id="new-player-controller-select"></select>
+            <label for="new-player-name-input">New player name, used only when Controller is Create a new player</label>
+            <input id="new-player-name-input" type="text" value="Player">
+            <label for="new-player-character-select">Character card</label>
+            <select id="new-player-character-select"></select>
+            <label for="new-player-character-name-input">Character display name, optional</label>
+            <input id="new-player-character-name-input" type="text">
+            <label for="new-player-row-select">Starting row</label>
+            <select id="new-player-row-select">
+              <option value="playerFront">Player Front Row</option>
+              <option value="playerBack">Player Back Row</option>
+            </select>
+            <button id="add-player-character-button" type="button" disabled>Add player character</button>
+          </section>
+
+          <section class="control-card" aria-labelledby="add-hireling-heading">
+            <h4 id="add-hireling-heading">Add Autonomous Hireling</h4>
+            <label for="new-hireling-owner-select">Owning player, optional</label>
+            <select id="new-hireling-owner-select"></select>
+            <label for="new-hireling-card-select">Hireling card</label>
+            <select id="new-hireling-card-select"></select>
+            <label for="new-hireling-name-input">Hireling display name, optional</label>
+            <input id="new-hireling-name-input" type="text">
+            <label for="new-hireling-row-select">Starting row</label>
+            <select id="new-hireling-row-select">
+              <option value="playerFront">Player Front Row</option>
+              <option value="playerBack">Player Back Row</option>
+            </select>
+            <button id="add-hireling-button" type="button" disabled>Add Autonomous Hireling</button>
+          </section>
+
+          <section class="control-card" aria-labelledby="add-summon-heading">
+            <h4 id="add-summon-heading">Add Controlled Summon</h4>
+            <label for="new-summon-owner-select">Owning player character</label>
+            <select id="new-summon-owner-select"></select>
+            <label for="new-summon-card-select">Summon card</label>
+            <select id="new-summon-card-select"></select>
+            <label for="new-summon-name-input">Summon display name, optional</label>
+            <input id="new-summon-name-input" type="text">
+            <label for="new-summon-row-select">Starting row</label>
+            <select id="new-summon-row-select">
+              <option value="playerFront">Player Front Row</option>
+              <option value="playerBack">Player Back Row</option>
+            </select>
+            <button id="add-summon-button" type="button" disabled>Add Controlled Summon</button>
+          </section>
+
+          <section class="control-card" aria-labelledby="entity-setup-heading">
+            <h4 id="entity-setup-heading">Add cards to a player character</h4>
+            <label for="setup-entity-select">Player character</label>
+            <select id="setup-entity-select"></select>
+            <label for="setup-card-kind-select">Card role</label>
+            <select id="setup-card-kind-select">
+              <option value="equipment">Equipment</option>
+              <option value="skill">Skill Card</option>
+              <option value="ability">Ability Card, attached to a Skill Card</option>
+              <option value="tacticalReserve">Tactical Reserve</option>
+            </select>
+            <label for="setup-card-select">Card</label>
+            <select id="setup-card-select"></select>
+            <label for="setup-slot-input">Slot number. For Equipment, enter the equipment slot name, such as weapon.</label>
+            <input id="setup-slot-input" type="text" value="1">
+            <button id="assign-card-button" type="button" disabled>Add selected card</button>
+          </section>
+        </div>
+      </section>
+
       <nav class="section-nav" aria-label="Playtest table sections">
         <a href="#formation-section">Formation</a>
-        <a href="#character-areas-section">Character areas</a>
+        <a href="#character-areas-section">Friendly entity areas</a>
         <a href="#zones-section">Zones</a>
         <a href="#log-section">Log</a>
         <a href="#card-details-section">Card details</a>
@@ -88,7 +179,7 @@
       </section>
 
       <section id="character-areas-section" class="tabletop-section" aria-labelledby="character-areas-heading">
-        <h3 id="character-areas-heading">Character areas</h3>
+        <h3 id="character-areas-heading">Friendly entity areas</h3>
         <div id="character-areas" class="character-areas"></div>
       </section>
 

@@ -92,6 +92,117 @@
         "notes": "Rage uses the owner’s shared activation to begin, occupies the owner’s Status Row while active, and returns to the exact Skill Card it came from when it ends. Count 1 is the provisional core-alpha supply."
       }
     },
+    "character.mage": {
+      "id": "character.mage",
+      "active": true,
+      "count": 1,
+      "cardType": "character",
+      "name": "Mage",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "character-standard",
+      "tags": [
+        "character",
+        "player-character",
+        "arcane",
+        "mage",
+        "spellcaster",
+        "backline",
+        "core-alpha"
+      ],
+      "rulesText": "Player Character — Arcane\n\nMaximum HP: 12\nSuggested First Placement: Player Back Row\n\nClass Trait — Spellweaver\nThe first damaging Spell the Mage casts during its own normal action in each Encounter Round deals +1 additional damage.\n\nNative Skill Domains\nElementalism; Arcana; Necromancy.",
+      "data": {
+        "entityType": "playerCharacter",
+        "role": "arcane",
+        "maximumHp": 12,
+        "suggestedFirstPlacement": "playerBack",
+        "classTrait": {
+          "id": "spellweaver",
+          "name": "Spellweaver",
+          "trigger": {
+            "event": "damagingSpellCast",
+            "frequency": "firstPerEncounterRound",
+            "actorMustBeCharacterOwner": true,
+            "mustUseMagesOwnNormalAction": true
+          },
+          "effect": {
+            "type": "modifySpellDamage",
+            "amount": 1
+          },
+          "doesNotApplyTo": [
+            "tacticalReserveScrolls",
+            "reactions",
+            "persistentEffects",
+            "otherFriendlyEntityAttacks"
+          ]
+        },
+        "nativeSkillDomains": [
+          "elementalism",
+          "arcana",
+          "necromancy"
+        ],
+        "slotCapacity": {
+          "skillSlots": 5,
+          "tacticalReserveSlots": 5,
+          "inventoryCapacity": 20,
+          "transportationSlots": 1,
+          "statusRowSlots": 5
+        },
+        "activation": {
+          "type": "sharedActivation",
+          "sharedWith": "controlledAllies",
+          "activationsPerEncounterRound": 1
+        },
+        "startingLoadout": {
+          "equipment": [
+            {
+              "cardId": "equipment.focus.apprentices-wand",
+              "quantity": 1
+            },
+            {
+              "cardId": "equipment.clothing.apprentice-robe",
+              "quantity": 1
+            }
+          ],
+          "skills": [
+            {
+              "cardId": "skill.elementalism.novice",
+              "attachedCards": [
+                "spell.elementalism.novice-firebolt"
+              ]
+            },
+            {
+              "cardId": "skill.arcana.novice",
+              "attachedCards": [
+                "spell.arcana.novice-arcane-ward"
+              ]
+            }
+          ],
+          "tacticalReserve": [
+            {
+              "cardId": "tactical-reserve.healing-potion",
+              "quantity": 1
+            },
+            {
+              "cardId": "tactical-reserve.scroll-of-force-dart",
+              "quantity": 1
+            },
+            {
+              "cardId": "tactical-reserve.antidote",
+              "quantity": 1
+            }
+          ],
+          "startingDefense": 0
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/character_classes.md",
+        "sourceSection": "Mage Character Card",
+        "verifiedAgainstRulebook": false,
+        "notes": "Maximum HP, Spellweaver, native skill domains, recommended starter loadout, and starting Defense are migrated from the first-playtest Mage roster. Several referenced catalog records have not yet been converted to JSON."
+      }
+    },
     "character.warrior": {
       "id": "character.warrior",
       "active": true,
@@ -914,6 +1025,7 @@
   },
   "activeCardIds": [
     "ability.barbarian.recruit-rage",
+    "character.mage",
     "character.warrior",
     "dungeon.goblin-warrens.goblin-alarm",
     "dungeon.goblin-warrens.tripwire",
