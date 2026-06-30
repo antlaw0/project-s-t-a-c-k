@@ -1,0 +1,56 @@
+{
+  "id": "enemy.goblin-skirmisher",
+  "active": true,
+  "count": 3,
+  "cardType": "enemy",
+  "name": "Goblin Skirmisher",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "enemy-standard",
+  "tags": [
+    "enemy",
+    "goblin",
+    "tier-1",
+    "melee",
+    "physical",
+    "goblin-warrens"
+  ],
+  "rulesText": "Jagged Slash\nDeal 1 physical damage, melee.\n\nLoot: 1 Coin.",
+  "data": {
+    "enemyTier": 1,
+    "preferredRow": "enemyFront",
+    "stats": {
+      "hp": 3,
+      "defense": 0
+    },
+    "actions": [
+      {
+        "id": "jagged-slash",
+        "name": "Jagged Slash",
+        "priority": 1,
+        "actionType": "attack",
+        "range": "melee",
+        "targeting": {
+          "mode": "defaultHighestHeatLegalFriendlyEntity"
+        },
+        "damage": {
+          "amount": 1,
+          "damageType": "physical"
+        }
+      }
+    ],
+    "loot": [
+      {
+        "type": "currency",
+        "amount": 1
+      }
+    ]
+  },
+  "source": {
+    "sourceFile": "Cards/dungeon_cards/goblin enemies.txt",
+    "sourceSection": "Tier 1 Goblins > Goblin Skirmisher",
+    "verifiedAgainstRulebook": false,
+    "notes": "Goblin Warrens playtest enemy. Count 3 represents three deck instances; this file is the single shared definition."
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "id": "enemy.goblin-sneak",
+  "active": true,
+  "count": 2,
+  "cardType": "enemy",
+  "name": "Goblin Sneak",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "enemy-standard",
+  "tags": [
+    "enemy",
+    "goblin",
+    "tier-1",
+    "melee",
+    "physical",
+    "ambusher",
+    "goblin-warrens"
+  ],
+  "rulesText": "Backstab\nDeal 2 physical damage, melee, to the legal friendly entity with the lowest current HP. Break ties by highest Heat.\n\nLoot: 1 Coin.",
+  "data": {
+    "enemyTier": 1,
+    "preferredRow": "enemyFront",
+    "stats": {
+      "hp": 3,
+      "defense": 0
+    },
+    "actions": [
+      {
+        "id": "backstab",
+        "name": "Backstab",
+        "priority": 1,
+        "actionType": "attack",
+        "range": "melee",
+        "targeting": {
+          "mode": "defaultHighestHeatLegalFriendlyEntity"
+        },
+        "damage": {
+          "amount": 2,
+          "damageType": "physical"
+        }
+      }
+    ],
+    "loot": [
+      {
+        "type": "currency",
+        "amount": 1
+      }
+    ]
+  },
+  "source": {
+    "sourceFile": "Cards/dungeon_cards/goblin enemies.txt",
+    "sourceSection": "Tier 1 Goblins > Goblin Sneak",
+    "verifiedAgainstRulebook": false,
+    "notes": "Goblin Warrens playtest enemy. Count 2 represents two deck instances; this file is the single shared definition. The special target-selection instruction is kept in player-facing rules text because the confirmed action schema only provides defaultHighestHeatLegalFriendlyEntity."
+  }
+}

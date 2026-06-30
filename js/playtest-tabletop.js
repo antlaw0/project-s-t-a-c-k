@@ -473,14 +473,11 @@
       return null;
     } // end concealed-or-missing-card branch
 
-    const wrapper = createElement("section", {
-      className: "inline-card-rules",
-      attributes: {
-        "aria-label": `Rules text for ${definition.name}`
-      }
-    }); // end inline-rules wrapper
-    wrapper.append(
-      createElement("h6", { text: "Rules text" }),
+const wrapper = createElement("div", {
+  className: "inline-card-rules"
+}); // end inline-rules wrapper    
+ wrapper.append(
+createElement("h6", { text: definition.name }),
       createElement("p", {
         className: "card-rules",
         text: definition.rulesText || "No player-facing rules text is recorded."

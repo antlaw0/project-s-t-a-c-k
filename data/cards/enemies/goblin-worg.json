@@ -1,0 +1,58 @@
+{
+  "id": "enemy.goblin-worg",
+  "active": true,
+  "count": 2,
+  "cardType": "enemy",
+  "name": "Goblin Worg",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "enemy-standard",
+  "tags": [
+    "enemy",
+    "goblin",
+    "beast",
+    "worg",
+    "tier-2",
+    "melee",
+    "physical",
+    "goblin-warrens"
+  ],
+  "rulesText": "Rending Bite\nDeal 2 physical damage, melee. If the target has at least 1 Poison status card, deal 1 additional physical damage.\n\nLoot: 1 Coin.",
+  "data": {
+    "enemyTier": 2,
+    "preferredRow": "enemyFront",
+    "stats": {
+      "hp": 5,
+      "defense": 0
+    },
+    "actions": [
+      {
+        "id": "rending-bite",
+        "name": "Rending Bite",
+        "priority": 1,
+        "actionType": "attack",
+        "range": "melee",
+        "targeting": {
+          "mode": "defaultHighestHeatLegalFriendlyEntity"
+        },
+        "damage": {
+          "amount": 2,
+          "damageType": "physical"
+        }
+      }
+    ],
+    "loot": [
+      {
+        "type": "currency",
+        "amount": 1
+      }
+    ]
+  },
+  "source": {
+    "sourceFile": "Cards/dungeon_cards/goblin enemies.txt",
+    "sourceSection": "Tier 2 Goblins > Goblin Worg",
+    "verifiedAgainstRulebook": false,
+    "notes": "Goblin Warrens playtest enemy. Count 2 represents two deck instances; this file is the single shared definition. The conditional damage rider is intentionally represented in rulesText until a confirmed structured conditional-effect action field is available."
+  }
+}

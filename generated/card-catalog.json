@@ -776,6 +776,291 @@
         "notes": "Rules text migrated from the current Goblin Warrens dungeon-card source. Count 2 is a provisional first-playtest deck-density decision and can be tuned after initial dungeon runs."
       }
     },
+    "enemy.goblin-archer": {
+      "id": "enemy.goblin-archer",
+      "active": true,
+      "count": 4,
+      "cardType": "enemy",
+      "name": "Goblin Archer",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "enemy-standard",
+      "tags": [
+        "enemy",
+        "goblin",
+        "tier-1",
+        "ranged",
+        "physical",
+        "goblin-warrens"
+      ],
+      "rulesText": "Crude Shortbow\nDeal 1 physical damage, ranged.\n\nLoot: 1 Coin.",
+      "data": {
+        "enemyTier": 1,
+        "preferredRow": "enemyBack",
+        "stats": {
+          "hp": 4,
+          "defense": 0
+        },
+        "actions": [
+          {
+            "id": "Crude-Shortbow",
+            "name": "Crude Shortbow",
+            "priority": 1,
+            "actionType": "attack",
+            "range": "ranged",
+            "targeting": {
+              "mode": "defaultHighestHeatLegalFriendlyEntity"
+            },
+            "damage": {
+              "amount": 1,
+              "damageType": "physical"
+            }
+          }
+        ],
+        "loot": [
+          {
+            "type": "currency",
+            "amount": 1
+          }
+        ]
+      },
+      "source": {
+        "sourceFile": "Cards/dungeon_cards/goblin enemies.txt",
+        "sourceSection": "Tier 1 Goblins > Goblin Raider",
+        "verifiedAgainstRulebook": false,
+        "notes": "I created this"
+      }
+    },
+    "enemy.goblin-bombardier": {
+      "id": "enemy.goblin-bombardier",
+      "active": true,
+      "count": 1,
+      "cardType": "enemy",
+      "name": "Goblin Bombardier",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "enemy-standard",
+      "tags": [
+        "enemy",
+        "goblin",
+        "tier-2",
+        "ranged",
+        "fire",
+        "alchemist",
+        "goblin-warrens"
+      ],
+      "rulesText": "Firepot\nDeal 2 fire damage, ranged. Each other legal friendly entity takes 1 fire damage.\n\nLoot: 3 Coin.",
+      "data": {
+        "enemyTier": 2,
+        "preferredRow": "enemyBack",
+        "stats": {
+          "hp": 3,
+          "defense": 0
+        },
+        "actions": [
+          {
+            "id": "firepot",
+            "name": "Firepot",
+            "priority": 1,
+            "actionType": "attack",
+            "range": "ranged",
+            "targeting": {
+              "mode": "defaultHighestHeatLegalFriendlyEntity"
+            },
+            "damage": {
+              "amount": 2,
+              "damageType": "fire"
+            }
+          }
+        ],
+        "loot": [
+          {
+            "type": "currency",
+            "amount": 3
+          }
+        ]
+      },
+      "source": {
+        "sourceFile": "Cards/dungeon_cards/goblin enemies.txt",
+        "sourceSection": "Tier 2 Goblins > Goblin Bombardier",
+        "verifiedAgainstRulebook": false,
+        "notes": "Goblin Warrens playtest enemy. Count 1 represents one deck instance. The splash-damage rider is intentionally represented in rulesText until a confirmed structured multi-target action field is available."
+      }
+    },
+    "enemy.goblin-bully": {
+      "id": "enemy.goblin-bully",
+      "active": true,
+      "count": 2,
+      "cardType": "enemy",
+      "name": "Goblin Bully",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "enemy-standard",
+      "tags": [
+        "enemy",
+        "goblin",
+        "tier-2",
+        "melee",
+        "physical",
+        "brute",
+        "goblin-warrens"
+      ],
+      "rulesText": "Club Smash\nDeal 3 physical damage, melee.\n\nLoot: 2 Coin.",
+      "data": {
+        "enemyTier": 2,
+        "preferredRow": "enemyFront",
+        "stats": {
+          "hp": 6,
+          "defense": 1
+        },
+        "actions": [
+          {
+            "id": "club-smash",
+            "name": "Club Smash",
+            "priority": 1,
+            "actionType": "attack",
+            "range": "melee",
+            "targeting": {
+              "mode": "defaultHighestHeatLegalFriendlyEntity"
+            },
+            "damage": {
+              "amount": 3,
+              "damageType": "physical"
+            }
+          }
+        ],
+        "loot": [
+          {
+            "type": "currency",
+            "amount": 2
+          }
+        ]
+      },
+      "source": {
+        "sourceFile": "Cards/dungeon_cards/goblin enemies.txt",
+        "sourceSection": "Tier 2 Goblins > Goblin Bully",
+        "verifiedAgainstRulebook": false,
+        "notes": "Goblin Warrens playtest enemy. Count 2 represents two deck instances; this file is the single shared definition."
+      }
+    },
+    "enemy.goblin-cutthroat": {
+      "id": "enemy.goblin-cutthroat",
+      "active": true,
+      "count": 2,
+      "cardType": "enemy",
+      "name": "Goblin Cutthroat",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "enemy-standard",
+      "tags": [
+        "enemy",
+        "goblin",
+        "tier-2",
+        "melee",
+        "physical",
+        "poison",
+        "goblin-warrens"
+      ],
+      "rulesText": "Dirty Strike\nDeal 2 physical damage, melee. The target gains 1 Poison status card.\n\nLoot: 2 Coin.",
+      "data": {
+        "enemyTier": 2,
+        "preferredRow": "enemyFront",
+        "stats": {
+          "hp": 4,
+          "defense": 1
+        },
+        "actions": [
+          {
+            "id": "dirty-strike",
+            "name": "Dirty Strike",
+            "priority": 1,
+            "actionType": "attack",
+            "range": "melee",
+            "targeting": {
+              "mode": "defaultHighestHeatLegalFriendlyEntity"
+            },
+            "damage": {
+              "amount": 2,
+              "damageType": "physical"
+            }
+          }
+        ],
+        "loot": [
+          {
+            "type": "currency",
+            "amount": 2
+          }
+        ]
+      },
+      "source": {
+        "sourceFile": "Cards/dungeon_cards/goblin enemies.txt",
+        "sourceSection": "Tier 2 Goblins > Goblin Cutthroat",
+        "verifiedAgainstRulebook": false,
+        "notes": "Goblin Warrens playtest enemy. Count 2 represents two deck instances; this file is the single shared definition. The Poison rider is intentionally represented in rulesText until a confirmed structured status-effect action field is available."
+      }
+    },
+    "enemy.goblin-hexer": {
+      "id": "enemy.goblin-hexer",
+      "active": true,
+      "count": 1,
+      "cardType": "enemy",
+      "name": "Goblin Hexer",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "enemy-standard",
+      "tags": [
+        "enemy",
+        "goblin",
+        "tier-2",
+        "ranged",
+        "arcane",
+        "poison",
+        "caster",
+        "goblin-warrens"
+      ],
+      "rulesText": "Hex Bolt\nDeal 1 arcane damage, ranged. The target gains 1 Poison status card.\n\nLoot: 3 Coin.",
+      "data": {
+        "enemyTier": 2,
+        "preferredRow": "enemyBack",
+        "stats": {
+          "hp": 4,
+          "defense": 0
+        },
+        "actions": [
+          {
+            "id": "hex-bolt",
+            "name": "Hex Bolt",
+            "priority": 1,
+            "actionType": "attack",
+            "range": "ranged",
+            "targeting": {
+              "mode": "defaultHighestHeatLegalFriendlyEntity"
+            },
+            "damage": {
+              "amount": 1,
+              "damageType": "arcane"
+            }
+          }
+        ],
+        "loot": [
+          {
+            "type": "currency",
+            "amount": 3
+          }
+        ]
+      },
+      "source": {
+        "sourceFile": "Cards/dungeon_cards/goblin enemies.txt",
+        "sourceSection": "Tier 2 Goblins > Goblin Hexer",
+        "verifiedAgainstRulebook": false,
+        "notes": "Goblin Warrens playtest enemy. Count 1 represents one deck instance. The Poison rider is intentionally represented in rulesText until a confirmed structured status-effect action field is available."
+      }
+    },
     "enemy.goblin-raider": {
       "id": "enemy.goblin-raider",
       "active": true,
@@ -830,6 +1115,348 @@
         "sourceSection": "Tier 1 Goblins > Goblin Raider",
         "verifiedAgainstRulebook": false,
         "notes": "HP 6, Rusty Blade for 2 physical melee damage, and 1 Coin loot are migrated from the current Goblin enemy source. Defense 0, Enemy Front Row placement, and count 4 are provisional catalog decisions for the first playtest."
+      }
+    },
+    "enemy.goblin-skirmisher": {
+      "id": "enemy.goblin-skirmisher",
+      "active": true,
+      "count": 3,
+      "cardType": "enemy",
+      "name": "Goblin Skirmisher",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "enemy-standard",
+      "tags": [
+        "enemy",
+        "goblin",
+        "tier-1",
+        "melee",
+        "physical",
+        "goblin-warrens"
+      ],
+      "rulesText": "Jagged Slash\nDeal 1 physical damage, melee.\n\nLoot: 1 Coin.",
+      "data": {
+        "enemyTier": 1,
+        "preferredRow": "enemyFront",
+        "stats": {
+          "hp": 3,
+          "defense": 0
+        },
+        "actions": [
+          {
+            "id": "jagged-slash",
+            "name": "Jagged Slash",
+            "priority": 1,
+            "actionType": "attack",
+            "range": "melee",
+            "targeting": {
+              "mode": "defaultHighestHeatLegalFriendlyEntity"
+            },
+            "damage": {
+              "amount": 1,
+              "damageType": "physical"
+            }
+          }
+        ],
+        "loot": [
+          {
+            "type": "currency",
+            "amount": 1
+          }
+        ]
+      },
+      "source": {
+        "sourceFile": "Cards/dungeon_cards/goblin enemies.txt",
+        "sourceSection": "Tier 1 Goblins > Goblin Skirmisher",
+        "verifiedAgainstRulebook": false,
+        "notes": "Goblin Warrens playtest enemy. Count 3 represents three deck instances; this file is the single shared definition."
+      }
+    },
+    "enemy.goblin-slinger": {
+      "id": "enemy.goblin-slinger",
+      "active": true,
+      "count": 3,
+      "cardType": "enemy",
+      "name": "Goblin Slinger",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "enemy-standard",
+      "tags": [
+        "enemy",
+        "goblin",
+        "tier-1",
+        "ranged",
+        "physical",
+        "goblin-warrens"
+      ],
+      "rulesText": "Sling Stone\nDeal 1 physical damage, ranged.\n\nLoot: 1 Coin.",
+      "data": {
+        "enemyTier": 1,
+        "preferredRow": "enemyBack",
+        "stats": {
+          "hp": 2,
+          "defense": 0
+        },
+        "actions": [
+          {
+            "id": "sling-stone",
+            "name": "Sling Stone",
+            "priority": 1,
+            "actionType": "attack",
+            "range": "ranged",
+            "targeting": {
+              "mode": "defaultHighestHeatLegalFriendlyEntity"
+            },
+            "damage": {
+              "amount": 1,
+              "damageType": "physical"
+            }
+          }
+        ],
+        "loot": [
+          {
+            "type": "currency",
+            "amount": 1
+          }
+        ]
+      },
+      "source": {
+        "sourceFile": "Cards/dungeon_cards/goblin enemies.txt",
+        "sourceSection": "Tier 1 Goblins > Goblin Slinger",
+        "verifiedAgainstRulebook": false,
+        "notes": "Goblin Warrens playtest enemy. Count 3 represents three deck instances; this file is the single shared definition."
+      }
+    },
+    "enemy.goblin-sneak": {
+      "id": "enemy.goblin-sneak",
+      "active": true,
+      "count": 2,
+      "cardType": "enemy",
+      "name": "Goblin Sneak",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "enemy-standard",
+      "tags": [
+        "enemy",
+        "goblin",
+        "tier-1",
+        "melee",
+        "physical",
+        "ambusher",
+        "goblin-warrens"
+      ],
+      "rulesText": "Backstab\nDeal 2 physical damage, melee, to the legal friendly entity with the lowest current HP. Break ties by highest Heat.\n\nLoot: 1 Coin.",
+      "data": {
+        "enemyTier": 1,
+        "preferredRow": "enemyFront",
+        "stats": {
+          "hp": 3,
+          "defense": 0
+        },
+        "actions": [
+          {
+            "id": "backstab",
+            "name": "Backstab",
+            "priority": 1,
+            "actionType": "attack",
+            "range": "melee",
+            "targeting": {
+              "mode": "defaultHighestHeatLegalFriendlyEntity"
+            },
+            "damage": {
+              "amount": 2,
+              "damageType": "physical"
+            }
+          }
+        ],
+        "loot": [
+          {
+            "type": "currency",
+            "amount": 1
+          }
+        ]
+      },
+      "source": {
+        "sourceFile": "Cards/dungeon_cards/goblin enemies.txt",
+        "sourceSection": "Tier 1 Goblins > Goblin Sneak",
+        "verifiedAgainstRulebook": false,
+        "notes": "Goblin Warrens playtest enemy. Count 2 represents two deck instances; this file is the single shared definition. The special target-selection instruction is kept in player-facing rules text because the confirmed action schema only provides defaultHighestHeatLegalFriendlyEntity."
+      }
+    },
+    "enemy.goblin-spearman": {
+      "id": "enemy.goblin-spearman",
+      "active": true,
+      "count": 3,
+      "cardType": "enemy",
+      "name": "Goblin Spearman",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "enemy-standard",
+      "tags": [
+        "enemy",
+        "goblin",
+        "tier-1",
+        "melee",
+        "physical",
+        "reach",
+        "goblin-warrens"
+      ],
+      "rulesText": "Spear Thrust\nDeal 2 physical damage, melee.\n\nLoot: 1 Coin.",
+      "data": {
+        "enemyTier": 1,
+        "preferredRow": "enemyFront",
+        "stats": {
+          "hp": 4,
+          "defense": 1
+        },
+        "actions": [
+          {
+            "id": "spear-thrust",
+            "name": "Spear Thrust",
+            "priority": 1,
+            "actionType": "attack",
+            "range": "melee",
+            "targeting": {
+              "mode": "defaultHighestHeatLegalFriendlyEntity"
+            },
+            "damage": {
+              "amount": 2,
+              "damageType": "physical"
+            }
+          }
+        ],
+        "loot": [
+          {
+            "type": "currency",
+            "amount": 1
+          }
+        ]
+      },
+      "source": {
+        "sourceFile": "Cards/dungeon_cards/goblin enemies.txt",
+        "sourceSection": "Tier 1 Goblins > Goblin Spearman",
+        "verifiedAgainstRulebook": false,
+        "notes": "Goblin Warrens playtest enemy. Count 3 represents three deck instances; this file is the single shared definition."
+      }
+    },
+    "enemy.goblin-worg-rider": {
+      "id": "enemy.goblin-worg-rider",
+      "active": true,
+      "count": 1,
+      "cardType": "enemy",
+      "name": "Goblin Worg Rider",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "enemy-standard",
+      "tags": [
+        "enemy",
+        "goblin",
+        "worg",
+        "tier-2",
+        "melee",
+        "physical",
+        "mounted",
+        "goblin-warrens"
+      ],
+      "rulesText": "Trampling Charge\nDeal 3 physical damage, melee. If the target has at least 1 Poison status card, it gains 1 Stun status card.\n\nLoot: 3 Coin.",
+      "data": {
+        "enemyTier": 2,
+        "preferredRow": "enemyFront",
+        "stats": {
+          "hp": 7,
+          "defense": 1
+        },
+        "actions": [
+          {
+            "id": "trampling-charge",
+            "name": "Trampling Charge",
+            "priority": 1,
+            "actionType": "attack",
+            "range": "melee",
+            "targeting": {
+              "mode": "defaultHighestHeatLegalFriendlyEntity"
+            },
+            "damage": {
+              "amount": 3,
+              "damageType": "physical"
+            }
+          }
+        ],
+        "loot": [
+          {
+            "type": "currency",
+            "amount": 3
+          }
+        ]
+      },
+      "source": {
+        "sourceFile": "Cards/dungeon_cards/goblin enemies.txt",
+        "sourceSection": "Tier 2 Goblins > Goblin Worg Rider",
+        "verifiedAgainstRulebook": false,
+        "notes": "Goblin Warrens playtest enemy. Count 1 represents one deck instance. The conditional Stun rider is intentionally represented in rulesText until a confirmed structured status-effect action field is available."
+      }
+    },
+    "enemy.goblin-worg": {
+      "id": "enemy.goblin-worg",
+      "active": true,
+      "count": 2,
+      "cardType": "enemy",
+      "name": "Goblin Worg",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "enemy-standard",
+      "tags": [
+        "enemy",
+        "goblin",
+        "beast",
+        "worg",
+        "tier-2",
+        "melee",
+        "physical",
+        "goblin-warrens"
+      ],
+      "rulesText": "Rending Bite\nDeal 2 physical damage, melee. If the target has at least 1 Poison status card, deal 1 additional physical damage.\n\nLoot: 1 Coin.",
+      "data": {
+        "enemyTier": 2,
+        "preferredRow": "enemyFront",
+        "stats": {
+          "hp": 5,
+          "defense": 0
+        },
+        "actions": [
+          {
+            "id": "rending-bite",
+            "name": "Rending Bite",
+            "priority": 1,
+            "actionType": "attack",
+            "range": "melee",
+            "targeting": {
+              "mode": "defaultHighestHeatLegalFriendlyEntity"
+            },
+            "damage": {
+              "amount": 2,
+              "damageType": "physical"
+            }
+          }
+        ],
+        "loot": [
+          {
+            "type": "currency",
+            "amount": 1
+          }
+        ]
+      },
+      "source": {
+        "sourceFile": "Cards/dungeon_cards/goblin enemies.txt",
+        "sourceSection": "Tier 2 Goblins > Goblin Worg",
+        "verifiedAgainstRulebook": false,
+        "notes": "Goblin Warrens playtest enemy. Count 2 represents two deck instances; this file is the single shared definition. The conditional damage rider is intentionally represented in rulesText until a confirmed structured conditional-effect action field is available."
       }
     },
     "equipment.body.apprentice-robes": {
@@ -1981,7 +2608,18 @@
     "character.warrior",
     "dungeon.goblin-warrens.goblin-alarm",
     "dungeon.goblin-warrens.tripwire",
+    "enemy.goblin-archer",
+    "enemy.goblin-bombardier",
+    "enemy.goblin-bully",
+    "enemy.goblin-cutthroat",
+    "enemy.goblin-hexer",
     "enemy.goblin-raider",
+    "enemy.goblin-skirmisher",
+    "enemy.goblin-slinger",
+    "enemy.goblin-sneak",
+    "enemy.goblin-spearman",
+    "enemy.goblin-worg",
+    "enemy.goblin-worg-rider",
     "equipment.body.apprentice-robes",
     "equipment.focus.apprentices-wand",
     "equipment.weapon.arming-sword",

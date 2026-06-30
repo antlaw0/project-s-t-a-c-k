@@ -1,0 +1,56 @@
+{
+  "id": "enemy.goblin-archer",
+  "active": true,
+  "count": 4,
+  "cardType": "enemy",
+  "name": "Goblin Archer",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "enemy-standard",
+  "tags": [
+    "enemy",
+    "goblin",
+    "tier-1",
+    "ranged",
+    "physical",
+    "goblin-warrens"
+  ],
+  "rulesText": "Crude Shortbow\nDeal 1 physical damage, ranged.\n\nLoot: 1 Coin.",
+  "data": {
+    "enemyTier": 1,
+    "preferredRow": "enemyBack",
+    "stats": {
+      "hp": 4,
+      "defense": 0
+    },
+    "actions": [
+      {
+        "id": "Crude-Shortbow",
+        "name": "Crude Shortbow",
+        "priority": 1,
+        "actionType": "attack",
+        "range": "ranged",
+        "targeting": {
+          "mode": "defaultHighestHeatLegalFriendlyEntity"
+        },
+        "damage": {
+          "amount": 1,
+          "damageType": "physical"
+        }
+      }
+    ],
+    "loot": [
+      {
+        "type": "currency",
+        "amount": 1
+      }
+    ]
+  },
+  "source": {
+    "sourceFile": "Cards/dungeon_cards/goblin enemies.txt",
+    "sourceSection": "Tier 1 Goblins > Goblin Raider",
+    "verifiedAgainstRulebook": false,
+    "notes": "I created this"
+  }
+}

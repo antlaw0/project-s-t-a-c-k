@@ -1,0 +1,57 @@
+{
+  "id": "enemy.goblin-cutthroat",
+  "active": true,
+  "count": 2,
+  "cardType": "enemy",
+  "name": "Goblin Cutthroat",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "enemy-standard",
+  "tags": [
+    "enemy",
+    "goblin",
+    "tier-2",
+    "melee",
+    "physical",
+    "poison",
+    "goblin-warrens"
+  ],
+  "rulesText": "Dirty Strike\nDeal 2 physical damage, melee. The target gains 1 Poison status card.\n\nLoot: 2 Coin.",
+  "data": {
+    "enemyTier": 2,
+    "preferredRow": "enemyFront",
+    "stats": {
+      "hp": 4,
+      "defense": 1
+    },
+    "actions": [
+      {
+        "id": "dirty-strike",
+        "name": "Dirty Strike",
+        "priority": 1,
+        "actionType": "attack",
+        "range": "melee",
+        "targeting": {
+          "mode": "defaultHighestHeatLegalFriendlyEntity"
+        },
+        "damage": {
+          "amount": 2,
+          "damageType": "physical"
+        }
+      }
+    ],
+    "loot": [
+      {
+        "type": "currency",
+        "amount": 2
+      }
+    ]
+  },
+  "source": {
+    "sourceFile": "Cards/dungeon_cards/goblin enemies.txt",
+    "sourceSection": "Tier 2 Goblins > Goblin Cutthroat",
+    "verifiedAgainstRulebook": false,
+    "notes": "Goblin Warrens playtest enemy. Count 2 represents two deck instances; this file is the single shared definition. The Poison rider is intentionally represented in rulesText until a confirmed structured status-effect action field is available."
+  }
+}

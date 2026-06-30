@@ -1,0 +1,58 @@
+{
+  "id": "enemy.goblin-worg-rider",
+  "active": true,
+  "count": 1,
+  "cardType": "enemy",
+  "name": "Goblin Worg Rider",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "enemy-standard",
+  "tags": [
+    "enemy",
+    "goblin",
+    "worg",
+    "tier-2",
+    "melee",
+    "physical",
+    "mounted",
+    "goblin-warrens"
+  ],
+  "rulesText": "Trampling Charge\nDeal 3 physical damage, melee. If the target has at least 1 Poison status card, it gains 1 Stun status card.\n\nLoot: 3 Coin.",
+  "data": {
+    "enemyTier": 2,
+    "preferredRow": "enemyFront",
+    "stats": {
+      "hp": 7,
+      "defense": 1
+    },
+    "actions": [
+      {
+        "id": "trampling-charge",
+        "name": "Trampling Charge",
+        "priority": 1,
+        "actionType": "attack",
+        "range": "melee",
+        "targeting": {
+          "mode": "defaultHighestHeatLegalFriendlyEntity"
+        },
+        "damage": {
+          "amount": 3,
+          "damageType": "physical"
+        }
+      }
+    ],
+    "loot": [
+      {
+        "type": "currency",
+        "amount": 3
+      }
+    ]
+  },
+  "source": {
+    "sourceFile": "Cards/dungeon_cards/goblin enemies.txt",
+    "sourceSection": "Tier 2 Goblins > Goblin Worg Rider",
+    "verifiedAgainstRulebook": false,
+    "notes": "Goblin Warrens playtest enemy. Count 1 represents one deck instance. The conditional Stun rider is intentionally represented in rulesText until a confirmed structured status-effect action field is available."
+  }
+}

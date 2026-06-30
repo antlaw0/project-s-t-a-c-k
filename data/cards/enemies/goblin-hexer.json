@@ -1,0 +1,58 @@
+{
+  "id": "enemy.goblin-hexer",
+  "active": true,
+  "count": 1,
+  "cardType": "enemy",
+  "name": "Goblin Hexer",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "enemy-standard",
+  "tags": [
+    "enemy",
+    "goblin",
+    "tier-2",
+    "ranged",
+    "arcane",
+    "poison",
+    "caster",
+    "goblin-warrens"
+  ],
+  "rulesText": "Hex Bolt\nDeal 1 arcane damage, ranged. The target gains 1 Poison status card.\n\nLoot: 3 Coin.",
+  "data": {
+    "enemyTier": 2,
+    "preferredRow": "enemyBack",
+    "stats": {
+      "hp": 4,
+      "defense": 0
+    },
+    "actions": [
+      {
+        "id": "hex-bolt",
+        "name": "Hex Bolt",
+        "priority": 1,
+        "actionType": "attack",
+        "range": "ranged",
+        "targeting": {
+          "mode": "defaultHighestHeatLegalFriendlyEntity"
+        },
+        "damage": {
+          "amount": 1,
+          "damageType": "arcane"
+        }
+      }
+    ],
+    "loot": [
+      {
+        "type": "currency",
+        "amount": 3
+      }
+    ]
+  },
+  "source": {
+    "sourceFile": "Cards/dungeon_cards/goblin enemies.txt",
+    "sourceSection": "Tier 2 Goblins > Goblin Hexer",
+    "verifiedAgainstRulebook": false,
+    "notes": "Goblin Warrens playtest enemy. Count 1 represents one deck instance. The Poison rider is intentionally represented in rulesText until a confirmed structured status-effect action field is available."
+  }
+}

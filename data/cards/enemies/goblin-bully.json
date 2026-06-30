@@ -1,0 +1,57 @@
+{
+  "id": "enemy.goblin-bully",
+  "active": true,
+  "count": 2,
+  "cardType": "enemy",
+  "name": "Goblin Bully",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "enemy-standard",
+  "tags": [
+    "enemy",
+    "goblin",
+    "tier-2",
+    "melee",
+    "physical",
+    "brute",
+    "goblin-warrens"
+  ],
+  "rulesText": "Club Smash\nDeal 3 physical damage, melee.\n\nLoot: 2 Coin.",
+  "data": {
+    "enemyTier": 2,
+    "preferredRow": "enemyFront",
+    "stats": {
+      "hp": 6,
+      "defense": 1
+    },
+    "actions": [
+      {
+        "id": "club-smash",
+        "name": "Club Smash",
+        "priority": 1,
+        "actionType": "attack",
+        "range": "melee",
+        "targeting": {
+          "mode": "defaultHighestHeatLegalFriendlyEntity"
+        },
+        "damage": {
+          "amount": 3,
+          "damageType": "physical"
+        }
+      }
+    ],
+    "loot": [
+      {
+        "type": "currency",
+        "amount": 2
+      }
+    ]
+  },
+  "source": {
+    "sourceFile": "Cards/dungeon_cards/goblin enemies.txt",
+    "sourceSection": "Tier 2 Goblins > Goblin Bully",
+    "verifiedAgainstRulebook": false,
+    "notes": "Goblin Warrens playtest enemy. Count 2 represents two deck instances; this file is the single shared definition."
+  }
+}

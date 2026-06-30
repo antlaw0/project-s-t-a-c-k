@@ -1,0 +1,57 @@
+{
+  "id": "enemy.goblin-bombardier",
+  "active": true,
+  "count": 1,
+  "cardType": "enemy",
+  "name": "Goblin Bombardier",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "enemy-standard",
+  "tags": [
+    "enemy",
+    "goblin",
+    "tier-2",
+    "ranged",
+    "fire",
+    "alchemist",
+    "goblin-warrens"
+  ],
+  "rulesText": "Firepot\nDeal 2 fire damage, ranged. Each other legal friendly entity takes 1 fire damage.\n\nLoot: 3 Coin.",
+  "data": {
+    "enemyTier": 2,
+    "preferredRow": "enemyBack",
+    "stats": {
+      "hp": 3,
+      "defense": 0
+    },
+    "actions": [
+      {
+        "id": "firepot",
+        "name": "Firepot",
+        "priority": 1,
+        "actionType": "attack",
+        "range": "ranged",
+        "targeting": {
+          "mode": "defaultHighestHeatLegalFriendlyEntity"
+        },
+        "damage": {
+          "amount": 2,
+          "damageType": "fire"
+        }
+      }
+    ],
+    "loot": [
+      {
+        "type": "currency",
+        "amount": 3
+      }
+    ]
+  },
+  "source": {
+    "sourceFile": "Cards/dungeon_cards/goblin enemies.txt",
+    "sourceSection": "Tier 2 Goblins > Goblin Bombardier",
+    "verifiedAgainstRulebook": false,
+    "notes": "Goblin Warrens playtest enemy. Count 1 represents one deck instance. The splash-damage rider is intentionally represented in rulesText until a confirmed structured multi-target action field is available."
+  }
+}
