@@ -1,0 +1,44 @@
+{
+  "id": "equipment.body.apprentice-robes",
+  "active": true,
+  "count": 1,
+  "cardType": "equipment",
+  "name": "Apprentice Robes",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "equipment-body-standard",
+  "tags": [
+    "equipment",
+    "body",
+    "clothing",
+    "robe",
+    "arcane",
+    "common"
+  ],
+  "rulesText": "Body Equipment \u2014 Clothing\nClothing \u2022 Robe\n+0 Defense",
+  "data": {
+    "equipmentType": "body",
+    "equipmentSlot": "body",
+    "category": "clothing",
+    "armorTags": [
+      "clothing",
+      "robe"
+    ],
+    "defenseBonus": 0,
+    "requiredProficiency": [],
+    "traits": [],
+    "economy": {
+      "equipmentPowerRating": 0,
+      "valueGold": 0,
+      "sellValueGold": 0,
+      "rarity": "common"
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+    "sourceSection": "Body Equipment Cards > Apprentice Robes",
+    "verifiedAgainstRulebook": false,
+    "notes": "Canonical spelling follows the equipment catalog: Apprentice Robes, plural. The starter roster uses the singular phrase Apprentice Robe."
+  }
+}

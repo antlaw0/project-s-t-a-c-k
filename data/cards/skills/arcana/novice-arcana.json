@@ -1,0 +1,53 @@
+{
+  "id": "skill.arcana.novice",
+  "active": true,
+  "count": 1,
+  "cardType": "skill",
+  "name": "Novice Arcana",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "skill-standard",
+  "tags": [
+    "skill",
+    "discipline",
+    "arcana",
+    "novice",
+    "arcane",
+    "mage-native"
+  ],
+  "rulesText": "Arcana Skill \u2014 Novice\n\nSpell Slots: 1\nMay Equip: Novice Arcana spells.\n\nPassive \u2014 Arcane Foundation\nNo passive effect is finalized yet. This card is active for early Mage tabletop testing and should receive a finalized printed passive before production.",
+  "data": {
+    "skillType": "discipline",
+    "discipline": "arcana",
+    "rank": {
+      "id": "novice",
+      "order": 1
+    },
+    "nativeClasses": [
+      "character.mage"
+    ],
+    "attachedCardRules": {
+      "allowedCardTypes": [
+        "spell"
+      ],
+      "requiredDiscipline": "arcana",
+      "maximumRank": "novice",
+      "slotCount": 1
+    },
+    "passive": {
+      "id": "arcane-foundation",
+      "name": "Arcane Foundation",
+      "status": "pendingDesign",
+      "effect": {
+        "type": "none"
+      }
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/character_classes.md",
+    "sourceSection": "Mage Character Card > Starting Skills and Attached Spells",
+    "verifiedAgainstRulebook": false,
+    "notes": "The starter roster names Novice Arcana and Arcane Ward but the current repository does not include a separate Arcana skill-card source file. This card is intentionally playable for setup but has a clearly marked pending passive; replace Arcane Foundation when the Arcana discipline set is finalized."
+  }
+}

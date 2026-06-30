@@ -92,6 +92,225 @@
         "notes": "Rage uses the owner’s shared activation to begin, occupies the owner’s Status Row while active, and returns to the exact Skill Card it came from when it ends. Count 1 is the provisional core-alpha supply."
       }
     },
+    "character.cleric": {
+      "id": "character.cleric",
+      "active": true,
+      "count": 1,
+      "cardType": "character",
+      "name": "Cleric",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "character-standard",
+      "tags": [
+        "character",
+        "player-character",
+        "divine",
+        "cleric",
+        "support",
+        "backline",
+        "core-alpha"
+      ],
+      "rulesText": "Player Character — Divine\n\nMaximum HP: 14\nSuggested First Placement: Player Back Row\n\nClass Trait — Sacred Relief\nOnce per Encounter Round, when the Cleric restores 1 or more HP to another Friendly Entity, remove 1 Heat from that entity.\n\nNative Skill Domains\nRestoration; Divine Intervention; Exorcism.",
+      "data": {
+        "entityType": "playerCharacter",
+        "role": "divine",
+        "maximumHp": 14,
+        "suggestedFirstPlacement": "playerBack",
+        "classTrait": {
+          "id": "sacred-relief",
+          "name": "Sacred Relief",
+          "frequency": "oncePerEncounterRound",
+          "trigger": {
+            "event": "hpRestored",
+            "minimumAmount": 1,
+            "actorMustBeCharacterOwner": true,
+            "targetMustBeAnotherFriendlyEntity": true
+          },
+          "effect": {
+            "type": "loseHeat",
+            "amount": 1,
+            "target": "healedEntity",
+            "minimumResult": 0
+          }
+        },
+        "nativeSkillDomains": [
+          "restoration",
+          "divine-intervention",
+          "exorcism"
+        ],
+        "slotCapacity": {
+          "skillSlots": 5,
+          "tacticalReserveSlots": 5,
+          "inventoryCapacity": 20,
+          "transportationSlots": 1,
+          "statusRowSlots": 5
+        },
+        "activation": {
+          "type": "sharedActivation",
+          "sharedWith": "controlledAllies",
+          "activationsPerEncounterRound": 1
+        },
+        "startingLoadout": {
+          "equipment": [
+            {
+              "cardId": "equipment.weapon.blessed-mace",
+              "quantity": 1
+            },
+            {
+              "cardId": "equipment.focus.wooden-holy-symbol",
+              "quantity": 1
+            },
+            {
+              "cardId": "equipment.clothing.acolyte-vestments",
+              "quantity": 1
+            }
+          ],
+          "skills": [
+            {
+              "cardId": "skill.restoration.novice",
+              "attachedCards": [
+                "spell.restoration.novice-healing-prayer"
+              ]
+            },
+            {
+              "cardId": "skill.divine-intervention.novice",
+              "attachedCards": [
+                "spell.divine-intervention.novice-sacred-light"
+              ]
+            }
+          ],
+          "tacticalReserve": [
+            {
+              "cardId": "tactical-reserve.healing-potion",
+              "quantity": 1
+            },
+            {
+              "cardId": "tactical-reserve.holy-water",
+              "quantity": 1
+            },
+            {
+              "cardId": "tactical-reserve.antidote",
+              "quantity": 1
+            }
+          ],
+          "startingDefense": 0
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/character_classes.md",
+        "sourceSection": "Cleric Character Card",
+        "verifiedAgainstRulebook": false,
+        "notes": "HP, Sacred Relief, native domains, recommended starter cards, and starting defense are migrated from the starter roster. Referenced equipment and spells will be added in later bulk packs."
+      }
+    },
+    "character.druid": {
+      "id": "character.druid",
+      "active": true,
+      "count": 1,
+      "cardType": "character",
+      "name": "Druid",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "character-standard",
+      "tags": [
+        "character",
+        "player-character",
+        "primal",
+        "druid",
+        "summoner",
+        "backline",
+        "core-alpha"
+      ],
+      "rulesText": "Player Character — Primal\n\nMaximum HP: 14\nSuggested First Placement: Player Back Row\n\nClass Trait — Wild Pathfinder\nWhile traveling on foot, whenever the Druid reveals 1 or more map tiles, reveal 1 additional adjacent face-down tile. This cannot reveal a tile beyond the map boundary.\n\nNative Skill Domains\nBiomancy; Wildcalling; Primalism.",
+      "data": {
+        "entityType": "playerCharacter",
+        "role": "primal",
+        "maximumHp": 14,
+        "suggestedFirstPlacement": "playerBack",
+        "classTrait": {
+          "id": "wild-pathfinder",
+          "name": "Wild Pathfinder",
+          "trigger": {
+            "event": "mapTilesRevealed",
+            "minimumAmount": 1,
+            "conditions": {
+              "travelMode": "onFoot"
+            }
+          },
+          "effect": {
+            "type": "revealAdditionalAdjacentFaceDownMapTile",
+            "amount": 1,
+            "cannotRevealBeyondMapBoundary": true
+          }
+        },
+        "nativeSkillDomains": [
+          "biomancy",
+          "wildcalling",
+          "primalism"
+        ],
+        "slotCapacity": {
+          "skillSlots": 5,
+          "tacticalReserveSlots": 5,
+          "inventoryCapacity": 20,
+          "transportationSlots": 1,
+          "statusRowSlots": 5
+        },
+        "activation": {
+          "type": "sharedActivation",
+          "sharedWith": "controlledAllies",
+          "activationsPerEncounterRound": 1
+        },
+        "startingLoadout": {
+          "equipment": [
+            {
+              "cardId": "equipment.weapon.thornwood-staff",
+              "quantity": 1
+            },
+            {
+              "cardId": "equipment.armor.hide-vest",
+              "quantity": 1
+            }
+          ],
+          "skills": [
+            {
+              "cardId": "skill.biomancy.novice",
+              "attachedCards": [
+                "spell.biomancy.novice-thorn-lash"
+              ]
+            },
+            {
+              "cardId": "skill.wildcalling.novice",
+              "attachedCards": [
+                "summon.wildcalling.novice-vine-guardian"
+              ]
+            }
+          ],
+          "tacticalReserve": [
+            {
+              "cardId": "tactical-reserve.healing-potion",
+              "quantity": 1
+            },
+            {
+              "cardId": "tactical-reserve.barkskin-salve",
+              "quantity": 1
+            },
+            {
+              "cardId": "tactical-reserve.antidote",
+              "quantity": 1
+            }
+          ],
+          "startingDefense": 1
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/character_classes.md",
+        "sourceSection": "Druid Character Card",
+        "verifiedAgainstRulebook": false,
+        "notes": "HP, Wild Pathfinder, native domains, recommended starter cards, and starting defense are migrated from the starter roster. Wild Pathfinder is retained even though it is outside the initial dungeon-only smoke test."
+      }
+    },
     "character.mage": {
       "id": "character.mage",
       "active": true,
@@ -161,7 +380,7 @@
               "quantity": 1
             },
             {
-              "cardId": "equipment.clothing.apprentice-robe",
+              "cardId": "equipment.body.apprentice-robes",
               "quantity": 1
             }
           ],
@@ -200,7 +419,119 @@
         "sourceFile": "Cards/character_classes.md",
         "sourceSection": "Mage Character Card",
         "verifiedAgainstRulebook": false,
-        "notes": "Maximum HP, Spellweaver, native skill domains, recommended starter loadout, and starting Defense are migrated from the first-playtest Mage roster. Several referenced catalog records have not yet been converted to JSON."
+        "notes": "This replacement record updates the starter-loadout IDs to the canonical Mage starter card IDs included in this pack. Several referenced Tactical Reserve cards are expected to already exist in the catalog."
+      }
+    },
+    "character.rogue": {
+      "id": "character.rogue",
+      "active": true,
+      "count": 1,
+      "cardType": "character",
+      "name": "Rogue",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "character-standard",
+      "tags": [
+        "character",
+        "player-character",
+        "martial",
+        "rogue",
+        "mobility",
+        "frontline",
+        "core-alpha"
+      ],
+      "rulesText": "Player Character — Martial\n\nMaximum HP: 18\nSuggested First Placement: Player Front Row\n\nClass Trait — Shadow Step\nOnce per Encounter Round, immediately before or after the Rogue uses its own normal action, move the Rogue to an empty Player Front Row or Player Back Row slot. This movement does not spend an action.\n\nNative Skill Domains\nThief; Skirmisher; Shadowcraft.",
+      "data": {
+        "entityType": "playerCharacter",
+        "role": "martial",
+        "maximumHp": 18,
+        "suggestedFirstPlacement": "playerFront",
+        "classTrait": {
+          "id": "shadow-step",
+          "name": "Shadow Step",
+          "frequency": "oncePerEncounterRound",
+          "timing": [
+            "immediatelyBeforeOwnersNormalAction",
+            "immediatelyAfterOwnersNormalAction"
+          ],
+          "conditions": {
+            "ownerMustUseOwnNormalAction": true,
+            "destinationMustBeEmptyPlayerFormationSlot": true
+          },
+          "effect": {
+            "type": "moveEntity",
+            "allowedDestinationRows": [
+              "playerFront",
+              "playerBack"
+            ],
+            "costsAction": false
+          }
+        },
+        "nativeSkillDomains": [
+          "thief",
+          "skirmisher",
+          "shadowcraft"
+        ],
+        "slotCapacity": {
+          "skillSlots": 5,
+          "tacticalReserveSlots": 5,
+          "inventoryCapacity": 20,
+          "transportationSlots": 1,
+          "statusRowSlots": 5
+        },
+        "activation": {
+          "type": "sharedActivation",
+          "sharedWith": "controlledAllies",
+          "activationsPerEncounterRound": 1
+        },
+        "startingLoadout": {
+          "equipment": [
+            {
+              "cardId": "equipment.weapon.main-gauche",
+              "quantity": 1
+            },
+            {
+              "cardId": "equipment.armor.leather-armor",
+              "quantity": 1
+            }
+          ],
+          "skills": [
+            {
+              "cardId": "skill.thief.runner",
+              "attachedCards": [
+                "ability.thief.runner-opportunists-strike"
+              ]
+            },
+            {
+              "cardId": "skill.skirmisher.runner",
+              "attachedCards": [
+                "ability.skirmisher.runner-knife-throw"
+              ]
+            }
+          ],
+          "tacticalReserve": [
+            {
+              "cardId": "tactical-reserve.healing-potion",
+              "quantity": 1
+            },
+            {
+              "cardId": "tactical-reserve.smoke-bomb",
+              "quantity": 1
+            },
+            {
+              "cardId": "tactical-reserve.antidote",
+              "quantity": 1
+            }
+          ],
+          "startingDefense": 1
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/character_classes.md",
+        "sourceSection": "Rogue Character Card",
+        "verifiedAgainstRulebook": false,
+        "notes": "HP, Shadow Step, native domains, starter equipment, Tactical Reserve, and baseline defense are migrated from the starter roster. The source called the initial Thief and Skirmisher ranks Novice; this catalog record intentionally uses the finalized Rogue rank name Runner."
       }
     },
     "character.warrior": {
@@ -501,6 +832,93 @@
         "notes": "HP 6, Rusty Blade for 2 physical melee damage, and 1 Coin loot are migrated from the current Goblin enemy source. Defense 0, Enemy Front Row placement, and count 4 are provisional catalog decisions for the first playtest."
       }
     },
+    "equipment.body.apprentice-robes": {
+      "id": "equipment.body.apprentice-robes",
+      "active": true,
+      "count": 1,
+      "cardType": "equipment",
+      "name": "Apprentice Robes",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "equipment-body-standard",
+      "tags": [
+        "equipment",
+        "body",
+        "clothing",
+        "robe",
+        "arcane",
+        "common"
+      ],
+      "rulesText": "Body Equipment — Clothing\nClothing • Robe\n+0 Defense",
+      "data": {
+        "equipmentType": "body",
+        "equipmentSlot": "body",
+        "category": "clothing",
+        "armorTags": [
+          "clothing",
+          "robe"
+        ],
+        "defenseBonus": 0,
+        "requiredProficiency": [],
+        "traits": [],
+        "economy": {
+          "equipmentPowerRating": 0,
+          "valueGold": 0,
+          "sellValueGold": 0,
+          "rarity": "common"
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+        "sourceSection": "Body Equipment Cards > Apprentice Robes",
+        "verifiedAgainstRulebook": false,
+        "notes": "Canonical spelling follows the equipment catalog: Apprentice Robes, plural. The starter roster uses the singular phrase Apprentice Robe."
+      }
+    },
+    "equipment.focus.apprentices-wand": {
+      "id": "equipment.focus.apprentices-wand",
+      "active": true,
+      "count": 1,
+      "cardType": "equipment",
+      "name": "Apprentice's Wand",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "equipment-focus-standard",
+      "tags": [
+        "equipment",
+        "focus",
+        "off-hand",
+        "arcane",
+        "wand",
+        "common"
+      ],
+      "rulesText": "Off-Hand Focus\nArcane • Wand\n\nNo weapon attack.\nThis card may satisfy a card requirement for an Arcane Focus.",
+      "data": {
+        "equipmentType": "focus",
+        "equipmentSlot": "offHand",
+        "focusTags": [
+          "arcane",
+          "wand"
+        ],
+        "handsRequired": 1,
+        "requiredProficiency": [],
+        "traits": [],
+        "economy": {
+          "equipmentPowerRating": 0,
+          "valueGold": 0,
+          "sellValueGold": 0,
+          "rarity": "common"
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/character_classes.md",
+        "sourceSection": "Mage Character Card > Starting Equipment",
+        "verifiedAgainstRulebook": false,
+        "notes": "The starter roster defines this as a held Arcane Focus with no weapon attack. Economy fields are provisional because the starter roster does not assign an EPR or market value."
+      }
+    },
     "equipment.weapon.arming-sword": {
       "id": "equipment.weapon.arming-sword",
       "active": true,
@@ -657,6 +1075,59 @@
         "notes": "Count 1 is intentional. This is a persistent named market card, not a disposable enemy supply. If dismissed or defeated, it enters the Loot Discard Pile and can become available again when the Loot Deck is reshuffled."
       }
     },
+    "skill.arcana.novice": {
+      "id": "skill.arcana.novice",
+      "active": true,
+      "count": 1,
+      "cardType": "skill",
+      "name": "Novice Arcana",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "skill-standard",
+      "tags": [
+        "skill",
+        "discipline",
+        "arcana",
+        "novice",
+        "arcane",
+        "mage-native"
+      ],
+      "rulesText": "Arcana Skill — Novice\n\nSpell Slots: 1\nMay Equip: Novice Arcana spells.\n\nPassive — Arcane Foundation\nNo passive effect is finalized yet. This card is active for early Mage tabletop testing and should receive a finalized printed passive before production.",
+      "data": {
+        "skillType": "discipline",
+        "discipline": "arcana",
+        "rank": {
+          "id": "novice",
+          "order": 1
+        },
+        "nativeClasses": [
+          "character.mage"
+        ],
+        "attachedCardRules": {
+          "allowedCardTypes": [
+            "spell"
+          ],
+          "requiredDiscipline": "arcana",
+          "maximumRank": "novice",
+          "slotCount": 1
+        },
+        "passive": {
+          "id": "arcane-foundation",
+          "name": "Arcane Foundation",
+          "status": "pendingDesign",
+          "effect": {
+            "type": "none"
+          }
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/character_classes.md",
+        "sourceSection": "Mage Character Card > Starting Skills and Attached Spells",
+        "verifiedAgainstRulebook": false,
+        "notes": "The starter roster names Novice Arcana and Arcane Ward but the current repository does not include a separate Arcana skill-card source file. This card is intentionally playable for setup but has a clearly marked pending passive; replace Arcane Foundation when the Arcana discipline set is finalized."
+      }
+    },
     "skill.barbarian.recruit-feral-instinct": {
       "id": "skill.barbarian.recruit-feral-instinct",
       "active": true,
@@ -715,6 +1186,198 @@
         "sourceSection": "Barbarian Skill Cards > Recruit: Feral Instinct",
         "verifiedAgainstRulebook": true,
         "notes": "This is the rank-one Barbarian Skill Card. Its two slots can only hold Recruit-rank Barbarian Ability Cards. Count 1 is the provisional first-playtest supply."
+      }
+    },
+    "skill.elementalism.novice": {
+      "id": "skill.elementalism.novice",
+      "active": true,
+      "count": 1,
+      "cardType": "skill",
+      "name": "Novice Elementalism",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "skill-standard",
+      "tags": [
+        "skill",
+        "discipline",
+        "elementalism",
+        "novice",
+        "arcane",
+        "mage-native"
+      ],
+      "rulesText": "Elementalism Skill — Novice\n\nSpell Slots: 1\nMay Equip: Novice Elementalism spells.\n\nPassive — Attuned Casting\nWhenever one of your Fire, Ice, Lightning, or Earth spells deals damage to a target, the first 1 damage dealt to that target by that spell ignores Defense.",
+      "data": {
+        "skillType": "discipline",
+        "discipline": "elementalism",
+        "rank": {
+          "id": "novice",
+          "order": 1
+        },
+        "nativeClasses": [
+          "character.mage"
+        ],
+        "attachedCardRules": {
+          "allowedCardTypes": [
+            "spell"
+          ],
+          "requiredDiscipline": "elementalism",
+          "maximumRank": "novice",
+          "slotCount": 1
+        },
+        "passive": {
+          "id": "attuned-casting",
+          "name": "Attuned Casting",
+          "trigger": {
+            "event": "spellDealsDamage",
+            "requiredDamageTypes": [
+              "fire",
+              "ice",
+              "lightning",
+              "earth"
+            ],
+            "actorMustBeSkillOwner": true
+          },
+          "effect": {
+            "type": "ignoreDefenseForDamage",
+            "amount": 1,
+            "scope": "firstDamageDealtToEachTargetByThatSpell"
+          }
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/skill_and_ability_cards/elementalism.md",
+        "sourceSection": "Elementalism Skill Cards > Novice Elementalism",
+        "verifiedAgainstRulebook": false,
+        "notes": "Spell-slot count and Attuned Casting are migrated from the Elementalism card file."
+      }
+    },
+    "spell.arcana.novice-arcane-ward": {
+      "id": "spell.arcana.novice-arcane-ward",
+      "active": true,
+      "count": 1,
+      "cardType": "spell",
+      "name": "Arcane Ward",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "spell-standard",
+      "tags": [
+        "spell",
+        "arcana",
+        "novice",
+        "action",
+        "status",
+        "defense",
+        "arcane"
+      ],
+      "rulesText": "Arcana Spell — Novice\nAction • Persistent Positive Effect\n\nUse this character's shared activation. Move this card from its equipped Skill Card into the Mage's Status Row.\n\nThe Mage gains +1 Defense until the start of the Mage's next shared activation.\n\nWhen this effect ends, return this card to Novice Arcana.",
+      "data": {
+        "spellType": "actionStatus",
+        "discipline": "arcana",
+        "rank": {
+          "id": "novice",
+          "order": 1
+        },
+        "equipRules": {
+          "allowedSkillDisciplines": [
+            "arcana"
+          ],
+          "maximumSkillRank": "novice"
+        },
+        "activation": {
+          "activationCost": "sharedActivation",
+          "moveTo": "ownerStatusRow"
+        },
+        "status": {
+          "statusType": "arcaneWard",
+          "owner": "abilityOwner",
+          "modifiers": [
+            {
+              "type": "modifyDefense",
+              "amount": 1
+            }
+          ],
+          "expiresAt": "startOfOwnersNextSharedActivation"
+        },
+        "afterExpiration": {
+          "type": "returnToEquippedSkillCard"
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/character_classes.md",
+        "sourceSection": "Mage Required Starter Companion Card Text > Arcane Ward",
+        "verifiedAgainstRulebook": false,
+        "notes": "Text and duration are migrated from the Mage starter roster. The generic Status Row UI can move this card to the Mage's Status Row because activation.moveTo is ownerStatusRow."
+      }
+    },
+    "spell.elementalism.novice-firebolt": {
+      "id": "spell.elementalism.novice-firebolt",
+      "active": true,
+      "count": 1,
+      "cardType": "spell",
+      "name": "Firebolt",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "spell-standard",
+      "tags": [
+        "spell",
+        "elementalism",
+        "novice",
+        "action",
+        "attack",
+        "ranged",
+        "fire",
+        "arcane"
+      ],
+      "rulesText": "Elementalism Spell — Novice\nAction • Spell Attack\n\nDeal 2 Fire damage to 1 enemy in either opposing row.\nGain 1 Heat.",
+      "data": {
+        "spellType": "actionAttack",
+        "discipline": "elementalism",
+        "rank": {
+          "id": "novice",
+          "order": 1
+        },
+        "equipRules": {
+          "allowedSkillDisciplines": [
+            "elementalism"
+          ],
+          "maximumSkillRank": "novice"
+        },
+        "activation": {
+          "activationCost": "sharedActivation"
+        },
+        "targeting": {
+          "scope": "enemy",
+          "rows": [
+            "enemyFront",
+            "enemyBack"
+          ],
+          "count": 1
+        },
+        "effect": {
+          "type": "dealDamage",
+          "amount": 2,
+          "damageType": "fire",
+          "target": "chosenTarget"
+        },
+        "afterResolution": {
+          "effects": [
+            {
+              "type": "gainHeat",
+              "amount": 1,
+              "target": "spellCaster"
+            }
+          ],
+          "cardDestination": "returnToEquippedSkillCard"
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/character_classes.md; Cards/skill_and_ability_cards/elementalism.md",
+        "sourceSection": "Mage Required Starter Companion Card Text; Novice Elementalism Spells",
+        "verifiedAgainstRulebook": false,
+        "notes": "The Mage starter roster specifies 2 Fire damage and gain 1 Heat. The older Elementalism file defines Fire Bolt as 1 Fire damage with no Heat. This pack intentionally follows the newer starter-roster version for first-playtest Mage setup; reconcile the source conflict before print finalization."
       }
     },
     "status.negative.poisoned": {
@@ -844,6 +1507,141 @@
         "notes": "Count 4 is a provisional first-playtest Status Deck supply. Stunned does not stack. It is intentionally modeled by affected entity type because player characters, Controlled Allies, Autonomous Allies, enemies, and bosses have different activation structures."
       }
     },
+    "tactical-reserve.antidote": {
+      "id": "tactical-reserve.antidote",
+      "active": true,
+      "count": 8,
+      "cardType": "tacticalReserve",
+      "name": "Antidote",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "tactical-reserve-standard",
+      "tags": [
+        "tactical-reserve",
+        "consumable",
+        "poison",
+        "action"
+      ],
+      "rulesText": "Tactical Reserve — Action\n\nRemove 1 Poisoned status card from 1 Friendly Entity.\n\nAfter resolving, shuffle this card into the Loot Deck.",
+      "data": {
+        "timing": "your-shared-activation",
+        "target": {
+          "scope": "friendlyEntity",
+          "count": 1
+        },
+        "effect": {
+          "type": "removeStatus",
+          "statusId": "status.negative.poisoned",
+          "amount": 1,
+          "target": "selectedFriendlyEntity"
+        },
+        "destinationAfterUse": "lootDeck"
+      },
+      "source": {
+        "sourceFile": "Cards/character_classes.md",
+        "sourceSection": "Shared Starting Tactical Reserve Cards > Antidote",
+        "verifiedAgainstRulebook": true,
+        "notes": "Count 8 covers the five starter-character references and leaves three additional copies for early Loot Deck use."
+      }
+    },
+    "tactical-reserve.bandage": {
+      "id": "tactical-reserve.bandage",
+      "active": true,
+      "count": 4,
+      "cardType": "tacticalReserve",
+      "name": "Bandage",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "tactical-reserve-standard",
+      "tags": [
+        "tactical-reserve",
+        "consumable",
+        "healing",
+        "bleeding",
+        "action"
+      ],
+      "rulesText": "Tactical Reserve — Action\n\nRemove Bleeding from 1 Friendly Entity.\nIf that entity has no Bleeding card, restore 1 HP instead.\n\nAfter resolving, shuffle this card into the Loot Deck.",
+      "data": {
+        "timing": "your-shared-activation",
+        "target": {
+          "scope": "friendlyEntity",
+          "count": 1
+        },
+        "effectSequence": [
+          {
+            "type": "removeStatus",
+            "statusId": "status.negative.bleeding",
+            "amount": 1,
+            "target": "selectedFriendlyEntity",
+            "onNoMatchingStatus": {
+              "type": "restoreHp",
+              "amount": 1,
+              "target": "selectedFriendlyEntity"
+            }
+          }
+        ],
+        "destinationAfterUse": "lootDeck"
+      },
+      "source": {
+        "sourceFile": "Cards/character_classes.md",
+        "sourceSection": "Shared Starting Tactical Reserve Cards > Bandage",
+        "verifiedAgainstRulebook": false,
+        "notes": "Count 4 is a provisional module supply. The Bleeding status card has not yet been converted to the catalog."
+      }
+    },
+    "tactical-reserve.barkskin-salve": {
+      "id": "tactical-reserve.barkskin-salve",
+      "active": true,
+      "count": 4,
+      "cardType": "tacticalReserve",
+      "name": "Barkskin Salve",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "tactical-reserve-standard",
+      "tags": [
+        "tactical-reserve",
+        "consumable",
+        "primal",
+        "persistent-positive-effect",
+        "defense",
+        "action",
+        "status-row"
+      ],
+      "rulesText": "Tactical Reserve — Action — Persistent Positive Effect\n\nPlace this card in 1 Friendly Entity's Status Row. That entity gains +1 Defense until the start of its next activation.\n\nWhen this effect ends, shuffle this card into the Loot Deck.",
+      "data": {
+        "timing": "your-shared-activation",
+        "target": {
+          "scope": "friendlyEntity",
+          "count": 1,
+          "requiresOpenStatusRowSlot": true
+        },
+        "activation": {
+          "moveTo": "selectedFriendlyEntityStatusRow"
+        },
+        "status": {
+          "statusCategory": "positive",
+          "modifiers": [
+            {
+              "type": "modifyDefense",
+              "amount": 1
+            }
+          ],
+          "endTrigger": {
+            "event": "startOfStatusOwnerNextApplicableActivation"
+          }
+        },
+        "destinationAfterExpiration": "lootDeck"
+      },
+      "source": {
+        "sourceFile": "Cards/character_classes.md",
+        "sourceSection": "Shared Starting Tactical Reserve Cards > Barkskin Salve",
+        "verifiedAgainstRulebook": true,
+        "notes": "Count 4 is a provisional module supply. This is a Tactical Reserve card that occupies the target's Status Row while active."
+      }
+    },
     "tactical-reserve.healing-potion": {
       "id": "tactical-reserve.healing-potion",
       "active": true,
@@ -876,6 +1674,157 @@
       "source": {
         "verifiedAgainstRulebook": false,
         "notes": "Bootstrap sample only. Confirm the final Healing Potion wording and healing amount against the approved Tactical Reserve card design before treating this record as print-ready."
+      }
+    },
+    "tactical-reserve.holy-water": {
+      "id": "tactical-reserve.holy-water",
+      "active": true,
+      "count": 4,
+      "cardType": "tacticalReserve",
+      "name": "Holy Water",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "tactical-reserve-standard",
+      "tags": [
+        "tactical-reserve",
+        "consumable",
+        "divine",
+        "force",
+        "undead",
+        "action",
+        "damage"
+      ],
+      "rulesText": "Tactical Reserve — Action\n\nDeal 2 Force damage to 1 enemy in either opposing row. If that enemy has the Undead tag, deal +2 damage instead.\n\nAfter resolving, shuffle this card into the Loot Deck.",
+      "data": {
+        "timing": "your-shared-activation",
+        "target": {
+          "scope": "enemy",
+          "allowedRows": [
+            "enemyFront",
+            "enemyBack"
+          ],
+          "count": 1
+        },
+        "effect": {
+          "type": "conditionalDealDamage",
+          "baseAmount": 2,
+          "damageType": "force",
+          "target": "selectedEnemy",
+          "condition": {
+            "targetHasTag": "undead"
+          },
+          "additionalAmountWhenConditionMet": 2
+        },
+        "destinationAfterUse": "lootDeck"
+      },
+      "source": {
+        "sourceFile": "Cards/character_classes.md",
+        "sourceSection": "Shared Starting Tactical Reserve Cards > Holy Water",
+        "verifiedAgainstRulebook": true,
+        "notes": "Count 4 is a provisional module supply."
+      }
+    },
+    "tactical-reserve.scroll-of-force-dart": {
+      "id": "tactical-reserve.scroll-of-force-dart",
+      "active": true,
+      "count": 4,
+      "cardType": "tacticalReserve",
+      "name": "Scroll of Force Dart",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "tactical-reserve-standard",
+      "tags": [
+        "tactical-reserve",
+        "consumable",
+        "scroll",
+        "force",
+        "ranged",
+        "action",
+        "damage"
+      ],
+      "rulesText": "Tactical Reserve — Action\n\nDeal 2 Force damage to 1 enemy in either opposing row. Gain 1 Heat.\n\nAfter resolving, shuffle this card into the Loot Deck.",
+      "data": {
+        "timing": "your-shared-activation",
+        "target": {
+          "scope": "enemy",
+          "allowedRows": [
+            "enemyFront",
+            "enemyBack"
+          ],
+          "count": 1
+        },
+        "effects": [
+          {
+            "type": "dealDamage",
+            "amount": 2,
+            "damageType": "force",
+            "target": "selectedEnemy"
+          },
+          {
+            "type": "gainHeat",
+            "amount": 1,
+            "target": "cardUser"
+          }
+        ],
+        "destinationAfterUse": "lootDeck"
+      },
+      "source": {
+        "sourceFile": "Cards/character_classes.md",
+        "sourceSection": "Shared Starting Tactical Reserve Cards > Scroll of Force Dart",
+        "verifiedAgainstRulebook": true,
+        "notes": "Count 4 is a provisional module supply."
+      }
+    },
+    "tactical-reserve.smoke-bomb": {
+      "id": "tactical-reserve.smoke-bomb",
+      "active": true,
+      "count": 4,
+      "cardType": "tacticalReserve",
+      "name": "Smoke Bomb",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "tactical-reserve-standard",
+      "tags": [
+        "tactical-reserve",
+        "consumable",
+        "reaction",
+        "rogue",
+        "movement",
+        "damage-prevention"
+      ],
+      "rulesText": "Tactical Reserve — Reaction\n\nUse when the Rogue is chosen as the target of an enemy attack.\nPrevent 2 damage from that attack. Then move the Rogue to an empty Player Back Row slot, if able.\n\nAfter resolving, shuffle this card into the Loot Deck.",
+      "data": {
+        "timing": "reaction",
+        "trigger": {
+          "event": "chosenAsTargetOfEnemyAttack",
+          "targetMustHaveCharacterId": "character.rogue"
+        },
+        "effects": [
+          {
+            "type": "preventDamage",
+            "amount": 2,
+            "target": "reactionOwner"
+          },
+          {
+            "type": "moveEntity",
+            "target": "reactionOwner",
+            "destination": {
+              "row": "playerBack",
+              "selectionRule": "anyEmptySlot",
+              "optional": true
+            }
+          }
+        ],
+        "destinationAfterUse": "lootDeck"
+      },
+      "source": {
+        "sourceFile": "Cards/character_classes.md",
+        "sourceSection": "Shared Starting Tactical Reserve Cards > Smoke Bomb",
+        "verifiedAgainstRulebook": true,
+        "notes": "Count 4 is a provisional module supply. The printed trigger is Rogue-specific."
       }
     }
   },
@@ -1025,17 +1974,32 @@
   },
   "activeCardIds": [
     "ability.barbarian.recruit-rage",
+    "character.cleric",
+    "character.druid",
     "character.mage",
+    "character.rogue",
     "character.warrior",
     "dungeon.goblin-warrens.goblin-alarm",
     "dungeon.goblin-warrens.tripwire",
     "enemy.goblin-raider",
+    "equipment.body.apprentice-robes",
+    "equipment.focus.apprentices-wand",
     "equipment.weapon.arming-sword",
     "hireling.roadside-sellsword",
+    "skill.arcana.novice",
     "skill.barbarian.recruit-feral-instinct",
+    "skill.elementalism.novice",
+    "spell.arcana.novice-arcane-ward",
+    "spell.elementalism.novice-firebolt",
     "status.negative.poisoned",
     "status.negative.stunned",
-    "tactical-reserve.healing-potion"
+    "tactical-reserve.antidote",
+    "tactical-reserve.bandage",
+    "tactical-reserve.barkskin-salve",
+    "tactical-reserve.healing-potion",
+    "tactical-reserve.holy-water",
+    "tactical-reserve.scroll-of-force-dart",
+    "tactical-reserve.smoke-bomb"
   ],
   "activeDeckIds": [
     "deck.goblin-warrens-catalog-smoke-test"

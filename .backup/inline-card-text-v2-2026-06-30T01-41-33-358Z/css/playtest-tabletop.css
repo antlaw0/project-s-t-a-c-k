@@ -296,20 +296,3 @@ input:focus-visible,
 .zone-action-row button {
   padding: 0.35rem 0.5rem;
 }
-
-
-/* Inline player-facing rules text bootstrap v2 */
-.inline-card-rules {
-  margin-top: 0.75rem;
-  padding-top: 0.75rem;
-  border-top: 1px solid currentColor;
-} /* end inline-card-rules */
-
-.inline-card-rules h6 {
-  margin: 0 0 0.35rem;
-} /* end inline-card-rules heading */
-
-.inline-card-rules .card-rules {
-  margin: 0;
-  white-space: pre-wrap;
-} /* end inline-card-rules text */

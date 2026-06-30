@@ -1,0 +1,43 @@
+{
+  "id": "equipment.focus.apprentices-wand",
+  "active": true,
+  "count": 1,
+  "cardType": "equipment",
+  "name": "Apprentice's Wand",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "equipment-focus-standard",
+  "tags": [
+    "equipment",
+    "focus",
+    "off-hand",
+    "arcane",
+    "wand",
+    "common"
+  ],
+  "rulesText": "Off-Hand Focus\nArcane \u2022 Wand\n\nNo weapon attack.\nThis card may satisfy a card requirement for an Arcane Focus.",
+  "data": {
+    "equipmentType": "focus",
+    "equipmentSlot": "offHand",
+    "focusTags": [
+      "arcane",
+      "wand"
+    ],
+    "handsRequired": 1,
+    "requiredProficiency": [],
+    "traits": [],
+    "economy": {
+      "equipmentPowerRating": 0,
+      "valueGold": 0,
+      "sellValueGold": 0,
+      "rarity": "common"
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/character_classes.md",
+    "sourceSection": "Mage Character Card > Starting Equipment",
+    "verifiedAgainstRulebook": false,
+    "notes": "The starter roster defines this as a held Arcane Focus with no weapon attack. Economy fields are provisional because the starter roster does not assign an EPR or market value."
+  }
+}

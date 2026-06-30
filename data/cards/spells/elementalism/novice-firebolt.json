@@ -1,0 +1,69 @@
+{
+  "id": "spell.elementalism.novice-firebolt",
+  "active": true,
+  "count": 1,
+  "cardType": "spell",
+  "name": "Firebolt",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "spell-standard",
+  "tags": [
+    "spell",
+    "elementalism",
+    "novice",
+    "action",
+    "attack",
+    "ranged",
+    "fire",
+    "arcane"
+  ],
+  "rulesText": "Elementalism Spell \u2014 Novice\nAction \u2022 Spell Attack\n\nDeal 2 Fire damage to 1 enemy in either opposing row.\nGain 1 Heat.",
+  "data": {
+    "spellType": "actionAttack",
+    "discipline": "elementalism",
+    "rank": {
+      "id": "novice",
+      "order": 1
+    },
+    "equipRules": {
+      "allowedSkillDisciplines": [
+        "elementalism"
+      ],
+      "maximumSkillRank": "novice"
+    },
+    "activation": {
+      "activationCost": "sharedActivation"
+    },
+    "targeting": {
+      "scope": "enemy",
+      "rows": [
+        "enemyFront",
+        "enemyBack"
+      ],
+      "count": 1
+    },
+    "effect": {
+      "type": "dealDamage",
+      "amount": 2,
+      "damageType": "fire",
+      "target": "chosenTarget"
+    },
+    "afterResolution": {
+      "effects": [
+        {
+          "type": "gainHeat",
+          "amount": 1,
+          "target": "spellCaster"
+        }
+      ],
+      "cardDestination": "returnToEquippedSkillCard"
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/character_classes.md; Cards/skill_and_ability_cards/elementalism.md",
+    "sourceSection": "Mage Required Starter Companion Card Text; Novice Elementalism Spells",
+    "verifiedAgainstRulebook": false,
+    "notes": "The Mage starter roster specifies 2 Fire damage and gain 1 Heat. The older Elementalism file defines Fire Bolt as 1 Fire damage with no Heat. This pack intentionally follows the newer starter-roster version for first-playtest Mage setup; reconcile the source conflict before print finalization."
+  }
+}

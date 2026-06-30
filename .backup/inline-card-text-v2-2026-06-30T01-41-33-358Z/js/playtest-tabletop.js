@@ -466,28 +466,18 @@
     appendLog("cardReturnedToSupply", message || `${formatCardLabel(cardInstanceId)} returned to Available Supply.`);
   } // end returnCardToUnusedSupply function
 
-  function createInlineCardRules(cardInstanceId) {
-    const instance = getCardInstance(cardInstanceId);
-    const definition = instance ? getCardDefinition(instance.definitionId) : null;
-    if (!instance || !definition || instance.faceUp === false) {
-      return null;
-    } // end concealed-or-missing-card branch
-
-    const wrapper = createElement("section", {
-      className: "inline-card-rules",
-      attributes: {
-        "aria-label": `Rules text for ${definition.name}`
-      }
-    }); // end inline-rules wrapper
-    wrapper.append(
-      createElement("h6", { text: "Rules text" }),
-      createElement("p", {
-        className: "card-rules",
-        text: definition.rulesText || "No player-facing rules text is recorded."
-      })
-    ); // end inline-rules content
-    return wrapper;
-  } // end createInlineCardRules function
+  function createCardDetailsButton(cardInstanceId) {
+    const button = createElement("button", {
+      text: `View details: ${formatCardLabel(cardInstanceId)}`,
+      attributes: { type: "button" }
+    }); // end card-details button
+    button.addEventListener("click", function handleCardDetailsClick() {
+      application.selectedCardInstanceId = cardInstanceId;
+      renderCardDetails();
+      elements.cardDetails.focus();
+    }); // end card-details listener
+    return button;
+  } // end createCardDetailsButton function
 
   function createButton(label, id, handler) {
     const button = createElement("button", { id, text: label, attributes: { type: "button" } });
@@ -752,12 +742,10 @@
     item.append(
       createElement("strong", { text: slotLabel ? `${slotLabel}: ${formatCardLabel(cardInstanceId)}` : formatCardLabel(cardInstanceId) }),
       createElement("span", { className: "card-meta", text: `Instance: ${cardInstanceId}` })
-    ); // end card-list heading content
-
-    const rules = createInlineCardRules(cardInstanceId);
-    if (rules) {
-      item.append(rules);
-    } // end inline-rules append branch
+    );
+    const actions = createElement("div", { className: "card-actions" });
+    actions.append(createCardDetailsButton(cardInstanceId));
+    item.append(actions);
     return item;
   } // end createCardListItem function
 
@@ -867,24 +855,27 @@
 
   function createEntityActions(entity, prefix) {
     const actions = createElement("div", { className: "entity-actions" });
+    if (entity.characterCardInstanceId) {
+      actions.append(createCardDetailsButton(entity.characterCardInstanceId));
+    } // end main-card detail branch
     if (isFriendlyEntity(entity)) {
       ["playerFront", "playerBack"].forEach(function addFriendlyRowMove(rowKey) {
         const buttonId = `${prefix}-${sanitizeIdPart(entity.id)}-${rowKey}`;
         actions.append(createButton(`Move ${entity.name} to ${rowLabel(rowKey)}`, buttonId, function handleFriendlyRowMove() {
           moveEntityToRow(entity.id, rowKey, buttonId);
-        })); // end friendly-row move button
+        }));
       }); // end friendly-row-action loop
     } else {
       ["enemyFront", "enemyBack"].forEach(function addEnemyRowMove(rowKey) {
         const buttonId = `${prefix}-${sanitizeIdPart(entity.id)}-${rowKey}`;
         actions.append(createButton(`Move ${entity.name} to ${rowLabel(rowKey)}`, buttonId, function handleEnemyRowMove() {
           moveEntityToRow(entity.id, rowKey, buttonId);
-        })); // end enemy-row move button
+        }));
       }); // end enemy-row-action loop
       const defeatId = `${prefix}-${sanitizeIdPart(entity.id)}-defeat`;
       actions.append(createButton(`Defeat and discard ${entity.name}`, defeatId, function handleEnemyDefeat() {
         defeatEnemyEntity(entity.id, defeatId);
-      })); // end defeat button
+      }));
     } // end entity-side action branch
     return actions;
   } // end createEntityActions function
@@ -898,24 +889,12 @@
     if (Number.isInteger(entity.defense)) {
       summaryParts.push(`Defense ${entity.defense}.`);
     } // end defense-summary branch
-
     item.append(
       createElement("strong", { text: `${slotLabel}: ${entity.name}` }),
-      createElement("span", { className: "card-meta", text: summaryParts.join(" ") })
-    ); // end entity-card header content
-
-    if (entity.characterCardInstanceId) {
-      const rules = createInlineCardRules(entity.characterCardInstanceId);
-      if (rules) {
-        item.append(rules);
-      } // end entity-inline-rules append branch
-    } // end primary-card branch
-
-    item.append(
+      createElement("span", { className: "card-meta", text: summaryParts.join(" ") }),
       createCounterControls(entity, prefix),
       createEntityActions(entity, prefix)
-    ); // end entity controls
-
+    );
     const statusHeading = createElement("h6", { text: "Status Row" });
     const statusList = createElement("ol", { className: "card-list" });
     renderStatusRow(entity, statusList, `${prefix}-status`);
@@ -962,20 +941,13 @@
     const summary = createElement("p", { text: `${entityTypeLabel(entity.entityType)}. Current row: ${rowLabel(entity.currentRow)}. Damage: ${getNumericValue(entity.damage, 0)}. Maximum HP: ${entity.maximumHp || "unknown"}. Heat: ${getNumericValue(entity.heat, 0)}.` });
     panel.append(
       createElement("h4", { text: entity.name }),
-      summary
-    ); // end friendly-panel header
-
-    if (entity.characterCardInstanceId) {
-      const rules = createInlineCardRules(entity.characterCardInstanceId);
-      if (rules) {
-        panel.append(rules);
-      } // end friendly-panel inline-rules branch
-    } // end primary-card branch
-
-    panel.append(
+      summary,
       createCounterControls(entity, "friendly-area"),
       createEntityActions(entity, "friendly-area")
-    ); // end friendly-panel controls
+    );
+    if (entity.characterCardInstanceId) {
+      panel.append(createCardDetailsButton(entity.characterCardInstanceId));
+    } // end entity-card-details branch
 
     const equipmentList = createElement("ul", { className: "card-list" });
     renderEquipment(entity, equipmentList);
@@ -1668,7 +1640,7 @@
   function renderCardDetails() {
     clearElement(elements.cardDetails);
     if (!application.selectedCardInstanceId) {
-      elements.cardDetails.append(createElement("p", { text: "Full player-facing rules text is displayed beneath each face-up card. This region is retained only for diagnostic inspection." }));
+      elements.cardDetails.append(createElement("p", { text: "Select a View details button to inspect full player-facing card text." }));
       return;
     } // end no-card-selection branch
     const instance = getCardInstance(application.selectedCardInstanceId);

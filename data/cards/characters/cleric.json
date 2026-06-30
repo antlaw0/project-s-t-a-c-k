@@ -1,0 +1,112 @@
+{
+  "id": "character.cleric",
+  "active": true,
+  "count": 1,
+  "cardType": "character",
+  "name": "Cleric",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "character-standard",
+  "tags": [
+    "character",
+    "player-character",
+    "divine",
+    "cleric",
+    "support",
+    "backline",
+    "core-alpha"
+  ],
+  "rulesText": "Player Character \u2014 Divine\n\nMaximum HP: 14\nSuggested First Placement: Player Back Row\n\nClass Trait \u2014 Sacred Relief\nOnce per Encounter Round, when the Cleric restores 1 or more HP to another Friendly Entity, remove 1 Heat from that entity.\n\nNative Skill Domains\nRestoration; Divine Intervention; Exorcism.",
+  "data": {
+    "entityType": "playerCharacter",
+    "role": "divine",
+    "maximumHp": 14,
+    "suggestedFirstPlacement": "playerBack",
+    "classTrait": {
+      "id": "sacred-relief",
+      "name": "Sacred Relief",
+      "frequency": "oncePerEncounterRound",
+      "trigger": {
+        "event": "hpRestored",
+        "minimumAmount": 1,
+        "actorMustBeCharacterOwner": true,
+        "targetMustBeAnotherFriendlyEntity": true
+      },
+      "effect": {
+        "type": "loseHeat",
+        "amount": 1,
+        "target": "healedEntity",
+        "minimumResult": 0
+      }
+    },
+    "nativeSkillDomains": [
+      "restoration",
+      "divine-intervention",
+      "exorcism"
+    ],
+    "slotCapacity": {
+      "skillSlots": 5,
+      "tacticalReserveSlots": 5,
+      "inventoryCapacity": 20,
+      "transportationSlots": 1,
+      "statusRowSlots": 5
+    },
+    "activation": {
+      "type": "sharedActivation",
+      "sharedWith": "controlledAllies",
+      "activationsPerEncounterRound": 1
+    },
+    "startingLoadout": {
+      "equipment": [
+        {
+          "cardId": "equipment.weapon.blessed-mace",
+          "quantity": 1
+        },
+        {
+          "cardId": "equipment.focus.wooden-holy-symbol",
+          "quantity": 1
+        },
+        {
+          "cardId": "equipment.clothing.acolyte-vestments",
+          "quantity": 1
+        }
+      ],
+      "skills": [
+        {
+          "cardId": "skill.restoration.novice",
+          "attachedCards": [
+            "spell.restoration.novice-healing-prayer"
+          ]
+        },
+        {
+          "cardId": "skill.divine-intervention.novice",
+          "attachedCards": [
+            "spell.divine-intervention.novice-sacred-light"
+          ]
+        }
+      ],
+      "tacticalReserve": [
+        {
+          "cardId": "tactical-reserve.healing-potion",
+          "quantity": 1
+        },
+        {
+          "cardId": "tactical-reserve.holy-water",
+          "quantity": 1
+        },
+        {
+          "cardId": "tactical-reserve.antidote",
+          "quantity": 1
+        }
+      ],
+      "startingDefense": 0
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/character_classes.md",
+    "sourceSection": "Cleric Character Card",
+    "verifiedAgainstRulebook": false,
+    "notes": "HP, Sacred Relief, native domains, recommended starter cards, and starting defense are migrated from the starter roster. Referenced equipment and spells will be added in later bulk packs."
+  }
+}

@@ -1,0 +1,284 @@
+{
+  "stateVersion": 1,
+  "scenarioId": "scenario.solo-warrior-goblin-warrens-smoke-test",
+  "scenarioName": "Solo Warrior: Goblin Warrens Smoke Test",
+  "moduleId": "core-alpha",
+  "createdAt": "2026-06-29T16:51:57.848Z",
+  "seed": "20260629",
+  "playMode": "soloManual",
+  "automationPolicy": {
+    "automateRulesResolution": false,
+    "allowManualCardMovement": true,
+    "allowManualCounterChanges": true,
+    "allowManualOverrides": true
+  },
+  "activeParticipantId": "participant.solo-playtester",
+  "activeCharacterEntityId": "entity.character.warrior.001",
+  "participants": [
+    {
+      "id": "participant.solo-playtester",
+      "controlledEntityIds": [
+        "entity.character.warrior.001"
+      ],
+      "alliedEntityIds": []
+    }
+  ],
+  "entities": {
+    "entity.character.warrior.001": {
+      "id": "entity.character.warrior.001",
+      "definitionId": "character.warrior",
+      "characterCardInstanceId": "instance.character.warrior.001",
+      "name": "Warrior",
+      "entityType": "playerCharacter",
+      "controllerParticipantId": "participant.solo-playtester",
+      "currentRow": "playerFront",
+      "damage": 2,
+      "heat": 0,
+      "maximumHp": 20,
+      "statusRow": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "equipment": {
+        "1": "instance.equipment-focus-apprentices-wand.001",
+        "weapon": "instance.equipment.weapon.arming-sword.001"
+      },
+      "skillSlots": [
+        {
+          "skillCardInstanceId": "instance.skill.barbarian.recruit-feral-instinct.001",
+          "attachedAbilityInstanceIds": [
+            "instance.ability.barbarian.recruit-rage.001"
+          ]
+        },
+        null,
+        null,
+        null,
+        null
+      ],
+      "tacticalReserveSlots": [
+        "instance.tactical-reserve.healing-potion.001",
+        null,
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  "cardInstances": {
+    "instance.character.warrior.001": {
+      "id": "instance.character.warrior.001",
+      "definitionId": "character.warrior",
+      "cardType": "character",
+      "ownerEntityId": null,
+      "zone": "characterArea",
+      "zoneDetail": "participant.solo-playtester",
+      "faceUp": true
+    },
+    "instance.equipment.weapon.arming-sword.001": {
+      "id": "instance.equipment.weapon.arming-sword.001",
+      "definitionId": "equipment.weapon.arming-sword",
+      "cardType": "equipment",
+      "ownerEntityId": "entity.character.warrior.001",
+      "zone": "equipmentSlot",
+      "zoneDetail": "weapon",
+      "faceUp": true
+    },
+    "instance.skill.barbarian.recruit-feral-instinct.001": {
+      "id": "instance.skill.barbarian.recruit-feral-instinct.001",
+      "definitionId": "skill.barbarian.recruit-feral-instinct",
+      "cardType": "skill",
+      "ownerEntityId": "entity.character.warrior.001",
+      "zone": "skillSlot",
+      "zoneDetail": "skillSlot:1",
+      "faceUp": true
+    },
+    "instance.ability.barbarian.recruit-rage.001": {
+      "id": "instance.ability.barbarian.recruit-rage.001",
+      "definitionId": "ability.barbarian.recruit-rage",
+      "cardType": "ability",
+      "ownerEntityId": "entity.character.warrior.001",
+      "zone": "skillAttachment",
+      "zoneDetail": "instance.skill.barbarian.recruit-feral-instinct.001",
+      "faceUp": true
+    },
+    "instance.tactical-reserve.healing-potion.001": {
+      "id": "instance.tactical-reserve.healing-potion.001",
+      "definitionId": "tactical-reserve.healing-potion",
+      "cardType": "tacticalReserve",
+      "ownerEntityId": "entity.character.warrior.001",
+      "zone": "tacticalReserveSlot",
+      "zoneDetail": "tacticalReserveSlot:1",
+      "faceUp": true
+    },
+    "instance.enemy.goblin-raider.001": {
+      "id": "instance.enemy.goblin-raider.001",
+      "definitionId": "enemy.goblin-raider",
+      "cardType": "enemy",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "faceUp": false
+    },
+    "instance.enemy.goblin-raider.002": {
+      "id": "instance.enemy.goblin-raider.002",
+      "definitionId": "enemy.goblin-raider",
+      "cardType": "enemy",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "faceUp": false
+    },
+    "instance.enemy.goblin-raider.003": {
+      "id": "instance.enemy.goblin-raider.003",
+      "definitionId": "enemy.goblin-raider",
+      "cardType": "enemy",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "faceUp": false
+    },
+    "instance.enemy.goblin-raider.004": {
+      "id": "instance.enemy.goblin-raider.004",
+      "definitionId": "enemy.goblin-raider",
+      "cardType": "enemy",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "faceUp": false
+    },
+    "instance.dungeon.goblin-warrens.tripwire.001": {
+      "id": "instance.dungeon.goblin-warrens.tripwire.001",
+      "definitionId": "dungeon.goblin-warrens.tripwire",
+      "cardType": "dungeonCard",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "faceUp": false
+    },
+    "instance.dungeon.goblin-warrens.tripwire.002": {
+      "id": "instance.dungeon.goblin-warrens.tripwire.002",
+      "definitionId": "dungeon.goblin-warrens.tripwire",
+      "cardType": "dungeonCard",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "faceUp": false
+    },
+    "instance.dungeon.goblin-warrens.goblin-alarm.001": {
+      "id": "instance.dungeon.goblin-warrens.goblin-alarm.001",
+      "definitionId": "dungeon.goblin-warrens.goblin-alarm",
+      "cardType": "dungeonCard",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "faceUp": false
+    },
+    "instance.dungeon.goblin-warrens.goblin-alarm.002": {
+      "id": "instance.dungeon.goblin-warrens.goblin-alarm.002",
+      "definitionId": "dungeon.goblin-warrens.goblin-alarm",
+      "cardType": "dungeonCard",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "faceUp": false
+    },
+    "instance.equipment-focus-apprentices-wand.001": {
+      "id": "instance.equipment-focus-apprentices-wand.001",
+      "definitionId": "equipment.focus.apprentices-wand",
+      "cardType": "equipment",
+      "ownerEntityId": "entity.character.warrior.001",
+      "zone": "equipmentSlot",
+      "zoneDetail": "1",
+      "faceUp": true
+    }
+  },
+  "zones": {
+    "playerFormation": {
+      "frontRow": [
+        "entity.character.warrior.001",
+        null,
+        null,
+        null
+      ],
+      "backRow": [
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "enemyFormation": {
+      "frontRow": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "backRow": [
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "dungeonDeck": [
+      "instance.dungeon.goblin-warrens.tripwire.002",
+      "instance.dungeon.goblin-warrens.goblin-alarm.002",
+      "instance.enemy.goblin-raider.002",
+      "instance.dungeon.goblin-warrens.goblin-alarm.001",
+      "instance.enemy.goblin-raider.004",
+      "instance.enemy.goblin-raider.003",
+      "instance.enemy.goblin-raider.001",
+      "instance.dungeon.goblin-warrens.tripwire.001"
+    ],
+    "dungeonDiscardPile": [],
+    "dungeonLootArea": [],
+    "lootDeck": [],
+    "lootDiscardPile": [],
+    "expendedSummons": [],
+    "dungeonRevealArea": [],
+    "statusDeck": [],
+    "statusRevealArea": [],
+    "statusDiscardPile": [],
+    "unusedSupply": []
+  },
+  "encounter": {
+    "round": 1,
+    "phase": "manualSetup",
+    "activeEntityId": "entity.character.warrior.001",
+    "notes": "This state is intentionally manual. It does not resolve AI, attacks, damage, targeting, Heat, or status effects automatically."
+  },
+  "log": [
+    {
+      "sequence": 1,
+      "type": "scenarioInstantiated",
+      "message": "Created runtime state from scenario.solo-warrior-goblin-warrens-smoke-test using seed 20260629."
+    },
+    {
+      "sequence": 2,
+      "type": "equipmentAssigned",
+      "message": "Apprentice's Wand was assigned to Warrior's 1 slot."
+    },
+    {
+      "sequence": 3,
+      "type": "counterChanged",
+      "message": "Warrior Damage changed from 0 to 1."
+    },
+    {
+      "sequence": 4,
+      "type": "counterChanged",
+      "message": "Warrior Damage changed from 1 to 2."
+    },
+    {
+      "sequence": 5,
+      "type": "stateDownloaded",
+      "message": "Downloaded the current runtime state as scenario-solo-warrior-goblin-warrens-smoke-test.playtest.json."
+    }
+  ],
+  "resources": {
+    "currency": 0
+  }
+}

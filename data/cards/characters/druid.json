@@ -1,0 +1,107 @@
+{
+  "id": "character.druid",
+  "active": true,
+  "count": 1,
+  "cardType": "character",
+  "name": "Druid",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "character-standard",
+  "tags": [
+    "character",
+    "player-character",
+    "primal",
+    "druid",
+    "summoner",
+    "backline",
+    "core-alpha"
+  ],
+  "rulesText": "Player Character \u2014 Primal\n\nMaximum HP: 14\nSuggested First Placement: Player Back Row\n\nClass Trait \u2014 Wild Pathfinder\nWhile traveling on foot, whenever the Druid reveals 1 or more map tiles, reveal 1 additional adjacent face-down tile. This cannot reveal a tile beyond the map boundary.\n\nNative Skill Domains\nBiomancy; Wildcalling; Primalism.",
+  "data": {
+    "entityType": "playerCharacter",
+    "role": "primal",
+    "maximumHp": 14,
+    "suggestedFirstPlacement": "playerBack",
+    "classTrait": {
+      "id": "wild-pathfinder",
+      "name": "Wild Pathfinder",
+      "trigger": {
+        "event": "mapTilesRevealed",
+        "minimumAmount": 1,
+        "conditions": {
+          "travelMode": "onFoot"
+        }
+      },
+      "effect": {
+        "type": "revealAdditionalAdjacentFaceDownMapTile",
+        "amount": 1,
+        "cannotRevealBeyondMapBoundary": true
+      }
+    },
+    "nativeSkillDomains": [
+      "biomancy",
+      "wildcalling",
+      "primalism"
+    ],
+    "slotCapacity": {
+      "skillSlots": 5,
+      "tacticalReserveSlots": 5,
+      "inventoryCapacity": 20,
+      "transportationSlots": 1,
+      "statusRowSlots": 5
+    },
+    "activation": {
+      "type": "sharedActivation",
+      "sharedWith": "controlledAllies",
+      "activationsPerEncounterRound": 1
+    },
+    "startingLoadout": {
+      "equipment": [
+        {
+          "cardId": "equipment.weapon.thornwood-staff",
+          "quantity": 1
+        },
+        {
+          "cardId": "equipment.armor.hide-vest",
+          "quantity": 1
+        }
+      ],
+      "skills": [
+        {
+          "cardId": "skill.biomancy.novice",
+          "attachedCards": [
+            "spell.biomancy.novice-thorn-lash"
+          ]
+        },
+        {
+          "cardId": "skill.wildcalling.novice",
+          "attachedCards": [
+            "summon.wildcalling.novice-vine-guardian"
+          ]
+        }
+      ],
+      "tacticalReserve": [
+        {
+          "cardId": "tactical-reserve.healing-potion",
+          "quantity": 1
+        },
+        {
+          "cardId": "tactical-reserve.barkskin-salve",
+          "quantity": 1
+        },
+        {
+          "cardId": "tactical-reserve.antidote",
+          "quantity": 1
+        }
+      ],
+      "startingDefense": 1
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/character_classes.md",
+    "sourceSection": "Druid Character Card",
+    "verifiedAgainstRulebook": false,
+    "notes": "HP, Wild Pathfinder, native domains, recommended starter cards, and starting defense are migrated from the starter roster. Wild Pathfinder is retained even though it is outside the initial dungeon-only smoke test."
+  }
+}

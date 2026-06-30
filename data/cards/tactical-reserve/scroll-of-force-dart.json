@@ -1,0 +1,52 @@
+{
+  "id": "tactical-reserve.scroll-of-force-dart",
+  "active": true,
+  "count": 4,
+  "cardType": "tacticalReserve",
+  "name": "Scroll of Force Dart",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "tactical-reserve-standard",
+  "tags": [
+    "tactical-reserve",
+    "consumable",
+    "scroll",
+    "force",
+    "ranged",
+    "action",
+    "damage"
+  ],
+  "rulesText": "Tactical Reserve \u2014 Action\n\nDeal 2 Force damage to 1 enemy in either opposing row. Gain 1 Heat.\n\nAfter resolving, shuffle this card into the Loot Deck.",
+  "data": {
+    "timing": "your-shared-activation",
+    "target": {
+      "scope": "enemy",
+      "allowedRows": [
+        "enemyFront",
+        "enemyBack"
+      ],
+      "count": 1
+    },
+    "effects": [
+      {
+        "type": "dealDamage",
+        "amount": 2,
+        "damageType": "force",
+        "target": "selectedEnemy"
+      },
+      {
+        "type": "gainHeat",
+        "amount": 1,
+        "target": "cardUser"
+      }
+    ],
+    "destinationAfterUse": "lootDeck"
+  },
+  "source": {
+    "sourceFile": "Cards/character_classes.md",
+    "sourceSection": "Shared Starting Tactical Reserve Cards > Scroll of Force Dart",
+    "verifiedAgainstRulebook": true,
+    "notes": "Count 4 is a provisional module supply."
+  }
+}

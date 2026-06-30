@@ -17,7 +17,7 @@
     "backline",
     "core-alpha"
   ],
-  "rulesText": "Player Character — Arcane\n\nMaximum HP: 12\nSuggested First Placement: Player Back Row\n\nClass Trait — Spellweaver\nThe first damaging Spell the Mage casts during its own normal action in each Encounter Round deals +1 additional damage.\n\nNative Skill Domains\nElementalism; Arcana; Necromancy.",
+  "rulesText": "Player Character \u2014 Arcane\n\nMaximum HP: 12\nSuggested First Placement: Player Back Row\n\nClass Trait \u2014 Spellweaver\nThe first damaging Spell the Mage casts during its own normal action in each Encounter Round deals +1 additional damage.\n\nNative Skill Domains\nElementalism; Arcana; Necromancy.",
   "data": {
     "entityType": "playerCharacter",
     "role": "arcane",
@@ -67,7 +67,7 @@
           "quantity": 1
         },
         {
-          "cardId": "equipment.clothing.apprentice-robe",
+          "cardId": "equipment.body.apprentice-robes",
           "quantity": 1
         }
       ],
@@ -106,6 +106,6 @@
     "sourceFile": "Cards/character_classes.md",
     "sourceSection": "Mage Character Card",
     "verifiedAgainstRulebook": false,
-    "notes": "Maximum HP, Spellweaver, native skill domains, recommended starter loadout, and starting Defense are migrated from the first-playtest Mage roster. Several referenced catalog records have not yet been converted to JSON."
+    "notes": "This replacement record updates the starter-loadout IDs to the canonical Mage starter card IDs included in this pack. Several referenced Tactical Reserve cards are expected to already exist in the catalog."
   }
 }

@@ -1,0 +1,112 @@
+{
+  "id": "character.rogue",
+  "active": true,
+  "count": 1,
+  "cardType": "character",
+  "name": "Rogue",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "character-standard",
+  "tags": [
+    "character",
+    "player-character",
+    "martial",
+    "rogue",
+    "mobility",
+    "frontline",
+    "core-alpha"
+  ],
+  "rulesText": "Player Character \u2014 Martial\n\nMaximum HP: 18\nSuggested First Placement: Player Front Row\n\nClass Trait \u2014 Shadow Step\nOnce per Encounter Round, immediately before or after the Rogue uses its own normal action, move the Rogue to an empty Player Front Row or Player Back Row slot. This movement does not spend an action.\n\nNative Skill Domains\nThief; Skirmisher; Shadowcraft.",
+  "data": {
+    "entityType": "playerCharacter",
+    "role": "martial",
+    "maximumHp": 18,
+    "suggestedFirstPlacement": "playerFront",
+    "classTrait": {
+      "id": "shadow-step",
+      "name": "Shadow Step",
+      "frequency": "oncePerEncounterRound",
+      "timing": [
+        "immediatelyBeforeOwnersNormalAction",
+        "immediatelyAfterOwnersNormalAction"
+      ],
+      "conditions": {
+        "ownerMustUseOwnNormalAction": true,
+        "destinationMustBeEmptyPlayerFormationSlot": true
+      },
+      "effect": {
+        "type": "moveEntity",
+        "allowedDestinationRows": [
+          "playerFront",
+          "playerBack"
+        ],
+        "costsAction": false
+      }
+    },
+    "nativeSkillDomains": [
+      "thief",
+      "skirmisher",
+      "shadowcraft"
+    ],
+    "slotCapacity": {
+      "skillSlots": 5,
+      "tacticalReserveSlots": 5,
+      "inventoryCapacity": 20,
+      "transportationSlots": 1,
+      "statusRowSlots": 5
+    },
+    "activation": {
+      "type": "sharedActivation",
+      "sharedWith": "controlledAllies",
+      "activationsPerEncounterRound": 1
+    },
+    "startingLoadout": {
+      "equipment": [
+        {
+          "cardId": "equipment.weapon.main-gauche",
+          "quantity": 1
+        },
+        {
+          "cardId": "equipment.armor.leather-armor",
+          "quantity": 1
+        }
+      ],
+      "skills": [
+        {
+          "cardId": "skill.thief.runner",
+          "attachedCards": [
+            "ability.thief.runner-opportunists-strike"
+          ]
+        },
+        {
+          "cardId": "skill.skirmisher.runner",
+          "attachedCards": [
+            "ability.skirmisher.runner-knife-throw"
+          ]
+        }
+      ],
+      "tacticalReserve": [
+        {
+          "cardId": "tactical-reserve.healing-potion",
+          "quantity": 1
+        },
+        {
+          "cardId": "tactical-reserve.smoke-bomb",
+          "quantity": 1
+        },
+        {
+          "cardId": "tactical-reserve.antidote",
+          "quantity": 1
+        }
+      ],
+      "startingDefense": 1
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/character_classes.md",
+    "sourceSection": "Rogue Character Card",
+    "verifiedAgainstRulebook": false,
+    "notes": "HP, Shadow Step, native domains, starter equipment, Tactical Reserve, and baseline defense are migrated from the starter roster. The source called the initial Thief and Skirmisher ranks Novice; this catalog record intentionally uses the finalized Rogue rank name Runner."
+  }
+}

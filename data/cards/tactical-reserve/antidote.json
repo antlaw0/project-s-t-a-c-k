@@ -1,0 +1,38 @@
+{
+  "id": "tactical-reserve.antidote",
+  "active": true,
+  "count": 8,
+  "cardType": "tacticalReserve",
+  "name": "Antidote",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "tactical-reserve-standard",
+  "tags": [
+    "tactical-reserve",
+    "consumable",
+    "poison",
+    "action"
+  ],
+  "rulesText": "Tactical Reserve \u2014 Action\n\nRemove 1 Poisoned status card from 1 Friendly Entity.\n\nAfter resolving, shuffle this card into the Loot Deck.",
+  "data": {
+    "timing": "your-shared-activation",
+    "target": {
+      "scope": "friendlyEntity",
+      "count": 1
+    },
+    "effect": {
+      "type": "removeStatus",
+      "statusId": "status.negative.poisoned",
+      "amount": 1,
+      "target": "selectedFriendlyEntity"
+    },
+    "destinationAfterUse": "lootDeck"
+  },
+  "source": {
+    "sourceFile": "Cards/character_classes.md",
+    "sourceSection": "Shared Starting Tactical Reserve Cards > Antidote",
+    "verifiedAgainstRulebook": true,
+    "notes": "Count 8 covers the five starter-character references and leaves three additional copies for early Loot Deck use."
+  }
+}

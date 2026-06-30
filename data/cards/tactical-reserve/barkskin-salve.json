@@ -1,0 +1,51 @@
+{
+  "id": "tactical-reserve.barkskin-salve",
+  "active": true,
+  "count": 4,
+  "cardType": "tacticalReserve",
+  "name": "Barkskin Salve",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "tactical-reserve-standard",
+  "tags": [
+    "tactical-reserve",
+    "consumable",
+    "primal",
+    "persistent-positive-effect",
+    "defense",
+    "action",
+    "status-row"
+  ],
+  "rulesText": "Tactical Reserve \u2014 Action \u2014 Persistent Positive Effect\n\nPlace this card in 1 Friendly Entity's Status Row. That entity gains +1 Defense until the start of its next activation.\n\nWhen this effect ends, shuffle this card into the Loot Deck.",
+  "data": {
+    "timing": "your-shared-activation",
+    "target": {
+      "scope": "friendlyEntity",
+      "count": 1,
+      "requiresOpenStatusRowSlot": true
+    },
+    "activation": {
+      "moveTo": "selectedFriendlyEntityStatusRow"
+    },
+    "status": {
+      "statusCategory": "positive",
+      "modifiers": [
+        {
+          "type": "modifyDefense",
+          "amount": 1
+        }
+      ],
+      "endTrigger": {
+        "event": "startOfStatusOwnerNextApplicableActivation"
+      }
+    },
+    "destinationAfterExpiration": "lootDeck"
+  },
+  "source": {
+    "sourceFile": "Cards/character_classes.md",
+    "sourceSection": "Shared Starting Tactical Reserve Cards > Barkskin Salve",
+    "verifiedAgainstRulebook": true,
+    "notes": "Count 4 is a provisional module supply. This is a Tactical Reserve card that occupies the target's Status Row while active."
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "id": "tactical-reserve.bandage",
+  "active": true,
+  "count": 4,
+  "cardType": "tacticalReserve",
+  "name": "Bandage",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "tactical-reserve-standard",
+  "tags": [
+    "tactical-reserve",
+    "consumable",
+    "healing",
+    "bleeding",
+    "action"
+  ],
+  "rulesText": "Tactical Reserve \u2014 Action\n\nRemove Bleeding from 1 Friendly Entity.\nIf that entity has no Bleeding card, restore 1 HP instead.\n\nAfter resolving, shuffle this card into the Loot Deck.",
+  "data": {
+    "timing": "your-shared-activation",
+    "target": {
+      "scope": "friendlyEntity",
+      "count": 1
+    },
+    "effectSequence": [
+      {
+        "type": "removeStatus",
+        "statusId": "status.negative.bleeding",
+        "amount": 1,
+        "target": "selectedFriendlyEntity",
+        "onNoMatchingStatus": {
+          "type": "restoreHp",
+          "amount": 1,
+          "target": "selectedFriendlyEntity"
+        }
+      }
+    ],
+    "destinationAfterUse": "lootDeck"
+  },
+  "source": {
+    "sourceFile": "Cards/character_classes.md",
+    "sourceSection": "Shared Starting Tactical Reserve Cards > Bandage",
+    "verifiedAgainstRulebook": false,
+    "notes": "Count 4 is a provisional module supply. The Bleeding status card has not yet been converted to the catalog."
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "id": "tactical-reserve.holy-water",
+  "active": true,
+  "count": 4,
+  "cardType": "tacticalReserve",
+  "name": "Holy Water",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "tactical-reserve-standard",
+  "tags": [
+    "tactical-reserve",
+    "consumable",
+    "divine",
+    "force",
+    "undead",
+    "action",
+    "damage"
+  ],
+  "rulesText": "Tactical Reserve \u2014 Action\n\nDeal 2 Force damage to 1 enemy in either opposing row. If that enemy has the Undead tag, deal +2 damage instead.\n\nAfter resolving, shuffle this card into the Loot Deck.",
+  "data": {
+    "timing": "your-shared-activation",
+    "target": {
+      "scope": "enemy",
+      "allowedRows": [
+        "enemyFront",
+        "enemyBack"
+      ],
+      "count": 1
+    },
+    "effect": {
+      "type": "conditionalDealDamage",
+      "baseAmount": 2,
+      "damageType": "force",
+      "target": "selectedEnemy",
+      "condition": {
+        "targetHasTag": "undead"
+      },
+      "additionalAmountWhenConditionMet": 2
+    },
+    "destinationAfterUse": "lootDeck"
+  },
+  "source": {
+    "sourceFile": "Cards/character_classes.md",
+    "sourceSection": "Shared Starting Tactical Reserve Cards > Holy Water",
+    "verifiedAgainstRulebook": true,
+    "notes": "Count 4 is a provisional module supply."
+  }
+}

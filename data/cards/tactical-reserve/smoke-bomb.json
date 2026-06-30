@@ -1,0 +1,50 @@
+{
+  "id": "tactical-reserve.smoke-bomb",
+  "active": true,
+  "count": 4,
+  "cardType": "tacticalReserve",
+  "name": "Smoke Bomb",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "tactical-reserve-standard",
+  "tags": [
+    "tactical-reserve",
+    "consumable",
+    "reaction",
+    "rogue",
+    "movement",
+    "damage-prevention"
+  ],
+  "rulesText": "Tactical Reserve \u2014 Reaction\n\nUse when the Rogue is chosen as the target of an enemy attack.\nPrevent 2 damage from that attack. Then move the Rogue to an empty Player Back Row slot, if able.\n\nAfter resolving, shuffle this card into the Loot Deck.",
+  "data": {
+    "timing": "reaction",
+    "trigger": {
+      "event": "chosenAsTargetOfEnemyAttack",
+      "targetMustHaveCharacterId": "character.rogue"
+    },
+    "effects": [
+      {
+        "type": "preventDamage",
+        "amount": 2,
+        "target": "reactionOwner"
+      },
+      {
+        "type": "moveEntity",
+        "target": "reactionOwner",
+        "destination": {
+          "row": "playerBack",
+          "selectionRule": "anyEmptySlot",
+          "optional": true
+        }
+      }
+    ],
+    "destinationAfterUse": "lootDeck"
+  },
+  "source": {
+    "sourceFile": "Cards/character_classes.md",
+    "sourceSection": "Shared Starting Tactical Reserve Cards > Smoke Bomb",
+    "verifiedAgainstRulebook": true,
+    "notes": "Count 4 is a provisional module supply. The printed trigger is Rogue-specific."
+  }
+}

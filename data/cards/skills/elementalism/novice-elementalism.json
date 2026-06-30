@@ -1,0 +1,64 @@
+{
+  "id": "skill.elementalism.novice",
+  "active": true,
+  "count": 1,
+  "cardType": "skill",
+  "name": "Novice Elementalism",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "skill-standard",
+  "tags": [
+    "skill",
+    "discipline",
+    "elementalism",
+    "novice",
+    "arcane",
+    "mage-native"
+  ],
+  "rulesText": "Elementalism Skill \u2014 Novice\n\nSpell Slots: 1\nMay Equip: Novice Elementalism spells.\n\nPassive \u2014 Attuned Casting\nWhenever one of your Fire, Ice, Lightning, or Earth spells deals damage to a target, the first 1 damage dealt to that target by that spell ignores Defense.",
+  "data": {
+    "skillType": "discipline",
+    "discipline": "elementalism",
+    "rank": {
+      "id": "novice",
+      "order": 1
+    },
+    "nativeClasses": [
+      "character.mage"
+    ],
+    "attachedCardRules": {
+      "allowedCardTypes": [
+        "spell"
+      ],
+      "requiredDiscipline": "elementalism",
+      "maximumRank": "novice",
+      "slotCount": 1
+    },
+    "passive": {
+      "id": "attuned-casting",
+      "name": "Attuned Casting",
+      "trigger": {
+        "event": "spellDealsDamage",
+        "requiredDamageTypes": [
+          "fire",
+          "ice",
+          "lightning",
+          "earth"
+        ],
+        "actorMustBeSkillOwner": true
+      },
+      "effect": {
+        "type": "ignoreDefenseForDamage",
+        "amount": 1,
+        "scope": "firstDamageDealtToEachTargetByThatSpell"
+      }
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/skill_and_ability_cards/elementalism.md",
+    "sourceSection": "Elementalism Skill Cards > Novice Elementalism",
+    "verifiedAgainstRulebook": false,
+    "notes": "Spell-slot count and Attuned Casting are migrated from the Elementalism card file."
+  }
+}

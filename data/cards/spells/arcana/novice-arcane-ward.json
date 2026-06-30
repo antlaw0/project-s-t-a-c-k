@@ -1,0 +1,59 @@
+{
+  "id": "spell.arcana.novice-arcane-ward",
+  "active": true,
+  "count": 1,
+  "cardType": "spell",
+  "name": "Arcane Ward",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "spell-standard",
+  "tags": [
+    "spell",
+    "arcana",
+    "novice",
+    "action",
+    "status",
+    "defense",
+    "arcane"
+  ],
+  "rulesText": "Arcana Spell \u2014 Novice\nAction \u2022 Persistent Positive Effect\n\nUse this character's shared activation. Move this card from its equipped Skill Card into the Mage's Status Row.\n\nThe Mage gains +1 Defense until the start of the Mage's next shared activation.\n\nWhen this effect ends, return this card to Novice Arcana.",
+  "data": {
+    "spellType": "actionStatus",
+    "discipline": "arcana",
+    "rank": {
+      "id": "novice",
+      "order": 1
+    },
+    "equipRules": {
+      "allowedSkillDisciplines": [
+        "arcana"
+      ],
+      "maximumSkillRank": "novice"
+    },
+    "activation": {
+      "activationCost": "sharedActivation",
+      "moveTo": "ownerStatusRow"
+    },
+    "status": {
+      "statusType": "arcaneWard",
+      "owner": "abilityOwner",
+      "modifiers": [
+        {
+          "type": "modifyDefense",
+          "amount": 1
+        }
+      ],
+      "expiresAt": "startOfOwnersNextSharedActivation"
+    },
+    "afterExpiration": {
+      "type": "returnToEquippedSkillCard"
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/character_classes.md",
+    "sourceSection": "Mage Required Starter Companion Card Text > Arcane Ward",
+    "verifiedAgainstRulebook": false,
+    "notes": "Text and duration are migrated from the Mage starter roster. The generic Status Row UI can move this card to the Mage's Status Row because activation.moveTo is ownerStatusRow."
+  }
+}
