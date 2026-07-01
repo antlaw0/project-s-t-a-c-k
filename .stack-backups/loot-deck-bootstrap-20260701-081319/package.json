@@ -10,15 +10,14 @@
     "validate:decks": "node scripts/validate-deck-data.js",
     "validate:data": "npm run validate:cards && npm run validate:decks && npm run validate:scenarios",
     "validate:scenarios": "node scripts/validate-scenario-data.js",
-    "create:playtest-state": "node scripts/create-loot-playtest-state.js",
+    "create:playtest-state": "node scripts/create-playtest-state.js",
     "test:playtest-state": "node scripts/test-playtest-state.js",
     "build:catalog": "node scripts/build-catalog-index.js",
     "test:catalog-build": "node scripts/test-build-catalog-index.js",
     "check:playtest-ui": "node --check js/playtest-tabletop.js && node scripts/test-playtest-tabletop.js",
     "check:playtest-controls": "node --check js/playtest-tabletop.js && node scripts/test-playtest-tabletop.js && node scripts/test-playtest-controls.js",
     "check:playtest-status-controls": "node --check js/playtest-tabletop.js && node scripts/test-playtest-tabletop.js && node scripts/test-playtest-controls.js && node scripts/test-playtest-status-controls.js",
-    "check:playtest-advanced-controls": "node --check js/playtest-tabletop.js && node scripts/test-playtest-advanced-controls.js",
-    "test:loot-playtest-state": "node scripts/test-loot-playtest-state.js"
+    "check:playtest-advanced-controls": "node --check js/playtest-tabletop.js && node scripts/test-playtest-advanced-controls.js"
   },
   "engines": {
     "node": ">=18"

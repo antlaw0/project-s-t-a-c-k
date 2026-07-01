@@ -2580,8 +2580,7 @@
           "drawMode": "manual",
           "drawZone": "dungeonDeck",
           "discardZone": "dungeonDiscardPile",
-          "lootZone": "dungeonLootArea",
-          "lootInjectionCount": 8
+          "lootZone": "dungeonLootArea"
         },
         "endCondition": {
           "type": "manualStop",

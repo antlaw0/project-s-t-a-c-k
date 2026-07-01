@@ -1,0 +1,50 @@
+{
+  "id": "deck.goblin-warrens-catalog-smoke-test",
+  "active": true,
+  "deckType": "dungeon",
+  "name": "Goblin Warrens Catalog Smoke Test",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "tags": [
+    "deck",
+    "dungeon",
+    "goblin-warrens",
+    "smoke-test",
+    "catalog-validation"
+  ],
+  "rulesText": "A minimal Dungeon Deck used to test initial catalog loading, card-instance creation, shuffling, drawing, immediate trap and event resolution, Goblin reinforcement deployment, and Dungeon Discard behavior.",
+  "data": {
+    "dungeonTheme": "goblin-warrens",
+    "intendedUse": "catalogSmokeTest",
+    "setup": {
+      "shuffleBeforePlay": true,
+      "drawZone": "dungeonDeck",
+      "discardZone": "dungeonDiscardPile",
+      "lootZone": "dungeonLootArea"
+    },
+    "cardEntries": [
+      {
+        "cardId": "enemy.goblin-raider",
+        "quantity": 4
+      },
+      {
+        "cardId": "dungeon.goblin-warrens.tripwire",
+        "quantity": 2
+      },
+      {
+        "cardId": "dungeon.goblin-warrens.goblin-alarm",
+        "quantity": 2
+      }
+    ],
+    "totalCardCount": 8,
+    "knownLimitations": [
+      "This deck is not a complete dungeon.",
+      "This deck has no boss, dungeon objective, loot card, special room, or completion condition.",
+      "Use it only to test catalog loading and core Dungeon Deck interactions."
+    ]
+  },
+  "source": {
+    "verifiedAgainstRulebook": false,
+    "notes": "First deck-definition test. Every entry quantity is intentionally equal to or below the corresponding active card definition count."
+  }
+}
