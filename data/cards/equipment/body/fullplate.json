@@ -1,0 +1,49 @@
+{
+  "id": "equipment.body.full-plate",
+  "active": true,
+  "count": 1,
+  "cardType": "equipment",
+  "name": "Full Plate",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "equipment-body-standard",
+  "tags": [
+    "equipment",
+    "body",
+    "armor",
+    "heavy-armor",
+    "plate",
+    "full-plate",
+    "common"
+  ],
+  "rulesText": "Body Equipment — Armor\nArmor • Heavy Armor • Plate\n+4 Defense\nRequires Heavy Armor Proficiency",
+  "data": {
+    "equipmentType": "body",
+    "equipmentSlot": "body",
+    "category": "armor",
+    "armorTags": [
+      "armor",
+      "heavy-armor",
+      "plate",
+      "full-plate"
+    ],
+    "defenseBonus": 4,
+    "requiredProficiency": [
+      "heavy-armor"
+    ],
+    "traits": [],
+    "economy": {
+      "equipmentPowerRating": 9,
+      "valueGold": 100,
+      "sellValueGold": 50,
+      "rarity": "common"
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+    "sourceSection": "Body Equipment Cards > Full Plate",
+    "verifiedAgainstRulebook": false,
+    "notes": "Top-tier standard body armor. Full Plate provides +4 Defense and requires Heavy Armor Proficiency."
+  }
+}

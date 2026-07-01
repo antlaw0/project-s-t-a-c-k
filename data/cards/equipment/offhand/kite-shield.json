@@ -1,0 +1,44 @@
+{
+  "id": "equipment.offhand.kite-shield",
+  "active": true,
+  "count": 1,
+  "cardType": "equipment",
+  "name": "Kite Shield",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "equipment-offhand-standard",
+  "tags": [
+    "equipment",
+    "offhand",
+    "shield",
+    
+    "kite-shield",
+    "common"
+  ],
+  "rulesText": "Off-Hand Equipment — Shield\nShield • Kite Shield\n+2 Defense",
+  "data": {
+    "equipmentType": "offhand",
+    "equipmentSlot": "offhand",
+    "category": "shield",
+    "armorTags": [
+      "shield",
+      "kite-shield"
+    ],
+    "defenseBonus": 2,
+    "requiredProficiency": [],
+    "traits": [],
+    "economy": {
+      "equipmentPowerRating": 4,
+      "valueGold": 40,
+      "sellValueGold": 20,
+      "rarity": "common"
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+    "sourceSection": "Off-Hand Equipment Cards > Kite Shield",
+    "verifiedAgainstRulebook": false,
+    "notes": "Starter shield. Shields occupy the off-hand slot. Defense reduces Physical damage only."
+  }
+}

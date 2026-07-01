@@ -1,0 +1,42 @@
+{
+  "id": "equipment.neck.simple-pendant",
+  "active": true,
+  "count": 1,
+  "cardType": "equipment",
+  "name": "Simple Pendant",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "equipment-neck-standard",
+  "tags": [
+    "equipment",
+    "neck",
+    "accessory",
+    "pendant",
+    "common"
+  ],
+  "rulesText": "Neck Equipment\nAccessory • Pendant\nNo mechanical effect.",
+  "data": {
+    "equipmentType": "neck",
+    "equipmentSlot": "neck",
+    "category": "accessory",
+    "accessoryTags": [
+      "pendant"
+    ],
+    "defenseBonus": 0,
+    "requiredProficiency": [],
+    "traits": [],
+    "economy": {
+      "equipmentPowerRating": 0,
+      "valueGold": 0,
+      "sellValueGold": 0,
+      "rarity": "common"
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+    "sourceSection": "Neck Equipment Cards > Simple Pendant",
+    "verifiedAgainstRulebook": false,
+    "notes": "Starter neck item with no mechanical effect."
+  }
+}

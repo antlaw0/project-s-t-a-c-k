@@ -1,0 +1,48 @@
+{
+  "id": "equipment.offhand.sunstone-focus",
+  "active": true,
+  "count": 1,
+  "cardType": "equipment",
+  "name": "Sunstone Focus",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "equipment-offhand-standard",
+  "tags": [
+    "equipment",
+    "offhand",
+    "focus",
+    
+    "sunstone",
+    "divine",
+    "common"
+  ],
+  "rulesText": "Off-Hand Equipment — Focus\nFocus • Sunstone • Divine\nSunstone Channeling: Once per combat, when you resolve a Divine spell that restores HP, restore +1 additional HP.",
+  "data": {
+    "equipmentType": "offhand",
+    "equipmentSlot": "offhand",
+    "category": "focus",
+    "focusTags": [
+      "focus",
+      "sunstone",
+      "divine"
+    ],
+    "defenseBonus": 0,
+    "requiredProficiency": [],
+    "traits": [
+      "Sunstone Channeling: Once per combat, when you resolve a Divine spell that restores HP, restore +1 additional HP."
+    ],
+    "economy": {
+      "equipmentPowerRating": 3,
+      "valueGold": 30,
+      "sellValueGold": 15,
+      "rarity": "common"
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+    "sourceSection": "Off-Hand Equipment Cards > Sunstone Focus",
+    "verifiedAgainstRulebook": false,
+    "notes": "The once-per-combat trait should use the established equipment-use tracking method."
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "id": "equipment.weapon.short-sword",
+  "active": true,
+  "count": 1,
+  "cardType": "equipment",
+  "name": "Short Sword",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "equipment-weapon-standard",
+  "tags": [
+    "equipment",
+    "weapon",
+    "melee",
+    "blade",
+    "sword",
+    "one-handed",
+    "physical",
+    "common"
+  ],
+  "rulesText": "Weapon\nMelee • Blade • Sword\n1 Physical Damage\nRequires Blade proficiency.\nHands Required: 1 Hand.",
+  "data": {
+    "equipmentType": "weapon",
+    "equipmentSlot": "weapon",
+    "rangeTag": "melee",
+    "weaponTags": [
+      "blade",
+      "sword"
+    ],
+    "handsRequired": 1,
+    "requiredProficiency": [
+      "blade"
+    ],
+    "damage": {
+      "amount": 1,
+      "damageType": "physical"
+    },
+    "traits": [],
+    "economy": {
+      "equipmentPowerRating": 4,
+      "valueGold": 40,
+      "sellValueGold": 20,
+      "rarity": "common"
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+    "sourceSection": "Weapon Cards > Short Sword",
+    "verifiedAgainstRulebook": false,
+    "notes": "Starter weapon catalog entry. Weapon tags support range and subtype eligibility checks."
+  }
+}

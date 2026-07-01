@@ -1,0 +1,42 @@
+{
+  "id": "equipment.ring.plain-ring",
+  "active": true,
+  "count": 1,
+  "cardType": "equipment",
+  "name": "Plain Ring",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "equipment-ring-standard",
+  "tags": [
+    "equipment",
+    "ring",
+    "accessory",
+    
+    "common"
+  ],
+  "rulesText": "Ring Equipment\nAccessory • Ring\nNo mechanical effect.",
+  "data": {
+    "equipmentType": "ring",
+    "equipmentSlot": "ring",
+    "category": "accessory",
+    "accessoryTags": [
+      "ring"
+    ],
+    "defenseBonus": 0,
+    "requiredProficiency": [],
+    "traits": [],
+    "economy": {
+      "equipmentPowerRating": 0,
+      "valueGold": 0,
+      "sellValueGold": 0,
+      "rarity": "common"
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+    "sourceSection": "Ring Equipment Cards > Plain Ring",
+    "verifiedAgainstRulebook": false,
+    "notes": "Starter ring with no mechanical effect. The current starter catalog uses one ring slot."
+  }
+}

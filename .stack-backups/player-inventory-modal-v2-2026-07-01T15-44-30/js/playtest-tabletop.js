@@ -1,4 +1,4 @@
-﻿(function initializePlaytestTabletop() {
+(function initializePlaytestTabletop() {
   "use strict";
 
   const CATALOG_URL = "./generated/card-catalog.json";
@@ -993,10 +993,6 @@ createElement("h6", { text: definition.name }),
       reserveList.append(createEmptySlotItem("No Tactical Reserve slots"));
     } // end tactical-slot branch
     panel.append(createElement("h5", { text: "Tactical Reserve" }), reserveList);
-  // PROJECT STACK INVENTORY BUTTON HOOK V2
-  if (window.ProjectStackInventoryModal && typeof window.ProjectStackInventoryModal.appendInventoryButton === "function") {
-    window.ProjectStackInventoryModal.appendInventoryButton(panel, entity);
-  } // end inventory-button append branch
 
     const statusList = createElement("ol", { className: "card-list" });
     renderStatusRow(entity, statusList, `friendly-status-${sanitizeIdPart(entity.id)}`);
@@ -1877,26 +1873,4 @@ createElement("h6", { text: definition.name }),
   renderManualControls();
   renderEntityManagementControls();
   loadCatalog();
-
-  // PROJECT STACK INVENTORY API EXPORT V2
-  window.ProjectStackPlaytestApi = {
-    getRuntimeState: function getRuntimeStateForInventory() {
-      return application.runtimeState;
-    }, // end getRuntimeStateForInventory method
-    getCatalog: function getCatalogForInventory() {
-      return application.catalog;
-    }, // end getCatalogForInventory method
-    getEntity: getEntity,
-    getCardInstance: getCardInstance,
-    getDefinitionForInstance: getDefinitionForInstance,
-    getCardDefinition: getCardDefinition,
-    formatCardLabel: formatCardLabel,
-    updateCardInstanceZone: updateCardInstanceZone,
-    takeUnusedOrCreateCardInstance: takeUnusedOrCreateCardInstance,
-    appendLog: appendLog,
-    rerenderAfterStateChange: rerenderAfterStateChange,
-    sanitizeIdPart: sanitizeIdPart,
-    setManualControlStatus: setManualControlStatus
-  }; // end ProjectStackPlaytestApi export
 }()); // end initializePlaytestTabletop IIFE
-

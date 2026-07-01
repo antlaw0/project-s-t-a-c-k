@@ -1,0 +1,95 @@
+.stack-inventory-dialog,
+.stack-inventory-choice-dialog {
+  box-sizing: border-box;
+  width: min(96vw, 1200px);
+  max-height: 90vh;
+  overflow: auto;
+  padding: 1.25rem;
+} /* end inventory-dialog styles */
+
+.stack-inventory-dialog::backdrop,
+.stack-inventory-choice-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.55);
+} /* end inventory-dialog backdrop styles */
+
+.inventory-capacity-controls,
+.inventory-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin: 0.75rem 0;
+} /* end inventory-control-row styles */
+
+.inventory-capacity-controls input {
+  max-width: 9rem;
+} /* end inventory-capacity-input styles */
+
+.inventory-grid-table {
+  width: 100%;
+  margin: 1rem 0 1.5rem;
+  border-collapse: collapse;
+  table-layout: fixed;
+} /* end inventory-grid-table styles */
+
+.inventory-grid-table caption {
+  padding: 0.5rem;
+  font-weight: 700;
+  text-align: left;
+} /* end inventory-grid-caption styles */
+
+.inventory-grid-table th,
+.inventory-grid-table td {
+  vertical-align: top;
+  border: 1px solid currentColor;
+  padding: 0.5rem;
+} /* end inventory-grid-cell styles */
+
+.inventory-grid-table th:first-child {
+  width: 5.5rem;
+} /* end inventory-row-header styles */
+
+.inventory-empty-slot,
+.inventory-unavailable-slot {
+  min-height: 5rem;
+} /* end inventory-empty-slot styles */
+
+.inventory-unavailable-slot {
+  opacity: 0.7;
+} /* end inventory-unavailable-slot emphasis */
+
+.inventory-card h3,
+.inventory-choice-list h3 {
+  margin-top: 0;
+} /* end inventory-card-heading styles */
+
+.inventory-card-position,
+.inventory-card-rules {
+  margin: 0.5rem 0;
+} /* end inventory-card-text styles */
+
+.inventory-choice-list {
+  padding: 0;
+  list-style: none;
+} /* end inventory-choice-list styles */
+
+.inventory-choice-list li {
+  margin: 0.75rem 0;
+  padding: 0.75rem;
+  border: 1px solid currentColor;
+} /* end inventory-choice-list-item styles */
+
+.inventory-open-button {
+  margin: 0.75rem 0;
+} /* end inventory-open-button styles */
+
+@media (max-width: 800px) {
+  .inventory-grid-table {
+    table-layout: auto;
+  } /* end narrow-screen inventory-table styles */
+
+  .inventory-grid-table th,
+  .inventory-grid-table td {
+    min-width: 12rem;
+  } /* end narrow-screen inventory-cell styles */
+} /* end narrow-screen media query */

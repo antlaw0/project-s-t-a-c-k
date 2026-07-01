@@ -1,0 +1,42 @@
+{
+  "id": "equipment.feet.travel-boots",
+  "active": true,
+  "count": 1,
+  "cardType": "equipment",
+  "name": "Travel Boots",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "equipment-feet-standard",
+  "tags": [
+    "equipment",
+    "feet",
+    "clothing",
+    "boots",
+    "common"
+  ],
+  "rulesText": "Feet Equipment\nClothing • Boots\nNo mechanical effect.",
+  "data": {
+    "equipmentType": "feet",
+    "equipmentSlot": "feet",
+    "category": "clothing",
+    "accessoryTags": [
+      "boots"
+    ],
+    "defenseBonus": 0,
+    "requiredProficiency": [],
+    "traits": [],
+    "economy": {
+      "equipmentPowerRating": 0,
+      "valueGold": 0,
+      "sellValueGold": 0,
+      "rarity": "common"
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+    "sourceSection": "Feet Equipment Cards > Travel Boots",
+    "verifiedAgainstRulebook": false,
+    "notes": "Starter footwear with no mechanical effect."
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "id": "equipment.hands.work-gloves",
+  "active": true,
+  "count": 1,
+  "cardType": "equipment",
+  "name": "Work Gloves",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "equipment-hands-standard",
+  "tags": [
+    "equipment",
+    "hands",
+    "clothing",
+    "gloves",
+    "common"
+  ],
+  "rulesText": "Handwear\nClothing • Gloves\nNo mechanical effect.",
+  "data": {
+    "equipmentType": "hands",
+    "equipmentSlot": "hands",
+    "category": "clothing",
+    "accessoryTags": [
+      "gloves"
+    ],
+    "defenseBonus": 0,
+    "requiredProficiency": [],
+    "traits": [],
+    "economy": {
+      "equipmentPowerRating": 0,
+      "valueGold": 0,
+      "sellValueGold": 0,
+      "rarity": "common"
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+    "sourceSection": "Handwear Equipment Cards > Work Gloves",
+    "verifiedAgainstRulebook": false,
+    "notes": "Starter handwear with no mechanical effect."
+  }
+}

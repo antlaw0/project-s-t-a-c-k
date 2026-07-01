@@ -1,0 +1,47 @@
+{
+  "id": "equipment.body.chainmail",
+  "active": true,
+  "count": 1,
+  "cardType": "equipment",
+  "name": "Chainmail",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "equipment-body-standard",
+  "tags": [
+    "equipment",
+    "body",
+    "armor",
+    "medium-armor",
+    "chain",
+    "common"
+  ],
+  "rulesText": "Body Equipment — Armor\nArmor • Medium Armor • Chain\n+3 Defense\nRequires Medium Armor Proficiency",
+  "data": {
+    "equipmentType": "body",
+    "equipmentSlot": "body",
+    "category": "armor",
+    "armorTags": [
+      "armor",
+      "medium-armor",
+      "chain"
+    ],
+    "defenseBonus": 3,
+    "requiredProficiency": [
+      "medium-armor"
+    ],
+    "traits": [],
+    "economy": {
+      "equipmentPowerRating": 7,
+      "valueGold": 70,
+      "sellValueGold": 35,
+      "rarity": "common"
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+    "sourceSection": "Body Equipment Cards > Chainmail",
+    "verifiedAgainstRulebook": false,
+    "notes": "Medium body armor. Chainmail follows the established armor progression: Clothing +0, Leather +1, Scale Mail or Brigandine +2, Chainmail +3, and Full Plate +4 Defense."
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "id": "equipment.ring.emberward-ring",
+  "active": true,
+  "count": 1,
+  "cardType": "equipment",
+  "name": "Emberward Ring",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "equipment-ring-standard",
+  "tags": [
+    "equipment",
+    "ring",
+    "accessory",
+    
+    "fire",
+    "uncommon"
+  ],
+  "rulesText": "Ring Equipment\nAccessory • Ring • Fire\nEmberward: Reduce Fire damage you take by 1, to a minimum of 0.",
+  "data": {
+    "equipmentType": "ring",
+    "equipmentSlot": "ring",
+    "category": "accessory",
+    "accessoryTags": [
+      "ring",
+      "fire"
+    ],
+    "defenseBonus": 0,
+    "requiredProficiency": [],
+    "traits": [
+      "Emberward: Reduce Fire damage you take by 1, to a minimum of 0."
+    ],
+    "economy": {
+      "equipmentPowerRating": 2,
+      "valueGold": 20,
+      "sellValueGold": 10,
+      "rarity": "uncommon"
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+    "sourceSection": "Ring Equipment Cards > Emberward Ring",
+    "verifiedAgainstRulebook": false,
+    "notes": "This is damage reduction, not a permanent Defense bonus."
+  }
+}

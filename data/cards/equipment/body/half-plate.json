@@ -1,0 +1,47 @@
+{
+  "id": "equipment.body.half-plate",
+  "active": true,
+  "count": 1,
+  "cardType": "equipment",
+  "name": "Half-Plate",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "equipment-body-standard",
+  "tags": [
+    "equipment",
+    "body",
+    "armor",
+    "heavy-armor",
+    "half-plate",
+    "common"
+  ],
+  "rulesText": "Body Equipment — Armor\nArmor • Heavy Armor • Half-Plate\n+3 Defense\nRequires Heavy Armor Proficiency",
+  "data": {
+    "equipmentType": "body",
+    "equipmentSlot": "body",
+    "category": "armor",
+    "armorTags": [
+      "armor",
+      "heavy-armor",
+      "half-plate"
+    ],
+    "defenseBonus": 3,
+    "requiredProficiency": [
+      "heavy-armor"
+    ],
+    "traits": [],
+    "economy": {
+      "equipmentPowerRating": 7,
+      "valueGold": 75,
+      "sellValueGold": 37,
+      "rarity": "common"
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+    "sourceSection": "Body Equipment Cards > Half-Plate",
+    "verifiedAgainstRulebook": false,
+    "notes": "High-tier body armor. Half-Plate provides +3 Defense and is intended to sit immediately below Full Plate at +4 Defense."
+  }
+}

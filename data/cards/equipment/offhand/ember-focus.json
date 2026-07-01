@@ -1,0 +1,48 @@
+{
+  "id": "equipment.offhand.ember-focus",
+  "active": true,
+  "count": 1,
+  "cardType": "equipment",
+  "name": "Ember Focus",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "equipment-offhand-standard",
+  "tags": [
+    "equipment",
+    "offhand",
+    "focus",
+    
+    "ember",
+    "elementalism",
+    "common"
+  ],
+  "rulesText": "Off-Hand Equipment — Focus\nFocus • Ember • Elementalism\nEmber Channeling: Once per combat, when you resolve an Elementalism spell that deals Fire damage, add +1 Fire damage.",
+  "data": {
+    "equipmentType": "offhand",
+    "equipmentSlot": "offhand",
+    "category": "focus",
+    "focusTags": [
+      "focus",
+      "ember",
+      "elementalism"
+    ],
+    "defenseBonus": 0,
+    "requiredProficiency": [],
+    "traits": [
+      "Ember Channeling: Once per combat, when you resolve an Elementalism spell that deals Fire damage, add +1 Fire damage."
+    ],
+    "economy": {
+      "equipmentPowerRating": 3,
+      "valueGold": 30,
+      "sellValueGold": 15,
+      "rarity": "common"
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+    "sourceSection": "Off-Hand Equipment Cards > Ember Focus",
+    "verifiedAgainstRulebook": false,
+    "notes": "The once-per-combat trait should use the established equipment-use tracking method."
+  }
+}

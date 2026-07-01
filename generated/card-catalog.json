@@ -1503,6 +1503,454 @@
         "notes": "Canonical spelling follows the equipment catalog: Apprentice Robes, plural. The starter roster uses the singular phrase Apprentice Robe."
       }
     },
+    "equipment.body.chainmail": {
+      "id": "equipment.body.chainmail",
+      "active": true,
+      "count": 1,
+      "cardType": "equipment",
+      "name": "Chainmail",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "equipment-body-standard",
+      "tags": [
+        "equipment",
+        "body",
+        "armor",
+        "medium-armor",
+        "chain",
+        "common"
+      ],
+      "rulesText": "Body Equipment — Armor\nArmor • Medium Armor • Chain\n+3 Defense\nRequires Medium Armor Proficiency",
+      "data": {
+        "equipmentType": "body",
+        "equipmentSlot": "body",
+        "category": "armor",
+        "armorTags": [
+          "armor",
+          "medium-armor",
+          "chain"
+        ],
+        "defenseBonus": 3,
+        "requiredProficiency": [
+          "medium-armor"
+        ],
+        "traits": [],
+        "economy": {
+          "equipmentPowerRating": 7,
+          "valueGold": 70,
+          "sellValueGold": 35,
+          "rarity": "common"
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+        "sourceSection": "Body Equipment Cards > Chainmail",
+        "verifiedAgainstRulebook": false,
+        "notes": "Medium body armor. Chainmail follows the established armor progression: Clothing +0, Leather +1, Scale Mail or Brigandine +2, Chainmail +3, and Full Plate +4 Defense."
+      }
+    },
+    "equipment.body.full-plate": {
+      "id": "equipment.body.full-plate",
+      "active": true,
+      "count": 1,
+      "cardType": "equipment",
+      "name": "Full Plate",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "equipment-body-standard",
+      "tags": [
+        "equipment",
+        "body",
+        "armor",
+        "heavy-armor",
+        "plate",
+        "full-plate",
+        "common"
+      ],
+      "rulesText": "Body Equipment — Armor\nArmor • Heavy Armor • Plate\n+4 Defense\nRequires Heavy Armor Proficiency",
+      "data": {
+        "equipmentType": "body",
+        "equipmentSlot": "body",
+        "category": "armor",
+        "armorTags": [
+          "armor",
+          "heavy-armor",
+          "plate",
+          "full-plate"
+        ],
+        "defenseBonus": 4,
+        "requiredProficiency": [
+          "heavy-armor"
+        ],
+        "traits": [],
+        "economy": {
+          "equipmentPowerRating": 9,
+          "valueGold": 100,
+          "sellValueGold": 50,
+          "rarity": "common"
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+        "sourceSection": "Body Equipment Cards > Full Plate",
+        "verifiedAgainstRulebook": false,
+        "notes": "Top-tier standard body armor. Full Plate provides +4 Defense and requires Heavy Armor Proficiency."
+      }
+    },
+    "equipment.body.half-plate": {
+      "id": "equipment.body.half-plate",
+      "active": true,
+      "count": 1,
+      "cardType": "equipment",
+      "name": "Half-Plate",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "equipment-body-standard",
+      "tags": [
+        "equipment",
+        "body",
+        "armor",
+        "heavy-armor",
+        "half-plate",
+        "common"
+      ],
+      "rulesText": "Body Equipment — Armor\nArmor • Heavy Armor • Half-Plate\n+3 Defense\nRequires Heavy Armor Proficiency",
+      "data": {
+        "equipmentType": "body",
+        "equipmentSlot": "body",
+        "category": "armor",
+        "armorTags": [
+          "armor",
+          "heavy-armor",
+          "half-plate"
+        ],
+        "defenseBonus": 3,
+        "requiredProficiency": [
+          "heavy-armor"
+        ],
+        "traits": [],
+        "economy": {
+          "equipmentPowerRating": 7,
+          "valueGold": 75,
+          "sellValueGold": 37,
+          "rarity": "common"
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+        "sourceSection": "Body Equipment Cards > Half-Plate",
+        "verifiedAgainstRulebook": false,
+        "notes": "High-tier body armor. Half-Plate provides +3 Defense and is intended to sit immediately below Full Plate at +4 Defense."
+      }
+    },
+    "equipment.body.leather-armor": {
+      "id": "equipment.body.leather-armor",
+      "active": true,
+      "count": 1,
+      "cardType": "equipment",
+      "name": "Leather Armor",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "equipment-body-standard",
+      "tags": [
+        "equipment",
+        "body",
+        "armor",
+        "light-armor",
+        "leather",
+        "common"
+      ],
+      "rulesText": "Body Equipment — Armor\nArmor • Light Armor • Leather\n+1 Defense",
+      "data": {
+        "equipmentType": "body",
+        "equipmentSlot": "body",
+        "category": "armor",
+        "armorTags": [
+          "armor",
+          "light-armor",
+          "leather"
+        ],
+        "defenseBonus": 1,
+        "requiredProficiency": [],
+        "traits": [],
+        "economy": {
+          "equipmentPowerRating": 1,
+          "valueGold": 20,
+          "sellValueGold": 10,
+          "rarity": "common"
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+        "sourceSection": "Body Equipment Cards > Leather Armor",
+        "verifiedAgainstRulebook": false,
+        "notes": "Starter light body armor. Provides +1 Defense and carries the Light Armor and Leather subtype tags for future proficiency or ability requirements."
+      }
+    },
+    "equipment.feet.surefoot-boots": {
+      "id": "equipment.feet.surefoot-boots",
+      "active": true,
+      "count": 1,
+      "cardType": "equipment",
+      "name": "Surefoot Boots",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "equipment-feet-standard",
+      "tags": [
+        "equipment",
+        "feet",
+        "clothing",
+        "boots",
+        "uncommon"
+      ],
+      "rulesText": "Feet Equipment\nClothing • Boots\nSurefooted: Once per combat, ignore one effect that would force you to change rows.",
+      "data": {
+        "equipmentType": "feet",
+        "equipmentSlot": "feet",
+        "category": "clothing",
+        "accessoryTags": [
+          "boots"
+        ],
+        "defenseBonus": 0,
+        "requiredProficiency": [],
+        "traits": [
+          "Surefooted: Once per combat, ignore one effect that would force you to change rows."
+        ],
+        "economy": {
+          "equipmentPowerRating": 2,
+          "valueGold": 20,
+          "sellValueGold": 10,
+          "rarity": "uncommon"
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+        "sourceSection": "Feet Equipment Cards > Surefoot Boots",
+        "verifiedAgainstRulebook": false,
+        "notes": "The once-per-combat trait should use the established equipment-use tracking method."
+      }
+    },
+    "equipment.feet.travel-boots": {
+      "id": "equipment.feet.travel-boots",
+      "active": true,
+      "count": 1,
+      "cardType": "equipment",
+      "name": "Travel Boots",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "equipment-feet-standard",
+      "tags": [
+        "equipment",
+        "feet",
+        "clothing",
+        "boots",
+        "common"
+      ],
+      "rulesText": "Feet Equipment\nClothing • Boots\nNo mechanical effect.",
+      "data": {
+        "equipmentType": "feet",
+        "equipmentSlot": "feet",
+        "category": "clothing",
+        "accessoryTags": [
+          "boots"
+        ],
+        "defenseBonus": 0,
+        "requiredProficiency": [],
+        "traits": [],
+        "economy": {
+          "equipmentPowerRating": 0,
+          "valueGold": 0,
+          "sellValueGold": 0,
+          "rarity": "common"
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+        "sourceSection": "Feet Equipment Cards > Travel Boots",
+        "verifiedAgainstRulebook": false,
+        "notes": "Starter footwear with no mechanical effect."
+      }
+    },
+    "equipment.hands.weapon-grip-gloves": {
+      "id": "equipment.hands.weapon-grip-gloves",
+      "active": true,
+      "count": 1,
+      "cardType": "equipment",
+      "name": "Weapon Grip Gloves",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "equipment-hands-standard",
+      "tags": [
+        "equipment",
+        "hands",
+        "clothing",
+        "gloves",
+        "common"
+      ],
+      "rulesText": "Handwear\nClothing • Gloves\nWeapon Grip: Once per combat, when you make a melee weapon attack, add +1 Physical Damage.",
+      "data": {
+        "equipmentType": "hands",
+        "equipmentSlot": "hands",
+        "category": "clothing",
+        "accessoryTags": [
+          "gloves"
+        ],
+        "defenseBonus": 0,
+        "requiredProficiency": [],
+        "traits": [
+          "Weapon Grip: Once per combat, when you make a melee weapon attack, add +1 Physical Damage."
+        ],
+        "economy": {
+          "equipmentPowerRating": 2,
+          "valueGold": 20,
+          "sellValueGold": 10,
+          "rarity": "common"
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+        "sourceSection": "Handwear Equipment Cards > Weapon Grip Gloves",
+        "verifiedAgainstRulebook": false,
+        "notes": "The once-per-combat trait should use the established equipment-use tracking method."
+      }
+    },
+    "equipment.hands.work-gloves": {
+      "id": "equipment.hands.work-gloves",
+      "active": true,
+      "count": 1,
+      "cardType": "equipment",
+      "name": "Work Gloves",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "equipment-hands-standard",
+      "tags": [
+        "equipment",
+        "hands",
+        "clothing",
+        "gloves",
+        "common"
+      ],
+      "rulesText": "Handwear\nClothing • Gloves\nNo mechanical effect.",
+      "data": {
+        "equipmentType": "hands",
+        "equipmentSlot": "hands",
+        "category": "clothing",
+        "accessoryTags": [
+          "gloves"
+        ],
+        "defenseBonus": 0,
+        "requiredProficiency": [],
+        "traits": [],
+        "economy": {
+          "equipmentPowerRating": 0,
+          "valueGold": 0,
+          "sellValueGold": 0,
+          "rarity": "common"
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+        "sourceSection": "Handwear Equipment Cards > Work Gloves",
+        "verifiedAgainstRulebook": false,
+        "notes": "Starter handwear with no mechanical effect."
+      }
+    },
+    "equipment.neck.guardian-pendant": {
+      "id": "equipment.neck.guardian-pendant",
+      "active": true,
+      "count": 1,
+      "cardType": "equipment",
+      "name": "Guardian Pendant",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "equipment-neck-standard",
+      "tags": [
+        "equipment",
+        "neck",
+        "accessory",
+        "pendant",
+        "guardian",
+        "uncommon"
+      ],
+      "rulesText": "Neck Equipment\nAccessory • Pendant\nGuardian Ward: Once per combat, when you would take damage, reduce that damage by 1, to a minimum of 0.",
+      "data": {
+        "equipmentType": "neck",
+        "equipmentSlot": "neck",
+        "category": "accessory",
+        "accessoryTags": [
+          "pendant",
+          "guardian"
+        ],
+        "defenseBonus": 0,
+        "requiredProficiency": [],
+        "traits": [
+          "Guardian Ward: Once per combat, when you would take damage, reduce that damage by 1, to a minimum of 0."
+        ],
+        "economy": {
+          "equipmentPowerRating": 3,
+          "valueGold": 30,
+          "sellValueGold": 15,
+          "rarity": "uncommon"
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+        "sourceSection": "Neck Equipment Cards > Guardian Pendant",
+        "verifiedAgainstRulebook": false,
+        "notes": "This is damage reduction, not a permanent Defense bonus. The once-per-combat trait should use the established equipment-use tracking method."
+      }
+    },
+    "equipment.neck.simple-pendant": {
+      "id": "equipment.neck.simple-pendant",
+      "active": true,
+      "count": 1,
+      "cardType": "equipment",
+      "name": "Simple Pendant",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "equipment-neck-standard",
+      "tags": [
+        "equipment",
+        "neck",
+        "accessory",
+        "pendant",
+        "common"
+      ],
+      "rulesText": "Neck Equipment\nAccessory • Pendant\nNo mechanical effect.",
+      "data": {
+        "equipmentType": "neck",
+        "equipmentSlot": "neck",
+        "category": "accessory",
+        "accessoryTags": [
+          "pendant"
+        ],
+        "defenseBonus": 0,
+        "requiredProficiency": [],
+        "traits": [],
+        "economy": {
+          "equipmentPowerRating": 0,
+          "valueGold": 0,
+          "sellValueGold": 0,
+          "rarity": "common"
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+        "sourceSection": "Neck Equipment Cards > Simple Pendant",
+        "verifiedAgainstRulebook": false,
+        "notes": "Starter neck item with no mechanical effect."
+      }
+    },
     "equipment.focus.apprentices-wand": {
       "id": "equipment.focus.apprentices-wand",
       "active": true,
@@ -1544,6 +1992,407 @@
         "sourceSection": "Mage Character Card > Starting Equipment",
         "verifiedAgainstRulebook": false,
         "notes": "The starter roster defines this as a held Arcane Focus with no weapon attack. Economy fields are provisional because the starter roster does not assign an EPR or market value."
+      }
+    },
+    "equipment.offhand.buckler": {
+      "id": "equipment.offhand.buckler",
+      "active": true,
+      "count": 1,
+      "cardType": "equipment",
+      "name": "Buckler",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "equipment-offhand-standard",
+      "tags": [
+        "equipment",
+        "offhand",
+        "shield",
+        "buckler",
+        "common"
+      ],
+      "rulesText": "Off-Hand Equipment — Shield\nShield • Buckler\n+1 Defense",
+      "data": {
+        "equipmentType": "offhand",
+        "equipmentSlot": "offhand",
+        "category": "shield",
+        "armorTags": [
+          "shield",
+          "buckler"
+        ],
+        "defenseBonus": 1,
+        "requiredProficiency": [],
+        "traits": [],
+        "economy": {
+          "equipmentPowerRating": 2,
+          "valueGold": 20,
+          "sellValueGold": 10,
+          "rarity": "common"
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+        "sourceSection": "Off-Hand Equipment Cards > Buckler",
+        "verifiedAgainstRulebook": false,
+        "notes": "Starter shield. Shields occupy the off-hand slot. Defense reduces Physical damage only."
+      }
+    },
+    "equipment.offhand.crystal-focus": {
+      "id": "equipment.offhand.crystal-focus",
+      "active": true,
+      "count": 1,
+      "cardType": "equipment",
+      "name": "Crystal Focus",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "equipment-offhand-standard",
+      "tags": [
+        "equipment",
+        "offhand",
+        "focus",
+        "crystal",
+        "arcane",
+        "common"
+      ],
+      "rulesText": "Off-Hand Equipment — Focus\nFocus • Crystal • Arcane\nCrystal Channeling: Once per combat, when you resolve an Arcana spell that deals damage, add +1 damage.",
+      "data": {
+        "equipmentType": "offhand",
+        "equipmentSlot": "offhand",
+        "category": "focus",
+        "focusTags": [
+          "focus",
+          "crystal",
+          "arcane"
+        ],
+        "defenseBonus": 0,
+        "requiredProficiency": [],
+        "traits": [
+          "Crystal Channeling: Once per combat, when you resolve an Arcana spell that deals damage, add +1 damage."
+        ],
+        "economy": {
+          "equipmentPowerRating": 3,
+          "valueGold": 30,
+          "sellValueGold": 15,
+          "rarity": "common"
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+        "sourceSection": "Off-Hand Equipment Cards > Crystal Focus",
+        "verifiedAgainstRulebook": false,
+        "notes": "The once-per-combat trait should use the established equipment-use tracking method."
+      }
+    },
+    "equipment.offhand.ember-focus": {
+      "id": "equipment.offhand.ember-focus",
+      "active": true,
+      "count": 1,
+      "cardType": "equipment",
+      "name": "Ember Focus",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "equipment-offhand-standard",
+      "tags": [
+        "equipment",
+        "offhand",
+        "focus",
+        "ember",
+        "elementalism",
+        "common"
+      ],
+      "rulesText": "Off-Hand Equipment — Focus\nFocus • Ember • Elementalism\nEmber Channeling: Once per combat, when you resolve an Elementalism spell that deals Fire damage, add +1 Fire damage.",
+      "data": {
+        "equipmentType": "offhand",
+        "equipmentSlot": "offhand",
+        "category": "focus",
+        "focusTags": [
+          "focus",
+          "ember",
+          "elementalism"
+        ],
+        "defenseBonus": 0,
+        "requiredProficiency": [],
+        "traits": [
+          "Ember Channeling: Once per combat, when you resolve an Elementalism spell that deals Fire damage, add +1 Fire damage."
+        ],
+        "economy": {
+          "equipmentPowerRating": 3,
+          "valueGold": 30,
+          "sellValueGold": 15,
+          "rarity": "common"
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+        "sourceSection": "Off-Hand Equipment Cards > Ember Focus",
+        "verifiedAgainstRulebook": false,
+        "notes": "The once-per-combat trait should use the established equipment-use tracking method."
+      }
+    },
+    "equipment.offhand.kite-shield": {
+      "id": "equipment.offhand.kite-shield",
+      "active": true,
+      "count": 1,
+      "cardType": "equipment",
+      "name": "Kite Shield",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "equipment-offhand-standard",
+      "tags": [
+        "equipment",
+        "offhand",
+        "shield",
+        "kite-shield",
+        "common"
+      ],
+      "rulesText": "Off-Hand Equipment — Shield\nShield • Kite Shield\n+2 Defense",
+      "data": {
+        "equipmentType": "offhand",
+        "equipmentSlot": "offhand",
+        "category": "shield",
+        "armorTags": [
+          "shield",
+          "kite-shield"
+        ],
+        "defenseBonus": 2,
+        "requiredProficiency": [],
+        "traits": [],
+        "economy": {
+          "equipmentPowerRating": 4,
+          "valueGold": 40,
+          "sellValueGold": 20,
+          "rarity": "common"
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+        "sourceSection": "Off-Hand Equipment Cards > Kite Shield",
+        "verifiedAgainstRulebook": false,
+        "notes": "Starter shield. Shields occupy the off-hand slot. Defense reduces Physical damage only."
+      }
+    },
+    "equipment.offhand.square-shield": {
+      "id": "equipment.offhand.square-shield",
+      "active": true,
+      "count": 1,
+      "cardType": "equipment",
+      "name": "Square Shield",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "equipment-offhand-standard",
+      "tags": [
+        "equipment",
+        "offhand",
+        "shield",
+        "square-shield",
+        "common"
+      ],
+      "rulesText": "Off-Hand Equipment — Shield\nShield • Square Shield\n+2 Defense",
+      "data": {
+        "equipmentType": "offhand",
+        "equipmentSlot": "offhand",
+        "category": "shield",
+        "armorTags": [
+          "shield",
+          "square-shield"
+        ],
+        "defenseBonus": 2,
+        "requiredProficiency": [],
+        "traits": [],
+        "economy": {
+          "equipmentPowerRating": 4,
+          "valueGold": 40,
+          "sellValueGold": 20,
+          "rarity": "common"
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+        "sourceSection": "Off-Hand Equipment Cards > Square Shield",
+        "verifiedAgainstRulebook": false,
+        "notes": "Starter shield. Shields occupy the off-hand slot. Defense reduces Physical damage only."
+      }
+    },
+    "equipment.offhand.sunstone-focus": {
+      "id": "equipment.offhand.sunstone-focus",
+      "active": true,
+      "count": 1,
+      "cardType": "equipment",
+      "name": "Sunstone Focus",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "equipment-offhand-standard",
+      "tags": [
+        "equipment",
+        "offhand",
+        "focus",
+        "sunstone",
+        "divine",
+        "common"
+      ],
+      "rulesText": "Off-Hand Equipment — Focus\nFocus • Sunstone • Divine\nSunstone Channeling: Once per combat, when you resolve a Divine spell that restores HP, restore +1 additional HP.",
+      "data": {
+        "equipmentType": "offhand",
+        "equipmentSlot": "offhand",
+        "category": "focus",
+        "focusTags": [
+          "focus",
+          "sunstone",
+          "divine"
+        ],
+        "defenseBonus": 0,
+        "requiredProficiency": [],
+        "traits": [
+          "Sunstone Channeling: Once per combat, when you resolve a Divine spell that restores HP, restore +1 additional HP."
+        ],
+        "economy": {
+          "equipmentPowerRating": 3,
+          "valueGold": 30,
+          "sellValueGold": 15,
+          "rarity": "common"
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+        "sourceSection": "Off-Hand Equipment Cards > Sunstone Focus",
+        "verifiedAgainstRulebook": false,
+        "notes": "The once-per-combat trait should use the established equipment-use tracking method."
+      }
+    },
+    "equipment.ring.emberward-ring": {
+      "id": "equipment.ring.emberward-ring",
+      "active": true,
+      "count": 1,
+      "cardType": "equipment",
+      "name": "Emberward Ring",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "equipment-ring-standard",
+      "tags": [
+        "equipment",
+        "ring",
+        "accessory",
+        "fire",
+        "uncommon"
+      ],
+      "rulesText": "Ring Equipment\nAccessory • Ring • Fire\nEmberward: Reduce Fire damage you take by 1, to a minimum of 0.",
+      "data": {
+        "equipmentType": "ring",
+        "equipmentSlot": "ring",
+        "category": "accessory",
+        "accessoryTags": [
+          "ring",
+          "fire"
+        ],
+        "defenseBonus": 0,
+        "requiredProficiency": [],
+        "traits": [
+          "Emberward: Reduce Fire damage you take by 1, to a minimum of 0."
+        ],
+        "economy": {
+          "equipmentPowerRating": 2,
+          "valueGold": 20,
+          "sellValueGold": 10,
+          "rarity": "uncommon"
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+        "sourceSection": "Ring Equipment Cards > Emberward Ring",
+        "verifiedAgainstRulebook": false,
+        "notes": "This is damage reduction, not a permanent Defense bonus."
+      }
+    },
+    "equipment.ring.plain-ring": {
+      "id": "equipment.ring.plain-ring",
+      "active": true,
+      "count": 1,
+      "cardType": "equipment",
+      "name": "Plain Ring",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "equipment-ring-standard",
+      "tags": [
+        "equipment",
+        "ring",
+        "accessory",
+        "common"
+      ],
+      "rulesText": "Ring Equipment\nAccessory • Ring\nNo mechanical effect.",
+      "data": {
+        "equipmentType": "ring",
+        "equipmentSlot": "ring",
+        "category": "accessory",
+        "accessoryTags": [
+          "ring"
+        ],
+        "defenseBonus": 0,
+        "requiredProficiency": [],
+        "traits": [],
+        "economy": {
+          "equipmentPowerRating": 0,
+          "valueGold": 0,
+          "sellValueGold": 0,
+          "rarity": "common"
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+        "sourceSection": "Ring Equipment Cards > Plain Ring",
+        "verifiedAgainstRulebook": false,
+        "notes": "Starter ring with no mechanical effect. The current starter catalog uses one ring slot."
+      }
+    },
+    "equipment.ring.venomward-ring": {
+      "id": "equipment.ring.venomward-ring",
+      "active": true,
+      "count": 1,
+      "cardType": "equipment",
+      "name": "Venomward Ring",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "equipment-ring-standard",
+      "tags": [
+        "equipment",
+        "ring",
+        "accessory",
+        "poison",
+        "uncommon"
+      ],
+      "rulesText": "Ring Equipment\nAccessory • Ring • Poison\nVenomward: Once per combat, when you would gain a Poison status card, prevent that card from being placed.",
+      "data": {
+        "equipmentType": "ring",
+        "equipmentSlot": "ring",
+        "category": "accessory",
+        "accessoryTags": [
+          "ring",
+          "poison"
+        ],
+        "defenseBonus": 0,
+        "requiredProficiency": [],
+        "traits": [
+          "Venomward: Once per combat, when you would gain a Poison status card, prevent that card from being placed."
+        ],
+        "economy": {
+          "equipmentPowerRating": 2,
+          "valueGold": 20,
+          "sellValueGold": 10,
+          "rarity": "uncommon"
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+        "sourceSection": "Ring Equipment Cards > Venomward Ring",
+        "verifiedAgainstRulebook": false,
+        "notes": "The once-per-combat trait should use the established equipment-use tracking method."
       }
     },
     "equipment.weapon.arming-sword": {
@@ -1596,6 +2445,631 @@
         "sourceSection": "6. Weapon Cards > Arming Sword",
         "verifiedAgainstRulebook": false,
         "notes": "The printed weapon values are migrated from the starter equipment catalog. Count 2 is a provisional first-playtest supply decision."
+      }
+    },
+    "equipment.weapon.battleaxe": {
+      "id": "equipment.weapon.battleaxe",
+      "active": true,
+      "count": 1,
+      "cardType": "equipment",
+      "name": "Battleaxe",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "equipment-weapon-standard",
+      "tags": [
+        "equipment",
+        "weapon",
+        "melee",
+        "axe",
+        "battleaxe",
+        "two-handed",
+        "physical",
+        "common"
+      ],
+      "rulesText": "Weapon\nMelee • Axe • Battleaxe\n3 Physical Damage\nRequires Axe proficiency.\nHands Required: 2 Hands.",
+      "data": {
+        "equipmentType": "weapon",
+        "equipmentSlot": "weapon",
+        "rangeTag": "melee",
+        "weaponTags": [
+          "axe",
+          "battleaxe"
+        ],
+        "handsRequired": 2,
+        "requiredProficiency": [
+          "axe"
+        ],
+        "damage": {
+          "amount": 3,
+          "damageType": "physical"
+        },
+        "traits": [],
+        "economy": {
+          "equipmentPowerRating": 9,
+          "valueGold": 90,
+          "sellValueGold": 45,
+          "rarity": "common"
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+        "sourceSection": "Weapon Cards > Battleaxe",
+        "verifiedAgainstRulebook": false,
+        "notes": "Starter weapon catalog entry. Weapon tags support range and subtype eligibility checks."
+      }
+    },
+    "equipment.weapon.hand-axe": {
+      "id": "equipment.weapon.hand-axe",
+      "active": true,
+      "count": 1,
+      "cardType": "equipment",
+      "name": "Hand Axe",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "equipment-weapon-standard",
+      "tags": [
+        "equipment",
+        "weapon",
+        "melee",
+        "axe",
+        "hand-axe",
+        "one-handed",
+        "physical",
+        "common"
+      ],
+      "rulesText": "Weapon\nMelee • Axe • Hand-Axe\n2 Physical Damage\nRequires Axe proficiency.\nHands Required: 1 Hand.",
+      "data": {
+        "equipmentType": "weapon",
+        "equipmentSlot": "weapon",
+        "rangeTag": "melee",
+        "weaponTags": [
+          "axe",
+          "hand-axe"
+        ],
+        "handsRequired": 1,
+        "requiredProficiency": [
+          "axe"
+        ],
+        "damage": {
+          "amount": 2,
+          "damageType": "physical"
+        },
+        "traits": [],
+        "economy": {
+          "equipmentPowerRating": 6,
+          "valueGold": 60,
+          "sellValueGold": 30,
+          "rarity": "common"
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+        "sourceSection": "Weapon Cards > Hand Axe",
+        "verifiedAgainstRulebook": false,
+        "notes": "Starter weapon catalog entry. Weapon tags support range and subtype eligibility checks."
+      }
+    },
+    "equipment.weapon.iron-spear": {
+      "id": "equipment.weapon.iron-spear",
+      "active": true,
+      "count": 1,
+      "cardType": "equipment",
+      "name": "Iron Spear",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "equipment-weapon-standard",
+      "tags": [
+        "equipment",
+        "weapon",
+        "melee",
+        "spear",
+        "two-handed",
+        "physical",
+        "common"
+      ],
+      "rulesText": "Weapon\nMelee • Spear\n2 Physical Damage\nRequires Spear proficiency.\nHands Required: 2 Hands.",
+      "data": {
+        "equipmentType": "weapon",
+        "equipmentSlot": "weapon",
+        "rangeTag": "melee",
+        "weaponTags": [
+          "spear"
+        ],
+        "handsRequired": 2,
+        "requiredProficiency": [
+          "spear"
+        ],
+        "damage": {
+          "amount": 2,
+          "damageType": "physical"
+        },
+        "traits": [],
+        "economy": {
+          "equipmentPowerRating": 7,
+          "valueGold": 70,
+          "sellValueGold": 35,
+          "rarity": "common"
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+        "sourceSection": "Weapon Cards > Iron Spear",
+        "verifiedAgainstRulebook": false,
+        "notes": "Starter weapon catalog entry. Weapon tags support range and subtype eligibility checks."
+      }
+    },
+    "equipment.weapon.light-crossbow": {
+      "id": "equipment.weapon.light-crossbow",
+      "active": true,
+      "count": 1,
+      "cardType": "equipment",
+      "name": "Light Crossbow",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "equipment-weapon-standard",
+      "tags": [
+        "equipment",
+        "weapon",
+        "ranged",
+        "crossbow",
+        "light-crossbow",
+        "two-handed",
+        "physical",
+        "common"
+      ],
+      "rulesText": "Weapon\nRanged • Crossbow • Light-Crossbow\n2 Physical Damage\nRequires Crossbow proficiency.\nHands Required: 2 Hands.",
+      "data": {
+        "equipmentType": "weapon",
+        "equipmentSlot": "weapon",
+        "rangeTag": "ranged",
+        "weaponTags": [
+          "crossbow",
+          "light-crossbow"
+        ],
+        "handsRequired": 2,
+        "requiredProficiency": [
+          "crossbow"
+        ],
+        "damage": {
+          "amount": 2,
+          "damageType": "physical"
+        },
+        "traits": [],
+        "economy": {
+          "equipmentPowerRating": 7,
+          "valueGold": 70,
+          "sellValueGold": 35,
+          "rarity": "common"
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+        "sourceSection": "Weapon Cards > Light Crossbow",
+        "verifiedAgainstRulebook": false,
+        "notes": "Starter weapon catalog entry. Weapon tags support range and subtype eligibility checks."
+      }
+    },
+    "equipment.weapon.longbow": {
+      "id": "equipment.weapon.longbow",
+      "active": true,
+      "count": 1,
+      "cardType": "equipment",
+      "name": "Longbow",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "equipment-weapon-standard",
+      "tags": [
+        "equipment",
+        "weapon",
+        "ranged",
+        "longbow",
+        "two-handed",
+        "physical",
+        "common"
+      ],
+      "rulesText": "Weapon\nRanged • Longbow\n2 Physical Damage\nRequires Longbow proficiency.\nHands Required: 2 Hands.",
+      "data": {
+        "equipmentType": "weapon",
+        "equipmentSlot": "weapon",
+        "rangeTag": "ranged",
+        "weaponTags": [
+          "longbow"
+        ],
+        "handsRequired": 2,
+        "requiredProficiency": [
+          "longbow"
+        ],
+        "damage": {
+          "amount": 2,
+          "damageType": "physical"
+        },
+        "traits": [],
+        "economy": {
+          "equipmentPowerRating": 7,
+          "valueGold": 70,
+          "sellValueGold": 35,
+          "rarity": "common"
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+        "sourceSection": "Weapon Cards > Longbow",
+        "verifiedAgainstRulebook": false,
+        "notes": "Starter weapon catalog entry. Weapon tags support range and subtype eligibility checks."
+      }
+    },
+    "equipment.weapon.oak-staff": {
+      "id": "equipment.weapon.oak-staff",
+      "active": true,
+      "count": 1,
+      "cardType": "equipment",
+      "name": "Oak Staff",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "equipment-weapon-standard",
+      "tags": [
+        "equipment",
+        "weapon",
+        "melee",
+        "blunt",
+        "staff",
+        "two-handed",
+        "physical",
+        "common"
+      ],
+      "rulesText": "Weapon\nMelee • Blunt • Staff\n1 Physical Damage\nRequires Staff proficiency.\nHands Required: 2 Hands.\nTraits: Arcane Implement: You may treat this weapon as an Arcane Focus.",
+      "data": {
+        "equipmentType": "weapon",
+        "equipmentSlot": "weapon",
+        "rangeTag": "melee",
+        "weaponTags": [
+          "blunt",
+          "staff"
+        ],
+        "handsRequired": 2,
+        "requiredProficiency": [
+          "staff"
+        ],
+        "damage": {
+          "amount": 1,
+          "damageType": "physical"
+        },
+        "traits": [
+          "Arcane Implement: You may treat this weapon as an Arcane Focus."
+        ],
+        "economy": {
+          "equipmentPowerRating": 2,
+          "valueGold": 20,
+          "sellValueGold": 10,
+          "rarity": "common"
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+        "sourceSection": "Weapon Cards > Oak Staff",
+        "verifiedAgainstRulebook": false,
+        "notes": "Starter staff. Its Arcane Implement trait lets it serve as an Arcane Focus while equipped."
+      }
+    },
+    "equipment.weapon.runed-staff": {
+      "id": "equipment.weapon.runed-staff",
+      "active": true,
+      "count": 1,
+      "cardType": "equipment",
+      "name": "Runed Staff",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "equipment-weapon-standard",
+      "tags": [
+        "equipment",
+        "weapon",
+        "melee",
+        "blunt",
+        "staff",
+        "runed",
+        "two-handed",
+        "physical",
+        "uncommon"
+      ],
+      "rulesText": "Weapon\nMelee • Blunt • Staff • Runed\n1 Physical Damage\nRequires Staff proficiency.\nHands Required: 2 Hands.\nTraits: Arcane Implement: You may treat this weapon as an Arcane Focus. Runic Channeling: Once per combat, when you resolve an Arcana spell that deals damage, add +1 damage.",
+      "data": {
+        "equipmentType": "weapon",
+        "equipmentSlot": "weapon",
+        "rangeTag": "melee",
+        "weaponTags": [
+          "blunt",
+          "staff",
+          "runed"
+        ],
+        "handsRequired": 2,
+        "requiredProficiency": [
+          "staff"
+        ],
+        "damage": {
+          "amount": 1,
+          "damageType": "physical"
+        },
+        "traits": [
+          "Arcane Implement: You may treat this weapon as an Arcane Focus.",
+          "Runic Channeling: Once per combat, when you resolve an Arcana spell that deals damage, add +1 damage."
+        ],
+        "economy": {
+          "equipmentPowerRating": 5,
+          "valueGold": 50,
+          "sellValueGold": 25,
+          "rarity": "uncommon"
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+        "sourceSection": "Weapon Cards > Runed Staff",
+        "verifiedAgainstRulebook": false,
+        "notes": "Its once-per-combat trait should use the established equipment-use tracking method. The staff also serves as an Arcane Focus while equipped."
+      }
+    },
+    "equipment.weapon.short-sword": {
+      "id": "equipment.weapon.short-sword",
+      "active": true,
+      "count": 1,
+      "cardType": "equipment",
+      "name": "Short Sword",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "equipment-weapon-standard",
+      "tags": [
+        "equipment",
+        "weapon",
+        "melee",
+        "blade",
+        "sword",
+        "one-handed",
+        "physical",
+        "common"
+      ],
+      "rulesText": "Weapon\nMelee • Blade • Sword\n1 Physical Damage\nRequires Blade proficiency.\nHands Required: 1 Hand.",
+      "data": {
+        "equipmentType": "weapon",
+        "equipmentSlot": "weapon",
+        "rangeTag": "melee",
+        "weaponTags": [
+          "blade",
+          "sword"
+        ],
+        "handsRequired": 1,
+        "requiredProficiency": [
+          "blade"
+        ],
+        "damage": {
+          "amount": 1,
+          "damageType": "physical"
+        },
+        "traits": [],
+        "economy": {
+          "equipmentPowerRating": 4,
+          "valueGold": 40,
+          "sellValueGold": 20,
+          "rarity": "common"
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+        "sourceSection": "Weapon Cards > Short Sword",
+        "verifiedAgainstRulebook": false,
+        "notes": "Starter weapon catalog entry. Weapon tags support range and subtype eligibility checks."
+      }
+    },
+    "equipment.weapon.shortbow": {
+      "id": "equipment.weapon.shortbow",
+      "active": true,
+      "count": 1,
+      "cardType": "equipment",
+      "name": "Shortbow",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "equipment-weapon-standard",
+      "tags": [
+        "equipment",
+        "weapon",
+        "ranged",
+        "shortbow",
+        "two-handed",
+        "physical",
+        "common"
+      ],
+      "rulesText": "Weapon\nRanged • Shortbow\n1 Physical Damage\nRequires Shortbow proficiency.\nHands Required: 2 Hands.",
+      "data": {
+        "equipmentType": "weapon",
+        "equipmentSlot": "weapon",
+        "rangeTag": "ranged",
+        "weaponTags": [
+          "shortbow"
+        ],
+        "handsRequired": 2,
+        "requiredProficiency": [
+          "shortbow"
+        ],
+        "damage": {
+          "amount": 1,
+          "damageType": "physical"
+        },
+        "traits": [],
+        "economy": {
+          "equipmentPowerRating": 4,
+          "valueGold": 40,
+          "sellValueGold": 20,
+          "rarity": "common"
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+        "sourceSection": "Weapon Cards > Shortbow",
+        "verifiedAgainstRulebook": false,
+        "notes": "Starter weapon catalog entry. Weapon tags support range and subtype eligibility checks."
+      }
+    },
+    "equipment.weapon.utility-dagger": {
+      "id": "equipment.weapon.utility-dagger",
+      "active": true,
+      "count": 1,
+      "cardType": "equipment",
+      "name": "Utility Dagger",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "equipment-weapon-standard",
+      "tags": [
+        "equipment",
+        "weapon",
+        "melee",
+        "blade",
+        "dagger",
+        "one-handed",
+        "physical",
+        "common"
+      ],
+      "rulesText": "Weapon\nMelee • Blade • Dagger\n1 Physical Damage\nRequires Blade proficiency.\nHands Required: 1 Hand.",
+      "data": {
+        "equipmentType": "weapon",
+        "equipmentSlot": "weapon",
+        "rangeTag": "melee",
+        "weaponTags": [
+          "blade",
+          "dagger"
+        ],
+        "handsRequired": 1,
+        "requiredProficiency": [
+          "blade"
+        ],
+        "damage": {
+          "amount": 1,
+          "damageType": "physical"
+        },
+        "traits": [],
+        "economy": {
+          "equipmentPowerRating": 2,
+          "valueGold": 20,
+          "sellValueGold": 10,
+          "rarity": "common"
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+        "sourceSection": "Weapon Cards > Utility Dagger",
+        "verifiedAgainstRulebook": false,
+        "notes": "Starter weapon catalog entry. Weapon tags support range and subtype eligibility checks."
+      }
+    },
+    "equipment.weapon.warhammer": {
+      "id": "equipment.weapon.warhammer",
+      "active": true,
+      "count": 1,
+      "cardType": "equipment",
+      "name": "Warhammer",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "equipment-weapon-standard",
+      "tags": [
+        "equipment",
+        "weapon",
+        "melee",
+        "blunt",
+        "hammer",
+        "two-handed",
+        "physical",
+        "common"
+      ],
+      "rulesText": "Weapon\nMelee • Blunt • Hammer\n3 Physical Damage\nRequires Blunt proficiency.\nHands Required: 2 Hands.",
+      "data": {
+        "equipmentType": "weapon",
+        "equipmentSlot": "weapon",
+        "rangeTag": "melee",
+        "weaponTags": [
+          "blunt",
+          "hammer"
+        ],
+        "handsRequired": 2,
+        "requiredProficiency": [
+          "blunt"
+        ],
+        "damage": {
+          "amount": 3,
+          "damageType": "physical"
+        },
+        "traits": [],
+        "economy": {
+          "equipmentPowerRating": 9,
+          "valueGold": 90,
+          "sellValueGold": 45,
+          "rarity": "common"
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+        "sourceSection": "Weapon Cards > Warhammer",
+        "verifiedAgainstRulebook": false,
+        "notes": "Starter weapon catalog entry. Weapon tags support range and subtype eligibility checks."
+      }
+    },
+    "equipment.weapon.wooden-club": {
+      "id": "equipment.weapon.wooden-club",
+      "active": true,
+      "count": 1,
+      "cardType": "equipment",
+      "name": "Wooden Club",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "equipment-weapon-standard",
+      "tags": [
+        "equipment",
+        "weapon",
+        "melee",
+        "blunt",
+        "club",
+        "one-handed",
+        "physical",
+        "common"
+      ],
+      "rulesText": "Weapon\nMelee • Blunt • Club\n1 Physical Damage\nRequires Blunt proficiency.\nHands Required: 1 Hand.",
+      "data": {
+        "equipmentType": "weapon",
+        "equipmentSlot": "weapon",
+        "rangeTag": "melee",
+        "weaponTags": [
+          "blunt",
+          "club"
+        ],
+        "handsRequired": 1,
+        "requiredProficiency": [
+          "blunt"
+        ],
+        "damage": {
+          "amount": 1,
+          "damageType": "physical"
+        },
+        "traits": [],
+        "economy": {
+          "equipmentPowerRating": 1,
+          "valueGold": 10,
+          "sellValueGold": 5,
+          "rarity": "common"
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+        "sourceSection": "Weapon Cards > Wooden Club",
+        "verifiedAgainstRulebook": false,
+        "notes": "Starter weapon catalog entry. Weapon tags support range and subtype eligibility checks."
       }
     },
     "hireling.roadside-sellsword": {
@@ -2622,8 +4096,39 @@
     "enemy.goblin-worg",
     "enemy.goblin-worg-rider",
     "equipment.body.apprentice-robes",
+    "equipment.body.chainmail",
+    "equipment.body.full-plate",
+    "equipment.body.half-plate",
+    "equipment.body.leather-armor",
+    "equipment.feet.surefoot-boots",
+    "equipment.feet.travel-boots",
     "equipment.focus.apprentices-wand",
+    "equipment.hands.weapon-grip-gloves",
+    "equipment.hands.work-gloves",
+    "equipment.neck.guardian-pendant",
+    "equipment.neck.simple-pendant",
+    "equipment.offhand.buckler",
+    "equipment.offhand.crystal-focus",
+    "equipment.offhand.ember-focus",
+    "equipment.offhand.kite-shield",
+    "equipment.offhand.square-shield",
+    "equipment.offhand.sunstone-focus",
+    "equipment.ring.emberward-ring",
+    "equipment.ring.plain-ring",
+    "equipment.ring.venomward-ring",
     "equipment.weapon.arming-sword",
+    "equipment.weapon.battleaxe",
+    "equipment.weapon.hand-axe",
+    "equipment.weapon.iron-spear",
+    "equipment.weapon.light-crossbow",
+    "equipment.weapon.longbow",
+    "equipment.weapon.oak-staff",
+    "equipment.weapon.runed-staff",
+    "equipment.weapon.short-sword",
+    "equipment.weapon.shortbow",
+    "equipment.weapon.utility-dagger",
+    "equipment.weapon.warhammer",
+    "equipment.weapon.wooden-club",
     "hireling.roadside-sellsword",
     "skill.arcana.novice",
     "skill.barbarian.recruit-feral-instinct",

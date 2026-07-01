@@ -1,0 +1,50 @@
+{
+  "id": "equipment.weapon.iron-spear",
+  "active": true,
+  "count": 1,
+  "cardType": "equipment",
+  "name": "Iron Spear",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "equipment-weapon-standard",
+  "tags": [
+    "equipment",
+    "weapon",
+    "melee",
+    "spear",
+    "two-handed",
+    "physical",
+    "common"
+  ],
+  "rulesText": "Weapon\nMelee • Spear\n2 Physical Damage\nRequires Spear proficiency.\nHands Required: 2 Hands.",
+  "data": {
+    "equipmentType": "weapon",
+    "equipmentSlot": "weapon",
+    "rangeTag": "melee",
+    "weaponTags": [
+      "spear"
+    ],
+    "handsRequired": 2,
+    "requiredProficiency": [
+      "spear"
+    ],
+    "damage": {
+      "amount": 2,
+      "damageType": "physical"
+    },
+    "traits": [],
+    "economy": {
+      "equipmentPowerRating": 7,
+      "valueGold": 70,
+      "sellValueGold": 35,
+      "rarity": "common"
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+    "sourceSection": "Weapon Cards > Iron Spear",
+    "verifiedAgainstRulebook": false,
+    "notes": "Starter weapon catalog entry. Weapon tags support range and subtype eligibility checks."
+  }
+}

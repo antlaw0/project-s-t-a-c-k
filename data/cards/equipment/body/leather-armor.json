@@ -1,0 +1,45 @@
+{
+  "id": "equipment.body.leather-armor",
+  "active": true,
+  "count": 1,
+  "cardType": "equipment",
+  "name": "Leather Armor",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "equipment-body-standard",
+  "tags": [
+    "equipment",
+    "body",
+    "armor",
+    "light-armor",
+    "leather",
+    "common"
+  ],
+  "rulesText": "Body Equipment — Armor\nArmor • Light Armor • Leather\n+1 Defense",
+  "data": {
+    "equipmentType": "body",
+    "equipmentSlot": "body",
+    "category": "armor",
+    "armorTags": [
+      "armor",
+      "light-armor",
+      "leather"
+    ],
+    "defenseBonus": 1,
+    "requiredProficiency": [],
+    "traits": [],
+    "economy": {
+      "equipmentPowerRating": 1,
+      "valueGold": 20,
+      "sellValueGold": 10,
+      "rarity": "common"
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+    "sourceSection": "Body Equipment Cards > Leather Armor",
+    "verifiedAgainstRulebook": false,
+    "notes": "Starter light body armor. Provides +1 Defense and carries the Light Armor and Leather subtype tags for future proficiency or ability requirements."
+  }
+}

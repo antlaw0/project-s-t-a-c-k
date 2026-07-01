@@ -1,0 +1,44 @@
+{
+  "id": "equipment.offhand.buckler",
+  "active": true,
+  "count": 1,
+  "cardType": "equipment",
+  "name": "Buckler",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "equipment-offhand-standard",
+  "tags": [
+    "equipment",
+    "offhand",
+    
+    "shield",
+    "buckler",
+    "common"
+  ],
+  "rulesText": "Off-Hand Equipment — Shield\nShield • Buckler\n+1 Defense",
+  "data": {
+    "equipmentType": "offhand",
+    "equipmentSlot": "offhand",
+    "category": "shield",
+    "armorTags": [
+      "shield",
+      "buckler"
+    ],
+    "defenseBonus": 1,
+    "requiredProficiency": [],
+    "traits": [],
+    "economy": {
+      "equipmentPowerRating": 2,
+      "valueGold": 20,
+      "sellValueGold": 10,
+      "rarity": "common"
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+    "sourceSection": "Off-Hand Equipment Cards > Buckler",
+    "verifiedAgainstRulebook": false,
+    "notes": "Starter shield. Shields occupy the off-hand slot. Defense reduces Physical damage only."
+  }
+}

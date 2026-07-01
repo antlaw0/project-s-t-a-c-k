@@ -1,0 +1,46 @@
+{
+  "id": "equipment.ring.venomward-ring",
+  "active": true,
+  "count": 1,
+  "cardType": "equipment",
+  "name": "Venomward Ring",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "equipment-ring-standard",
+  "tags": [
+    "equipment",
+    "ring",
+    "accessory",
+    
+    "poison",
+    "uncommon"
+  ],
+  "rulesText": "Ring Equipment\nAccessory • Ring • Poison\nVenomward: Once per combat, when you would gain a Poison status card, prevent that card from being placed.",
+  "data": {
+    "equipmentType": "ring",
+    "equipmentSlot": "ring",
+    "category": "accessory",
+    "accessoryTags": [
+      "ring",
+      "poison"
+    ],
+    "defenseBonus": 0,
+    "requiredProficiency": [],
+    "traits": [
+      "Venomward: Once per combat, when you would gain a Poison status card, prevent that card from being placed."
+    ],
+    "economy": {
+      "equipmentPowerRating": 2,
+      "valueGold": 20,
+      "sellValueGold": 10,
+      "rarity": "uncommon"
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+    "sourceSection": "Ring Equipment Cards > Venomward Ring",
+    "verifiedAgainstRulebook": false,
+    "notes": "The once-per-combat trait should use the established equipment-use tracking method."
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "id": "equipment.neck.guardian-pendant",
+  "active": true,
+  "count": 1,
+  "cardType": "equipment",
+  "name": "Guardian Pendant",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "equipment-neck-standard",
+  "tags": [
+    "equipment",
+    "neck",
+    "accessory",
+    "pendant",
+    "guardian",
+    "uncommon"
+  ],
+  "rulesText": "Neck Equipment\nAccessory • Pendant\nGuardian Ward: Once per combat, when you would take damage, reduce that damage by 1, to a minimum of 0.",
+  "data": {
+    "equipmentType": "neck",
+    "equipmentSlot": "neck",
+    "category": "accessory",
+    "accessoryTags": [
+      "pendant",
+      "guardian"
+    ],
+    "defenseBonus": 0,
+    "requiredProficiency": [],
+    "traits": [
+      "Guardian Ward: Once per combat, when you would take damage, reduce that damage by 1, to a minimum of 0."
+    ],
+    "economy": {
+      "equipmentPowerRating": 3,
+      "valueGold": 30,
+      "sellValueGold": 15,
+      "rarity": "uncommon"
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+    "sourceSection": "Neck Equipment Cards > Guardian Pendant",
+    "verifiedAgainstRulebook": false,
+    "notes": "This is damage reduction, not a permanent Defense bonus. The once-per-combat trait should use the established equipment-use tracking method."
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "id": "equipment.weapon.runed-staff",
+  "active": true,
+  "count": 1,
+  "cardType": "equipment",
+  "name": "Runed Staff",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "equipment-weapon-standard",
+  "tags": [
+    "equipment",
+    "weapon",
+    "melee",
+    "blunt",
+    "staff",
+    "runed",
+    "two-handed",
+    "physical",
+    "uncommon"
+  ],
+  "rulesText": "Weapon\nMelee • Blunt • Staff • Runed\n1 Physical Damage\nRequires Staff proficiency.\nHands Required: 2 Hands.\nTraits: Arcane Implement: You may treat this weapon as an Arcane Focus. Runic Channeling: Once per combat, when you resolve an Arcana spell that deals damage, add +1 damage.",
+  "data": {
+    "equipmentType": "weapon",
+    "equipmentSlot": "weapon",
+    "rangeTag": "melee",
+    "weaponTags": [
+      "blunt",
+      "staff",
+      "runed"
+    ],
+    "handsRequired": 2,
+    "requiredProficiency": [
+      "staff"
+    ],
+    "damage": {
+      "amount": 1,
+      "damageType": "physical"
+    },
+    "traits": [
+      "Arcane Implement: You may treat this weapon as an Arcane Focus.",
+      "Runic Channeling: Once per combat, when you resolve an Arcana spell that deals damage, add +1 damage."
+    ],
+    "economy": {
+      "equipmentPowerRating": 5,
+      "valueGold": 50,
+      "sellValueGold": 25,
+      "rarity": "uncommon"
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+    "sourceSection": "Weapon Cards > Runed Staff",
+    "verifiedAgainstRulebook": false,
+    "notes": "Its once-per-combat trait should use the established equipment-use tracking method. The staff also serves as an Arcane Focus while equipped."
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "id": "equipment.weapon.longbow",
+  "active": true,
+  "count": 1,
+  "cardType": "equipment",
+  "name": "Longbow",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "equipment-weapon-standard",
+  "tags": [
+    "equipment",
+    "weapon",
+    "ranged",
+    "longbow",
+    "two-handed",
+    "physical",
+    "common"
+  ],
+  "rulesText": "Weapon\nRanged • Longbow\n2 Physical Damage\nRequires Longbow proficiency.\nHands Required: 2 Hands.",
+  "data": {
+    "equipmentType": "weapon",
+    "equipmentSlot": "weapon",
+    "rangeTag": "ranged",
+    "weaponTags": [
+      "longbow"
+    ],
+    "handsRequired": 2,
+    "requiredProficiency": [
+      "longbow"
+    ],
+    "damage": {
+      "amount": 2,
+      "damageType": "physical"
+    },
+    "traits": [],
+    "economy": {
+      "equipmentPowerRating": 7,
+      "valueGold": 70,
+      "sellValueGold": 35,
+      "rarity": "common"
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+    "sourceSection": "Weapon Cards > Longbow",
+    "verifiedAgainstRulebook": false,
+    "notes": "Starter weapon catalog entry. Weapon tags support range and subtype eligibility checks."
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "id": "equipment.weapon.light-crossbow",
+  "active": true,
+  "count": 1,
+  "cardType": "equipment",
+  "name": "Light Crossbow",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "equipment-weapon-standard",
+  "tags": [
+    "equipment",
+    "weapon",
+    "ranged",
+    "crossbow",
+    "light-crossbow",
+    "two-handed",
+    "physical",
+    "common"
+  ],
+  "rulesText": "Weapon\nRanged • Crossbow • Light-Crossbow\n2 Physical Damage\nRequires Crossbow proficiency.\nHands Required: 2 Hands.",
+  "data": {
+    "equipmentType": "weapon",
+    "equipmentSlot": "weapon",
+    "rangeTag": "ranged",
+    "weaponTags": [
+      "crossbow",
+      "light-crossbow"
+    ],
+    "handsRequired": 2,
+    "requiredProficiency": [
+      "crossbow"
+    ],
+    "damage": {
+      "amount": 2,
+      "damageType": "physical"
+    },
+    "traits": [],
+    "economy": {
+      "equipmentPowerRating": 7,
+      "valueGold": 70,
+      "sellValueGold": 35,
+      "rarity": "common"
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+    "sourceSection": "Weapon Cards > Light Crossbow",
+    "verifiedAgainstRulebook": false,
+    "notes": "Starter weapon catalog entry. Weapon tags support range and subtype eligibility checks."
+  }
+}

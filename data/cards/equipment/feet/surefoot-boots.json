@@ -1,0 +1,44 @@
+{
+  "id": "equipment.feet.surefoot-boots",
+  "active": true,
+  "count": 1,
+  "cardType": "equipment",
+  "name": "Surefoot Boots",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "equipment-feet-standard",
+  "tags": [
+    "equipment",
+    "feet",
+    "clothing",
+    "boots",
+    "uncommon"
+  ],
+  "rulesText": "Feet Equipment\nClothing • Boots\nSurefooted: Once per combat, ignore one effect that would force you to change rows.",
+  "data": {
+    "equipmentType": "feet",
+    "equipmentSlot": "feet",
+    "category": "clothing",
+    "accessoryTags": [
+      "boots"
+    ],
+    "defenseBonus": 0,
+    "requiredProficiency": [],
+    "traits": [
+      "Surefooted: Once per combat, ignore one effect that would force you to change rows."
+    ],
+    "economy": {
+      "equipmentPowerRating": 2,
+      "valueGold": 20,
+      "sellValueGold": 10,
+      "rarity": "uncommon"
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+    "sourceSection": "Feet Equipment Cards > Surefoot Boots",
+    "verifiedAgainstRulebook": false,
+    "notes": "The once-per-combat trait should use the established equipment-use tracking method."
+  }
+}

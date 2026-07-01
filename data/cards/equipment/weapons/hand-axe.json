@@ -1,0 +1,52 @@
+{
+  "id": "equipment.weapon.hand-axe",
+  "active": true,
+  "count": 1,
+  "cardType": "equipment",
+  "name": "Hand Axe",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "equipment-weapon-standard",
+  "tags": [
+    "equipment",
+    "weapon",
+    "melee",
+    "axe",
+    "hand-axe",
+    "one-handed",
+    "physical",
+    "common"
+  ],
+  "rulesText": "Weapon\nMelee • Axe • Hand-Axe\n2 Physical Damage\nRequires Axe proficiency.\nHands Required: 1 Hand.",
+  "data": {
+    "equipmentType": "weapon",
+    "equipmentSlot": "weapon",
+    "rangeTag": "melee",
+    "weaponTags": [
+      "axe",
+      "hand-axe"
+    ],
+    "handsRequired": 1,
+    "requiredProficiency": [
+      "axe"
+    ],
+    "damage": {
+      "amount": 2,
+      "damageType": "physical"
+    },
+    "traits": [],
+    "economy": {
+      "equipmentPowerRating": 6,
+      "valueGold": 60,
+      "sellValueGold": 30,
+      "rarity": "common"
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+    "sourceSection": "Weapon Cards > Hand Axe",
+    "verifiedAgainstRulebook": false,
+    "notes": "Starter weapon catalog entry. Weapon tags support range and subtype eligibility checks."
+  }
+}

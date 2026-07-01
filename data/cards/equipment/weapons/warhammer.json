@@ -1,0 +1,52 @@
+{
+  "id": "equipment.weapon.warhammer",
+  "active": true,
+  "count": 1,
+  "cardType": "equipment",
+  "name": "Warhammer",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "equipment-weapon-standard",
+  "tags": [
+    "equipment",
+    "weapon",
+    "melee",
+    "blunt",
+    "hammer",
+    "two-handed",
+    "physical",
+    "common"
+  ],
+  "rulesText": "Weapon\nMelee • Blunt • Hammer\n3 Physical Damage\nRequires Blunt proficiency.\nHands Required: 2 Hands.",
+  "data": {
+    "equipmentType": "weapon",
+    "equipmentSlot": "weapon",
+    "rangeTag": "melee",
+    "weaponTags": [
+      "blunt",
+      "hammer"
+    ],
+    "handsRequired": 2,
+    "requiredProficiency": [
+      "blunt"
+    ],
+    "damage": {
+      "amount": 3,
+      "damageType": "physical"
+    },
+    "traits": [],
+    "economy": {
+      "equipmentPowerRating": 9,
+      "valueGold": 90,
+      "sellValueGold": 45,
+      "rarity": "common"
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+    "sourceSection": "Weapon Cards > Warhammer",
+    "verifiedAgainstRulebook": false,
+    "notes": "Starter weapon catalog entry. Weapon tags support range and subtype eligibility checks."
+  }
+}
