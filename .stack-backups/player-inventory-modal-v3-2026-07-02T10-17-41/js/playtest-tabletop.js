@@ -993,10 +993,12 @@ createElement("h6", { text: definition.name }),
       reserveList.append(createEmptySlotItem("No Tactical Reserve slots"));
     } // end tactical-slot branch
     panel.append(createElement("h5", { text: "Tactical Reserve" }), reserveList);
-  // PROJECT STACK INVENTORY BUTTON HOOK V3
+  // PROJECT STACK INVENTORY BUTTON HOOK V2
   if (window.ProjectStackInventoryModal && typeof window.ProjectStackInventoryModal.appendInventoryButton === "function") {
     window.ProjectStackInventoryModal.appendInventoryButton(panel, entity);
-  } // end inventory-button append branchconst statusList = createElement("ol", { className: "card-list" });
+  } // end inventory-button append branch
+
+    const statusList = createElement("ol", { className: "card-list" });
     renderStatusRow(entity, statusList, `friendly-status-${sanitizeIdPart(entity.id)}`);
     panel.append(createElement("h5", { text: "Status Row" }), statusList);
     return panel;
@@ -1875,7 +1877,8 @@ createElement("h6", { text: definition.name }),
   renderManualControls();
   renderEntityManagementControls();
   loadCatalog();
-  // PROJECT STACK INVENTORY API EXPORT V3
+
+  // PROJECT STACK INVENTORY API EXPORT V2
   window.ProjectStackPlaytestApi = {
     getRuntimeState: function getRuntimeStateForInventory() {
       return application.runtimeState;
@@ -1896,5 +1899,4 @@ createElement("h6", { text: definition.name }),
     setManualControlStatus: setManualControlStatus
   }; // end ProjectStackPlaytestApi export
 }()); // end initializePlaytestTabletop IIFE
-
 

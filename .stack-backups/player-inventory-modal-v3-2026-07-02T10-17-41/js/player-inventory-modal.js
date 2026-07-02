@@ -1025,91 +1025,68 @@
     showDialog(dialog, heading);
   } // end openInventoryDialog function
 
-  const STANDARD_SETUP_SLOT_LABEL = "Slot number. For Equipment, enter the equipment slot name, such as weapon.";
+  function getInventorySetupDefinitions() {
+    const api = getApi();
+    const catalog = api && typeof api.getCatalog === "function" ? api.getCatalog() : null;
+    if (!catalog || !catalog.cardsById) {
+      return [];
+    } // end missing-inventory-setup-catalog branch
 
-  function getSetupDestinationSelect() {
-    return document.getElementById("setup-card-destination-select");
-  } // end getSetupDestinationSelect function
+    const excludedCardTypes = new Set(["character", "playercharacter", "enemy", "boss", "summon", "controlledally", "autonomousally", "status"]);
+    return Object.values(catalog.cardsById)
+      .filter(function filterInventorySetupDefinition(definition) {
+        return definition && definition.active === true && !excludedCardTypes.has(String(definition.cardType || "").toLowerCase());
+      }) // end inventory-setup-definition filter
+      .sort(function sortInventorySetupDefinitions(first, second) {
+        return first.name.localeCompare(second.name) || first.id.localeCompare(second.id);
+      }); // end inventory-setup-definition sort
+  } // end getInventorySetupDefinitions function
 
-  function isInventorySetupDestinationSelected() {
-    const destinationSelect = getSetupDestinationSelect();
-    return Boolean(destinationSelect && destinationSelect.value === "inventory");
-  } // end isInventorySetupDestinationSelected function
-
-  function ensureSetupDestinationControls() {
-    const setupCardKindSelect = document.getElementById("setup-card-kind-select");
-    const setupCardLabel = document.querySelector("label[for='setup-card-select']");
-    if (!setupCardKindSelect || !setupCardLabel) {
-      return;
-    } // end unavailable-setup-controls branch
-
-    let destinationSelect = getSetupDestinationSelect();
-    let destinationLabel = document.querySelector("label[for='setup-card-destination-select']");
-    let destinationHint = document.getElementById("setup-card-destination-hint");
-    if (!destinationSelect) {
-      destinationLabel = document.createElement("label");
-      destinationLabel.htmlFor = "setup-card-destination-select";
-      destinationLabel.textContent = "Add selected card to";
-
-      destinationSelect = document.createElement("select");
-      destinationSelect.id = "setup-card-destination-select";
-      destinationSelect.dataset.stackInventoryDestination = "true";
-
-      const assignedOption = document.createElement("option");
-      assignedOption.value = "assigned";
-      assignedOption.textContent = "Equip or attach card using its selected role";
-      const inventoryOption = document.createElement("option");
-      inventoryOption.value = "inventory";
-      inventoryOption.textContent = "Player character inventory";
-      destinationSelect.append(assignedOption, inventoryOption);
-
-      destinationHint = document.createElement("p");
-      destinationHint.id = "setup-card-destination-hint";
-      destinationHint.className = "hint";
-      destinationHint.textContent = "Choose whether the selected card follows the normal role-based setup behavior or is added to the character's inventory.";
-
-      setupCardLabel.before(destinationLabel, destinationSelect, destinationHint);
-      destinationSelect.addEventListener("change", updateSetupDestinationPresentation);
-    } // end destination-control creation branch
-
-    updateSetupDestinationPresentation();
-  } // end ensureSetupDestinationControls function
-
-  function updateSetupDestinationPresentation() {
-    const destinationSelect = getSetupDestinationSelect();
-    const setupSlotInput = document.getElementById("setup-slot-input");
+  function refreshInventorySetupControls() {
+    const setupKindSelect = document.getElementById("setup-card-kind-select");
+    const setupCardSelect = document.getElementById("setup-card-select");
+    const assignButton = document.getElementById("assign-card-button");
     const setupSlotLabel = document.querySelector("label[for='setup-slot-input']");
-    const destinationHint = document.getElementById("setup-card-destination-hint");
-    if (!destinationSelect || !setupSlotInput || !setupSlotLabel) {
+    if (!setupKindSelect || setupKindSelect.value !== "inventory" || !setupCardSelect || !assignButton) {
       return;
-    } // end unavailable-destination-presentation branch
+    } // end inactive-inventory-setup branch
 
-    const addToInventory = destinationSelect.value === "inventory";
-    setupSlotInput.disabled = addToInventory;
-    if (addToInventory) {
-      setupSlotLabel.textContent = "Slot number is ignored when adding a card to inventory.";
-      if (destinationHint) {
-        destinationHint.textContent = "The selected card's role still controls the card list. The card is added to the first empty inventory position instead of being equipped or attached.";
-      } // end inventory-destination-hint branch
-    } else {
-      setupSlotLabel.textContent = STANDARD_SETUP_SLOT_LABEL;
-      if (destinationHint) {
-        destinationHint.textContent = "The selected card follows the normal setup behavior for its Card role.";
-      } // end normal-destination-hint branch
-    } // end destination-presentation branch
-  } // end updateSetupDestinationPresentation function
+    const definitions = getInventorySetupDefinitions();
+    setupCardSelect.replaceChildren();
+    definitions.forEach(function addInventorySetupDefinition(definition) {
+      const option = document.createElement("option");
+      option.value = definition.id;
+      option.textContent = definition.name;
+      setupCardSelect.append(option);
+    }); // end inventory-setup-definition option loop
+    assignButton.disabled = definitions.length === 0;
+    if (setupSlotLabel) {
+      setupSlotLabel.textContent = "Inventory cards are placed in the first empty inventory position. The Slot number field is ignored for this role.";
+    } // end inventory-setup-label branch
+  } // end refreshInventorySetupControls function
+
+  function restoreStandardSetupSlotLabel() {
+    const setupKindSelect = document.getElementById("setup-card-kind-select");
+    const setupSlotLabel = document.querySelector("label[for='setup-slot-input']");
+    if (!setupKindSelect || setupKindSelect.value === "inventory" || !setupSlotLabel) {
+      return;
+    } // end inactive-standard-setup-label branch
+
+    setupSlotLabel.textContent = "Slot number. For Equipment, enter the equipment slot name, such as weapon.";
+  } // end restoreStandardSetupSlotLabel function
 
   function interceptInventorySetupAssignment(event) {
     const clickedElement = event.target;
-    if (!clickedElement || clickedElement.id !== "assign-card-button" || !isInventorySetupDestinationSelected()) {
+    if (!clickedElement || clickedElement.id !== "assign-card-button") {
       return;
-    } // end unrelated-or-noninventory-click branch
+    } // end unrelated-click branch
 
+    const setupKindSelect = document.getElementById("setup-card-kind-select");
     const setupEntitySelect = document.getElementById("setup-entity-select");
     const setupCardSelect = document.getElementById("setup-card-select");
-    if (!setupEntitySelect || !setupCardSelect) {
+    if (!setupKindSelect || setupKindSelect.value !== "inventory" || !setupEntitySelect || !setupCardSelect) {
       return;
-    } // end missing-setup-selection-controls branch
+    } // end non-inventory-setup branch
 
     event.preventDefault();
     event.stopImmediatePropagation();
@@ -1139,19 +1116,19 @@
     } // end inventory-setup assignment try-catch
   } // end interceptInventorySetupAssignment function
 
-  document.addEventListener("change", function handleSetupDestinationOrRoleChange(event) {
+  document.addEventListener("change", function handleInventorySetupKindChange(event) {
     const changedElement = event.target;
-    if (!changedElement || (changedElement.id !== "setup-card-destination-select" && changedElement.id !== "setup-card-kind-select")) {
+    if (!changedElement || changedElement.id !== "setup-card-kind-select") {
       return;
-    } // end unrelated-setup-change branch
+    } // end unrelated-setup-kind change branch
 
-    window.setTimeout(function refreshSetupDestinationAfterCoreChange() {
-      ensureSetupDestinationControls();
+    window.setTimeout(function updateInventorySetupAfterCoreRefresh() {
+      refreshInventorySetupControls();
+      restoreStandardSetupSlotLabel();
     }, 0);
-  }, true); // end setup-destination-and-role capture listener
+  }, true); // end inventory-setup-kind capture listener
 
   document.addEventListener("click", interceptInventorySetupAssignment, true); // end inventory-setup assignment capture listener
-  ensureSetupDestinationControls();
 
   function appendInventoryButton(panel, entity) {
     if (!panel || !entity || entity.entityType !== "playerCharacter" || panel.querySelector("[data-stack-inventory-button='true']")) {
