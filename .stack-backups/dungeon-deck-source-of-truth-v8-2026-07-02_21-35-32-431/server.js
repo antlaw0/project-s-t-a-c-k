@@ -1,8 +1,6 @@
 const http = require("http");
 const fs = require("fs");
 const path = require("path");
-const os = require("os");
-const childProcess = require("child_process");
 
 const HOST = process.env.HOST || "127.0.0.1";
 const PORT = Number(process.env.PORT) || 3000;
@@ -104,107 +102,6 @@ function readJsonBody(req) {
     });
 }
 
-
-function createFreshPlaytestSeed() {
-  return [
-    "fresh",
-    Date.now(),
-    process.pid,
-    Math.random().toString(36).slice(2)
-  ].join("-");
-} // end createFreshPlaytestSeed function
-
-function createFreshPlaytestState(scenarioId, seed) {
-  if (!/^scenario\.[A-Za-z0-9._-]+$/.test(scenarioId)) {
-    throw new Error("A valid scenario id is required.");
-  } // end scenario-id validation
-
-  if (typeof seed !== "string" || seed.length === 0 || seed.length > 160) {
-    throw new Error("A valid fresh-state seed is required.");
-  } // end seed validation
-
-  const temporaryDirectory = fs.mkdtempSync(
-    path.join(os.tmpdir(), "project-stack-fresh-playtest-state-")
-  );
-  const outputPath = path.join(temporaryDirectory, "runtime-state.json");
-  const generatorPath = path.join(ROOT_DIR, "scripts", "create-loot-playtest-state.js");
-
-  try {
-    const generatorResult = childProcess.spawnSync(
-      process.execPath,
-      [
-        generatorPath,
-        "--scenario",
-        scenarioId,
-        "--seed",
-        seed,
-        "--out",
-        outputPath
-      ],
-      {
-        cwd: ROOT_DIR,
-        encoding: "utf8"
-      } // end state-generator options
-    ); // end state-generator process call
-
-    if (generatorResult.status !== 0) {
-      const details = `${generatorResult.stdout || ""}\n${generatorResult.stderr || ""}`.trim();
-
-      throw new Error(
-        details
-          ? `Fresh-state generator failed.\n${details}`
-          : "Fresh-state generator failed."
-      );
-    } // end state-generator failure guard
-
-    if (!fs.existsSync(outputPath)) {
-      throw new Error("Fresh-state generator did not create a runtime-state file.");
-    } // end missing-runtime-state guard
-
-    return JSON.parse(fs.readFileSync(outputPath, "utf8"));
-  } finally {
-    fs.rmSync(temporaryDirectory, {
-      recursive: true,
-      force: true
-    }); // end temporary-state-directory removal options
-  } // end temporary-state-directory cleanup
-} // end createFreshPlaytestState function
-
-function handleFreshPlaytestStateApi(req, res, requestUrl) {
-  if (requestUrl.pathname !== "/api/playtest-state/new") {
-    return false;
-  } // end unrelated-route guard
-
-  if (req.method !== "GET") {
-    res.setHeader("Allow", "GET");
-    sendJson(res, 405, {
-      error: "Method Not Allowed"
-    }); // end method-not-allowed response object
-    return true;
-  } // end request-method validation
-
-  const requestedScenarioId = requestUrl.searchParams.get("scenario");
-  const scenarioId = requestedScenarioId || "scenario.solo-warrior-goblin-warrens-smoke-test";
-  const requestedSeed = requestUrl.searchParams.get("seed");
-  const seed = requestedSeed && requestedSeed.trim()
-    ? requestedSeed.trim()
-    : createFreshPlaytestSeed();
-
-  try {
-    const state = createFreshPlaytestState(scenarioId, seed);
-    res.setHeader("Cache-Control", "no-store");
-    sendJson(res, 200, state);
-  } catch (error) {
-    sendJson(res, 500, {
-      error: error && error.message
-        ? error.message
-        : "Failed to create a fresh playtest state."
-    }); // end fresh-state error response object
-  } // end fresh-state request handler
-
-  return true;
-} // end handleFreshPlaytestStateApi function
-
 function handleSaveApi(req, res, requestUrl) {
     const saveName = decodeURIComponent(requestUrl.pathname.slice("/api/saves/".length));
     const resolvedSave = getSaveFilePath(saveName);
@@ -291,11 +188,6 @@ const server = http.createServer((req, res) => {
     }
 
     const requestUrl = new URL(req.url, `http://${HOST}:${PORT}`);
-
-  if (handleFreshPlaytestStateApi(req, res, requestUrl)) {
-    return;
-  } // end fresh-state endpoint route branch
-
 
     if (requestUrl.pathname.startsWith("/api/saves/")) {
         if (handleSaveApi(req, res, requestUrl)) {

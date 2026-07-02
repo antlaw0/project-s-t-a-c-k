@@ -21,11 +21,11 @@
       <h2 id="load-state-heading">Load a playtest state</h2>
       <p id="catalog-status" role="status" aria-live="polite">Loading card catalog…</p>
       <div class="loader-actions">
-        <button id="load-local-state-button" type="button">Start fresh scenario</button>
+        <button id="load-local-state-button" type="button">Load local initial state</button>
         <label class="file-input-label" for="state-file-input">Or choose a runtime-state JSON file</label>
         <input id="state-file-input" type="file" accept="application/json,.json">
       </div>
-      <p class="hint">Starting fresh builds a new runtime state from the selected scenario, that scenario's Dungeon Deck definition, and its separate Loot Deck injection rule. Downloaded sessions can be loaded again through the JSON file chooser.</p>
+      <p class="hint">The local button loads the default generated smoke-test state. Downloaded sessions can be loaded again through the JSON file chooser.</p>
       <p id="load-status" class="status-message" role="status" aria-live="assertive"></p>
     </section>
 

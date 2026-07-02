@@ -1,0 +1,27 @@
+[
+  {
+    "sourcePath": "C:\\Users\\alawl\\Desktop\\Game Dev Projects\\ProjectSTACK\\proj\\server.js",
+    "backupPath": "C:\\Users\\alawl\\Desktop\\Game Dev Projects\\ProjectSTACK\\proj\\.stack-backups\\dungeon-deck-source-of-truth-v8-2026-07-02_21-35-32-431\\server.js",
+    "existed": true
+  },
+  {
+    "sourcePath": "C:\\Users\\alawl\\Desktop\\Game Dev Projects\\ProjectSTACK\\proj\\js\\playtest-tabletop.js",
+    "backupPath": "C:\\Users\\alawl\\Desktop\\Game Dev Projects\\ProjectSTACK\\proj\\.stack-backups\\dungeon-deck-source-of-truth-v8-2026-07-02_21-35-32-431\\js\\playtest-tabletop.js",
+    "existed": true
+  },
+  {
+    "sourcePath": "C:\\Users\\alawl\\Desktop\\Game Dev Projects\\ProjectSTACK\\proj\\playtest.html",
+    "backupPath": "C:\\Users\\alawl\\Desktop\\Game Dev Projects\\ProjectSTACK\\proj\\.stack-backups\\dungeon-deck-source-of-truth-v8-2026-07-02_21-35-32-431\\playtest.html",
+    "existed": true
+  },
+  {
+    "sourcePath": "C:\\Users\\alawl\\Desktop\\Game Dev Projects\\ProjectSTACK\\proj\\data\\decks\\goblin-warrens-catalog-smoke-test.json",
+    "backupPath": "C:\\Users\\alawl\\Desktop\\Game Dev Projects\\ProjectSTACK\\proj\\.stack-backups\\dungeon-deck-source-of-truth-v8-2026-07-02_21-35-32-431\\data\\decks\\goblin-warrens-catalog-smoke-test.json",
+    "existed": true
+  },
+  {
+    "sourcePath": "C:\\Users\\alawl\\Desktop\\Game Dev Projects\\ProjectSTACK\\proj\\data\\decks\\dungeon\\goblin-warrens-catalog-smoke-test.json",
+    "backupPath": "C:\\Users\\alawl\\Desktop\\Game Dev Projects\\ProjectSTACK\\proj\\.stack-backups\\dungeon-deck-source-of-truth-v8-2026-07-02_21-35-32-431\\data\\decks\\dungeon\\goblin-warrens-catalog-smoke-test.json",
+    "existed": false
+  }
+]

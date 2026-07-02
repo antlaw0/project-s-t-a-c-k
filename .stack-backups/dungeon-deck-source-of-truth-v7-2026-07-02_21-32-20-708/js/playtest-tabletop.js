@@ -2,7 +2,7 @@
   "use strict";
 
   const CATALOG_URL = "./generated/card-catalog.json";
-  const DEFAULT_STATE_URL = "/api/playtest-state/new?scenario=scenario.solo-warrior-goblin-warrens-smoke-test";
+  const DEFAULT_STATE_URL = "./playtest-saves/scenario.solo-warrior-goblin-warrens-smoke-test.initial.json";
   const FORMATION_SLOT_COUNT = 4;
   const STATUS_ROW_SLOT_COUNT = 5;
   const FRIENDLY_ENTITY_TYPES = new Set(["playerCharacter", "controlledAlly", "autonomousAlly"]);
@@ -1807,7 +1807,7 @@ createElement("h6", { text: definition.name }),
   function bindEvents() {
     elements.loadLocalStateButton.disabled = true;
     elements.loadLocalStateButton.addEventListener("click", function handleLocalStateLoad() {
-      loadRuntimeStateFromUrl(DEFAULT_STATE_URL, "a fresh scenario state");
+      loadRuntimeStateFromUrl(DEFAULT_STATE_URL, "the local initial state");
     }); // end local-state listener
     elements.stateFileInput.addEventListener("change", function handleStateFileSelection(event) {
       loadRuntimeStateFromFile(event.target.files && event.target.files[0]);

@@ -1,0 +1,96 @@
+{
+  "id": "deck.goblin-warrens-catalog-smoke-test",
+  "active": true,
+  "deckType": "dungeon",
+  "name": "Goblin Warrens Catalog Coverage Test",
+  "revision": 3,
+  "moduleId": "core-alpha",
+  "tags": [
+    "deck",
+    "dungeon",
+    "goblin-warrens",
+    "smoke-test",
+    "catalog-validation",
+    "catalog-coverage"
+  ],
+  "rulesText": "A Goblin Warrens catalog-coverage Dungeon Deck. It includes every active Goblin enemy definition at its current catalog count, plus the currently available Goblin Warrens trap and event cards.",
+  "data": {
+    "dungeonTheme": "goblin-warrens",
+    "intendedUse": "catalogCoverageTest",
+    "setup": {
+      "shuffleBeforePlay": true,
+      "drawZone": "dungeonDeck",
+      "discardZone": "dungeonDiscardPile",
+      "lootZone": "dungeonLootArea"
+    },
+    "cardEntries": [
+      {
+        "cardId": "enemy.goblin-archer",
+        "quantity": 4
+      },
+      {
+        "cardId": "enemy.goblin-bombardier",
+        "quantity": 1
+      },
+      {
+        "cardId": "enemy.goblin-bully",
+        "quantity": 2
+      },
+      {
+        "cardId": "enemy.goblin-cutthroat",
+        "quantity": 2
+      },
+      {
+        "cardId": "enemy.goblin-hexer",
+        "quantity": 1
+      },
+      {
+        "cardId": "enemy.goblin-raider",
+        "quantity": 4
+      },
+      {
+        "cardId": "enemy.goblin-skirmisher",
+        "quantity": 3
+      },
+      {
+        "cardId": "enemy.goblin-slinger",
+        "quantity": 3
+      },
+      {
+        "cardId": "enemy.goblin-sneak",
+        "quantity": 2
+      },
+      {
+        "cardId": "enemy.goblin-spearman",
+        "quantity": 3
+      },
+      {
+        "cardId": "enemy.goblin-worg-rider",
+        "quantity": 1
+      },
+      {
+        "cardId": "enemy.goblin-worg",
+        "quantity": 2
+      },
+      {
+        "cardId": "dungeon.goblin-warrens.tripwire",
+        "quantity": 2
+      },
+      {
+        "cardId": "dungeon.goblin-warrens.goblin-alarm",
+        "quantity": 2
+      }
+    ],
+    "totalCardCount": 32,
+    "knownLimitations": [
+      "This deck is intended for catalog coverage and rough early playtesting, not final encounter balance.",
+      "The deck has no dedicated boss, objective, room, reward, or completion-condition cards yet.",
+      "Goblin Alarm can reveal cards from the bottom of the Dungeon Deck and deploy the first matching Goblin enemy it finds.",
+      "Immediate-resolution Dungeon cards leave the Dungeon Deck when drawn, so the visible remaining deck count will decrease during play."
+    ]
+  },
+  "source": {
+    "verifiedAgainstRulebook": false,
+    "notes": "Revision 3 replaces invalid legacy and invented enemy IDs with the twelve active Goblin enemy catalog IDs currently present in data/cards/enemies. Quantities match each card definition's current count field. Expected initial deck size is 32 cards: 28 Goblin enemy instances, 2 Tripwires, and 2 Goblin Alarms."
+  }
+}
