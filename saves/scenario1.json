@@ -3,7 +3,7 @@
   "scenarioId": "scenario.solo-warrior-goblin-warrens-smoke-test",
   "scenarioName": "Solo Warrior: Goblin Warrens Smoke Test",
   "moduleId": "core-alpha",
-  "createdAt": "2026-06-29T16:51:57.848Z",
+  "createdAt": "2026-07-01T13:39:56.369Z",
   "seed": "20260629",
   "playMode": "soloManual",
   "automationPolicy": {
@@ -32,26 +32,25 @@
       "entityType": "playerCharacter",
       "controllerParticipantId": "participant.solo-playtester",
       "currentRow": "playerFront",
-      "damage": 2,
-      "heat": 0,
+      "damage": 6,
+      "heat": 4,
       "maximumHp": 20,
       "statusRow": [
-        null,
+        "instance.ability.barbarian.recruit-rage.001",
         null,
         null,
         null,
         null
       ],
       "equipment": {
-        "1": "instance.equipment-focus-apprentices-wand.001",
-        "weapon": "instance.equipment.weapon.arming-sword.001"
+        "weapon": "instance.equipment.weapon.arming-sword.001",
+        "body": "instance.equipment-body-leather-armor.001",
+        "offhand": "instance.equipment-offhand-buckler.001"
       },
       "skillSlots": [
         {
           "skillCardInstanceId": "instance.skill.barbarian.recruit-feral-instinct.001",
-          "attachedAbilityInstanceIds": [
-            "instance.ability.barbarian.recruit-rage.001"
-          ]
+          "attachedAbilityInstanceIds": []
         },
         null,
         null,
@@ -60,9 +59,13 @@
       ],
       "tacticalReserveSlots": [
         "instance.tactical-reserve.healing-potion.001",
+        "instance.tactical-reserve.barkskin-salve.003",
         null,
         null,
-        null,
+        null
+      ],
+      "inventoryCapacity": 20,
+      "inventorySlots": [
         null
       ]
     }
@@ -100,9 +103,14 @@
       "definitionId": "ability.barbarian.recruit-rage",
       "cardType": "ability",
       "ownerEntityId": "entity.character.warrior.001",
-      "zone": "skillAttachment",
-      "zoneDetail": "instance.skill.barbarian.recruit-feral-instinct.001",
-      "faceUp": true
+      "zone": "statusRow",
+      "zoneDetail": "entity.character.warrior.001:slot1",
+      "faceUp": true,
+      "statusReturn": {
+        "type": "skillAttachment",
+        "skillCardInstanceId": "instance.skill.barbarian.recruit-feral-instinct.001",
+        "ownerEntityId": "entity.character.warrior.001"
+      }
     },
     "instance.tactical-reserve.healing-potion.001": {
       "id": "instance.tactical-reserve.healing-potion.001",
@@ -117,28 +125,28 @@
       "id": "instance.enemy.goblin-raider.001",
       "definitionId": "enemy.goblin-raider",
       "cardType": "enemy",
-      "ownerEntityId": null,
-      "zone": "dungeonDeck",
-      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
-      "faceUp": false
+      "ownerEntityId": "entity.enemy-goblin-raider.001",
+      "zone": "dungeonDiscardPile",
+      "zoneDetail": null,
+      "faceUp": true
     },
     "instance.enemy.goblin-raider.002": {
       "id": "instance.enemy.goblin-raider.002",
       "definitionId": "enemy.goblin-raider",
       "cardType": "enemy",
-      "ownerEntityId": null,
-      "zone": "dungeonDeck",
-      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
-      "faceUp": false
+      "ownerEntityId": "entity.enemy-goblin-raider.001",
+      "zone": "dungeonDiscardPile",
+      "zoneDetail": null,
+      "faceUp": true
     },
     "instance.enemy.goblin-raider.003": {
       "id": "instance.enemy.goblin-raider.003",
       "definitionId": "enemy.goblin-raider",
       "cardType": "enemy",
-      "ownerEntityId": null,
-      "zone": "dungeonDeck",
-      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
-      "faceUp": false
+      "ownerEntityId": "entity.enemy-goblin-raider.001",
+      "zone": "dungeonDiscardPile",
+      "zoneDetail": null,
+      "faceUp": true
     },
     "instance.enemy.goblin-raider.004": {
       "id": "instance.enemy.goblin-raider.004",
@@ -154,9 +162,9 @@
       "definitionId": "dungeon.goblin-warrens.tripwire",
       "cardType": "dungeonCard",
       "ownerEntityId": null,
-      "zone": "dungeonDeck",
-      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
-      "faceUp": false
+      "zone": "dungeonDiscardPile",
+      "zoneDetail": null,
+      "faceUp": true
     },
     "instance.dungeon.goblin-warrens.tripwire.002": {
       "id": "instance.dungeon.goblin-warrens.tripwire.002",
@@ -172,26 +180,461 @@
       "definitionId": "dungeon.goblin-warrens.goblin-alarm",
       "cardType": "dungeonCard",
       "ownerEntityId": null,
-      "zone": "dungeonDeck",
-      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
-      "faceUp": false
+      "zone": "dungeonDiscardPile",
+      "zoneDetail": null,
+      "faceUp": true
     },
     "instance.dungeon.goblin-warrens.goblin-alarm.002": {
       "id": "instance.dungeon.goblin-warrens.goblin-alarm.002",
       "definitionId": "dungeon.goblin-warrens.goblin-alarm",
       "cardType": "dungeonCard",
       "ownerEntityId": null,
-      "zone": "dungeonDeck",
-      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "zone": "dungeonRevealArea",
+      "zoneDetail": "drawnFrom:dungeonDeck:top",
+      "faceUp": true
+    },
+    "instance.status.negative.poisoned.001": {
+      "id": "instance.status.negative.poisoned.001",
+      "definitionId": "status.negative.poisoned",
+      "cardType": "status",
+      "ownerEntityId": null,
+      "zone": "statusDeck",
+      "zoneDetail": "sharedStatusDeck",
       "faceUp": false
     },
-    "instance.equipment-focus-apprentices-wand.001": {
-      "id": "instance.equipment-focus-apprentices-wand.001",
+    "instance.status.negative.poisoned.002": {
+      "id": "instance.status.negative.poisoned.002",
+      "definitionId": "status.negative.poisoned",
+      "cardType": "status",
+      "ownerEntityId": null,
+      "zone": "statusDeck",
+      "zoneDetail": "sharedStatusDeck",
+      "faceUp": false
+    },
+    "instance.status.negative.poisoned.003": {
+      "id": "instance.status.negative.poisoned.003",
+      "definitionId": "status.negative.poisoned",
+      "cardType": "status",
+      "ownerEntityId": null,
+      "zone": "statusDeck",
+      "zoneDetail": "sharedStatusDeck",
+      "faceUp": false
+    },
+    "instance.status.negative.poisoned.004": {
+      "id": "instance.status.negative.poisoned.004",
+      "definitionId": "status.negative.poisoned",
+      "cardType": "status",
+      "ownerEntityId": null,
+      "zone": "statusDeck",
+      "zoneDetail": "sharedStatusDeck",
+      "faceUp": false
+    },
+    "instance.status.negative.poisoned.005": {
+      "id": "instance.status.negative.poisoned.005",
+      "definitionId": "status.negative.poisoned",
+      "cardType": "status",
+      "ownerEntityId": null,
+      "zone": "statusDeck",
+      "zoneDetail": "sharedStatusDeck",
+      "faceUp": false
+    },
+    "instance.status.negative.poisoned.006": {
+      "id": "instance.status.negative.poisoned.006",
+      "definitionId": "status.negative.poisoned",
+      "cardType": "status",
+      "ownerEntityId": null,
+      "zone": "statusDeck",
+      "zoneDetail": "sharedStatusDeck",
+      "faceUp": false
+    },
+    "instance.status.negative.poisoned.007": {
+      "id": "instance.status.negative.poisoned.007",
+      "definitionId": "status.negative.poisoned",
+      "cardType": "status",
+      "ownerEntityId": null,
+      "zone": "statusDeck",
+      "zoneDetail": "sharedStatusDeck",
+      "faceUp": false
+    },
+    "instance.status.negative.poisoned.008": {
+      "id": "instance.status.negative.poisoned.008",
+      "definitionId": "status.negative.poisoned",
+      "cardType": "status",
+      "ownerEntityId": null,
+      "zone": "statusDeck",
+      "zoneDetail": "sharedStatusDeck",
+      "faceUp": false
+    },
+    "instance.status.negative.stunned.001": {
+      "id": "instance.status.negative.stunned.001",
+      "definitionId": "status.negative.stunned",
+      "cardType": "status",
+      "ownerEntityId": null,
+      "zone": "statusDeck",
+      "zoneDetail": "sharedStatusDeck",
+      "faceUp": false
+    },
+    "instance.status.negative.stunned.002": {
+      "id": "instance.status.negative.stunned.002",
+      "definitionId": "status.negative.stunned",
+      "cardType": "status",
+      "ownerEntityId": null,
+      "zone": "statusDeck",
+      "zoneDetail": "sharedStatusDeck",
+      "faceUp": false
+    },
+    "instance.status.negative.stunned.003": {
+      "id": "instance.status.negative.stunned.003",
+      "definitionId": "status.negative.stunned",
+      "cardType": "status",
+      "ownerEntityId": null,
+      "zone": "statusDeck",
+      "zoneDetail": "sharedStatusDeck",
+      "faceUp": false
+    },
+    "instance.status.negative.stunned.004": {
+      "id": "instance.status.negative.stunned.004",
+      "definitionId": "status.negative.stunned",
+      "cardType": "status",
+      "ownerEntityId": null,
+      "zone": "statusDeck",
+      "zoneDetail": "sharedStatusDeck",
+      "faceUp": false
+    },
+    "instance.equipment.body.apprentice-robes.001": {
+      "id": "instance.equipment.body.apprentice-robes.001",
+      "definitionId": "equipment.body.apprentice-robes",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.focus.apprentices-wand.001": {
+      "id": "instance.equipment.focus.apprentices-wand.001",
       "definitionId": "equipment.focus.apprentices-wand",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.arming-sword.002": {
+      "id": "instance.equipment.weapon.arming-sword.002",
+      "definitionId": "equipment.weapon.arming-sword",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.tactical-reserve.antidote.001": {
+      "id": "instance.tactical-reserve.antidote.001",
+      "definitionId": "tactical-reserve.antidote",
+      "cardType": "tacticalReserve",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "lootDeckInjection",
+      "faceUp": false,
+      "lootDeckOrigin": true,
+      "dungeonLootInjection": true
+    },
+    "instance.tactical-reserve.antidote.002": {
+      "id": "instance.tactical-reserve.antidote.002",
+      "definitionId": "tactical-reserve.antidote",
+      "cardType": "tacticalReserve",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.tactical-reserve.antidote.003": {
+      "id": "instance.tactical-reserve.antidote.003",
+      "definitionId": "tactical-reserve.antidote",
+      "cardType": "tacticalReserve",
+      "ownerEntityId": null,
+      "zone": "dungeonLootArea",
+      "zoneDetail": "currentDungeonLootStash",
+      "faceUp": true,
+      "lootDeckOrigin": true,
+      "dungeonLootInjection": true
+    },
+    "instance.tactical-reserve.antidote.004": {
+      "id": "instance.tactical-reserve.antidote.004",
+      "definitionId": "tactical-reserve.antidote",
+      "cardType": "tacticalReserve",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.tactical-reserve.antidote.005": {
+      "id": "instance.tactical-reserve.antidote.005",
+      "definitionId": "tactical-reserve.antidote",
+      "cardType": "tacticalReserve",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.tactical-reserve.antidote.006": {
+      "id": "instance.tactical-reserve.antidote.006",
+      "definitionId": "tactical-reserve.antidote",
+      "cardType": "tacticalReserve",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.tactical-reserve.antidote.007": {
+      "id": "instance.tactical-reserve.antidote.007",
+      "definitionId": "tactical-reserve.antidote",
+      "cardType": "tacticalReserve",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.tactical-reserve.antidote.008": {
+      "id": "instance.tactical-reserve.antidote.008",
+      "definitionId": "tactical-reserve.antidote",
+      "cardType": "tacticalReserve",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "lootDeckInjection",
+      "faceUp": false,
+      "lootDeckOrigin": true,
+      "dungeonLootInjection": true
+    },
+    "instance.tactical-reserve.bandage.001": {
+      "id": "instance.tactical-reserve.bandage.001",
+      "definitionId": "tactical-reserve.bandage",
+      "cardType": "tacticalReserve",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "lootDeckInjection",
+      "faceUp": false,
+      "lootDeckOrigin": true,
+      "dungeonLootInjection": true
+    },
+    "instance.tactical-reserve.bandage.002": {
+      "id": "instance.tactical-reserve.bandage.002",
+      "definitionId": "tactical-reserve.bandage",
+      "cardType": "tacticalReserve",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.tactical-reserve.bandage.003": {
+      "id": "instance.tactical-reserve.bandage.003",
+      "definitionId": "tactical-reserve.bandage",
+      "cardType": "tacticalReserve",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.tactical-reserve.bandage.004": {
+      "id": "instance.tactical-reserve.bandage.004",
+      "definitionId": "tactical-reserve.bandage",
+      "cardType": "tacticalReserve",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.tactical-reserve.barkskin-salve.001": {
+      "id": "instance.tactical-reserve.barkskin-salve.001",
+      "definitionId": "tactical-reserve.barkskin-salve",
+      "cardType": "tacticalReserve",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.tactical-reserve.barkskin-salve.002": {
+      "id": "instance.tactical-reserve.barkskin-salve.002",
+      "definitionId": "tactical-reserve.barkskin-salve",
+      "cardType": "tacticalReserve",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.tactical-reserve.barkskin-salve.003": {
+      "id": "instance.tactical-reserve.barkskin-salve.003",
+      "definitionId": "tactical-reserve.barkskin-salve",
+      "cardType": "tacticalReserve",
+      "ownerEntityId": "entity.character.warrior.001",
+      "zone": "tacticalReserve",
+      "zoneDetail": "entity.character.warrior.001:slot2",
+      "faceUp": true,
+      "lootDeckOrigin": true,
+      "dungeonLootInjection": true
+    },
+    "instance.tactical-reserve.barkskin-salve.004": {
+      "id": "instance.tactical-reserve.barkskin-salve.004",
+      "definitionId": "tactical-reserve.barkskin-salve",
+      "cardType": "tacticalReserve",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.tactical-reserve.holy-water.001": {
+      "id": "instance.tactical-reserve.holy-water.001",
+      "definitionId": "tactical-reserve.holy-water",
+      "cardType": "tacticalReserve",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.tactical-reserve.holy-water.002": {
+      "id": "instance.tactical-reserve.holy-water.002",
+      "definitionId": "tactical-reserve.holy-water",
+      "cardType": "tacticalReserve",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.tactical-reserve.holy-water.003": {
+      "id": "instance.tactical-reserve.holy-water.003",
+      "definitionId": "tactical-reserve.holy-water",
+      "cardType": "tacticalReserve",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.tactical-reserve.holy-water.004": {
+      "id": "instance.tactical-reserve.holy-water.004",
+      "definitionId": "tactical-reserve.holy-water",
+      "cardType": "tacticalReserve",
+      "ownerEntityId": null,
+      "zone": "dungeonLootArea",
+      "zoneDetail": "currentDungeonLootStash",
+      "faceUp": true,
+      "lootDeckOrigin": true,
+      "dungeonLootInjection": true
+    },
+    "instance.tactical-reserve.scroll-of-force-dart.001": {
+      "id": "instance.tactical-reserve.scroll-of-force-dart.001",
+      "definitionId": "tactical-reserve.scroll-of-force-dart",
+      "cardType": "tacticalReserve",
+      "ownerEntityId": null,
+      "zone": "dungeonLootArea",
+      "zoneDetail": "currentDungeonLootStash",
+      "faceUp": true,
+      "lootDeckOrigin": true,
+      "dungeonLootInjection": true
+    },
+    "instance.tactical-reserve.scroll-of-force-dart.002": {
+      "id": "instance.tactical-reserve.scroll-of-force-dart.002",
+      "definitionId": "tactical-reserve.scroll-of-force-dart",
+      "cardType": "tacticalReserve",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.tactical-reserve.scroll-of-force-dart.003": {
+      "id": "instance.tactical-reserve.scroll-of-force-dart.003",
+      "definitionId": "tactical-reserve.scroll-of-force-dart",
+      "cardType": "tacticalReserve",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.tactical-reserve.scroll-of-force-dart.004": {
+      "id": "instance.tactical-reserve.scroll-of-force-dart.004",
+      "definitionId": "tactical-reserve.scroll-of-force-dart",
+      "cardType": "tacticalReserve",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.tactical-reserve.smoke-bomb.001": {
+      "id": "instance.tactical-reserve.smoke-bomb.001",
+      "definitionId": "tactical-reserve.smoke-bomb",
+      "cardType": "tacticalReserve",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.tactical-reserve.smoke-bomb.002": {
+      "id": "instance.tactical-reserve.smoke-bomb.002",
+      "definitionId": "tactical-reserve.smoke-bomb",
+      "cardType": "tacticalReserve",
+      "ownerEntityId": null,
+      "zone": "dungeonDiscardPile",
+      "zoneDetail": null,
+      "faceUp": true,
+      "lootDeckOrigin": true,
+      "dungeonLootInjection": true
+    },
+    "instance.tactical-reserve.smoke-bomb.003": {
+      "id": "instance.tactical-reserve.smoke-bomb.003",
+      "definitionId": "tactical-reserve.smoke-bomb",
+      "cardType": "tacticalReserve",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.tactical-reserve.smoke-bomb.004": {
+      "id": "instance.tactical-reserve.smoke-bomb.004",
+      "definitionId": "tactical-reserve.smoke-bomb",
+      "cardType": "tacticalReserve",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment-body-leather-armor.001": {
+      "id": "instance.equipment-body-leather-armor.001",
+      "definitionId": "equipment.body.leather-armor",
       "cardType": "equipment",
       "ownerEntityId": "entity.character.warrior.001",
       "zone": "equipmentSlot",
-      "zoneDetail": "1",
+      "zoneDetail": "body",
+      "faceUp": true
+    },
+    "instance.equipment-offhand-buckler.001": {
+      "id": "instance.equipment-offhand-buckler.001",
+      "definitionId": "equipment.offhand.buckler",
+      "cardType": "equipment",
+      "ownerEntityId": "entity.character.warrior.001",
+      "zone": "equipmentSlot",
+      "zoneDetail": "offhand",
       "faceUp": true
     }
   },
@@ -226,23 +669,70 @@
     },
     "dungeonDeck": [
       "instance.dungeon.goblin-warrens.tripwire.002",
-      "instance.dungeon.goblin-warrens.goblin-alarm.002",
-      "instance.enemy.goblin-raider.002",
-      "instance.dungeon.goblin-warrens.goblin-alarm.001",
+      "instance.tactical-reserve.bandage.001",
       "instance.enemy.goblin-raider.004",
-      "instance.enemy.goblin-raider.003",
-      "instance.enemy.goblin-raider.001",
-      "instance.dungeon.goblin-warrens.tripwire.001"
+      "instance.tactical-reserve.antidote.001",
+      "instance.tactical-reserve.antidote.008"
     ],
-    "dungeonDiscardPile": [],
-    "dungeonLootArea": [],
-    "lootDeck": [],
+    "dungeonDiscardPile": [
+      "instance.enemy.goblin-raider.001",
+      "instance.dungeon.goblin-warrens.goblin-alarm.001",
+      "instance.tactical-reserve.smoke-bomb.002",
+      "instance.enemy.goblin-raider.002",
+      "instance.dungeon.goblin-warrens.tripwire.001",
+      "instance.enemy.goblin-raider.003"
+    ],
+    "dungeonLootArea": [
+      "instance.tactical-reserve.scroll-of-force-dart.001",
+      "instance.tactical-reserve.antidote.003",
+      "instance.tactical-reserve.holy-water.004"
+    ],
+    "lootDeck": [
+      "instance.equipment.focus.apprentices-wand.001",
+      "instance.tactical-reserve.holy-water.003",
+      "instance.tactical-reserve.scroll-of-force-dart.003",
+      "instance.tactical-reserve.barkskin-salve.004",
+      "instance.tactical-reserve.antidote.006",
+      "instance.tactical-reserve.holy-water.002",
+      "instance.tactical-reserve.bandage.002",
+      "instance.tactical-reserve.antidote.005",
+      "instance.tactical-reserve.antidote.007",
+      "instance.tactical-reserve.scroll-of-force-dart.004",
+      "instance.tactical-reserve.barkskin-salve.001",
+      "instance.tactical-reserve.holy-water.001",
+      "instance.tactical-reserve.bandage.003",
+      "instance.equipment.body.apprentice-robes.001",
+      "instance.tactical-reserve.smoke-bomb.003",
+      "instance.tactical-reserve.scroll-of-force-dart.002",
+      "instance.tactical-reserve.smoke-bomb.004",
+      "instance.tactical-reserve.antidote.002",
+      "instance.tactical-reserve.smoke-bomb.001",
+      "instance.equipment.weapon.arming-sword.002",
+      "instance.tactical-reserve.bandage.004",
+      "instance.tactical-reserve.antidote.004",
+      "instance.tactical-reserve.barkskin-salve.002"
+    ],
     "lootDiscardPile": [],
     "expendedSummons": [],
-    "dungeonRevealArea": [],
-    "statusDeck": [],
+    "statusDeck": [
+      "instance.status.negative.poisoned.002",
+      "instance.status.negative.stunned.001",
+      "instance.status.negative.poisoned.008",
+      "instance.status.negative.stunned.003",
+      "instance.status.negative.poisoned.001",
+      "instance.status.negative.poisoned.004",
+      "instance.status.negative.poisoned.006",
+      "instance.status.negative.stunned.004",
+      "instance.status.negative.stunned.002",
+      "instance.status.negative.poisoned.007",
+      "instance.status.negative.poisoned.005",
+      "instance.status.negative.poisoned.003"
+    ],
     "statusRevealArea": [],
     "statusDiscardPile": [],
+    "dungeonRevealArea": [
+      "instance.dungeon.goblin-warrens.goblin-alarm.002"
+    ],
     "unusedSupply": []
   },
   "encounter": {
@@ -259,26 +749,319 @@
     },
     {
       "sequence": 2,
-      "type": "equipmentAssigned",
-      "message": "Apprentice's Wand was assigned to Warrior's 1 slot."
+      "type": "lootDeckBuilt",
+      "message": "Built the Global Loot Deck with 31 face-down cards from eligible remaining physical copies."
     },
     {
       "sequence": 3,
+      "type": "dungeonLootInjected",
+      "message": "Blindly drew 8 face-down Loot Deck cards and shuffled them into the Dungeon Deck."
+    },
+    {
+      "sequence": 4,
+      "type": "equipmentAssigned",
+      "message": "Leather Armor was assigned to Warrior's body slot."
+    },
+    {
+      "sequence": 5,
+      "type": "equipmentAssigned",
+      "message": "Buckler was assigned to Warrior's offhand slot."
+    },
+    {
+      "sequence": 6,
+      "type": "zoneShuffled",
+      "message": "Dungeon Deck was explicitly shuffled."
+    },
+    {
+      "sequence": 7,
+      "type": "dungeonCardDrawn",
+      "message": "Drew Barkskin Salve from the Dungeon Deck top."
+    },
+    {
+      "sequence": 8,
+      "type": "stateDownloaded",
+      "message": "Downloaded the current runtime state as scenario-solo-warrior-goblin-warrens-smoke-test.playtest.json."
+    },
+    {
+      "sequence": 9,
+      "type": "revealedDungeonCardAddedToPlayerInventory",
+      "message": "Barkskin Salve was added directly to Warrior's inventory position 1 from the Dungeon Reveal Area."
+    },
+    {
+      "sequence": 10,
+      "type": "inventoryTacticalReserveEquipped",
+      "message": "Barkskin Salve was equipped to Warrior's Tactical Reserve slot 2."
+    },
+    {
+      "sequence": 11,
+      "type": "dungeonCardDrawn",
+      "message": "Drew Goblin Raider from the Dungeon Deck top."
+    },
+    {
+      "sequence": 12,
+      "type": "enemyDeployed",
+      "message": "Goblin Raider was deployed to Enemy Front Row, slot 1."
+    },
+    {
+      "sequence": 13,
+      "type": "abilityMovedToStatusRow",
+      "message": "Rage moved to Warrior's Status Row, slot 1. Resolve the card's action cost and rules manually."
+    },
+    {
+      "sequence": 14,
+      "type": "counterChanged",
+      "message": "Goblin Raider Damage changed from 0 to 1."
+    },
+    {
+      "sequence": 15,
+      "type": "counterChanged",
+      "message": "Goblin Raider Damage changed from 1 to 2."
+    },
+    {
+      "sequence": 16,
+      "type": "counterChanged",
+      "message": "Goblin Raider Damage changed from 2 to 3."
+    },
+    {
+      "sequence": 17,
+      "type": "counterChanged",
+      "message": "Warrior Heat changed from 0 to 1."
+    },
+    {
+      "sequence": 18,
+      "type": "counterChanged",
+      "message": "Warrior Heat changed from 1 to 2."
+    },
+    {
+      "sequence": 19,
       "type": "counterChanged",
       "message": "Warrior Damage changed from 0 to 1."
     },
     {
-      "sequence": 4,
+      "sequence": 20,
+      "type": "dungeonCardDrawn",
+      "message": "Drew Scroll of Force Dart from the Dungeon Deck top."
+    },
+    {
+      "sequence": 21,
+      "type": "revealedDungeonCardMovedToLootStash",
+      "message": "Scroll of Force Dart was added to the current Dungeon Loot Stash."
+    },
+    {
+      "sequence": 22,
+      "type": "counterChanged",
+      "message": "Goblin Raider Damage changed from 3 to 4."
+    },
+    {
+      "sequence": 23,
+      "type": "counterChanged",
+      "message": "Goblin Raider Damage changed from 4 to 5."
+    },
+    {
+      "sequence": 24,
+      "type": "counterChanged",
+      "message": "Goblin Raider Damage changed from 5 to 6."
+    },
+    {
+      "sequence": 25,
+      "type": "enemyDefeated",
+      "message": "Goblin Raider was manually defeated and moved to the Dungeon Discard Pile."
+    },
+    {
+      "sequence": 26,
+      "type": "partyCurrencyChanged",
+      "message": "Party Currency changed from 0 to 1."
+    },
+    {
+      "sequence": 27,
+      "type": "stateDownloaded",
+      "message": "Downloaded the current runtime state as scenario-solo-warrior-goblin-warrens-smoke-test.playtest.json."
+    },
+    {
+      "sequence": 28,
+      "type": "dungeonCardDrawn",
+      "message": "Drew Antidote from the Dungeon Deck top."
+    },
+    {
+      "sequence": 29,
+      "type": "revealedDungeonCardMovedToLootStash",
+      "message": "Antidote was added to the current Dungeon Loot Stash."
+    },
+    {
+      "sequence": 30,
+      "type": "dungeonCardDrawn",
+      "message": "Drew Goblin Raider from the Dungeon Deck top."
+    },
+    {
+      "sequence": 31,
+      "type": "enemyDeployed",
+      "message": "Goblin Raider was deployed to Enemy Front Row, slot 1."
+    },
+    {
+      "sequence": 32,
       "type": "counterChanged",
       "message": "Warrior Damage changed from 1 to 2."
     },
     {
-      "sequence": 5,
+      "sequence": 33,
+      "type": "counterChanged",
+      "message": "Goblin Raider Damage changed from 0 to 1."
+    },
+    {
+      "sequence": 34,
+      "type": "counterChanged",
+      "message": "Goblin Raider Damage changed from 1 to 2."
+    },
+    {
+      "sequence": 35,
+      "type": "counterChanged",
+      "message": "Goblin Raider Damage changed from 2 to 3."
+    },
+    {
+      "sequence": 36,
+      "type": "counterChanged",
+      "message": "Warrior Heat changed from 2 to 3."
+    },
+    {
+      "sequence": 37,
+      "type": "dungeonCardDrawn",
+      "message": "Drew Goblin Alarm from the Dungeon Deck top."
+    },
+    {
+      "sequence": 38,
+      "type": "dungeonCardDiscarded",
+      "message": "Goblin Alarm was moved to the Dungeon Discard Pile after manual resolution."
+    },
+    {
+      "sequence": 39,
+      "type": "dungeonCardDrawn",
+      "message": "Drew Holy Water from the Dungeon Deck bottom."
+    },
+    {
+      "sequence": 40,
+      "type": "zoneShuffled",
+      "message": "Dungeon Deck was explicitly shuffled."
+    },
+    {
+      "sequence": 41,
+      "type": "revealedDungeonCardMovedToLootStash",
+      "message": "Holy Water was added to the current Dungeon Loot Stash."
+    },
+    {
+      "sequence": 42,
+      "type": "dungeonCardDrawn",
+      "message": "Drew Smoke Bomb from the Dungeon Deck bottom."
+    },
+    {
+      "sequence": 43,
+      "type": "dungeonCardDiscarded",
+      "message": "Smoke Bomb was moved to the Dungeon Discard Pile after manual resolution."
+    },
+    {
+      "sequence": 44,
+      "type": "counterChanged",
+      "message": "Warrior Damage changed from 2 to 3."
+    },
+    {
+      "sequence": 45,
+      "type": "enemyDefeated",
+      "message": "Goblin Raider was manually defeated and moved to the Dungeon Discard Pile."
+    },
+    {
+      "sequence": 46,
+      "type": "partyCurrencyChanged",
+      "message": "Party Currency changed from 1 to 2."
+    },
+    {
+      "sequence": 47,
+      "type": "dungeonCardDrawn",
+      "message": "Drew Goblin Raider from the Dungeon Deck top."
+    },
+    {
+      "sequence": 48,
+      "type": "enemyDeployed",
+      "message": "Goblin Raider was deployed to Enemy Back Row, slot 1."
+    },
+    {
+      "sequence": 49,
+      "type": "counterChanged",
+      "message": "Warrior Damage changed from 3 to 4."
+    },
+    {
+      "sequence": 50,
+      "type": "counterChanged",
+      "message": "Warrior Heat changed from 3 to 4."
+    },
+    {
+      "sequence": 51,
+      "type": "counterChanged",
+      "message": "Goblin Raider Damage changed from 0 to 1."
+    },
+    {
+      "sequence": 52,
+      "type": "counterChanged",
+      "message": "Goblin Raider Damage changed from 1 to 2."
+    },
+    {
+      "sequence": 53,
+      "type": "counterChanged",
+      "message": "Goblin Raider Damage changed from 2 to 3."
+    },
+    {
+      "sequence": 54,
+      "type": "dungeonCardDrawn",
+      "message": "Drew Tripwire from the Dungeon Deck top."
+    },
+    {
+      "sequence": 55,
+      "type": "dungeonCardDiscarded",
+      "message": "Tripwire was moved to the Dungeon Discard Pile after manual resolution."
+    },
+    {
+      "sequence": 56,
+      "type": "counterChanged",
+      "message": "Warrior Damage changed from 4 to 5."
+    },
+    {
+      "sequence": 57,
+      "type": "counterChanged",
+      "message": "Warrior Damage changed from 5 to 6."
+    },
+    {
+      "sequence": 58,
+      "type": "enemyDefeated",
+      "message": "Goblin Raider was manually defeated and moved to the Dungeon Discard Pile."
+    },
+    {
+      "sequence": 59,
+      "type": "partyCurrencyChanged",
+      "message": "Party Currency changed from 2 to 3."
+    },
+    {
+      "sequence": 60,
+      "type": "dungeonCardDrawn",
+      "message": "Drew Goblin Alarm from the Dungeon Deck top."
+    },
+    {
+      "sequence": 61,
       "type": "stateDownloaded",
       "message": "Downloaded the current runtime state as scenario-solo-warrior-goblin-warrens-smoke-test.playtest.json."
     }
   ],
+  "dungeonLootInjection": {
+    "count": 8,
+    "cardInstanceIds": [
+      "instance.tactical-reserve.antidote.008",
+      "instance.tactical-reserve.antidote.001",
+      "instance.tactical-reserve.smoke-bomb.002",
+      "instance.tactical-reserve.scroll-of-force-dart.001",
+      "instance.tactical-reserve.holy-water.004",
+      "instance.tactical-reserve.bandage.001",
+      "instance.tactical-reserve.antidote.003",
+      "instance.tactical-reserve.barkskin-salve.003"
+    ]
+  },
   "resources": {
-    "currency": 0
+    "currency": 3
   }
 }
