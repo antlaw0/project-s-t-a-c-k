@@ -1,4 +1,4 @@
-(function initializePlaytestTabletop() {
+﻿(function initializePlaytestTabletop() {
   "use strict";
 
   const CATALOG_URL = "./generated/card-catalog.json";
@@ -956,24 +956,22 @@ createElement("h6", { text: definition.name }),
 
   function renderFriendlyEntityPanel(entity) {
     const panel = createElement("article", { className: "character-panel" });
-    const summary = createElement("p", {
-        text: `${entityTypeLabel(entity.entityType)}.\nDamage: ${getNumericValue(entity.damage, 0)} of ${entity.maximumHp || "unknown"} maximum HP.\nHeat: ${getNumericValue(entity.heat, 0)}.`
-    });
+    const summary = createElement("p", { text: `${entityTypeLabel(entity.entityType)}. Current row: ${rowLabel(entity.currentRow)}. Damage: ${getNumericValue(entity.damage, 0)}. Maximum HP: ${entity.maximumHp || "unknown"}. Heat: ${getNumericValue(entity.heat, 0)}.` });
     panel.append(
-        createElement("h4", { text: entity.name }),
-        summary
+      createElement("h4", { text: entity.name }),
+      summary
     ); // end friendly-panel header
 
     if (entity.characterCardInstanceId) {
-        const rules = createInlineCardRules(entity.characterCardInstanceId);
-        if (rules) {
-            panel.append(rules);
-        } // end friendly-panel inline-rules branch
+      const rules = createInlineCardRules(entity.characterCardInstanceId);
+      if (rules) {
+        panel.append(rules);
+      } // end friendly-panel inline-rules branch
     } // end primary-card branch
 
     panel.append(
-        createCounterControls(entity, "friendly-area"),
-        createEntityActions(entity, "friendly-area")
+      createCounterControls(entity, "friendly-area"),
+      createEntityActions(entity, "friendly-area")
     ); // end friendly-panel controls
 
     const equipmentList = createElement("ul", { className: "card-list" });
@@ -982,30 +980,27 @@ createElement("h6", { text: definition.name }),
 
     const skillList = createElement("ol", { className: "card-list" });
     if ((entity.skillSlots || []).length > 0) {
-        renderSkillSlots(entity, skillList);
+      renderSkillSlots(entity, skillList);
     } else {
-        skillList.append(createEmptySlotItem("No Skill Card slots"));
+      skillList.append(createEmptySlotItem("No Skill Card slots"));
     } // end skill-slot branch
     panel.append(createElement("h5", { text: "Skill Cards" }), skillList);
 
     const reserveList = createElement("ol", { className: "card-list" });
     if ((entity.tacticalReserveSlots || []).length > 0) {
-        renderTacticalReserveSlots(entity, reserveList);
+      renderTacticalReserveSlots(entity, reserveList);
     } else {
-        reserveList.append(createEmptySlotItem("No Tactical Reserve slots"));
+      reserveList.append(createEmptySlotItem("No Tactical Reserve slots"));
     } // end tactical-slot branch
     panel.append(createElement("h5", { text: "Tactical Reserve" }), reserveList);
-
-    if (window.ProjectStackInventoryModal && typeof window.ProjectStackInventoryModal.appendInventoryButton === "function") {
-        window.ProjectStackInventoryModal.appendInventoryButton(panel, entity);
-    } // end inventory-button append branch
-
-    const statusList = createElement("ol", { className: "card-list" });
+  // PROJECT STACK INVENTORY BUTTON HOOK V3
+  if (window.ProjectStackInventoryModal && typeof window.ProjectStackInventoryModal.appendInventoryButton === "function") {
+    window.ProjectStackInventoryModal.appendInventoryButton(panel, entity);
+  } // end inventory-button append branchconst statusList = createElement("ol", { className: "card-list" });
     renderStatusRow(entity, statusList, `friendly-status-${sanitizeIdPart(entity.id)}`);
     panel.append(createElement("h5", { text: "Status Row" }), statusList);
-
     return panel;
-} // end renderFriendlyEntityPanel function
+  } // end renderFriendlyEntityPanel function
 
   function renderCharacterAreas() {
     clearElement(elements.characterAreas);
