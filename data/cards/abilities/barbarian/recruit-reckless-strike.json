@@ -1,0 +1,60 @@
+{
+  "id": "ability.barbarian.recruit-reckless-strike",
+  "active": true,
+  "count": 1,
+  "cardType": "ability",
+  "name": "Reckless Strike",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "ability-standard",
+  "tags": [
+    "ability",
+    "barbarian",
+    "recruit",
+    "action",
+    "melee",
+    "physical",
+    "martial",
+    "weapon-attack",
+    "heat"
+  ],
+  "rulesText": "Barbarian Ability — Recruit\nAction • Melee • Physical\n\nUse this character’s shared activation. Make a melee weapon attack with +1 damage.\n\nAfter the attack resolves, this character gains an additional 1 Heat in addition to any Heat gained from dealing damage under the core combat rules.\n\nRequires an equipped weapon with the Melee range tag.",
+  "data": {
+    "abilityType": "actionAttack",
+    "discipline": "barbarian",
+    "rank": {
+      "id": "recruit",
+      "order": 1
+    },
+    "equipRules": {
+      "allowedSkillDisciplines": [
+        "barbarian"
+      ],
+      "maximumSkillRank": "recruit"
+    },
+    "activation": {
+      "activationCost": "sharedActivation"
+    },
+    "attack": {
+      "attackType": "meleeWeaponAttack",
+      "requiredWeaponTags": [
+        "melee"
+      ],
+      "damageType": "physical",
+      "damageModifier": 2
+    },
+    "heat": {
+      "timing": "afterAttackResolves",
+      "recipient": "abilityOwner",
+      "amount": 1,
+      "inAdditionToNormalDamageHeat": true
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/skill_and_ability_cards/Barbarian.md",
+    "sourceSection": "Recruit Barbarian Ability Cards > Reckless Strike",
+    "verifiedAgainstRulebook": true,
+    "notes": "Reckless Strike must use a Melee-tagged equipped weapon. The +1 Heat in this card is additional to Heat normally generated when the attack deals HP damage."
+  }
+}

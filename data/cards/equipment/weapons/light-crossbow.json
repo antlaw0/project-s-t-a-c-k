@@ -1,7 +1,7 @@
 {
   "id": "equipment.weapon.light-crossbow",
   "active": true,
-  "count": 1,
+  "count": 6,
   "cardType": "equipment",
   "name": "Light Crossbow",
   "revision": 1,

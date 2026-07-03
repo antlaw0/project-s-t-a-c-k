@@ -1,7 +1,7 @@
 {
   "id": "equipment.weapon.arming-sword",
   "active": true,
-  "count": 2,
+  "count": 6,
   "cardType": "equipment",
   "name": "Arming Sword",
   "revision": 1,

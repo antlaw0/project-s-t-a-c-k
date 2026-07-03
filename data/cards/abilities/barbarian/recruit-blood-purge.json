@@ -1,0 +1,77 @@
+{
+  "id": "ability.barbarian.recruit-blood-purge",
+  "active": true,
+  "count": 1,
+  "cardType": "ability",
+  "name": "Blood Purge",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "ability-standard",
+  "tags": [
+    "ability",
+    "barbarian",
+    "recruit",
+    "reaction",
+    "status",
+    "poison",
+    "cleanse",
+    "martial"
+  ],
+  "rulesText": "Barbarian Ability — Recruit\nReaction • Status\n\nWhen a Poison status card would be placed in this character’s Status Row, prevent that card from being placed.\n\nRemove all Poison status cards from this character’s Status Row. Then move Blood Purge from its equipped Skill Card into this character’s Status Row.\n\nWhile Blood Purge is active, Poison status cards cannot be placed on this character.\n\nAt the end of combat, return Blood Purge to its equipped Skill Card.",
+  "data": {
+    "abilityType": "reactionStatus",
+    "discipline": "barbarian",
+    "rank": {
+      "id": "recruit",
+      "order": 1
+    },
+    "equipRules": {
+      "allowedSkillDisciplines": [
+        "barbarian"
+      ],
+      "maximumSkillRank": "recruit"
+    },
+    "reaction": {
+      "trigger": {
+        "event": "statusWouldBePlaced",
+        "statusType": "poison",
+        "targetMustBeAbilityOwner": true
+      },
+      "resolution": [
+        {
+          "type": "preventStatusPlacement",
+          "statusType": "poison",
+          "target": "abilityOwner"
+        },
+        {
+          "type": "removeAllStatusCards",
+          "statusType": "poison",
+          "target": "abilityOwner"
+        },
+        {
+          "type": "moveToOwnerStatusRow"
+        }
+      ]
+    },
+    "status": {
+      "statusType": "poisonImmunity",
+      "owner": "abilityOwner",
+      "restrictions": [
+        {
+          "type": "cannotReceiveStatus",
+          "statusType": "poison"
+        }
+      ]
+    },
+    "endOfCombat": {
+      "type": "returnToEquippedSkillCard"
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/skill_and_ability_cards/Barbarian.md",
+    "sourceSection": "Recruit Barbarian Ability Cards > Blood Purge",
+    "verifiedAgainstRulebook": true,
+    "notes": "Blood Purge is a reaction that prevents the triggering Poison card, removes any Poison cards already affecting its owner, and occupies the owner’s Status Row as temporary poison immunity until combat ends."
+  }
+}

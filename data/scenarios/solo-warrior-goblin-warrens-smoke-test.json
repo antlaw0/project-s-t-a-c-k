@@ -42,8 +42,12 @@
             },
             "equipment": [
               {
-                "cardId": "equipment.weapon.arming-sword",
+                "cardId": "equipment.weapon.battleaxe",
                 "slot": "weapon"
+              },
+              {
+                "cardId": "equipment.body.leather-armor",
+                "slot": "body"
               }
             ],
             "skills": [

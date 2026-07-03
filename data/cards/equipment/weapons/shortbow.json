@@ -1,7 +1,7 @@
 {
   "id": "equipment.weapon.shortbow",
   "active": true,
-  "count": 1,
+  "count": 6,
   "cardType": "equipment",
   "name": "Shortbow",
   "revision": 1,

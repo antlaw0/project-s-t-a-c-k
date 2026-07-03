@@ -1,7 +1,7 @@
 {
   "id": "equipment.weapon.longbow",
   "active": true,
-  "count": 1,
+  "count": 5,
   "cardType": "equipment",
   "name": "Longbow",
   "revision": 1,

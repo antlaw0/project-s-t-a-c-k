@@ -1,7 +1,7 @@
 {
   "id": "equipment.weapon.battleaxe",
   "active": true,
-  "count": 1,
+  "count": 6,
   "cardType": "equipment",
   "name": "Battleaxe",
   "revision": 1,

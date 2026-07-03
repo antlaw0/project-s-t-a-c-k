@@ -1,7 +1,7 @@
 {
   "id": "equipment.body.chainmail",
   "active": true,
-  "count": 1,
+  "count": 4,
   "cardType": "equipment",
   "name": "Chainmail",
   "revision": 1,

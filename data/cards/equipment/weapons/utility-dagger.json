@@ -1,7 +1,7 @@
 {
   "id": "equipment.weapon.utility-dagger",
   "active": true,
-  "count": 1,
+  "count": 6,
   "cardType": "equipment",
   "name": "Utility Dagger",
   "revision": 1,

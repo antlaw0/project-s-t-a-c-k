@@ -1,7 +1,7 @@
 {
   "id": "equipment.weapon.wooden-club",
   "active": true,
-  "count": 1,
+  "count": 8,
   "cardType": "equipment",
   "name": "Wooden Club",
   "revision": 1,

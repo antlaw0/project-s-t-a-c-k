@@ -1,7 +1,7 @@
 {
   "id": "equipment.weapon.iron-spear",
   "active": true,
-  "count": 1,
+  "count": 6,
   "cardType": "equipment",
   "name": "Iron Spear",
   "revision": 1,
