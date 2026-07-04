@@ -1,0 +1,63 @@
+{
+  "id": "ability.warrior.recruit-covering-guard",
+  "active": true,
+  "count": 4,
+  "cardType": "ability",
+  "name": "Covering Guard",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "ability-standard",
+  "tags": [
+    "ability",
+    "warrior",
+    "recruit",
+    "action",
+    "martial",
+    "defense",
+    "protection",
+    "ally",
+    "status-row"
+  ],
+  "rulesText": "Warrior Ability — Recruit\nAction\nChoose another friendly entity in this character's row. Move Covering Guard to that entity's Status Row. While Covering Guard is there, that entity gains +1 Defense.\nReturn Covering Guard to its owner's equipped Skill Card at the end of the next enemy card turn.",
+  "data": {
+    "abilityType": "action",
+    "discipline": "Warrior",
+    "rank": {
+      "id": "recruit",
+      "order": 1
+    },
+    "equipRules": {
+      "requiredSkillTags": [
+        "warrior"
+      ]
+    },
+    "activation": {
+      "activationCost": "sharedActivation",
+      "moveTo": "targetStatusRow",
+      "targeting": {
+        "type": "chooseFriendlyEntity",
+        "targetMustBe": "anotherFriendlyEntity",
+        "targetMustBeInSameRowAsAbilityOwner": true
+      },
+      "effect": {
+        "type": "applyTargetModifierWhileInStatusRow",
+        "modifier": {
+          "type": "modifyDefense",
+          "amount": 1
+        }
+      },
+      "returnRule": {
+        "timing": "endOfNextEnemyCardTurn",
+        "moveTo": "equippedSkillCard",
+        "returnTo": "abilityOwner"
+      }
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/skill_and_ability_cards/Warrior.md",
+    "sourceSection": "Recruit Warrior Ability Cards > Covering Guard",
+    "verifiedAgainstRulebook": false,
+    "notes": "Covering Guard is proactive ally protection. The card is placed in the protected entity's Status Row so the bonus is visible where it applies, but it returns to the Warrior owner's equipped Skill Card. Target-status-row placement and owner-return behavior require engine support."
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "id": "ability.barbarian.recruit-furious-retaliation",
+  "active": true,
+  "count": 4,
+  "cardType": "ability",
+  "name": "Furious Retaliation",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "ability-standard",
+  "tags": [
+    "ability",
+    "barbarian",
+    "recruit",
+    "reaction",
+    "martial",
+    "rage",
+    "physical",
+    "retaliation"
+  ],
+  "rulesText": "Barbarian Ability — Recruit\nReaction\nTrigger: While this character is Raging, an enemy melee attack deals at least 1 HP damage to this character.\nDeal 1 Physical Damage to that enemy. Move Furious Retaliation to this character's Status Row.\nReturn Furious Retaliation to its equipped Skill Card at the end of the round.\nThis damage is not a weapon attack and does not count as damage dealt during this character's shared activation.",
+  "data": {
+    "abilityType": "reaction",
+    "discipline": "Barbarian",
+    "rank": {
+      "id": "recruit",
+      "order": 1
+    },
+    "equipRules": {
+      "requiredSkillTags": [
+        "barbarian"
+      ]
+    },
+    "reaction": {
+      "activationCost": "none",
+      "trigger": {
+        "type": "enemyMeleeAttackDealsHpDamageToAbilityOwner",
+        "minimumHpDamage": 1,
+        "ownerMustHaveStatus": "rage"
+      },
+      "timing": "afterDamageResolved",
+      "effect": {
+        "type": "dealDamage",
+        "amount": 1,
+        "damageType": "physical",
+        "target": "sourceAttackActor",
+        "doesNotCountAsWeaponAttack": true,
+        "doesNotGenerateHeat": true,
+        "doesNotSatisfyRageMaintenance": true
+      },
+      "moveTo": "statusRow",
+      "returnRule": {
+        "timing": "endOfRound",
+        "moveTo": "equippedSkillCard"
+      }
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/skill_and_ability_cards/Barbarian.md",
+    "sourceSection": "Recruit Barbarian Ability Cards > Furious Retaliation",
+    "verifiedAgainstRulebook": false,
+    "notes": "Furious Retaliation is a Barbarian-only reaction. It can trigger only while the owner is Raging and actually takes at least 1 HP damage from an enemy melee attack. Its retaliation damage is not a weapon attack, does not generate Heat, and does not count toward Rage maintenance."
+  }
+}

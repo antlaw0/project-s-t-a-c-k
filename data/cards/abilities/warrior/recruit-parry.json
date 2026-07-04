@@ -1,0 +1,62 @@
+{
+  "id": "ability.warrior.recruit-parry",
+  "active": true,
+  "count": 4,
+  "cardType": "ability",
+  "name": "Parry",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "ability-standard",
+  "tags": [
+    "ability",
+    "warrior",
+    "recruit",
+    "reaction",
+    "martial",
+    "defense",
+    "physical",
+    "melee",
+    "damage-reduction"
+  ],
+  "rulesText": "Warrior Ability — Recruit\nReaction\nTrigger: This character would take Physical damage from a melee attack.\nReduce that damage by 1. Move Parry to this character's Status Row.\nReturn Parry to its equipped Skill Card at the end of the round.",
+  "data": {
+    "abilityType": "reaction",
+    "discipline": "Warrior",
+    "rank": {
+      "id": "recruit",
+      "order": 1
+    },
+    "equipRules": {
+      "requiredSkillTags": [
+        "warrior"
+      ]
+    },
+    "reaction": {
+      "activationCost": "none",
+      "trigger": {
+        "type": "abilityOwnerWouldTakeAttackDamage",
+        "attackMustHaveRangeTag": "melee",
+        "damageType": "physical"
+      },
+      "timing": "beforeDamageApplied",
+      "effect": {
+        "type": "reduceIncomingDamage",
+        "amount": 1,
+        "damageType": "physical",
+        "minimumDamageAfterReduction": 0
+      },
+      "moveTo": "statusRow",
+      "returnRule": {
+        "timing": "endOfRound",
+        "moveTo": "equippedSkillCard"
+      }
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/skill_and_ability_cards/Warrior.md",
+    "sourceSection": "Recruit Warrior Ability Cards > Parry",
+    "verifiedAgainstRulebook": false,
+    "notes": "Parry is a personal defensive reaction. It applies only to Physical damage from a melee attack, does not spend the owner's shared activation, and is unavailable again after resolving until the end of the round. The reactive damage-reduction trigger and effect require engine support."
+  }
+}

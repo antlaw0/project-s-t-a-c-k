@@ -1,0 +1,79 @@
+{
+  "id": "ability.warrior.recruit-shield-bash",
+  "active": true,
+  "count": 4,
+  "cardType": "ability",
+  "name": "Shield Bash",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "ability-standard",
+  "tags": [
+    "ability",
+    "warrior",
+    "recruit",
+    "action",
+    "martial",
+    "shield",
+    "melee",
+    "physical",
+    "reaction-control"
+  ],
+  "rulesText": "Warrior Ability — Recruit\nAction\nRequires an equipped shield.\nSpend this character's shared activation: Deal 1 Physical damage to an enemy in this character's melee range. If this deals at least 1 HP damage, that enemy cannot use Reactions until the end of the round.",
+  "data": {
+    "abilityType": "action",
+    "discipline": "Warrior",
+    "rank": {
+      "id": "recruit",
+      "order": 1
+    },
+    "equipRules": {
+      "requiredSkillTags": [
+        "warrior"
+      ]
+    },
+    "activation": {
+      "activationCost": "sharedActivation",
+      "moveTo": "none",
+      "useConditions": [
+        {
+          "type": "ownerHasEquippedItemTag",
+          "itemTag": "shield"
+        }
+      ],
+      "targeting": {
+        "type": "chooseEnemy",
+        "targetMustBeInAbilityOwnerMeleeRange": true
+      },
+      "effect": {
+        "type": "dealDamageThenApplyStatusIfHpDamageDealt",
+        "damage": {
+          "amount": 1,
+          "damageType": "physical"
+        },
+        "condition": {
+          "event": "hpDamageDealtToTarget",
+          "minimumHpDamage": 1
+        },
+        "status": {
+          "statusId": "reaction-disabled",
+          "statusTags": [
+            "negative",
+            "reaction-control"
+          ],
+          "rulesText": "This entity cannot use Reactions.",
+          "returnRule": {
+            "timing": "endOfRound",
+            "moveTo": "statusDiscard"
+          }
+        }
+      }
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/skill_and_ability_cards/Warrior.md",
+    "sourceSection": "Recruit Warrior Ability Cards > Shield Bash",
+    "verifiedAgainstRulebook": false,
+    "notes": "Shield Bash is a shield-only tactical control action, not a standard weapon attack. It is intentionally weaker than most normal weapon attacks in raw damage. It needs a Reaction Disabled negative status card or equivalent status implementation before it can function."
+  }
+}

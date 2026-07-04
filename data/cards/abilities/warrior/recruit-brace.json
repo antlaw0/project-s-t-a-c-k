@@ -1,0 +1,56 @@
+{
+  "id": "ability.warrior.recruit-brace",
+  "active": true,
+  "count": 4,
+  "cardType": "ability",
+  "name": "Brace",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "ability-standard",
+  "tags": [
+    "ability",
+    "warrior",
+    "recruit",
+    "action",
+    "martial",
+    "defense",
+    "guard",
+    "status-row"
+  ],
+  "rulesText": "Warrior Ability — Recruit\nAction\nSpend this character's shared activation: Move Brace to this character's Status Row. While Brace is in this character's Status Row, this character gains +1 Defense.\nReturn Brace to its equipped Skill Card at the end of the next enemy card turn.",
+  "data": {
+    "abilityType": "action",
+    "discipline": "Warrior",
+    "rank": {
+      "id": "recruit",
+      "order": 1
+    },
+    "equipRules": {
+      "requiredSkillTags": [
+        "warrior"
+      ]
+    },
+    "activation": {
+      "activationCost": "sharedActivation",
+      "moveTo": "statusRow",
+      "effect": {
+        "type": "applySelfModifierWhileInStatusRow",
+        "modifier": {
+          "type": "modifyDefense",
+          "amount": 1
+        }
+      },
+      "returnRule": {
+        "timing": "endOfNextEnemyCardTurn",
+        "moveTo": "equippedSkillCard"
+      }
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/skill_and_ability_cards/Warrior.md",
+    "sourceSection": "Recruit Warrior Ability Cards > Brace",
+    "verifiedAgainstRulebook": false,
+    "notes": "Brace is a general Warrior action. It trades the owner's shared activation for temporary Defense. While in the owner's Status Row, the card is unavailable for reuse. The applySelfModifierWhileInStatusRow effect and endOfNextEnemyCardTurn return timing require engine support."
+  }
+}

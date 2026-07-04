@@ -1,0 +1,58 @@
+{
+  "id": "ability.warrior.recruit-blind-fighting",
+  "active": true,
+  "count": 4,
+  "cardType": "ability",
+  "name": "Blind Fighting",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "ability-standard",
+  "tags": [
+    "ability",
+    "warrior",
+    "recruit",
+    "action",
+    "martial",
+    "melee",
+    "blinded"
+  ],
+  "rulesText": "Warrior Ability — Recruit\nAction\nUse only while this character is Blinded.\nSpend this character's shared activation: Make one standard melee weapon attack. Ignore the Blinded status only for this attack.",
+  "data": {
+    "abilityType": "action",
+    "discipline": "Warrior",
+    "rank": {
+      "id": "recruit",
+      "order": 1
+    },
+    "equipRules": {
+      "requiredSkillTags": [
+        "warrior"
+      ]
+    },
+    "activation": {
+      "activationCost": "sharedActivation",
+      "moveTo": "none",
+      "useConditions": [
+        {
+          "type": "ownerHasStatus",
+          "statusId": "blinded"
+        }
+      ],
+      "effect": {
+        "type": "makeStandardWeaponAttack",
+        "requiredWeaponRange": "melee",
+        "usesStandardAttackRules": true,
+        "ignoreStatusRestrictions": [
+          "blinded"
+        ]
+      }
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/skill_and_ability_cards/Warrior.md",
+    "sourceSection": "Recruit Warrior Ability Cards > Blind Fighting",
+    "verifiedAgainstRulebook": true,
+    "notes": "Blind Fighting is a general Warrior ability, not a Barbarian-only ability. It may be equipped beneath any Skill Card with the warrior tag. It remains equipped beneath that Skill Card after use and does not enter the Status Row."
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "id": "ability.barbarian.recruit-bloodied-defiance",
+  "active": true,
+  "count": 4,
+  "cardType": "ability",
+  "name": "Bloodied Defiance",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "ability-standard",
+  "tags": [
+    "ability",
+    "barbarian",
+    "recruit",
+    "passive",
+    "martial",
+    "rage",
+    "defense",
+    "bloodied"
+  ],
+  "rulesText": "Barbarian Ability — Recruit\nPassive\nWhile this character is Raging and has current HP equal to or lower than half its maximum HP, this character gains +1 Defense.",
+  "data": {
+    "abilityType": "passive",
+    "discipline": "Barbarian",
+    "rank": {
+      "id": "recruit",
+      "order": 1
+    },
+    "equipRules": {
+      "requiredSkillTags": [
+        "barbarian"
+      ]
+    },
+    "passive": {
+      "conditions": [
+        {
+          "type": "ownerHasStatus",
+          "statusId": "rage"
+        },
+        {
+          "type": "ownerCurrentHpAtOrBelowPercentOfMaximum",
+          "percent": 50
+        }
+      ],
+      "modifiers": [
+        {
+          "type": "modifyDefense",
+          "amount": 1
+        }
+      ]
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/skill_and_ability_cards/Barbarian.md",
+    "sourceSection": "Recruit Barbarian Ability Cards > Bloodied Defiance",
+    "verifiedAgainstRulebook": false,
+    "notes": "Bloodied Defiance is a Barbarian-only passive. While its owner is Raging and at or below half maximum HP, it grants +1 Defense. This intentionally offsets Rage's -1 Defense penalty, returning the owner to their normal Defense value rather than increasing Defense above baseline."
+  }
+}

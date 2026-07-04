@@ -1,0 +1,50 @@
+{
+  "id": "ability.warrior.recruit-challenge",
+  "active": true,
+  "count": 4,
+  "cardType": "ability",
+  "name": "Challenge",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "ability-standard",
+  "tags": [
+    "ability",
+    "warrior",
+    "recruit",
+    "action",
+    "martial",
+    "heat",
+    "threat",
+    "protection"
+  ],
+  "rulesText": "Warrior Ability — Recruit\nAction\nSpend this character's shared activation: This character gains 2 Heat.",
+  "data": {
+    "abilityType": "action",
+    "discipline": "Warrior",
+    "rank": {
+      "id": "recruit",
+      "order": 1
+    },
+    "equipRules": {
+      "requiredSkillTags": [
+        "warrior"
+      ]
+    },
+    "activation": {
+      "activationCost": "sharedActivation",
+      "moveTo": "none",
+      "effect": {
+        "type": "modifyHeat",
+        "target": "abilityOwner",
+        "amount": 2
+      }
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/skill_and_ability_cards/Warrior.md",
+    "sourceSection": "Recruit Warrior Ability Cards > Challenge",
+    "verifiedAgainstRulebook": false,
+    "notes": "Challenge is a general Warrior action for intentionally drawing enemy targeting through the existing Heat system. It grants no damage or Defense bonus. The modifyHeat effect requires engine support if not already present."
+  }
+}

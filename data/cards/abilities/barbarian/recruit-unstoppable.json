@@ -1,0 +1,62 @@
+{
+  "id": "ability.barbarian.recruit-unstoppable",
+  "active": true,
+  "count": 4,
+  "cardType": "ability",
+  "name": "Unstoppable",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "ability-standard",
+  "tags": [
+    "ability",
+    "barbarian",
+    "recruit",
+    "reaction",
+    "martial",
+    "status-prevention",
+    "stunned",
+    "slowed",
+    "restrained"
+  ],
+  "rulesText": "Barbarian Ability — Recruit\nReaction\nTrigger: An enemy effect would apply Stunned, Slowed, or Restrained to this character.\nPrevent that status from being applied. Move Unstoppable to this character's Status Row.\nReturn Unstoppable to its equipped Skill Card at the end of combat.",
+  "data": {
+    "abilityType": "reaction",
+    "discipline": "Barbarian",
+    "rank": {
+      "id": "recruit",
+      "order": 1
+    },
+    "equipRules": {
+      "requiredSkillTags": [
+        "barbarian"
+      ]
+    },
+    "reaction": {
+      "activationCost": "none",
+      "trigger": {
+        "type": "enemyEffectWouldApplyStatusToAbilityOwner",
+        "statusIds": [
+          "stunned",
+          "slowed",
+          "restrained"
+        ]
+      },
+      "timing": "beforeStatusApplied",
+      "effect": {
+        "type": "preventTriggeredStatusApplication"
+      },
+      "moveTo": "statusRow",
+      "returnRule": {
+        "timing": "endOfCombat",
+        "moveTo": "equippedSkillCard"
+      }
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/skill_and_ability_cards/Barbarian.md",
+    "sourceSection": "Recruit Barbarian Ability Cards > Unstoppable",
+    "verifiedAgainstRulebook": false,
+    "notes": "Unstoppable is a Barbarian-only reaction that prevents one incoming application of Stunned, Slowed, or Restrained. It does not remove a status already in play. After resolving, it remains in the owner's Status Row until combat ends."
+  }
+}

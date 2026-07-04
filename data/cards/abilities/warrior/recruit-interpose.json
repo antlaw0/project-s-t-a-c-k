@@ -1,0 +1,61 @@
+{
+  "id": "ability.warrior.recruit-interpose",
+  "active": true,
+  "count": 4,
+  "cardType": "ability",
+  "name": "Interpose",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "ability-standard",
+  "tags": [
+    "ability",
+    "warrior",
+    "recruit",
+    "reaction",
+    "martial",
+    "defense",
+    "protection",
+    "target-redirection"
+  ],
+  "rulesText": "Warrior Ability — Recruit\nReaction\nTrigger: An enemy declares a single-target attack against another friendly entity in this character's row.\nChange that attack's target to this character. Move Interpose to this character's Status Row.\nReturn Interpose to its equipped Skill Card at the end of the round.",
+  "data": {
+    "abilityType": "reaction",
+    "discipline": "Warrior",
+    "rank": {
+      "id": "recruit",
+      "order": 1
+    },
+    "equipRules": {
+      "requiredSkillTags": [
+        "warrior"
+      ]
+    },
+    "reaction": {
+      "activationCost": "none",
+      "trigger": {
+        "type": "enemyDeclaresSingleTargetAttack",
+        "targetMustBe": "anotherFriendlyEntity",
+        "targetMustBeInSameRowAsAbilityOwner": true,
+        "abilityOwnerMustBeLegalTarget": true
+      },
+      "timing": "afterTargetDeclaredBeforeAttackResolves",
+      "effect": {
+        "type": "redirectAttackTarget",
+        "newTarget": "abilityOwner",
+        "doNotReevaluateEnemyTargetSelection": true
+      },
+      "moveTo": "statusRow",
+      "returnRule": {
+        "timing": "endOfRound",
+        "moveTo": "equippedSkillCard"
+      }
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/skill_and_ability_cards/Warrior.md",
+    "sourceSection": "Recruit Warrior Ability Cards > Interpose",
+    "verifiedAgainstRulebook": false,
+    "notes": "Interpose is a general Warrior reaction that may be equipped beneath any Skill Card with the warrior tag. It does not spend the owner's shared activation. After resolving, it moves to the owner's Status Row and cannot be used again until it returns to its equipped Skill Card at the end of the round. The redirected attack continues normally against the ability owner without causing the enemy to choose a new target."
+  }
+}

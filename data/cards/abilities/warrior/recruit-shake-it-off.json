@@ -1,0 +1,55 @@
+{
+  "id": "ability.warrior.recruit-shake-it-off",
+  "active": true,
+  "count": 4,
+  "cardType": "ability",
+  "name": "Shake It Off",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "ability-standard",
+  "tags": [
+    "ability",
+    "warrior",
+    "recruit",
+    "action",
+    "martial",
+    "resilience",
+    "status-removal",
+    "self"
+  ],
+  "rulesText": "Warrior Ability — Recruit\nAction\nSpend this character's shared activation: Discard one negative status card from this character with the Sensory, Physical, or Movement tag.",
+  "data": {
+    "abilityType": "action",
+    "discipline": "Warrior",
+    "rank": {
+      "id": "recruit",
+      "order": 1
+    },
+    "equipRules": {
+      "requiredSkillTags": [
+        "warrior"
+      ]
+    },
+    "activation": {
+      "activationCost": "sharedActivation",
+      "moveTo": "none",
+      "effect": {
+        "type": "discardNegativeStatus",
+        "target": "abilityOwner",
+        "requiredAnyStatusTags": [
+          "sensory",
+          "physical",
+          "movement"
+        ],
+        "maximumCards": 1
+      }
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/skill_and_ability_cards/Warrior.md",
+    "sourceSection": "Recruit Warrior Ability Cards > Shake It Off",
+    "verifiedAgainstRulebook": false,
+    "notes": "Shake It Off deliberately removes only a limited set of negative status categories. It does not remove curse, mental, magical, poison, or disease statuses unless they also carry one of the allowed tags. This requires formal status tags and a discardNegativeStatus effect."
+  }
+}

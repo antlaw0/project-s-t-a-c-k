@@ -1,0 +1,70 @@
+{
+  "id": "dungeon.goblin-warrens.goblin-stolen-goods-stash",
+  "active": true,
+  "count": 2,
+  "cardType": "dungeonCard",
+  "name": "Stolen Goods Stash",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "dungeon-event-standard",
+  "tags": [
+    "dungeon-card",
+    "event",
+    "goblin-warrens",
+    
+    "goblin"
+    
+    
+  ],
+  "rulesText": "Event\n\n Draw one card from the loot deck and add it to the dungeon loot stash.",
+  "data": {
+    "dungeonCardType": "event",
+    "dungeonThemes": [
+      "goblin-warrens",
+      "scrap-fortress"
+    ],
+    "resolutionTiming": "immediatelyWhenDrawn",
+    "effects": [
+      {
+        "type": "gainHeat",
+        "target": "activeCharacter",
+        "amount": 2
+      }
+    ],
+    "revealAndDeploy": {
+      "sourceZone": "dungeonDeck",
+      "revealFrom": "bottom",
+      "revealCount": 2,
+      "selectionRule": {
+        "type": "firstMatchingRevealedCard",
+        "criteria": {
+          "cardType": "enemy",
+          "requiredTags": [
+            "goblin"
+          ]
+        }
+      },
+      "onMatchingCardFound": {
+        "type": "addCardToEncounter",
+        "destination": "openEnemyFormationSlot"
+      },
+      "onNoMatchingCardFound": {
+        "type": "shuffleAllRevealedCardsBackIntoDungeonDeck"
+      },
+      "remainingRevealedCards": {
+        "type": "shuffleBackIntoDungeonDeck"
+      }
+    },
+    "afterResolution": {
+      "type": "moveCard",
+      "destination": "dungeonDiscardPile"
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/dungeon_cards/dungeonDecks.txt",
+    "sourceSection": "Goblin Warrens / Scrap Fortress > Goblin Alarm",
+    "verifiedAgainstRulebook": false,
+    "notes": "Rules text migrated from the current Goblin Warrens source. Count 2 is a provisional first-playtest density. The source text does not explicitly state the event card's own post-resolution destination, so dungeonDiscardPile is modeled as the current one-shot dungeon-event default and should be confirmed during deck-rule review."
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "id": "ability.warrior.recruit-stand-firm",
+  "active": true,
+  "count": 4,
+  "cardType": "ability",
+  "name": "Stand Firm",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "ability-standard",
+  "tags": [
+    "ability",
+    "warrior",
+    "recruit",
+    "passive",
+    "martial",
+    "defense",
+    "formation",
+    "movement-resistance"
+  ],
+  "rulesText": "Warrior Ability — Recruit\nPassive\nThis character cannot be moved to another row by an enemy effect unless that effect specifically says it ignores Stand Firm.",
+  "data": {
+    "abilityType": "passive",
+    "discipline": "Warrior",
+    "rank": {
+      "id": "recruit",
+      "order": 1
+    },
+    "equipRules": {
+      "requiredSkillTags": [
+        "warrior"
+      ]
+    },
+    "passive": {
+      "effect": {
+        "type": "preventForcedRowMovement",
+        "target": "abilityOwner",
+        "exception": "effectExplicitlyIgnoresStandFirm"
+      }
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/skill_and_ability_cards/Warrior.md",
+    "sourceSection": "Recruit Warrior Ability Cards > Stand Firm",
+    "verifiedAgainstRulebook": false,
+    "notes": "Stand Firm is a general Warrior passive intended for use once enemies, traps, or dungeon events can force entities between rows. It occupies an ability slot but does not consume an activation. Forced row-movement prevention requires engine support."
+  }
+}

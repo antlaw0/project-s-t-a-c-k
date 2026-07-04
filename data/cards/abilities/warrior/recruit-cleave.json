@@ -1,0 +1,81 @@
+{
+  "id": "ability.warrior.recruit-cleave",
+  "active": true,
+  "count": 4,
+  "cardType": "ability",
+  "name": "Cleave",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "ability-standard",
+  "tags": [
+    "ability",
+    "warrior",
+    "recruit",
+    "action",
+    "martial",
+    "melee",
+    "physical",
+    "weapon-technique",
+    "sword",
+    "axe",
+    "two-handed",
+    "multi-target"
+  ],
+  "rulesText": "Warrior Ability — Recruit\nAction\nRequires a melee weapon with the Sword or Axe tag that requires 2 Hands.\nSpend this character's shared activation: Make one standard melee weapon attack.\nIf that attack defeats its target, choose a different enemy in the defeated enemy's row. Deal 1 Physical Damage to the chosen enemy.",
+  "data": {
+    "abilityType": "action",
+    "discipline": "Warrior",
+    "rank": {
+      "id": "recruit",
+      "order": 1
+    },
+    "equipRules": {
+      "requiredSkillTags": [
+        "warrior"
+      ]
+    },
+    "activation": {
+      "activationCost": "sharedActivation",
+      "moveTo": "none",
+      "useConditions": [
+        {
+          "type": "ownerHasEligibleEquippedWeapon",
+          "requiredWeaponRange": "melee",
+          "requiredWeaponSubtypeTagsAny": [
+            "sword",
+            "axe"
+          ],
+          "requiredHands": 2
+        }
+      ],
+      "effect": {
+        "type": "makeStandardWeaponAttack",
+        "requiredWeaponRange": "melee",
+        "usesStandardAttackRules": true,
+        "conditionalFollowUp": {
+          "condition": {
+            "type": "attackDefeatsTarget"
+          },
+          "effect": {
+            "type": "dealDamage",
+            "amount": 1,
+            "damageType": "physical",
+            "targetSelection": {
+              "type": "chooseDifferentEnemyInDefeatedTargetRow",
+              "mustBeLegalTarget": true
+            },
+            "doesNotCountAsWeaponAttack": true,
+            "doesNotGenerateHeat": true
+          }
+        }
+      }
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/skill_and_ability_cards/Warrior.md",
+    "sourceSection": "Recruit Warrior Ability Cards > Cleave",
+    "verifiedAgainstRulebook": false,
+    "notes": "Cleave is a general Warrior weapon-technique ability. It may be equipped beneath any Skill Card with the warrior tag. The initial attack is a standard melee weapon attack. The 1 Physical Damage follow-up is not a weapon attack, cannot receive weapon-attack bonuses, does not generate Heat, and does not count as damage dealt during the owner's shared activation."
+  }
+}

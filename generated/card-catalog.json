@@ -78,6 +78,129 @@
         "notes": "Blood Purge is a reaction that prevents the triggering Poison card, removes any Poison cards already affecting its owner, and occupies the owner’s Status Row as temporary poison immunity until combat ends."
       }
     },
+    "ability.barbarian.recruit-bloodied-defiance": {
+      "id": "ability.barbarian.recruit-bloodied-defiance",
+      "active": true,
+      "count": 4,
+      "cardType": "ability",
+      "name": "Bloodied Defiance",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "ability-standard",
+      "tags": [
+        "ability",
+        "barbarian",
+        "recruit",
+        "passive",
+        "martial",
+        "rage",
+        "defense",
+        "bloodied"
+      ],
+      "rulesText": "Barbarian Ability — Recruit\nPassive\nWhile this character is Raging and has current HP equal to or lower than half its maximum HP, this character gains +1 Defense.",
+      "data": {
+        "abilityType": "passive",
+        "discipline": "Barbarian",
+        "rank": {
+          "id": "recruit",
+          "order": 1
+        },
+        "equipRules": {
+          "requiredSkillTags": [
+            "barbarian"
+          ]
+        },
+        "passive": {
+          "conditions": [
+            {
+              "type": "ownerHasStatus",
+              "statusId": "rage"
+            },
+            {
+              "type": "ownerCurrentHpAtOrBelowPercentOfMaximum",
+              "percent": 50
+            }
+          ],
+          "modifiers": [
+            {
+              "type": "modifyDefense",
+              "amount": 1
+            }
+          ]
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/skill_and_ability_cards/Barbarian.md",
+        "sourceSection": "Recruit Barbarian Ability Cards > Bloodied Defiance",
+        "verifiedAgainstRulebook": false,
+        "notes": "Bloodied Defiance is a Barbarian-only passive. While its owner is Raging and at or below half maximum HP, it grants +1 Defense. This intentionally offsets Rage's -1 Defense penalty, returning the owner to their normal Defense value rather than increasing Defense above baseline."
+      }
+    },
+    "ability.barbarian.recruit-furious-retaliation": {
+      "id": "ability.barbarian.recruit-furious-retaliation",
+      "active": true,
+      "count": 4,
+      "cardType": "ability",
+      "name": "Furious Retaliation",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "ability-standard",
+      "tags": [
+        "ability",
+        "barbarian",
+        "recruit",
+        "reaction",
+        "martial",
+        "rage",
+        "physical",
+        "retaliation"
+      ],
+      "rulesText": "Barbarian Ability — Recruit\nReaction\nTrigger: While this character is Raging, an enemy melee attack deals at least 1 HP damage to this character.\nDeal 1 Physical Damage to that enemy. Move Furious Retaliation to this character's Status Row.\nReturn Furious Retaliation to its equipped Skill Card at the end of the round.\nThis damage is not a weapon attack and does not count as damage dealt during this character's shared activation.",
+      "data": {
+        "abilityType": "reaction",
+        "discipline": "Barbarian",
+        "rank": {
+          "id": "recruit",
+          "order": 1
+        },
+        "equipRules": {
+          "requiredSkillTags": [
+            "barbarian"
+          ]
+        },
+        "reaction": {
+          "activationCost": "none",
+          "trigger": {
+            "type": "enemyMeleeAttackDealsHpDamageToAbilityOwner",
+            "minimumHpDamage": 1,
+            "ownerMustHaveStatus": "rage"
+          },
+          "timing": "afterDamageResolved",
+          "effect": {
+            "type": "dealDamage",
+            "amount": 1,
+            "damageType": "physical",
+            "target": "sourceAttackActor",
+            "doesNotCountAsWeaponAttack": true,
+            "doesNotGenerateHeat": true,
+            "doesNotSatisfyRageMaintenance": true
+          },
+          "moveTo": "statusRow",
+          "returnRule": {
+            "timing": "endOfRound",
+            "moveTo": "equippedSkillCard"
+          }
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/skill_and_ability_cards/Barbarian.md",
+        "sourceSection": "Recruit Barbarian Ability Cards > Furious Retaliation",
+        "verifiedAgainstRulebook": false,
+        "notes": "Furious Retaliation is a Barbarian-only reaction. It can trigger only while the owner is Raging and actually takes at least 1 HP damage from an enemy melee attack. Its retaliation damage is not a weapon attack, does not generate Heat, and does not count toward Rage maintenance."
+      }
+    },
     "ability.barbarian.recruit-rage": {
       "id": "ability.barbarian.recruit-rage",
       "active": true,
@@ -227,6 +350,681 @@
         "sourceSection": "Recruit Barbarian Ability Cards > Reckless Strike",
         "verifiedAgainstRulebook": true,
         "notes": "Reckless Strike must use a Melee-tagged equipped weapon. The +1 Heat in this card is additional to Heat normally generated when the attack deals HP damage."
+      }
+    },
+    "ability.barbarian.recruit-unstoppable": {
+      "id": "ability.barbarian.recruit-unstoppable",
+      "active": true,
+      "count": 4,
+      "cardType": "ability",
+      "name": "Unstoppable",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "ability-standard",
+      "tags": [
+        "ability",
+        "barbarian",
+        "recruit",
+        "reaction",
+        "martial",
+        "status-prevention",
+        "stunned",
+        "slowed",
+        "restrained"
+      ],
+      "rulesText": "Barbarian Ability — Recruit\nReaction\nTrigger: An enemy effect would apply Stunned, Slowed, or Restrained to this character.\nPrevent that status from being applied. Move Unstoppable to this character's Status Row.\nReturn Unstoppable to its equipped Skill Card at the end of combat.",
+      "data": {
+        "abilityType": "reaction",
+        "discipline": "Barbarian",
+        "rank": {
+          "id": "recruit",
+          "order": 1
+        },
+        "equipRules": {
+          "requiredSkillTags": [
+            "barbarian"
+          ]
+        },
+        "reaction": {
+          "activationCost": "none",
+          "trigger": {
+            "type": "enemyEffectWouldApplyStatusToAbilityOwner",
+            "statusIds": [
+              "stunned",
+              "slowed",
+              "restrained"
+            ]
+          },
+          "timing": "beforeStatusApplied",
+          "effect": {
+            "type": "preventTriggeredStatusApplication"
+          },
+          "moveTo": "statusRow",
+          "returnRule": {
+            "timing": "endOfCombat",
+            "moveTo": "equippedSkillCard"
+          }
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/skill_and_ability_cards/Barbarian.md",
+        "sourceSection": "Recruit Barbarian Ability Cards > Unstoppable",
+        "verifiedAgainstRulebook": false,
+        "notes": "Unstoppable is a Barbarian-only reaction that prevents one incoming application of Stunned, Slowed, or Restrained. It does not remove a status already in play. After resolving, it remains in the owner's Status Row until combat ends."
+      }
+    },
+    "ability.warrior.recruit-blind-fighting": {
+      "id": "ability.warrior.recruit-blind-fighting",
+      "active": true,
+      "count": 4,
+      "cardType": "ability",
+      "name": "Blind Fighting",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "ability-standard",
+      "tags": [
+        "ability",
+        "warrior",
+        "recruit",
+        "action",
+        "martial",
+        "melee",
+        "blinded"
+      ],
+      "rulesText": "Warrior Ability — Recruit\nAction\nUse only while this character is Blinded.\nSpend this character's shared activation: Make one standard melee weapon attack. Ignore the Blinded status only for this attack.",
+      "data": {
+        "abilityType": "action",
+        "discipline": "Warrior",
+        "rank": {
+          "id": "recruit",
+          "order": 1
+        },
+        "equipRules": {
+          "requiredSkillTags": [
+            "warrior"
+          ]
+        },
+        "activation": {
+          "activationCost": "sharedActivation",
+          "moveTo": "none",
+          "useConditions": [
+            {
+              "type": "ownerHasStatus",
+              "statusId": "blinded"
+            }
+          ],
+          "effect": {
+            "type": "makeStandardWeaponAttack",
+            "requiredWeaponRange": "melee",
+            "usesStandardAttackRules": true,
+            "ignoreStatusRestrictions": [
+              "blinded"
+            ]
+          }
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/skill_and_ability_cards/Warrior.md",
+        "sourceSection": "Recruit Warrior Ability Cards > Blind Fighting",
+        "verifiedAgainstRulebook": true,
+        "notes": "Blind Fighting is a general Warrior ability, not a Barbarian-only ability. It may be equipped beneath any Skill Card with the warrior tag. It remains equipped beneath that Skill Card after use and does not enter the Status Row."
+      }
+    },
+    "ability.warrior.recruit-brace": {
+      "id": "ability.warrior.recruit-brace",
+      "active": true,
+      "count": 4,
+      "cardType": "ability",
+      "name": "Brace",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "ability-standard",
+      "tags": [
+        "ability",
+        "warrior",
+        "recruit",
+        "action",
+        "martial",
+        "defense",
+        "guard",
+        "status-row"
+      ],
+      "rulesText": "Warrior Ability — Recruit\nAction\nSpend this character's shared activation: Move Brace to this character's Status Row. While Brace is in this character's Status Row, this character gains +1 Defense.\nReturn Brace to its equipped Skill Card at the end of the next enemy card turn.",
+      "data": {
+        "abilityType": "action",
+        "discipline": "Warrior",
+        "rank": {
+          "id": "recruit",
+          "order": 1
+        },
+        "equipRules": {
+          "requiredSkillTags": [
+            "warrior"
+          ]
+        },
+        "activation": {
+          "activationCost": "sharedActivation",
+          "moveTo": "statusRow",
+          "effect": {
+            "type": "applySelfModifierWhileInStatusRow",
+            "modifier": {
+              "type": "modifyDefense",
+              "amount": 1
+            }
+          },
+          "returnRule": {
+            "timing": "endOfNextEnemyCardTurn",
+            "moveTo": "equippedSkillCard"
+          }
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/skill_and_ability_cards/Warrior.md",
+        "sourceSection": "Recruit Warrior Ability Cards > Brace",
+        "verifiedAgainstRulebook": false,
+        "notes": "Brace is a general Warrior action. It trades the owner's shared activation for temporary Defense. While in the owner's Status Row, the card is unavailable for reuse. The applySelfModifierWhileInStatusRow effect and endOfNextEnemyCardTurn return timing require engine support."
+      }
+    },
+    "ability.warrior.recruit-challenge": {
+      "id": "ability.warrior.recruit-challenge",
+      "active": true,
+      "count": 4,
+      "cardType": "ability",
+      "name": "Challenge",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "ability-standard",
+      "tags": [
+        "ability",
+        "warrior",
+        "recruit",
+        "action",
+        "martial",
+        "heat",
+        "threat",
+        "protection"
+      ],
+      "rulesText": "Warrior Ability — Recruit\nAction\nSpend this character's shared activation: This character gains 2 Heat.",
+      "data": {
+        "abilityType": "action",
+        "discipline": "Warrior",
+        "rank": {
+          "id": "recruit",
+          "order": 1
+        },
+        "equipRules": {
+          "requiredSkillTags": [
+            "warrior"
+          ]
+        },
+        "activation": {
+          "activationCost": "sharedActivation",
+          "moveTo": "none",
+          "effect": {
+            "type": "modifyHeat",
+            "target": "abilityOwner",
+            "amount": 2
+          }
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/skill_and_ability_cards/Warrior.md",
+        "sourceSection": "Recruit Warrior Ability Cards > Challenge",
+        "verifiedAgainstRulebook": false,
+        "notes": "Challenge is a general Warrior action for intentionally drawing enemy targeting through the existing Heat system. It grants no damage or Defense bonus. The modifyHeat effect requires engine support if not already present."
+      }
+    },
+    "ability.warrior.recruit-cleave": {
+      "id": "ability.warrior.recruit-cleave",
+      "active": true,
+      "count": 4,
+      "cardType": "ability",
+      "name": "Cleave",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "ability-standard",
+      "tags": [
+        "ability",
+        "warrior",
+        "recruit",
+        "action",
+        "martial",
+        "melee",
+        "physical",
+        "weapon-technique",
+        "sword",
+        "axe",
+        "two-handed",
+        "multi-target"
+      ],
+      "rulesText": "Warrior Ability — Recruit\nAction\nRequires a melee weapon with the Sword or Axe tag that requires 2 Hands.\nSpend this character's shared activation: Make one standard melee weapon attack.\nIf that attack defeats its target, choose a different enemy in the defeated enemy's row. Deal 1 Physical Damage to the chosen enemy.",
+      "data": {
+        "abilityType": "action",
+        "discipline": "Warrior",
+        "rank": {
+          "id": "recruit",
+          "order": 1
+        },
+        "equipRules": {
+          "requiredSkillTags": [
+            "warrior"
+          ]
+        },
+        "activation": {
+          "activationCost": "sharedActivation",
+          "moveTo": "none",
+          "useConditions": [
+            {
+              "type": "ownerHasEligibleEquippedWeapon",
+              "requiredWeaponRange": "melee",
+              "requiredWeaponSubtypeTagsAny": [
+                "sword",
+                "axe"
+              ],
+              "requiredHands": 2
+            }
+          ],
+          "effect": {
+            "type": "makeStandardWeaponAttack",
+            "requiredWeaponRange": "melee",
+            "usesStandardAttackRules": true,
+            "conditionalFollowUp": {
+              "condition": {
+                "type": "attackDefeatsTarget"
+              },
+              "effect": {
+                "type": "dealDamage",
+                "amount": 1,
+                "damageType": "physical",
+                "targetSelection": {
+                  "type": "chooseDifferentEnemyInDefeatedTargetRow",
+                  "mustBeLegalTarget": true
+                },
+                "doesNotCountAsWeaponAttack": true,
+                "doesNotGenerateHeat": true
+              }
+            }
+          }
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/skill_and_ability_cards/Warrior.md",
+        "sourceSection": "Recruit Warrior Ability Cards > Cleave",
+        "verifiedAgainstRulebook": false,
+        "notes": "Cleave is a general Warrior weapon-technique ability. It may be equipped beneath any Skill Card with the warrior tag. The initial attack is a standard melee weapon attack. The 1 Physical Damage follow-up is not a weapon attack, cannot receive weapon-attack bonuses, does not generate Heat, and does not count as damage dealt during the owner's shared activation."
+      }
+    },
+    "ability.warrior.recruit-covering-guard": {
+      "id": "ability.warrior.recruit-covering-guard",
+      "active": true,
+      "count": 4,
+      "cardType": "ability",
+      "name": "Covering Guard",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "ability-standard",
+      "tags": [
+        "ability",
+        "warrior",
+        "recruit",
+        "action",
+        "martial",
+        "defense",
+        "protection",
+        "ally",
+        "status-row"
+      ],
+      "rulesText": "Warrior Ability — Recruit\nAction\nChoose another friendly entity in this character's row. Move Covering Guard to that entity's Status Row. While Covering Guard is there, that entity gains +1 Defense.\nReturn Covering Guard to its owner's equipped Skill Card at the end of the next enemy card turn.",
+      "data": {
+        "abilityType": "action",
+        "discipline": "Warrior",
+        "rank": {
+          "id": "recruit",
+          "order": 1
+        },
+        "equipRules": {
+          "requiredSkillTags": [
+            "warrior"
+          ]
+        },
+        "activation": {
+          "activationCost": "sharedActivation",
+          "moveTo": "targetStatusRow",
+          "targeting": {
+            "type": "chooseFriendlyEntity",
+            "targetMustBe": "anotherFriendlyEntity",
+            "targetMustBeInSameRowAsAbilityOwner": true
+          },
+          "effect": {
+            "type": "applyTargetModifierWhileInStatusRow",
+            "modifier": {
+              "type": "modifyDefense",
+              "amount": 1
+            }
+          },
+          "returnRule": {
+            "timing": "endOfNextEnemyCardTurn",
+            "moveTo": "equippedSkillCard",
+            "returnTo": "abilityOwner"
+          }
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/skill_and_ability_cards/Warrior.md",
+        "sourceSection": "Recruit Warrior Ability Cards > Covering Guard",
+        "verifiedAgainstRulebook": false,
+        "notes": "Covering Guard is proactive ally protection. The card is placed in the protected entity's Status Row so the bonus is visible where it applies, but it returns to the Warrior owner's equipped Skill Card. Target-status-row placement and owner-return behavior require engine support."
+      }
+    },
+    "ability.warrior.recruit-interpose": {
+      "id": "ability.warrior.recruit-interpose",
+      "active": true,
+      "count": 4,
+      "cardType": "ability",
+      "name": "Interpose",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "ability-standard",
+      "tags": [
+        "ability",
+        "warrior",
+        "recruit",
+        "reaction",
+        "martial",
+        "defense",
+        "protection",
+        "target-redirection"
+      ],
+      "rulesText": "Warrior Ability — Recruit\nReaction\nTrigger: An enemy declares a single-target attack against another friendly entity in this character's row.\nChange that attack's target to this character. Move Interpose to this character's Status Row.\nReturn Interpose to its equipped Skill Card at the end of the round.",
+      "data": {
+        "abilityType": "reaction",
+        "discipline": "Warrior",
+        "rank": {
+          "id": "recruit",
+          "order": 1
+        },
+        "equipRules": {
+          "requiredSkillTags": [
+            "warrior"
+          ]
+        },
+        "reaction": {
+          "activationCost": "none",
+          "trigger": {
+            "type": "enemyDeclaresSingleTargetAttack",
+            "targetMustBe": "anotherFriendlyEntity",
+            "targetMustBeInSameRowAsAbilityOwner": true,
+            "abilityOwnerMustBeLegalTarget": true
+          },
+          "timing": "afterTargetDeclaredBeforeAttackResolves",
+          "effect": {
+            "type": "redirectAttackTarget",
+            "newTarget": "abilityOwner",
+            "doNotReevaluateEnemyTargetSelection": true
+          },
+          "moveTo": "statusRow",
+          "returnRule": {
+            "timing": "endOfRound",
+            "moveTo": "equippedSkillCard"
+          }
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/skill_and_ability_cards/Warrior.md",
+        "sourceSection": "Recruit Warrior Ability Cards > Interpose",
+        "verifiedAgainstRulebook": false,
+        "notes": "Interpose is a general Warrior reaction that may be equipped beneath any Skill Card with the warrior tag. It does not spend the owner's shared activation. After resolving, it moves to the owner's Status Row and cannot be used again until it returns to its equipped Skill Card at the end of the round. The redirected attack continues normally against the ability owner without causing the enemy to choose a new target."
+      }
+    },
+    "ability.warrior.recruit-parry": {
+      "id": "ability.warrior.recruit-parry",
+      "active": true,
+      "count": 4,
+      "cardType": "ability",
+      "name": "Parry",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "ability-standard",
+      "tags": [
+        "ability",
+        "warrior",
+        "recruit",
+        "reaction",
+        "martial",
+        "defense",
+        "physical",
+        "melee",
+        "damage-reduction"
+      ],
+      "rulesText": "Warrior Ability — Recruit\nReaction\nTrigger: This character would take Physical damage from a melee attack.\nReduce that damage by 1. Move Parry to this character's Status Row.\nReturn Parry to its equipped Skill Card at the end of the round.",
+      "data": {
+        "abilityType": "reaction",
+        "discipline": "Warrior",
+        "rank": {
+          "id": "recruit",
+          "order": 1
+        },
+        "equipRules": {
+          "requiredSkillTags": [
+            "warrior"
+          ]
+        },
+        "reaction": {
+          "activationCost": "none",
+          "trigger": {
+            "type": "abilityOwnerWouldTakeAttackDamage",
+            "attackMustHaveRangeTag": "melee",
+            "damageType": "physical"
+          },
+          "timing": "beforeDamageApplied",
+          "effect": {
+            "type": "reduceIncomingDamage",
+            "amount": 1,
+            "damageType": "physical",
+            "minimumDamageAfterReduction": 0
+          },
+          "moveTo": "statusRow",
+          "returnRule": {
+            "timing": "endOfRound",
+            "moveTo": "equippedSkillCard"
+          }
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/skill_and_ability_cards/Warrior.md",
+        "sourceSection": "Recruit Warrior Ability Cards > Parry",
+        "verifiedAgainstRulebook": false,
+        "notes": "Parry is a personal defensive reaction. It applies only to Physical damage from a melee attack, does not spend the owner's shared activation, and is unavailable again after resolving until the end of the round. The reactive damage-reduction trigger and effect require engine support."
+      }
+    },
+    "ability.warrior.recruit-shake-it-off": {
+      "id": "ability.warrior.recruit-shake-it-off",
+      "active": true,
+      "count": 4,
+      "cardType": "ability",
+      "name": "Shake It Off",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "ability-standard",
+      "tags": [
+        "ability",
+        "warrior",
+        "recruit",
+        "action",
+        "martial",
+        "resilience",
+        "status-removal",
+        "self"
+      ],
+      "rulesText": "Warrior Ability — Recruit\nAction\nSpend this character's shared activation: Discard one negative status card from this character with the Sensory, Physical, or Movement tag.",
+      "data": {
+        "abilityType": "action",
+        "discipline": "Warrior",
+        "rank": {
+          "id": "recruit",
+          "order": 1
+        },
+        "equipRules": {
+          "requiredSkillTags": [
+            "warrior"
+          ]
+        },
+        "activation": {
+          "activationCost": "sharedActivation",
+          "moveTo": "none",
+          "effect": {
+            "type": "discardNegativeStatus",
+            "target": "abilityOwner",
+            "requiredAnyStatusTags": [
+              "sensory",
+              "physical",
+              "movement"
+            ],
+            "maximumCards": 1
+          }
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/skill_and_ability_cards/Warrior.md",
+        "sourceSection": "Recruit Warrior Ability Cards > Shake It Off",
+        "verifiedAgainstRulebook": false,
+        "notes": "Shake It Off deliberately removes only a limited set of negative status categories. It does not remove curse, mental, magical, poison, or disease statuses unless they also carry one of the allowed tags. This requires formal status tags and a discardNegativeStatus effect."
+      }
+    },
+    "ability.warrior.recruit-shield-bash": {
+      "id": "ability.warrior.recruit-shield-bash",
+      "active": true,
+      "count": 4,
+      "cardType": "ability",
+      "name": "Shield Bash",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "ability-standard",
+      "tags": [
+        "ability",
+        "warrior",
+        "recruit",
+        "action",
+        "martial",
+        "shield",
+        "melee",
+        "physical",
+        "reaction-control"
+      ],
+      "rulesText": "Warrior Ability — Recruit\nAction\nRequires an equipped shield.\nSpend this character's shared activation: Deal 1 Physical damage to an enemy in this character's melee range. If this deals at least 1 HP damage, that enemy cannot use Reactions until the end of the round.",
+      "data": {
+        "abilityType": "action",
+        "discipline": "Warrior",
+        "rank": {
+          "id": "recruit",
+          "order": 1
+        },
+        "equipRules": {
+          "requiredSkillTags": [
+            "warrior"
+          ]
+        },
+        "activation": {
+          "activationCost": "sharedActivation",
+          "moveTo": "none",
+          "useConditions": [
+            {
+              "type": "ownerHasEquippedItemTag",
+              "itemTag": "shield"
+            }
+          ],
+          "targeting": {
+            "type": "chooseEnemy",
+            "targetMustBeInAbilityOwnerMeleeRange": true
+          },
+          "effect": {
+            "type": "dealDamageThenApplyStatusIfHpDamageDealt",
+            "damage": {
+              "amount": 1,
+              "damageType": "physical"
+            },
+            "condition": {
+              "event": "hpDamageDealtToTarget",
+              "minimumHpDamage": 1
+            },
+            "status": {
+              "statusId": "reaction-disabled",
+              "statusTags": [
+                "negative",
+                "reaction-control"
+              ],
+              "rulesText": "This entity cannot use Reactions.",
+              "returnRule": {
+                "timing": "endOfRound",
+                "moveTo": "statusDiscard"
+              }
+            }
+          }
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/skill_and_ability_cards/Warrior.md",
+        "sourceSection": "Recruit Warrior Ability Cards > Shield Bash",
+        "verifiedAgainstRulebook": false,
+        "notes": "Shield Bash is a shield-only tactical control action, not a standard weapon attack. It is intentionally weaker than most normal weapon attacks in raw damage. It needs a Reaction Disabled negative status card or equivalent status implementation before it can function."
+      }
+    },
+    "ability.warrior.recruit-stand-firm": {
+      "id": "ability.warrior.recruit-stand-firm",
+      "active": true,
+      "count": 4,
+      "cardType": "ability",
+      "name": "Stand Firm",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "ability-standard",
+      "tags": [
+        "ability",
+        "warrior",
+        "recruit",
+        "passive",
+        "martial",
+        "defense",
+        "formation",
+        "movement-resistance"
+      ],
+      "rulesText": "Warrior Ability — Recruit\nPassive\nThis character cannot be moved to another row by an enemy effect unless that effect specifically says it ignores Stand Firm.",
+      "data": {
+        "abilityType": "passive",
+        "discipline": "Warrior",
+        "rank": {
+          "id": "recruit",
+          "order": 1
+        },
+        "equipRules": {
+          "requiredSkillTags": [
+            "warrior"
+          ]
+        },
+        "passive": {
+          "effect": {
+            "type": "preventForcedRowMovement",
+            "target": "abilityOwner",
+            "exception": "effectExplicitlyIgnoresStandFirm"
+          }
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/skill_and_ability_cards/Warrior.md",
+        "sourceSection": "Recruit Warrior Ability Cards > Stand Firm",
+        "verifiedAgainstRulebook": false,
+        "notes": "Stand Firm is a general Warrior passive intended for use once enemies, traps, or dungeon events can force entities between rows. It occupies an ability slot but does not consume an activation. Forced row-movement prevention requires engine support."
       }
     },
     "character.cleric": {
@@ -842,6 +1640,137 @@
         "sourceSection": "Goblin Warrens / Scrap Fortress > Goblin Alarm",
         "verifiedAgainstRulebook": false,
         "notes": "Rules text migrated from the current Goblin Warrens source. Count 2 is a provisional first-playtest density. The source text does not explicitly state the event card's own post-resolution destination, so dungeonDiscardPile is modeled as the current one-shot dungeon-event default and should be confirmed during deck-rule review."
+      }
+    },
+    "dungeon.goblin-warrens.goblin-stolen-goods-stash": {
+      "id": "dungeon.goblin-warrens.goblin-stolen-goods-stash",
+      "active": true,
+      "count": 2,
+      "cardType": "dungeonCard",
+      "name": "Stolen Goods Stash",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "dungeon-event-standard",
+      "tags": [
+        "dungeon-card",
+        "event",
+        "goblin-warrens",
+        "goblin"
+      ],
+      "rulesText": "Event\n\n Draw one card from the loot deck and add it to the dungeon loot stash.",
+      "data": {
+        "dungeonCardType": "event",
+        "dungeonThemes": [
+          "goblin-warrens",
+          "scrap-fortress"
+        ],
+        "resolutionTiming": "immediatelyWhenDrawn",
+        "effects": [
+          {
+            "type": "gainHeat",
+            "target": "activeCharacter",
+            "amount": 2
+          }
+        ],
+        "revealAndDeploy": {
+          "sourceZone": "dungeonDeck",
+          "revealFrom": "bottom",
+          "revealCount": 2,
+          "selectionRule": {
+            "type": "firstMatchingRevealedCard",
+            "criteria": {
+              "cardType": "enemy",
+              "requiredTags": [
+                "goblin"
+              ]
+            }
+          },
+          "onMatchingCardFound": {
+            "type": "addCardToEncounter",
+            "destination": "openEnemyFormationSlot"
+          },
+          "onNoMatchingCardFound": {
+            "type": "shuffleAllRevealedCardsBackIntoDungeonDeck"
+          },
+          "remainingRevealedCards": {
+            "type": "shuffleBackIntoDungeonDeck"
+          }
+        },
+        "afterResolution": {
+          "type": "moveCard",
+          "destination": "dungeonDiscardPile"
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/dungeon_cards/dungeonDecks.txt",
+        "sourceSection": "Goblin Warrens / Scrap Fortress > Goblin Alarm",
+        "verifiedAgainstRulebook": false,
+        "notes": "Rules text migrated from the current Goblin Warrens source. Count 2 is a provisional first-playtest density. The source text does not explicitly state the event card's own post-resolution destination, so dungeonDiscardPile is modeled as the current one-shot dungeon-event default and should be confirmed during deck-rule review."
+      }
+    },
+    "dungeon.goblin-warrens.mess": {
+      "id": "dungeon.goblin-warrens.mess",
+      "active": true,
+      "count": 2,
+      "cardType": "dungeonCard",
+      "name": "Goblin Mess Hall",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "dungeon-trap-standard",
+      "tags": [
+        "dungeon-card",
+        "event"
+      ],
+      "rulesText": "Area\n\n All player characters gain 1 HP.",
+      "data": {
+        "dungeonCardType": "event",
+        "dungeonThemes": [
+          "goblin-warrens",
+          "goblin-mess-hall"
+        ],
+        "resolutionTiming": "immediatelyWhenDrawn",
+        "responseOption": {
+          "optional": true,
+          "name": "Disarm Tripwire",
+          "eligibleEntity": {
+            "entityTypes": [
+              "playerCharacter"
+            ],
+            "mustBePlayerControlled": true,
+            "mustBeInSameRowAs": "activeCharacter",
+            "requiresEquippedSkillTag": "rogue"
+          },
+          "onUse": {
+            "type": "moveCard",
+            "destination": "dungeonDiscardPile"
+          }
+        },
+        "otherwise": {
+          "target": "activeCharacter",
+          "effects": [
+            {
+              "type": "dealDamage",
+              "amount": 1,
+              "damageType": "physical"
+            },
+            {
+              "type": "gainHeat",
+              "amount": 2
+            }
+          ]
+        },
+        "afterResolution": {
+          "type": "moveCard",
+          "destination": "dungeonDiscardPile"
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/dungeon_cards/dungeonDecks.txt",
+        "sourceSection": "Goblin Warrens / Scrap Fortress > Tripwire",
+        "verifiedAgainstRulebook": false,
+        "notes": "Rules text migrated from the current Goblin Warrens dungeon-card source. Count 2 is a provisional first-playtest deck-density decision and can be tuned after initial dungeon runs."
       }
     },
     "dungeon.goblin-warrens.tripwire": {
@@ -4263,14 +5192,29 @@
   },
   "activeCardIds": [
     "ability.barbarian.recruit-blood-purge",
+    "ability.barbarian.recruit-bloodied-defiance",
+    "ability.barbarian.recruit-furious-retaliation",
     "ability.barbarian.recruit-rage",
     "ability.barbarian.recruit-reckless-strike",
+    "ability.barbarian.recruit-unstoppable",
+    "ability.warrior.recruit-blind-fighting",
+    "ability.warrior.recruit-brace",
+    "ability.warrior.recruit-challenge",
+    "ability.warrior.recruit-cleave",
+    "ability.warrior.recruit-covering-guard",
+    "ability.warrior.recruit-interpose",
+    "ability.warrior.recruit-parry",
+    "ability.warrior.recruit-shake-it-off",
+    "ability.warrior.recruit-shield-bash",
+    "ability.warrior.recruit-stand-firm",
     "character.cleric",
     "character.druid",
     "character.mage",
     "character.rogue",
     "character.warrior",
     "dungeon.goblin-warrens.goblin-alarm",
+    "dungeon.goblin-warrens.goblin-stolen-goods-stash",
+    "dungeon.goblin-warrens.mess",
     "dungeon.goblin-warrens.tripwire",
     "enemy.goblin-archer",
     "enemy.goblin-bombardier",
