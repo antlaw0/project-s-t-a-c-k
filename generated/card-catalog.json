@@ -4248,7 +4248,7 @@
       "count": 1,
       "cardType": "skill",
       "name": "Novice Arcana",
-      "revision": 1,
+      "revision": 2,
       "moduleId": "core-alpha",
       "artId": "art.default-card",
       "printTemplate": "skill-standard",
@@ -4258,9 +4258,10 @@
         "arcana",
         "novice",
         "arcane",
-        "mage-native"
+        "mage-native",
+        "subdomain-skill"
       ],
-      "rulesText": "Arcana Skill — Novice\n\nSpell Slots: 1\nMay Equip: Novice Arcana spells.\n\nPassive — Arcane Foundation\nNo passive effect is finalized yet. This card is active for early Mage tabletop testing and should receive a finalized printed passive before production.",
+      "rulesText": "Arcana Skill — Novice\n\nAttachment Bays\n• Subdomain Bay: 1 Novice Arcana spell or ability.\n• Class Bay: 1 Novice Mage spell or ability.\n\nAn attached card must require Novice rank or lower.\n\nPassive — Arcane Foundation\nNo passive effect is finalized yet. This card is active for early Mage tabletop testing and should receive a finalized printed passive before production.",
       "data": {
         "skillType": "discipline",
         "discipline": "arcana",
@@ -4273,11 +4274,11 @@
         ],
         "attachedCardRules": {
           "allowedCardTypes": [
-            "spell"
+            "spell",
+            "ability"
           ],
-          "requiredDiscipline": "arcana",
           "maximumRank": "novice",
-          "slotCount": 1
+          "slotCount": 99
         },
         "passive": {
           "id": "arcane-foundation",
@@ -4292,7 +4293,7 @@
         "sourceFile": "Cards/character_classes.md",
         "sourceSection": "Mage Character Card > Starting Skills and Attached Spells",
         "verifiedAgainstRulebook": false,
-        "notes": "The starter roster names Novice Arcana and Arcane Ward but the current repository does not include a separate Arcana skill-card source file. This card is intentionally playable for setup but has a clearly marked pending passive; replace Arcane Foundation when the Arcana discipline set is finalized."
+        "notes": "Temporary app-testing configuration: slotCount is deliberately high so multiple Mage and Arcana spell or ability cards can be attached without a UI limit. The printed tabletop capacity remains one Arcana Subdomain Bay and one Mage Class Bay on this Novice skill card. Replace the temporary attachment limit with typed-bay enforcement when that UI and validation system is implemented."
       }
     },
     "skill.barbarian.recruit-feral-instinct": {
@@ -4301,7 +4302,7 @@
       "count": 1,
       "cardType": "skill",
       "name": "Feral Instinct",
-      "revision": 1,
+      "revision": 2,
       "moduleId": "core-alpha",
       "artId": "art.default-card",
       "printTemplate": "skill-standard",
@@ -4313,7 +4314,7 @@
         "martial",
         "warrior-native"
       ],
-      "rulesText": "Barbarian Skill — Recruit\n\nAbility Slots: 2\nMay Equip: Recruit Barbarian abilities.\n\nPassive — Rising Fury\nThe first time this character deals 1 or more HP damage to an enemy during each of their shared activations, gain 1 additional Heat.",
+      "rulesText": "Barbarian Skill — Recruit\n\nAttachment Bays:\nTop — Subdomain Ability / Spell: 1\nBottom — Class Ability / Spell: 1\n\nTabletop Rules:\n• The top bay may hold one Recruit Barbarian Ability or Spell.\n• The bottom bay may hold one Recruit Warrior Ability or Spell.\n\nPassive — Rising Fury\nThe first time this character deals 1 or more HP damage to an enemy during each of their shared activations, gain 1 additional Heat.",
       "data": {
         "skillType": "discipline",
         "discipline": "barbarian",
@@ -4326,11 +4327,10 @@
         ],
         "attachedCardRules": {
           "allowedCardTypes": [
-            "ability"
+            "ability",
+            "spell"
           ],
-          "requiredDiscipline": "barbarian",
-          "maximumRank": "recruit",
-          "slotCount": 2
+          "slotCount": 99
         },
         "passive": {
           "id": "rising-fury",
@@ -4351,8 +4351,8 @@
       "source": {
         "sourceFile": "Cards/skill_and_ability_cards/Barbarian.md",
         "sourceSection": "Barbarian Skill Cards > Recruit: Feral Instinct",
-        "verifiedAgainstRulebook": true,
-        "notes": "This is the rank-one Barbarian Skill Card. Its two slots can only hold Recruit-rank Barbarian Ability Cards. Count 1 is the provisional first-playtest supply."
+        "verifiedAgainstRulebook": false,
+        "notes": "The app treats this Skill Card as a flexible attachment host for prototype testing. The app-level capacity is intentionally high and does not enforce discipline, rank, Class-bay, or Subdomain-bay legality. Players enforce the printed tabletop rules when building a legal character."
       }
     },
     "skill.elementalism.novice": {
@@ -4361,7 +4361,7 @@
       "count": 1,
       "cardType": "skill",
       "name": "Novice Elementalism",
-      "revision": 1,
+      "revision": 2,
       "moduleId": "core-alpha",
       "artId": "art.default-card",
       "printTemplate": "skill-standard",
@@ -4371,9 +4371,10 @@
         "elementalism",
         "novice",
         "arcane",
-        "mage-native"
+        "mage-native",
+        "subdomain-skill"
       ],
-      "rulesText": "Elementalism Skill — Novice\n\nSpell Slots: 1\nMay Equip: Novice Elementalism spells.\n\nPassive — Attuned Casting\nWhenever one of your Fire, Ice, Lightning, or Earth spells deals damage to a target, the first 1 damage dealt to that target by that spell ignores Defense.",
+      "rulesText": "Elementalism Skill — Novice\n\nAttachment Bays\n• Subdomain Bay: 1 Novice Elementalism spell or ability.\n• Class Bay: 1 Novice Mage spell or ability.\n\nAn attached card must require Novice rank or lower.\n\nPassive — Attuned Casting\nWhenever one of your Fire, Ice, Lightning, or Earth spells deals damage to a target, the first 1 damage dealt to that target by that spell ignores Defense.",
       "data": {
         "skillType": "discipline",
         "discipline": "elementalism",
@@ -4386,11 +4387,11 @@
         ],
         "attachedCardRules": {
           "allowedCardTypes": [
-            "spell"
+            "spell",
+            "ability"
           ],
-          "requiredDiscipline": "elementalism",
           "maximumRank": "novice",
-          "slotCount": 1
+          "slotCount": 99
         },
         "passive": {
           "id": "attuned-casting",
@@ -4416,7 +4417,7 @@
         "sourceFile": "Cards/skill_and_ability_cards/elementalism.md",
         "sourceSection": "Elementalism Skill Cards > Novice Elementalism",
         "verifiedAgainstRulebook": false,
-        "notes": "Spell-slot count and Attuned Casting are migrated from the Elementalism card file."
+        "notes": "Temporary app-testing configuration: slotCount is deliberately high so multiple Mage and Elementalism spell or ability cards can be attached without a UI limit. The printed tabletop capacity remains one Elementalism Subdomain Bay and one Mage Class Bay on this Novice skill card. Replace the temporary attachment limit with typed-bay enforcement when that UI and validation system is implemented. Attuned Casting is migrated from the Elementalism card file."
       }
     },
     "spell.arcana.novice-arcane-ward": {

@@ -4,7 +4,7 @@
   "count": 1,
   "cardType": "skill",
   "name": "Feral Instinct",
-  "revision": 1,
+  "revision": 2,
   "moduleId": "core-alpha",
   "artId": "art.default-card",
   "printTemplate": "skill-standard",
@@ -16,7 +16,7 @@
     "martial",
     "warrior-native"
   ],
-  "rulesText": "Barbarian Skill — Recruit\n\nAbility Slots: 2\nMay Equip: Recruit Barbarian abilities.\n\nPassive — Rising Fury\nThe first time this character deals 1 or more HP damage to an enemy during each of their shared activations, gain 1 additional Heat.",
+  "rulesText": "Barbarian Skill — Recruit\n\nAttachment Bays:\nTop — Subdomain Ability / Spell: 1\nBottom — Class Ability / Spell: 1\n\nTabletop Rules:\n• The top bay may hold one Recruit Barbarian Ability or Spell.\n• The bottom bay may hold one Recruit Warrior Ability or Spell.\n\nPassive — Rising Fury\nThe first time this character deals 1 or more HP damage to an enemy during each of their shared activations, gain 1 additional Heat.",
   "data": {
     "skillType": "discipline",
     "discipline": "barbarian",
@@ -29,11 +29,10 @@
     ],
     "attachedCardRules": {
       "allowedCardTypes": [
-        "ability"
+        "ability",
+        "spell"
       ],
-      "requiredDiscipline": "barbarian",
-      "maximumRank": "recruit",
-      "slotCount": 2
+      "slotCount": 99
     },
     "passive": {
       "id": "rising-fury",
@@ -54,7 +53,7 @@
   "source": {
     "sourceFile": "Cards/skill_and_ability_cards/Barbarian.md",
     "sourceSection": "Barbarian Skill Cards > Recruit: Feral Instinct",
-    "verifiedAgainstRulebook": true,
-    "notes": "This is the rank-one Barbarian Skill Card. Its two slots can only hold Recruit-rank Barbarian Ability Cards. Count 1 is the provisional first-playtest supply."
+    "verifiedAgainstRulebook": false,
+    "notes": "The app treats this Skill Card as a flexible attachment host for prototype testing. The app-level capacity is intentionally high and does not enforce discipline, rank, Class-bay, or Subdomain-bay legality. Players enforce the printed tabletop rules when building a legal character."
   }
 }

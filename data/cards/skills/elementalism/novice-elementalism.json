@@ -4,7 +4,7 @@
   "count": 1,
   "cardType": "skill",
   "name": "Novice Elementalism",
-  "revision": 1,
+  "revision": 2,
   "moduleId": "core-alpha",
   "artId": "art.default-card",
   "printTemplate": "skill-standard",
@@ -14,9 +14,10 @@
     "elementalism",
     "novice",
     "arcane",
-    "mage-native"
+    "mage-native",
+    "subdomain-skill"
   ],
-  "rulesText": "Elementalism Skill \u2014 Novice\n\nSpell Slots: 1\nMay Equip: Novice Elementalism spells.\n\nPassive \u2014 Attuned Casting\nWhenever one of your Fire, Ice, Lightning, or Earth spells deals damage to a target, the first 1 damage dealt to that target by that spell ignores Defense.",
+  "rulesText": "Elementalism Skill — Novice\n\nAttachment Bays\n• Subdomain Bay: 1 Novice Elementalism spell or ability.\n• Class Bay: 1 Novice Mage spell or ability.\n\nAn attached card must require Novice rank or lower.\n\nPassive — Attuned Casting\nWhenever one of your Fire, Ice, Lightning, or Earth spells deals damage to a target, the first 1 damage dealt to that target by that spell ignores Defense.",
   "data": {
     "skillType": "discipline",
     "discipline": "elementalism",
@@ -29,11 +30,11 @@
     ],
     "attachedCardRules": {
       "allowedCardTypes": [
-        "spell"
+        "spell",
+        "ability"
       ],
-      "requiredDiscipline": "elementalism",
       "maximumRank": "novice",
-      "slotCount": 1
+      "slotCount": 99
     },
     "passive": {
       "id": "attuned-casting",
@@ -59,6 +60,6 @@
     "sourceFile": "Cards/skill_and_ability_cards/elementalism.md",
     "sourceSection": "Elementalism Skill Cards > Novice Elementalism",
     "verifiedAgainstRulebook": false,
-    "notes": "Spell-slot count and Attuned Casting are migrated from the Elementalism card file."
+    "notes": "Temporary app-testing configuration: slotCount is deliberately high so multiple Mage and Elementalism spell or ability cards can be attached without a UI limit. The printed tabletop capacity remains one Elementalism Subdomain Bay and one Mage Class Bay on this Novice skill card. Replace the temporary attachment limit with typed-bay enforcement when that UI and validation system is implemented. Attuned Casting is migrated from the Elementalism card file."
   }
 }

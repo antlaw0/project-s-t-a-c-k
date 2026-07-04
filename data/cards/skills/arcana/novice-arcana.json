@@ -4,7 +4,7 @@
   "count": 1,
   "cardType": "skill",
   "name": "Novice Arcana",
-  "revision": 1,
+  "revision": 2,
   "moduleId": "core-alpha",
   "artId": "art.default-card",
   "printTemplate": "skill-standard",
@@ -14,9 +14,10 @@
     "arcana",
     "novice",
     "arcane",
-    "mage-native"
+    "mage-native",
+    "subdomain-skill"
   ],
-  "rulesText": "Arcana Skill \u2014 Novice\n\nSpell Slots: 1\nMay Equip: Novice Arcana spells.\n\nPassive \u2014 Arcane Foundation\nNo passive effect is finalized yet. This card is active for early Mage tabletop testing and should receive a finalized printed passive before production.",
+  "rulesText": "Arcana Skill — Novice\n\nAttachment Bays\n• Subdomain Bay: 1 Novice Arcana spell or ability.\n• Class Bay: 1 Novice Mage spell or ability.\n\nAn attached card must require Novice rank or lower.\n\nPassive — Arcane Foundation\nNo passive effect is finalized yet. This card is active for early Mage tabletop testing and should receive a finalized printed passive before production.",
   "data": {
     "skillType": "discipline",
     "discipline": "arcana",
@@ -29,11 +30,11 @@
     ],
     "attachedCardRules": {
       "allowedCardTypes": [
-        "spell"
+        "spell",
+        "ability"
       ],
-      "requiredDiscipline": "arcana",
       "maximumRank": "novice",
-      "slotCount": 1
+      "slotCount": 99
     },
     "passive": {
       "id": "arcane-foundation",
@@ -48,6 +49,6 @@
     "sourceFile": "Cards/character_classes.md",
     "sourceSection": "Mage Character Card > Starting Skills and Attached Spells",
     "verifiedAgainstRulebook": false,
-    "notes": "The starter roster names Novice Arcana and Arcane Ward but the current repository does not include a separate Arcana skill-card source file. This card is intentionally playable for setup but has a clearly marked pending passive; replace Arcane Foundation when the Arcana discipline set is finalized."
+    "notes": "Temporary app-testing configuration: slotCount is deliberately high so multiple Mage and Arcana spell or ability cards can be attached without a UI limit. The printed tabletop capacity remains one Arcana Subdomain Bay and one Mage Class Bay on this Novice skill card. Replace the temporary attachment limit with typed-bay enforcement when that UI and validation system is implemented."
   }
 }
