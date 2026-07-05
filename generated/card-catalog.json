@@ -1645,7 +1645,7 @@
     "dungeon.goblin-warrens.goblin-stolen-goods-stash": {
       "id": "dungeon.goblin-warrens.goblin-stolen-goods-stash",
       "active": true,
-      "count": 2,
+      "count": 4,
       "cardType": "dungeonCard",
       "name": "Stolen Goods Stash",
       "revision": 1,
@@ -1712,7 +1712,7 @@
     "dungeon.goblin-warrens.mess": {
       "id": "dungeon.goblin-warrens.mess",
       "active": true,
-      "count": 2,
+      "count": 4,
       "cardType": "dungeonCard",
       "name": "Goblin Mess Hall",
       "revision": 1,
@@ -5076,11 +5076,19 @@
             "quantity": 2
           },
           {
+            "cardId": "dungeon.goblin-warrens.mess",
+            "quantity": 4
+          },
+          {
+            "cardId": "dungeon.goblin-warrens.goblin-stolen-goods-stash",
+            "quantity": 3
+          },
+          {
             "cardId": "dungeon.goblin-warrens.goblin-alarm",
-            "quantity": 2
+            "quantity": 3
           }
         ],
-        "totalCardCount": 32,
+        "totalCardCount": 41,
         "knownLimitations": [
           "This deck is intended for catalog coverage and early manual playtesting, not final encounter balance.",
           "This deck has no dedicated boss, objective, room, reward, or completion-condition cards yet.",
@@ -5090,7 +5098,7 @@
       },
       "source": {
         "verifiedAgainstRulebook": false,
-        "notes": "Generated from all active enemy.goblin-* definitions plus active Goblin Warrens Tripwire and Goblin Alarm definitions. Base deck total: 32."
+        "notes": "Generated from all active enemy.goblin-* definitions plus active Goblin Warrens Tripwire, Mess Hall, Stolen Goods Stash, and Goblin Alarm definitions. Base deck total: 41."
       }
     }
   },

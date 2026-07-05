@@ -1,0 +1,104 @@
+{
+  "id": "deck.goblin-warrens-catalog-smoke-test",
+  "active": true,
+  "deckType": "dungeon",
+  "name": "Goblin Warrens Catalog Coverage Test",
+  "revision": 5,
+  "moduleId": "core-alpha",
+  "tags": [
+    "deck",
+    "dungeon",
+    "goblin-warrens",
+    "smoke-test",
+    "catalog-validation",
+    "catalog-coverage"
+  ],
+  "rulesText": "A Goblin Warrens dungeon deck for catalog coverage and early manual playtesting. This definition is the source of truth for all base Dungeon Deck cards. The selected scenario may separately inject Loot Deck cards during fresh-state setup.",
+  "data": {
+    "dungeonTheme": "goblin-warrens",
+    "intendedUse": "catalogCoverageTest",
+    "setup": {
+      "shuffleBeforePlay": true,
+      "drawZone": "dungeonDeck",
+      "discardZone": "dungeonDiscardPile",
+      "lootZone": "dungeonLootArea"
+    },
+    "cardEntries": [
+      {
+        "cardId": "enemy.goblin-archer",
+        "quantity": 4
+      },
+      {
+        "cardId": "enemy.goblin-bombardier",
+        "quantity": 1
+      },
+      {
+        "cardId": "enemy.goblin-bully",
+        "quantity": 2
+      },
+      {
+        "cardId": "enemy.goblin-cutthroat",
+        "quantity": 2
+      },
+      {
+        "cardId": "enemy.goblin-hexer",
+        "quantity": 1
+      },
+      {
+        "cardId": "enemy.goblin-raider",
+        "quantity": 4
+      },
+      {
+        "cardId": "enemy.goblin-skirmisher",
+        "quantity": 3
+      },
+      {
+        "cardId": "enemy.goblin-slinger",
+        "quantity": 3
+      },
+      {
+        "cardId": "enemy.goblin-sneak",
+        "quantity": 2
+      },
+      {
+        "cardId": "enemy.goblin-spearman",
+        "quantity": 3
+      },
+      {
+        "cardId": "enemy.goblin-worg",
+        "quantity": 2
+      },
+      {
+        "cardId": "enemy.goblin-worg-rider",
+        "quantity": 1
+      },
+      {
+        "cardId": "dungeon.goblin-warrens.tripwire",
+        "quantity": 2
+      },
+      {
+        "cardId": "dungeon.goblin-warrens.mess",
+        "quantity": 4
+      },
+      {
+        "cardId": "dungeon.goblin-warrens.goblin-stolen-goods-stash",
+        "quantity": 3
+      },
+      {
+        "cardId": "dungeon.goblin-warrens.goblin-alarm",
+        "quantity": 3
+      }
+    ],
+    "totalCardCount": 41,
+    "knownLimitations": [
+      "This deck is intended for catalog coverage and early manual playtesting, not final encounter balance.",
+      "This deck has no dedicated boss, objective, room, reward, or completion-condition cards yet.",
+      "Goblin Alarm can reveal cards from the bottom of the Dungeon Deck and deploy the first matching Goblin enemy it finds.",
+      "Scenario-level Loot Deck injection is deliberately not listed here because it belongs to the selected scenario."
+    ]
+  },
+  "source": {
+    "verifiedAgainstRulebook": false,
+    "notes": "Generated from all active enemy.goblin-* definitions plus active Goblin Warrens Tripwire, Mess Hall, Stolen Goods Stash, and Goblin Alarm definitions. Base deck total: 41."
+  }
+}

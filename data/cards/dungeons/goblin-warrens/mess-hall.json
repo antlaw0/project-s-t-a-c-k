@@ -1,7 +1,7 @@
 {
   "id": "dungeon.goblin-warrens.mess",
   "active": true,
-  "count": 2,
+  "count": 4,
   "cardType": "dungeonCard",
   "name": "Goblin Mess Hall",
   "revision": 1,

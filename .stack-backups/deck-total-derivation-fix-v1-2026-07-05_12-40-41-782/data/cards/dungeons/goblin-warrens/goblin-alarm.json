@@ -1,9 +1,9 @@
 {
-  "id": "dungeon.goblin-warrens.goblin-stolen-goods-stash",
+  "id": "dungeon.goblin-warrens.goblin-alarm",
   "active": true,
-  "count": 4,
+  "count": 2,
   "cardType": "dungeonCard",
-  "name": "Stolen Goods Stash",
+  "name": "Goblin Alarm",
   "revision": 1,
   "moduleId": "core-alpha",
   "artId": "art.default-card",
@@ -12,12 +12,12 @@
     "dungeon-card",
     "event",
     "goblin-warrens",
-    
-    "goblin"
-    
-    
+    "scrap-fortress",
+    "goblin",
+    "reinforcement",
+    "heat"
   ],
-  "rulesText": "Event\n\n Draw one card from the loot deck and add it to the dungeon loot stash.",
+  "rulesText": "Event\n\nThe active character gains 2 Heat.\n\nReveal the bottom 2 cards of the Dungeon Deck.\n\nAdd the first revealed Goblin Enemy card to an open Enemy Formation slot.\n\nShuffle every other revealed card back into the Dungeon Deck.",
   "data": {
     "dungeonCardType": "event",
     "dungeonThemes": [

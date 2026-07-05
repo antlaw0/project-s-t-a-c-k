@@ -1,70 +1,70 @@
 {
-  "id": "dungeon.goblin-warrens.goblin-alarm",
-  "active": true,
-  "count": 2,
-  "cardType": "dungeonCard",
-  "name": "Goblin Alarm",
-  "revision": 1,
-  "moduleId": "core-alpha",
-  "artId": "art.default-card",
-  "printTemplate": "dungeon-event-standard",
-  "tags": [
-    "dungeon-card",
-    "event",
-    "goblin-warrens",
-    "scrap-fortress",
-    "goblin",
-    "reinforcement",
-    "heat"
-  ],
-  "rulesText": "Event\n\nThe active character gains 2 Heat.\n\nReveal the bottom 2 cards of the Dungeon Deck.\n\nAdd the first revealed Goblin Enemy card to an open Enemy Formation slot.\n\nShuffle every other revealed card back into the Dungeon Deck.",
-  "data": {
-    "dungeonCardType": "event",
-    "dungeonThemes": [
-      "goblin-warrens",
-      "scrap-fortress"
-    ],
-    "resolutionTiming": "immediatelyWhenDrawn",
-    "effects": [
-      {
-        "type": "gainHeat",
-        "target": "activeCharacter",
-        "amount": 2
-      }
-    ],
-    "revealAndDeploy": {
-      "sourceZone": "dungeonDeck",
-      "revealFrom": "bottom",
-      "revealCount": 2,
-      "selectionRule": {
-        "type": "firstMatchingRevealedCard",
-        "criteria": {
-          "cardType": "enemy",
-          "requiredTags": [
-            "goblin"
-          ]
-        }
-      },
-      "onMatchingCardFound": {
-        "type": "addCardToEncounter",
-        "destination": "openEnemyFormationSlot"
-      },
-      "onNoMatchingCardFound": {
-        "type": "shuffleAllRevealedCardsBackIntoDungeonDeck"
-      },
-      "remainingRevealedCards": {
-        "type": "shuffleBackIntoDungeonDeck"
-      }
-    },
-    "afterResolution": {
-      "type": "moveCard",
-      "destination": "dungeonDiscardPile"
-    }
-  },
-  "source": {
-    "sourceFile": "Cards/dungeon_cards/dungeonDecks.txt",
-    "sourceSection": "Goblin Warrens / Scrap Fortress > Goblin Alarm",
-    "verifiedAgainstRulebook": false,
-    "notes": "Rules text migrated from the current Goblin Warrens source. Count 2 is a provisional first-playtest density. The source text does not explicitly state the event card's own post-resolution destination, so dungeonDiscardPile is modeled as the current one-shot dungeon-event default and should be confirmed during deck-rule review."
-  }
+    "id":  "dungeon.goblin-warrens.goblin-alarm",
+    "active":  true,
+    "count":  4,
+    "cardType":  "dungeonCard",
+    "name":  "Goblin Alarm",
+    "revision":  2,
+    "moduleId":  "core-alpha",
+    "artId":  "art.default-card",
+    "printTemplate":  "dungeon-event-standard",
+    "tags":  [
+                 "dungeon-card",
+                 "event",
+                 "goblin-warrens",
+                 "scrap-fortress",
+                 "goblin",
+                 "reinforcement",
+                 "heat"
+             ],
+    "rulesText":  "Event\n\nThe active character gains 2 Heat.\n\nReveal the bottom 2 cards of the Dungeon Deck.\n\nAdd the first revealed Goblin Enemy card to an open Enemy Formation slot.\n\nShuffle every other revealed card back into the Dungeon Deck.",
+    "data":  {
+                 "dungeonCardType":  "event",
+                 "dungeonThemes":  [
+                                       "goblin-warrens",
+                                       "scrap-fortress"
+                                   ],
+                 "resolutionTiming":  "immediatelyWhenDrawn",
+                 "effects":  [
+                                 {
+                                     "type":  "gainHeat",
+                                     "target":  "activeCharacter",
+                                     "amount":  2
+                                 }
+                             ],
+                 "revealAndDeploy":  {
+                                         "sourceZone":  "dungeonDeck",
+                                         "revealFrom":  "bottom",
+                                         "revealCount":  2,
+                                         "selectionRule":  {
+                                                               "type":  "firstMatchingRevealedCard",
+                                                               "criteria":  {
+                                                                                "cardType":  "enemy",
+                                                                                "requiredTags":  [
+                                                                                                     "goblin"
+                                                                                                 ]
+                                                                            }
+                                                           },
+                                         "onMatchingCardFound":  {
+                                                                     "type":  "addCardToEncounter",
+                                                                     "destination":  "openEnemyFormationSlot"
+                                                                 },
+                                         "onNoMatchingCardFound":  {
+                                                                       "type":  "shuffleAllRevealedCardsBackIntoDungeonDeck"
+                                                                   },
+                                         "remainingRevealedCards":  {
+                                                                        "type":  "shuffleBackIntoDungeonDeck"
+                                                                    }
+                                     },
+                 "afterResolution":  {
+                                         "type":  "moveCard",
+                                         "destination":  "dungeonDiscardPile"
+                                     }
+             },
+    "source":  {
+                   "sourceFile":  "Cards/dungeon_cards/dungeonDecks.txt",
+                   "sourceSection":  "Goblin Warrens / Scrap Fortress \u003e Goblin Alarm",
+                   "verifiedAgainstRulebook":  false,
+                   "notes":  "Rules text migrated from the current Goblin Warrens source. Count 2 is a provisional first-playtest density. The source text does not explicitly state the event card\u0027s own post-resolution destination, so dungeonDiscardPile is modeled as the current one-shot dungeon-event default and should be confirmed during deck-rule review."
+               }
 }

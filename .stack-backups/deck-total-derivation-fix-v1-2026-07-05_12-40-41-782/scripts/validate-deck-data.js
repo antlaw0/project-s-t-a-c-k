@@ -159,12 +159,15 @@ function validateDeckEntries(filePath, deck, cardsById) {
   } // closes invalid-deck-data condition
 
   const entries = deck.data.cardEntries;
+
   if (!Array.isArray(entries) || entries.length === 0) {
     addError(filePath, "data.cardEntries must be a non-empty array.");
     return;
   } // closes invalid-card-entries condition
 
   const seenCardIds = new Set();
+  let actualTotal = 0;
+
   for (let index = 0; index < entries.length; index += 1) {
     const entry = entries[index];
     const entryLabel = `data.cardEntries[${index}]`;
@@ -175,9 +178,10 @@ function validateDeckEntries(filePath, deck, cardsById) {
     } // closes invalid-entry-object condition
 
     const entryFields = Object.keys(entry);
+
     for (const fieldName of entryFields) {
       if (fieldName !== "cardId" && fieldName !== "quantity") {
-        addError(filePath, `${entryLabel} has an unsupported field: "${fieldName}".`);
+        addError(filePath, `${entryLabel} has an unsupported field: \"${fieldName}\".`);
       } // closes unsupported-entry-field condition
     } // closes entry-field loop
 
@@ -192,30 +196,45 @@ function validateDeckEntries(filePath, deck, cardsById) {
     } // closes invalid-entry-quantity condition
 
     if (seenCardIds.has(entry.cardId)) {
-      addError(filePath, `${entryLabel}.cardId duplicates "${entry.cardId}". Combine quantities into one entry.`);
+      addError(filePath, `${entryLabel}.cardId duplicates \"${entry.cardId}\". Combine quantities into one entry.`);
       continue;
     } // closes duplicate-deck-card condition
 
     seenCardIds.add(entry.cardId);
+    actualTotal += entry.quantity;
+
     const referencedCard = cardsById.get(entry.cardId);
 
     if (!referencedCard) {
-      addError(filePath, `${entryLabel}.cardId references a card that does not exist: "${entry.cardId}".`);
+      addError(filePath, `${entryLabel}.cardId references a card that does not exist: \"${entry.cardId}\".`);
       continue;
     } // closes missing-referenced-card condition
 
     if (deck.active === true && referencedCard.active !== true) {
-      addError(filePath, `${entryLabel}.cardId references inactive card "${entry.cardId}" from an active deck.`);
+      addError(filePath, `${entryLabel}.cardId references inactive card \"${entry.cardId}\" from an active deck.`);
     } // closes inactive-referenced-card condition
 
     if (Number.isInteger(referencedCard.count) && entry.quantity > referencedCard.count) {
       addError(
         filePath,
-        `${entryLabel}.quantity (${entry.quantity}) exceeds card count (${referencedCard.count}) for "${entry.cardId}".`
+        `${entryLabel}.quantity (${entry.quantity}) exceeds card count (${referencedCard.count}) for \"${entry.cardId}\".`
       );
     } // closes deck-quantity-exceeds-card-count condition
   } // closes deck-entry loop
-} // closes validateDeckEntries function
+
+  if (!Number.isInteger(deck.data.totalCardCount) || deck.data.totalCardCount < 1) {
+    addError(filePath, "data.totalCardCount must be an integer of at least 1.");
+    return;
+  } // closes invalid-total-card-count condition
+
+  if (actualTotal !== deck.data.totalCardCount) {
+    addError(
+      filePath,
+      `data.totalCardCount is ${deck.data.totalCardCount}, but cardEntries add up to ${actualTotal}.`
+    );
+  } // closes mismatched-total-card-count condition
+} // closes validateDeckEntries
+
 function validateDeck(filePath, deck, cardsById, seenDeckIds) {
   if (!isPlainObject(deck)) {
     addError(filePath, "deck definition must be an object.");
