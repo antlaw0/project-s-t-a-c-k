@@ -508,83 +508,61 @@ function validateParticipantSetups(filePath, scenario, cardsById, cardUses) {
 
 function validateDungeonSetup(filePath, scenario, decksById, cardUses) {
   const dungeonSetup = scenario.data.dungeonSetup;
-  const allowedFields = new Set([
-    "deckId",
-    "drawMode",
-    "drawZone",
-    "discardZone",
-    "lootZone",
-    "lootInjectionCount"
-  ]); // end allowed dungeonSetup fields
+  const allowedFields = new Set(["deckId", "drawMode", "drawZone", "discardZone", "lootZone"]);
 
   if (!validateObjectFields(filePath, dungeonSetup, allowedFields, "data.dungeonSetup")) {
     return;
-  } // end invalid dungeonSetup branch
+  } // closes invalid-dungeon-setup condition
 
-  const requiredDungeonSetupFields = [
-    "deckId",
-    "drawMode",
-    "drawZone",
-    "discardZone",
-    "lootZone"
-  ]; // end required dungeonSetup fields
-
-  if (!requireFields(filePath, dungeonSetup, requiredDungeonSetupFields, "data.dungeonSetup")) {
+  if (!requireFields(filePath, dungeonSetup, [...allowedFields], "data.dungeonSetup")) {
     return;
-  } // end incomplete dungeonSetup branch
+  } // closes incomplete-dungeon-setup condition
 
   if (validateStringId(filePath, dungeonSetup.deckId, "data.dungeonSetup.deckId")) {
     const referencedDeck = decksById.get(dungeonSetup.deckId);
 
     if (!referencedDeck) {
-      addError(filePath, `data.dungeonSetup.deckId references a deck that does not exist: "${dungeonSetup.deckId}".`);
+      addError(filePath, `data.dungeonSetup.deckId references a deck that does not exist: \"${dungeonSetup.deckId}\".`);
     } else {
       const deck = referencedDeck.raw;
 
       if (scenario.active === true && deck.active !== true) {
-        addError(filePath, `data.dungeonSetup.deckId references inactive deck "${dungeonSetup.deckId}" from an active scenario.`);
-      } // end inactive-deck validation
+        addError(filePath, `data.dungeonSetup.deckId references inactive deck \"${dungeonSetup.deckId}\" from an active scenario.`);
+      } // closes inactive-deck condition
 
       if (deck.deckType !== "dungeon") {
-        addError(filePath, `data.dungeonSetup.deckId must reference a dungeon deck, but "${dungeonSetup.deckId}" has deckType "${deck.deckType}".`);
-      } // end dungeon-deck-type validation
+        addError(filePath, `data.dungeonSetup.deckId must reference a dungeon deck, but \"${dungeonSetup.deckId}\" has deckType \"${deck.deckType}\".`);
+      } // closes wrong-deck-type condition
 
       const deckEntries = deck?.data?.cardEntries;
+
       if (Array.isArray(deckEntries)) {
         for (let index = 0; index < deckEntries.length; index += 1) {
           const entry = deckEntries[index];
+
           if (!isPlainObject(entry) || typeof entry.cardId !== "string" || !Number.isInteger(entry.quantity)) {
             continue;
-          } // end malformed-deck-entry branch
+          } // closes malformed-deck-entry condition
 
           const existing = cardUses.get(entry.cardId) || {
             quantity: 0,
             paths: []
-          }; // end existing-card-use default
+          };
+
           existing.quantity += entry.quantity;
           existing.paths.push(`data.dungeonSetup.deckId (${dungeonSetup.deckId}) entry ${index}`);
           cardUses.set(entry.cardId, existing);
-        } // end deck-entry loop
-      } // end deck-entry-array branch
-    } // end referenced-deck branch
-  } // end deck-ID validation
+        } // closes deck-entry loop
+      } // closes deck-entry-array condition
+    } // closes existing-deck condition
+  } // closes deck-ID validation
 
   for (const fieldName of ["drawMode", "drawZone", "discardZone", "lootZone"]) {
     if (typeof dungeonSetup[fieldName] !== "string" || dungeonSetup[fieldName].trim().length === 0) {
       addError(filePath, `data.dungeonSetup.${fieldName} must be a non-empty string.`);
-    } // end dungeonSetup string-field validation
-  } // end dungeonSetup string-field loop
-
-  if (
-    dungeonSetup.lootInjectionCount !== undefined &&
-    (!Number.isInteger(dungeonSetup.lootInjectionCount) || dungeonSetup.lootInjectionCount < 0)
-  ) {
-    addError(
-      filePath,
-      "data.dungeonSetup.lootInjectionCount must be a whole number of at least 0 when provided."
-    );
-  } // end lootInjectionCount validation
-} // end validateDungeonSetup function
+    } // closes invalid-dungeon-setup-string condition
+  } // closes dungeon-setup string-field loop
+} // closes validateDungeonSetup
 
 function validateCardSupply(filePath, cardUses, cardsById) {
   for (const [cardId, use] of cardUses) {

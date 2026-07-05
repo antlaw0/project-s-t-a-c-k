@@ -1575,10 +1575,10 @@
     "dungeon.goblin-warrens.goblin-alarm": {
       "id": "dungeon.goblin-warrens.goblin-alarm",
       "active": true,
-      "count": 2,
+      "count": 4,
       "cardType": "dungeonCard",
       "name": "Goblin Alarm",
-      "revision": 1,
+      "revision": 2,
       "moduleId": "core-alpha",
       "artId": "art.default-card",
       "printTemplate": "dungeon-event-standard",
@@ -5088,7 +5088,6 @@
             "quantity": 3
           }
         ],
-        "totalCardCount": 41,
         "knownLimitations": [
           "This deck is intended for catalog coverage and early manual playtesting, not final encounter balance.",
           "This deck has no dedicated boss, objective, room, reward, or completion-condition cards yet.",
@@ -5098,7 +5097,7 @@
       },
       "source": {
         "verifiedAgainstRulebook": false,
-        "notes": "Generated from all active enemy.goblin-* definitions plus active Goblin Warrens Tripwire, Mess Hall, Stolen Goods Stash, and Goblin Alarm definitions. Base deck total: 41."
+        "notes": "Generated from all active enemy.goblin-* definitions plus active Goblin Warrens Tripwire, Mess Hall, Stolen Goods Stash, and Goblin Alarm definitions."
       }
     }
   },
