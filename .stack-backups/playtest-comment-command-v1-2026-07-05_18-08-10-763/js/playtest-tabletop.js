@@ -23,8 +23,6 @@
     tabletopHeading: document.getElementById("tabletop-heading"),
     runtimeSummary: document.getElementById("runtime-summary"),
     manualControlStatus: document.getElementById("manual-control-status"),
-  playtestCommentCommandInput: document.getElementById("playtest-comment-command-input"),
-  submitPlaytestCommentCommandButton: document.getElementById("submit-playtest-comment-command-button"),
     drawDungeonCardButton: document.getElementById("draw-dungeon-card-button"),
     drawBottomDungeonCardButton: document.getElementById("draw-bottom-dungeon-card-button"),
     shuffleDungeonDeckButton: document.getElementById("shuffle-dungeon-deck-button"),
@@ -68,26 +66,6 @@
     playtestLog: document.getElementById("playtest-log"),
     cardDetails: document.getElementById("card-details")
   }; // end elements object
-  if (elements.submitPlaytestCommentCommandButton && elements.playtestCommentCommandInput) {
-    elements.submitPlaytestCommentCommandButton.addEventListener("click", function handlePlaytestCommentCommandClick() {
-      submitPlaytestComment(
-        elements.playtestCommentCommandInput.value,
-        "playtest-comment-command-input"
-      );
-    }); // end playtest-comment click listener
-
-    elements.playtestCommentCommandInput.addEventListener("keydown", function handlePlaytestCommentCommandKeydown(event) {
-      if (event.key !== "Enter") {
-        return;
-      } // end non-enter-key branch
-
-      event.preventDefault();
-      submitPlaytestComment(
-        elements.playtestCommentCommandInput.value,
-        "playtest-comment-command-input"
-      );
-    }); // end playtest-comment keydown listener
-  } // end playtest-comment listener setup branch
 
   function setLoadStatus(message, statusType) {
     elements.loadStatus.textContent = message;
@@ -304,137 +282,6 @@
     }, 0);
     entries.push({ sequence: greatestSequence + 1, type, message });
   } // end appendLog function
-  function submitPlaytestComment(rawCommand, focusControlId) {
-    if (!application.runtimeState) {
-      setManualControlStatus("Load a playtest state before adding a comment line.", "error");
-      restoreFocusAfterRender(focusControlId);
-      return;
-    } // end missing-runtime-state branch
-
-    const commandText = String(rawCommand || "").trim();
-    if (!commandText.startsWith("#")) {
-      setManualControlStatus('Comment commands must begin with #. Example: # Warrior attacks Goblin Raider.', "error");
-      restoreFocusAfterRender(focusControlId);
-      return;
-    } // end missing-comment-prefix branch
-
-    const commentText = commandText.slice(1).trim();
-    if (!commentText) {
-      setManualControlStatus("Add text after # before submitting a comment line.", "error");
-      restoreFocusAfterRender(focusControlId);
-      return;
-    } // end empty-comment branch
-
-    appendLog("playtestComment", `# ${commentText}`);
-    if (elements.playtestCommentCommandInput) {
-      elements.playtestCommentCommandInput.value = "";
-    } // end comment-input-reset branch
-
-    rerenderAfterStateChange("Playtest comment added to the log.", "success", focusControlId);
-  } // end submitPlaytestComment function
-
-  // playtestHashCommentCommandBridgeV3: Route # lines from the normal command input into the existing comment logger.
-  function readHashCommentText(control) {
-    if (!(control instanceof HTMLInputElement || control instanceof HTMLTextAreaElement)) {
-      return null;
-    } // end non-text-control branch
-
-    if (control.id === "playtest-comment-command-input") {
-      return null;
-    } // end dedicated-comment-control branch
-
-    const rawText = String(control.value || "").trim();
-    return rawText.startsWith("#") ? rawText : null;
-  } // end readHashCommentText function
-
-  function handleHashCommentFromControl(control) {
-    const rawCommentCommand = readHashCommentText(control);
-    if (!rawCommentCommand) {
-      return false;
-    } // end non-comment-command branch
-
-    const focusControlId = control.id || null;
-    submitPlaytestComment(rawCommentCommand, focusControlId);
-    return true;
-  } // end handleHashCommentFromControl function
-
-  function isLikelyCommandButton(button) {
-    if (!(button instanceof HTMLButtonElement || button instanceof HTMLInputElement)) {
-      return false;
-    } // end non-button branch
-
-    const buttonText = [
-      button.textContent,
-      button.value,
-      button.id,
-      button.name,
-      button.getAttribute("aria-label"),
-      button.getAttribute("title")
-    ].filter(Boolean).join(" ").toLowerCase();
-
-    return /\b(command|console|instruction)\b/.test(buttonText) ||
-      /\b(run|execute|submit|send|apply)\b/.test(buttonText);
-  } // end isLikelyCommandButton function
-
-  function findHashCommentControlForButton(button) {
-    const formControls = button && button.form
-      ? Array.from(button.form.querySelectorAll("input, textarea"))
-      : [];
-    const formMatch = formControls.find(function findFormHashCommentControl(control) {
-      return Boolean(readHashCommentText(control));
-    });
-    if (formMatch) {
-      return formMatch;
-    } // end form-comment-control branch
-
-    if (!isLikelyCommandButton(button)) {
-      return null;
-    } // end unrelated-button branch
-
-    const activeControl = document.activeElement;
-    if (readHashCommentText(activeControl)) {
-      return activeControl;
-    } // end active-comment-control branch
-
-    const pageControls = Array.from(document.querySelectorAll("input, textarea"));
-    return pageControls.find(function findPageHashCommentControl(control) {
-      const descriptor = [
-        control.id,
-        control.name,
-        control.getAttribute("aria-label"),
-        control.getAttribute("placeholder")
-      ].filter(Boolean).join(" ").toLowerCase();
-      return /\b(command|console|instruction)\b/.test(descriptor) && Boolean(readHashCommentText(control));
-    }) || null;
-  } // end findHashCommentControlForButton function
-
-  document.addEventListener("keydown", function interceptHashCommentCommandKeydown(event) {
-    if (event.key !== "Enter" || event.defaultPrevented) {
-      return;
-    } // end irrelevant-keydown branch
-
-    if (!handleHashCommentFromControl(event.target)) {
-      return;
-    } // end non-comment-keydown branch
-
-    event.preventDefault();
-    event.stopImmediatePropagation();
-  }, true); // end hash-comment keydown capture listener
-
-  document.addEventListener("click", function interceptHashCommentCommandClick(event) {
-    const button = event.target instanceof Element ? event.target.closest("button, input[type='button'], input[type='submit']") : null;
-    if (!button) {
-      return;
-    } // end non-button-click branch
-
-    const commentControl = findHashCommentControlForButton(button);
-    if (!commentControl || !handleHashCommentFromControl(commentControl)) {
-      return;
-    } // end non-comment-button branch
-
-    event.preventDefault();
-    event.stopImmediatePropagation();
-  }, true); // end hash-comment click capture listener
 
   function updateCardInstanceZone(cardInstanceId, zone, zoneDetail, faceUp) {
     const instance = getCardInstance(cardInstanceId);

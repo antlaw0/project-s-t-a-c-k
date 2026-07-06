@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -6,7 +6,6 @@
   <title>Project S.T.A.C.K. Playtest Table</title>
   <link rel="stylesheet" href="css/playtest-tabletop.css">
   <link rel="stylesheet" href="css/player-inventory-modal.css">
-  <link rel="stylesheet" href="css/playtest-console.css">
 </head>
 <body>
   <header class="site-header">
@@ -89,16 +88,7 @@
             <p>Download the changed runtime state. The downloaded JSON is a playtest save and can be loaded back into this page later.</p>
             <button id="download-state-button" type="button" disabled>Download current state JSON</button>
           </section>
-      
-  <section class="control-card" aria-labelledby="playtest-comment-command-heading">
-  <h4 id="playtest-comment-command-heading">Playtest log comment</h4>
-  <p>Type a comment command beginning with #, then submit it. The text is preserved as its own line in the downloaded playtest log.</p>
-  <label for="playtest-comment-command-input">Comment command</label>
-  <input id="playtest-comment-command-input" type="text" autocomplete="off" spellcheck="true" placeholder="# Warrior uses Cleave on Goblin Raider; Defense 1 applied.">
-  <button id="submit-playtest-comment-command-button" type="button">Add comment line</button>
-  <p class="hint">Example: # I forgot to apply the Goblin Raider's Defense before this Damage change.</p>
-  </section>
-  </div>
+        </div>
         <p id="manual-control-status" class="status-message" role="status" aria-live="assertive"></p>
       </section>
 
@@ -216,7 +206,6 @@
   <script src="js/playtest-tabletop.js"></script>
   <script src="js/player-inventory-modal.js"></script>
   <script src="js/dungeon-reveal-destinations.js"></script>
-  <script src="js/playtest-console.js"></script>
 </body>
 </html>
 

@@ -1,0 +1,49 @@
+/* Playtest command console additions. */
+.playtest-console {
+  scroll-margin-top: 1rem;
+} /* end playtest-console rule */
+
+.playtest-console-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+} /* end playtest-console-actions rule */
+
+.playtest-console-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.5rem;
+  align-items: end;
+} /* end playtest-console-form rule */
+
+.playtest-console-form label {
+  grid-column: 1 / -1;
+} /* end playtest-console-form label rule */
+
+.playtest-console-form input {
+  min-width: 0;
+} /* end playtest-console-form input rule */
+
+.playtest-console-help {
+  margin-top: 1rem;
+} /* end playtest-console-help rule */
+
+.playtest-console-help summary {
+  cursor: pointer;
+  font-weight: 700;
+} /* end playtest-console-help summary rule */
+
+.playtest-console-history {
+  margin-bottom: 0;
+} /* end playtest-console-history rule */
+
+@media (max-width: 42rem) {
+  .playtest-console-form {
+    grid-template-columns: 1fr;
+  } /* end narrow-screen command-form rule */
+
+  .playtest-console-form label {
+    grid-column: auto;
+  } /* end narrow-screen command-label rule */
+} /* end narrow-screen media query */
