@@ -1,0 +1,53 @@
+{
+  "id": "equipment.weapon.throwing-knife",
+  "active": true,
+  "count": 4,
+  "cardType": "equipment",
+  "name": "Throwing Knife",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "equipment-weapon-standard",
+  "tags": [
+    "equipment",
+    "weapon",
+    "melee",
+    "blade",
+    "dagger",
+    "one-handed",
+    "physical",
+    "ranged",
+    "common"
+  ],
+  "rulesText": "Weapon\n  Throw:  2 physical damage, ranged \n Knife Slash: 1 Physical Damage, melee",
+  "data": {
+    "equipmentType": "weapon",
+    "equipmentSlot": "weapon",
+    "rangeTag": "melee",
+    "weaponTags": [
+      "blade",
+      "dagger"
+    ],
+    "handsRequired": 1,
+    "requiredProficiency": [
+      "blade"
+    ],
+    "damage": {
+      "amount": 1,
+      "damageType": "physical"
+    },
+    "traits": [],
+    "economy": {
+      "equipmentPowerRating": 2,
+      "valueGold": 20,
+      "sellValueGold": 10,
+      "rarity": "common"
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+    "sourceSection": "Weapon Cards > Utility Dagger",
+    "verifiedAgainstRulebook": false,
+    "notes": "Starter weapon catalog entry. Weapon tags support range and subtype eligibility checks."
+  }
+}

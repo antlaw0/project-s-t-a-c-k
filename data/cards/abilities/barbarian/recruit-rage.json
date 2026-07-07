@@ -4,7 +4,7 @@
   "count": 1,
   "cardType": "ability",
   "name": "Rage",
-  "revision": 1,
+  "revision": 4,
   "moduleId": "core-alpha",
   "artId": "art.default-card",
   "printTemplate": "ability-standard",
@@ -18,7 +18,7 @@
     "melee",
     "martial"
   ],
-  "rulesText": "Barbarian Ability — Recruit\nAction • Status • Rage\n\nUse this character’s shared activation. Move this card from its equipped Skill Card into this character’s Status Row.\n\nWhile Rage is active:\n• This character’s melee weapon attacks deal +1 damage.\n• This character has -1 Defense.\n• This character cannot cast spells.\n• This character may still use non-spell abilities, reactions, items, and normal weapon attacks.\n\nAt the end of each later shared activation belonging to this character, check whether this character personally dealt 1 or more HP damage to an enemy during that activation.\n• If they did, Rage remains active.\n• If they did not, return Rage to its equipped Skill Card.\n• If the shared activation was entirely lost because this character was Stunned, do not check Rage. Rage remains active.\n\nAt the end of combat, return Rage to its equipped Skill Card.",
+  "rulesText": "Barbarian Ability — Recruit\nAction • Status • Rage\n\nRequirement: This character must have a Ready Weapon with the Melee range tag and at least one legal target for a melee weapon attack.\n\nUse this character’s shared activation. Move this card from its equipped Skill Card into this character’s Status Row. Then immediately make one melee weapon attack.\n\nWhile Rage is active:\n• This character’s melee weapon attacks deal +1 damage.\n• This character has -1 Defense.\n• This character cannot cast spells.\n• This character may still use non-spell abilities, reactions, items, and normal weapon attacks.\n\nAt the start of each later shared activation belonging to this character, before choosing an action, this character may return Rage to its equipped Skill Card.\n\nAt the end of each later shared activation during which Rage remains active, check whether this character personally dealt 1 or more HP damage to an enemy during that activation.\n• If they did, Rage remains active.\n• If they did not, return Rage to its equipped Skill Card.\n• If the shared activation was entirely lost because this character was Stunned, do not check Rage. Rage remains active.\n\nAt the end of combat, return Rage to its equipped Skill Card.",
   "data": {
     "abilityType": "actionStatus",
     "discipline": "barbarian",
@@ -34,7 +34,13 @@
     },
     "activation": {
       "activationCost": "sharedActivation",
-      "moveTo": "ownerStatusRow"
+      "requiresReadyWeaponRange": "melee",
+      "requiresLegalTarget": true,
+      "moveTo": "ownerStatusRow",
+      "immediateFollowUp": {
+        "type": "makeMeleeWeaponAttack",
+        "timing": "immediatelyAfterMoveToStatusRow"
+      }
     },
     "status": {
       "statusType": "rage",
@@ -62,7 +68,12 @@
       ]
     },
     "maintenance": {
+      "voluntaryEnd": {
+        "timing": "startOfEachLaterSharedActivationBeforeChoosingAction",
+        "type": "returnToEquippedSkillCard"
+      },
       "checkTiming": "endOfEachLaterSharedActivation",
+      "checkOnlyWhileStatusIsActive": true,
       "requiredCondition": {
         "event": "hpDamageDealtToEnemy",
         "minimumHpDamage": 1,
@@ -86,6 +97,6 @@
     "sourceFile": "Cards/skill_and_ability_cards/Barbarian.md",
     "sourceSection": "Recruit Barbarian Ability Cards > Rage",
     "verifiedAgainstRulebook": true,
-    "notes": "Rage uses the owner’s shared activation to begin, occupies the owner’s Status Row while active, and returns to the exact Skill Card it came from when it ends. Count 1 is the provisional core-alpha supply."
+    "notes": "Revision 4 playtest version. Rage now begins with an immediate melee weapon attack instead of consuming an entire shared activation without attacking. During later shared activations, the owner may voluntarily end Rage before choosing an action. Rage still occupies the owner’s Status Row, grants +1 melee weapon attack damage, applies -1 Defense, and ends after a later active shared activation in which the owner personally fails to deal at least 1 HP damage to an enemy. Count 1 is the provisional core-alpha supply."
   }
 }

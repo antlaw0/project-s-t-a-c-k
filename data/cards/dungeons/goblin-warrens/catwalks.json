@@ -1,0 +1,65 @@
+{
+  "id": "dungeon.goblin-warrens.catwalks",
+  "active": true,
+  "count": 1,
+  "cardType": "dungeonCard",
+  "name": "Catwalks",
+  "revision": 1,
+  "moduleId": "core-alpha",
+  "artId": "art.default-card",
+  "printTemplate": "dungeon-trap-standard",
+  "tags": [
+    "dungeon-card",
+    "area"
+    
+  ],
+  "rulesText": "Area\n\n While this area card is in play, only ranged attacks can be used. ",
+  "data": {
+    "dungeonCardType": "earea",
+    "dungeonThemes": [
+      "goblin-warrens",
+      "goblin-shadowy-coridor"
+    ],
+    "resolutionTiming": "immediatelyWhenDrawn",
+    "responseOption": {
+      "optional": false,
+      "name": "Disarm Tripwire",
+      "eligibleEntity": {
+        "entityTypes": [
+          "playerCharacter"
+        ],
+        "mustBePlayerControlled": true,
+        "mustBeInSameRowAs": "activeCharacter",
+        "requiresEquippedSkillTag": "rogue"
+      },
+      "onUse": {
+        "type": "moveCard",
+        "destination": "dungeonDiscardPile"
+      }
+    },
+    "otherwise": {
+      "target": "activeCharacter",
+      "effects": [
+        {
+          "type": "dealDamage",
+          "amount": 1,
+          "damageType": "physical"
+        },
+        {
+          "type": "gainHeat",
+          "amount": 2
+        }
+      ]
+    },
+    "afterResolution": {
+      "type": "moveCard",
+      "destination": "dungeonDiscardPile"
+    }
+  },
+  "source": {
+    "sourceFile": "Cards/dungeon_cards/dungeonDecks.txt",
+    "sourceSection": "Goblin Warrens / Scrap Fortress > Tripwire",
+    "verifiedAgainstRulebook": false,
+    "notes": "Rules text migrated from the current Goblin Warrens dungeon-card source. Count 2 is a provisional first-playtest deck-density decision and can be tuned after initial dungeon runs."
+  }
+}

@@ -1572,6 +1572,70 @@
         "notes": "Maximum HP, class trait, native skill domains, starting equipment, starter skills, Tactical Reserve cards, and starting Defense are migrated from the first-playtest character roster. Several referenced catalog records have not yet been created and are intentionally retained as future references."
       }
     },
+    "dungeon.goblin-warrens.catwalks": {
+      "id": "dungeon.goblin-warrens.catwalks",
+      "active": true,
+      "count": 1,
+      "cardType": "dungeonCard",
+      "name": "Catwalks",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "dungeon-trap-standard",
+      "tags": [
+        "dungeon-card",
+        "area"
+      ],
+      "rulesText": "Area\n\n While this area card is in play, only ranged attacks can be used. ",
+      "data": {
+        "dungeonCardType": "earea",
+        "dungeonThemes": [
+          "goblin-warrens",
+          "goblin-shadowy-coridor"
+        ],
+        "resolutionTiming": "immediatelyWhenDrawn",
+        "responseOption": {
+          "optional": false,
+          "name": "Disarm Tripwire",
+          "eligibleEntity": {
+            "entityTypes": [
+              "playerCharacter"
+            ],
+            "mustBePlayerControlled": true,
+            "mustBeInSameRowAs": "activeCharacter",
+            "requiresEquippedSkillTag": "rogue"
+          },
+          "onUse": {
+            "type": "moveCard",
+            "destination": "dungeonDiscardPile"
+          }
+        },
+        "otherwise": {
+          "target": "activeCharacter",
+          "effects": [
+            {
+              "type": "dealDamage",
+              "amount": 1,
+              "damageType": "physical"
+            },
+            {
+              "type": "gainHeat",
+              "amount": 2
+            }
+          ]
+        },
+        "afterResolution": {
+          "type": "moveCard",
+          "destination": "dungeonDiscardPile"
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/dungeon_cards/dungeonDecks.txt",
+        "sourceSection": "Goblin Warrens / Scrap Fortress > Tripwire",
+        "verifiedAgainstRulebook": false,
+        "notes": "Rules text migrated from the current Goblin Warrens dungeon-card source. Count 2 is a provisional first-playtest deck-density decision and can be tuned after initial dungeon runs."
+      }
+    },
     "dungeon.goblin-warrens.goblin-alarm": {
       "id": "dungeon.goblin-warrens.goblin-alarm",
       "active": true,
@@ -1709,6 +1773,70 @@
         "notes": "Rules text migrated from the current Goblin Warrens source. Count 2 is a provisional first-playtest density. The source text does not explicitly state the event card's own post-resolution destination, so dungeonDiscardPile is modeled as the current one-shot dungeon-event default and should be confirmed during deck-rule review."
       }
     },
+    "dungeon.goblin-warrens.goblin-watchpost": {
+      "id": "dungeon.goblin-warrens.goblin-watchpost",
+      "active": true,
+      "count": 1,
+      "cardType": "dungeonCard",
+      "name": "Goblin Watchpost",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "dungeon-trap-standard",
+      "tags": [
+        "dungeon-card",
+        "area"
+      ],
+      "rulesText": "Area\n\n While this area card is in play, a barricade protects the back line enemies. In order to attack the back line forces, the barricade must be destroyed first. The barricade has 4 HP. ",
+      "data": {
+        "dungeonCardType": "earea",
+        "dungeonThemes": [
+          "goblin-warrens",
+          "goblin-shadowy-coridor"
+        ],
+        "resolutionTiming": "immediatelyWhenDrawn",
+        "responseOption": {
+          "optional": false,
+          "name": "Disarm Tripwire",
+          "eligibleEntity": {
+            "entityTypes": [
+              "playerCharacter"
+            ],
+            "mustBePlayerControlled": true,
+            "mustBeInSameRowAs": "activeCharacter",
+            "requiresEquippedSkillTag": "rogue"
+          },
+          "onUse": {
+            "type": "moveCard",
+            "destination": "dungeonDiscardPile"
+          }
+        },
+        "otherwise": {
+          "target": "activeCharacter",
+          "effects": [
+            {
+              "type": "dealDamage",
+              "amount": 1,
+              "damageType": "physical"
+            },
+            {
+              "type": "gainHeat",
+              "amount": 2
+            }
+          ]
+        },
+        "afterResolution": {
+          "type": "moveCard",
+          "destination": "dungeonDiscardPile"
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/dungeon_cards/dungeonDecks.txt",
+        "sourceSection": "Goblin Warrens / Scrap Fortress > Tripwire",
+        "verifiedAgainstRulebook": false,
+        "notes": "Rules text migrated from the current Goblin Warrens dungeon-card source. Count 2 is a provisional first-playtest deck-density decision and can be tuned after initial dungeon runs."
+      }
+    },
     "dungeon.goblin-warrens.mess": {
       "id": "dungeon.goblin-warrens.mess",
       "active": true,
@@ -1733,6 +1861,70 @@
         "resolutionTiming": "immediatelyWhenDrawn",
         "responseOption": {
           "optional": true,
+          "name": "Disarm Tripwire",
+          "eligibleEntity": {
+            "entityTypes": [
+              "playerCharacter"
+            ],
+            "mustBePlayerControlled": true,
+            "mustBeInSameRowAs": "activeCharacter",
+            "requiresEquippedSkillTag": "rogue"
+          },
+          "onUse": {
+            "type": "moveCard",
+            "destination": "dungeonDiscardPile"
+          }
+        },
+        "otherwise": {
+          "target": "activeCharacter",
+          "effects": [
+            {
+              "type": "dealDamage",
+              "amount": 1,
+              "damageType": "physical"
+            },
+            {
+              "type": "gainHeat",
+              "amount": 2
+            }
+          ]
+        },
+        "afterResolution": {
+          "type": "moveCard",
+          "destination": "dungeonDiscardPile"
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/dungeon_cards/dungeonDecks.txt",
+        "sourceSection": "Goblin Warrens / Scrap Fortress > Tripwire",
+        "verifiedAgainstRulebook": false,
+        "notes": "Rules text migrated from the current Goblin Warrens dungeon-card source. Count 2 is a provisional first-playtest deck-density decision and can be tuned after initial dungeon runs."
+      }
+    },
+    "dungeon.goblin-warrens.shadowy-coridor": {
+      "id": "dungeon.goblin-warrens.shadowy-coridor",
+      "active": true,
+      "count": 1,
+      "cardType": "dungeonCard",
+      "name": "Shadowy Coridor",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "dungeon-trap-standard",
+      "tags": [
+        "dungeon-card",
+        "area"
+      ],
+      "rulesText": "Area\n\n While this area card is in play, all ranged attacks including spells do 0 damage because it is too dark to see properly at range in order to target opponents. Melee attacks are unaffected.",
+      "data": {
+        "dungeonCardType": "earea",
+        "dungeonThemes": [
+          "goblin-warrens",
+          "goblin-shadowy-coridor"
+        ],
+        "resolutionTiming": "immediatelyWhenDrawn",
+        "responseOption": {
+          "optional": false,
           "name": "Disarm Tripwire",
           "eligibleEntity": {
             "entityTypes": [
@@ -3982,6 +4174,59 @@
         "notes": "Starter weapon catalog entry. Weapon tags support range and subtype eligibility checks."
       }
     },
+    "equipment.weapon.throwing-knife": {
+      "id": "equipment.weapon.throwing-knife",
+      "active": true,
+      "count": 4,
+      "cardType": "equipment",
+      "name": "Throwing Knife",
+      "revision": 1,
+      "moduleId": "core-alpha",
+      "artId": "art.default-card",
+      "printTemplate": "equipment-weapon-standard",
+      "tags": [
+        "equipment",
+        "weapon",
+        "melee",
+        "blade",
+        "dagger",
+        "one-handed",
+        "physical",
+        "ranged",
+        "common"
+      ],
+      "rulesText": "Weapon\n  Throw:  2 physical damage, ranged \n Knife Slash: 1 Physical Damage, melee",
+      "data": {
+        "equipmentType": "weapon",
+        "equipmentSlot": "weapon",
+        "rangeTag": "melee",
+        "weaponTags": [
+          "blade",
+          "dagger"
+        ],
+        "handsRequired": 1,
+        "requiredProficiency": [
+          "blade"
+        ],
+        "damage": {
+          "amount": 1,
+          "damageType": "physical"
+        },
+        "traits": [],
+        "economy": {
+          "equipmentPowerRating": 2,
+          "valueGold": 20,
+          "sellValueGold": 10,
+          "rarity": "common"
+        }
+      },
+      "source": {
+        "sourceFile": "Cards/item_and_equipment_cards/equipment.md",
+        "sourceSection": "Weapon Cards > Utility Dagger",
+        "verifiedAgainstRulebook": false,
+        "notes": "Starter weapon catalog entry. Weapon tags support range and subtype eligibility checks."
+      }
+    },
     "equipment.weapon.utility-dagger": {
       "id": "equipment.weapon.utility-dagger",
       "active": true,
@@ -4158,7 +4403,7 @@
         "sword",
         "physical"
       ],
-      "rulesText": "Hireling — Mercenary — Autonomous Ally — Market Only\n\nMinimum Settlement: Village\nCurrency Price: 14\nPreferred Row: Player Front Row\nHP: 6\nDefense: 1\n\nPriority:\n1. Sword Cut\nIf this ally is in the Player Front Row, deal 2 Physical damage to the enemy in the opposing Front Row with the highest printed Attack. Gain 1 Heat.\n\n2. Advance\nIf this ally is in the Player Back Row and an empty Player Front Row slot exists, move to the leftmost empty Player Front Row slot.\n\nDefeat: Put this card into the Loot Discard Pile.",
+      "rulesText": "Hireling — Mercenary — Autonomous Ally — Market Only\n\nMinimum Settlement: Village\nCurrency Price: 14\nPreferred Row: Player Front Row\nHP: 6\nDefense: 1\n\nPriority:\n1. Sword Cut\nIf this ally is in the Player Front Row, deal 2 Physical damage to the enemy in the opposing Front Row with the highest printed Attack. Gain 1 Heat.\n\n 2. Shortbow Shot\n\n physical ranged attack that deals 2 damage. Gain 1 heat. 3. Advance\nIf this ally is in the Player Back Row and an empty Player Front Row slot exists, move to the leftmost empty Player Front Row slot.\n\nDefeat: Put this card into the Loot Discard Pile.",
       "data": {
         "entityType": "autonomousAlly",
         "hirelingType": "mercenary",
@@ -5220,9 +5465,12 @@
     "character.mage",
     "character.rogue",
     "character.warrior",
+    "dungeon.goblin-warrens.catwalks",
     "dungeon.goblin-warrens.goblin-alarm",
     "dungeon.goblin-warrens.goblin-stolen-goods-stash",
+    "dungeon.goblin-warrens.goblin-watchpost",
     "dungeon.goblin-warrens.mess",
+    "dungeon.goblin-warrens.shadowy-coridor",
     "dungeon.goblin-warrens.tripwire",
     "enemy.goblin-archer",
     "enemy.goblin-bombardier",
@@ -5267,6 +5515,7 @@
     "equipment.weapon.runed-staff",
     "equipment.weapon.short-sword",
     "equipment.weapon.shortbow",
+    "equipment.weapon.throwing-knife",
     "equipment.weapon.utility-dagger",
     "equipment.weapon.warhammer",
     "equipment.weapon.wooden-club",

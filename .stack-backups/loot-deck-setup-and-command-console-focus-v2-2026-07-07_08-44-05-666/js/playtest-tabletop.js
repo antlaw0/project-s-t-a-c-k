@@ -571,57 +571,41 @@
   } // end createUniqueRuntimeId function
 
   function takeUnusedOrCreateCardInstance(definitionId, details) {
-  const state = application.runtimeState;
-  const definition = getCardDefinition(definitionId);
-  if (!definition || definition.active !== true) {
-    throw new Error(`Card definition ${definitionId} is missing or inactive.`);
-  } // end inactive-definition branch
+    const state = application.runtimeState;
+    const definition = getCardDefinition(definitionId);
+    if (!definition || definition.active !== true) {
+      throw new Error(`Card definition ${definitionId} is missing or inactive.`);
+    } // end inactive-definition branch
 
-  const reusableZoneNames = [
-    "unusedSupply",
-    "lootDeck",
-    "lootDiscardPile",
-    "dungeonLootArea"
-  ]; // end reusable-zone-name list
-
-  for (const zoneName of reusableZoneNames) {
-    const zone = state.zones[zoneName];
-    if (!Array.isArray(zone)) {
-      continue;
-    } // end non-array-zone branch
-
-    const reusableIndex = zone.findIndex(function findReusableInstance(cardInstanceId) {
+    const reusableIndex = state.zones.unusedSupply.findIndex(function findReusableInstance(cardInstanceId) {
       const instance = getCardInstance(cardInstanceId);
       return instance && instance.definitionId === definitionId;
     }); // end reusable-instance lookup
 
-    if (reusableIndex === -1) {
-      continue;
-    } // end no-matching-card branch
+    if (reusableIndex !== -1) {
+      const reusableId = state.zones.unusedSupply.splice(reusableIndex, 1)[0];
+      const reusable = getCardInstance(reusableId);
+      reusable.ownerEntityId = details.ownerEntityId || null;
+      updateCardInstanceZone(reusableId, details.zone, details.zoneDetail, details.faceUp !== false);
+      return reusableId;
+    } // end reusable-instance branch
 
-    const reusableId = zone.splice(reusableIndex, 1)[0];
-    const reusable = getCardInstance(reusableId);
-    reusable.ownerEntityId = details.ownerEntityId || null;
-    updateCardInstanceZone(reusableId, details.zone, details.zoneDetail, details.faceUp !== false);
-    return reusableId;
-  } // end reusable-zone search loop
+    if (getCopyUsageCount(definitionId) >= definition.count) {
+      throw new Error(`${definition.name} has no unused catalog copies available. Increase its count only if the physical supply should contain another copy.`);
+    } // end count-exhausted branch
 
-  if (getCopyUsageCount(definitionId) >= definition.count) {
-    throw new Error(`${definition.name} has no unused catalog copies available. Increase its count only if the physical supply should contain another copy.`);
-  } // end count-exhausted branch
-
-  const instanceId = createUniqueRuntimeId("instance", definitionId);
-  state.cardInstances[instanceId] = {
-    id: instanceId,
-    definitionId,
-    cardType: definition.cardType,
-    ownerEntityId: details.ownerEntityId || null,
-    zone: details.zone,
-    zoneDetail: details.zoneDetail || null,
-    faceUp: details.faceUp !== false
-  }; // end new-card-instance object
-  return instanceId;
-} // end takeUnusedOrCreateCardInstance function
+    const instanceId = createUniqueRuntimeId("instance", definitionId);
+    state.cardInstances[instanceId] = {
+      id: instanceId,
+      definitionId,
+      cardType: definition.cardType,
+      ownerEntityId: details.ownerEntityId || null,
+      zone: details.zone,
+      zoneDetail: details.zoneDetail || null,
+      faceUp: details.faceUp !== false
+    }; // end new-card-instance object
+    return instanceId;
+  } // end takeUnusedOrCreateCardInstance function
 
   function returnCardToUnusedSupply(cardInstanceId, message) {
     const instance = getCardInstance(cardInstanceId);
@@ -1653,8 +1637,8 @@ createElement("h6", { text: definition.name }),
     const entity = getEntity(elements.setupEntitySelect.value);
     const definition = getCardDefinition(elements.setupCardSelect.value);
     const kind = elements.setupCardKindSelect.value;
-    if (!entity || !isFriendlyEntity(entity) || !definition || definition.cardType !== kind) {
-      setManualControlStatus("Select a friendly entity and a compatible active catalog card.", "error");
+    if (!entity || entity.entityType !== "playerCharacter" || !definition || definition.cardType !== kind) {
+      setManualControlStatus("Select a player character and a compatible active catalog card.", "error");
       return;
     } // end invalid-entity-card-assignment branch
     try {
@@ -1734,16 +1718,9 @@ createElement("h6", { text: definition.name }),
     const state = application.runtimeState;
     const loaded = Boolean(state && application.catalog);
     const participants = loaded ? state.participants : [];
-    const playerCharacters = loaded
-  ? Object.values(state.entities).filter(function filterPlayerCharacters(entity) {
-    return entity.entityType === "playerCharacter";
-  })
-  : [];
-const friendlyEntities = loaded
-  ? Object.values(state.entities).filter(function filterFriendlyEntitiesForSetup(entity) {
-    return isFriendlyEntity(entity);
-  })
-  : [];
+    const playerCharacters = loaded ? Object.values(state.entities).filter(function filterPlayerCharacters(entity) {
+      return entity.entityType === "playerCharacter";
+    }) : [];
 
     populateSelect(elements.newPlayerControllerSelect, loaded ? [{ value: "__new__", label: "Create a new player" }].concat(participants.map(function mapParticipant(participant) {
       return { value: participant.id, label: participant.name || participant.id };
@@ -1765,13 +1742,9 @@ const friendlyEntities = loaded
       return { value: entity.id, label: entity.name };
     }) : [], "No player character available");
     populateSelect(elements.newSummonCardSelect, loaded ? definitionOptions(isSummonDefinition) : [], "No active Summon Cards available");
-    populateSelect(
-  elements.setupEntitySelect,
-  loaded ? friendlyEntities.map(function mapSetupEntity(entity) {
-    return { value: entity.id, label: entity.name };
-  }) : [],
-  "No friendly entity available"
-);
+    populateSelect(elements.setupEntitySelect, loaded ? playerCharacters.map(function mapSetupEntity(entity) {
+      return { value: entity.id, label: entity.name };
+    }) : [], "No player character available");
 
     const setupKind = elements.setupCardKindSelect.value;
     populateSelect(elements.setupCardSelect, loaded ? definitionOptions(function filterSetupCard(definition) {
