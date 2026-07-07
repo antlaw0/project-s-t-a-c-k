@@ -3,8 +3,8 @@
   "scenarioId": "scenario.solo-warrior-goblin-warrens-smoke-test",
   "scenarioName": "Solo Warrior: Goblin Warrens Smoke Test",
   "moduleId": "core-alpha",
-  "createdAt": "2026-07-01T13:39:56.369Z",
-  "seed": "20260629",
+  "createdAt": "2026-07-06T03:03:42.351Z",
+  "seed": "fresh-1783307022270-34836-1hopn2sjnfx",
   "playMode": "soloManual",
   "automationPolicy": {
     "automateRulesResolution": false,
@@ -32,25 +32,27 @@
       "entityType": "playerCharacter",
       "controllerParticipantId": "participant.solo-playtester",
       "currentRow": "playerFront",
-      "damage": 6,
-      "heat": 4,
+      "damage": 0,
+      "heat": 0,
       "maximumHp": 20,
       "statusRow": [
-        "instance.ability.barbarian.recruit-rage.001",
+        null,
         null,
         null,
         null,
         null
       ],
       "equipment": {
-        "weapon": "instance.equipment.weapon.arming-sword.001",
-        "body": "instance.equipment-body-leather-armor.001",
-        "offhand": "instance.equipment-offhand-buckler.001"
+        "weapon": "instance.equipment.weapon.battleaxe.001",
+        "body": "instance.equipment.body.leather-armor.001"
       },
       "skillSlots": [
         {
           "skillCardInstanceId": "instance.skill.barbarian.recruit-feral-instinct.001",
-          "attachedAbilityInstanceIds": []
+          "attachedAbilityInstanceIds": [
+            "instance.ability.barbarian.recruit-rage.001",
+            "instance.ability-warrior-recruit-cleave.001"
+          ]
         },
         null,
         null,
@@ -59,15 +61,36 @@
       ],
       "tacticalReserveSlots": [
         "instance.tactical-reserve.healing-potion.001",
-        "instance.tactical-reserve.barkskin-salve.003",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "entity.hireling-roadside-sellsword.001": {
+      "id": "entity.hireling-roadside-sellsword.001",
+      "definitionId": "hireling.roadside-sellsword",
+      "characterCardInstanceId": "instance.hireling-roadside-sellsword.001",
+      "name": "Swordsman",
+      "entityType": "autonomousAlly",
+      "controllerParticipantId": null,
+      "ownerParticipantId": null,
+      "owningEntityId": null,
+      "currentRow": "playerFront",
+      "damage": 0,
+      "heat": 0,
+      "maximumHp": 6,
+      "defense": 1,
+      "statusRow": [
+        null,
+        null,
         null,
         null,
         null
       ],
-      "inventoryCapacity": 20,
-      "inventorySlots": [
-        null
-      ]
+      "equipment": {},
+      "skillSlots": [],
+      "tacticalReserveSlots": []
     }
   },
   "cardInstances": {
@@ -80,13 +103,22 @@
       "zoneDetail": "participant.solo-playtester",
       "faceUp": true
     },
-    "instance.equipment.weapon.arming-sword.001": {
-      "id": "instance.equipment.weapon.arming-sword.001",
-      "definitionId": "equipment.weapon.arming-sword",
+    "instance.equipment.weapon.battleaxe.001": {
+      "id": "instance.equipment.weapon.battleaxe.001",
+      "definitionId": "equipment.weapon.battleaxe",
       "cardType": "equipment",
       "ownerEntityId": "entity.character.warrior.001",
       "zone": "equipmentSlot",
       "zoneDetail": "weapon",
+      "faceUp": true
+    },
+    "instance.equipment.body.leather-armor.001": {
+      "id": "instance.equipment.body.leather-armor.001",
+      "definitionId": "equipment.body.leather-armor",
+      "cardType": "equipment",
+      "ownerEntityId": "entity.character.warrior.001",
+      "zone": "equipmentSlot",
+      "zoneDetail": "body",
       "faceUp": true
     },
     "instance.skill.barbarian.recruit-feral-instinct.001": {
@@ -103,14 +135,9 @@
       "definitionId": "ability.barbarian.recruit-rage",
       "cardType": "ability",
       "ownerEntityId": "entity.character.warrior.001",
-      "zone": "statusRow",
-      "zoneDetail": "entity.character.warrior.001:slot1",
-      "faceUp": true,
-      "statusReturn": {
-        "type": "skillAttachment",
-        "skillCardInstanceId": "instance.skill.barbarian.recruit-feral-instinct.001",
-        "ownerEntityId": "entity.character.warrior.001"
-      }
+      "zone": "skillAttachment",
+      "zoneDetail": "instance.skill.barbarian.recruit-feral-instinct.001",
+      "faceUp": true
     },
     "instance.tactical-reserve.healing-potion.001": {
       "id": "instance.tactical-reserve.healing-potion.001",
@@ -121,36 +148,252 @@
       "zoneDetail": "tacticalReserveSlot:1",
       "faceUp": true
     },
+    "instance.enemy.goblin-archer.001": {
+      "id": "instance.enemy.goblin-archer.001",
+      "definitionId": "enemy.goblin-archer",
+      "cardType": "enemy",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "faceUp": false
+    },
+    "instance.enemy.goblin-archer.002": {
+      "id": "instance.enemy.goblin-archer.002",
+      "definitionId": "enemy.goblin-archer",
+      "cardType": "enemy",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "faceUp": false
+    },
+    "instance.enemy.goblin-archer.003": {
+      "id": "instance.enemy.goblin-archer.003",
+      "definitionId": "enemy.goblin-archer",
+      "cardType": "enemy",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "faceUp": false
+    },
+    "instance.enemy.goblin-archer.004": {
+      "id": "instance.enemy.goblin-archer.004",
+      "definitionId": "enemy.goblin-archer",
+      "cardType": "enemy",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "faceUp": false
+    },
+    "instance.enemy.goblin-bombardier.001": {
+      "id": "instance.enemy.goblin-bombardier.001",
+      "definitionId": "enemy.goblin-bombardier",
+      "cardType": "enemy",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "faceUp": false
+    },
+    "instance.enemy.goblin-bully.001": {
+      "id": "instance.enemy.goblin-bully.001",
+      "definitionId": "enemy.goblin-bully",
+      "cardType": "enemy",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "faceUp": false
+    },
+    "instance.enemy.goblin-bully.002": {
+      "id": "instance.enemy.goblin-bully.002",
+      "definitionId": "enemy.goblin-bully",
+      "cardType": "enemy",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "faceUp": false
+    },
+    "instance.enemy.goblin-cutthroat.001": {
+      "id": "instance.enemy.goblin-cutthroat.001",
+      "definitionId": "enemy.goblin-cutthroat",
+      "cardType": "enemy",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "faceUp": false
+    },
+    "instance.enemy.goblin-cutthroat.002": {
+      "id": "instance.enemy.goblin-cutthroat.002",
+      "definitionId": "enemy.goblin-cutthroat",
+      "cardType": "enemy",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "faceUp": false
+    },
+    "instance.enemy.goblin-hexer.001": {
+      "id": "instance.enemy.goblin-hexer.001",
+      "definitionId": "enemy.goblin-hexer",
+      "cardType": "enemy",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "faceUp": false
+    },
     "instance.enemy.goblin-raider.001": {
       "id": "instance.enemy.goblin-raider.001",
       "definitionId": "enemy.goblin-raider",
       "cardType": "enemy",
-      "ownerEntityId": "entity.enemy-goblin-raider.001",
-      "zone": "dungeonDiscardPile",
-      "zoneDetail": null,
-      "faceUp": true
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "faceUp": false
     },
     "instance.enemy.goblin-raider.002": {
       "id": "instance.enemy.goblin-raider.002",
       "definitionId": "enemy.goblin-raider",
       "cardType": "enemy",
-      "ownerEntityId": "entity.enemy-goblin-raider.001",
-      "zone": "dungeonDiscardPile",
-      "zoneDetail": null,
-      "faceUp": true
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "faceUp": false
     },
     "instance.enemy.goblin-raider.003": {
       "id": "instance.enemy.goblin-raider.003",
       "definitionId": "enemy.goblin-raider",
       "cardType": "enemy",
-      "ownerEntityId": "entity.enemy-goblin-raider.001",
-      "zone": "dungeonDiscardPile",
-      "zoneDetail": null,
-      "faceUp": true
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "faceUp": false
     },
     "instance.enemy.goblin-raider.004": {
       "id": "instance.enemy.goblin-raider.004",
       "definitionId": "enemy.goblin-raider",
+      "cardType": "enemy",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "faceUp": false
+    },
+    "instance.enemy.goblin-skirmisher.001": {
+      "id": "instance.enemy.goblin-skirmisher.001",
+      "definitionId": "enemy.goblin-skirmisher",
+      "cardType": "enemy",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "faceUp": false
+    },
+    "instance.enemy.goblin-skirmisher.002": {
+      "id": "instance.enemy.goblin-skirmisher.002",
+      "definitionId": "enemy.goblin-skirmisher",
+      "cardType": "enemy",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "faceUp": false
+    },
+    "instance.enemy.goblin-skirmisher.003": {
+      "id": "instance.enemy.goblin-skirmisher.003",
+      "definitionId": "enemy.goblin-skirmisher",
+      "cardType": "enemy",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "faceUp": false
+    },
+    "instance.enemy.goblin-slinger.001": {
+      "id": "instance.enemy.goblin-slinger.001",
+      "definitionId": "enemy.goblin-slinger",
+      "cardType": "enemy",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "faceUp": false
+    },
+    "instance.enemy.goblin-slinger.002": {
+      "id": "instance.enemy.goblin-slinger.002",
+      "definitionId": "enemy.goblin-slinger",
+      "cardType": "enemy",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "faceUp": false
+    },
+    "instance.enemy.goblin-slinger.003": {
+      "id": "instance.enemy.goblin-slinger.003",
+      "definitionId": "enemy.goblin-slinger",
+      "cardType": "enemy",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "faceUp": false
+    },
+    "instance.enemy.goblin-sneak.001": {
+      "id": "instance.enemy.goblin-sneak.001",
+      "definitionId": "enemy.goblin-sneak",
+      "cardType": "enemy",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "faceUp": false
+    },
+    "instance.enemy.goblin-sneak.002": {
+      "id": "instance.enemy.goblin-sneak.002",
+      "definitionId": "enemy.goblin-sneak",
+      "cardType": "enemy",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "faceUp": false
+    },
+    "instance.enemy.goblin-spearman.001": {
+      "id": "instance.enemy.goblin-spearman.001",
+      "definitionId": "enemy.goblin-spearman",
+      "cardType": "enemy",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "faceUp": false
+    },
+    "instance.enemy.goblin-spearman.002": {
+      "id": "instance.enemy.goblin-spearman.002",
+      "definitionId": "enemy.goblin-spearman",
+      "cardType": "enemy",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "faceUp": false
+    },
+    "instance.enemy.goblin-spearman.003": {
+      "id": "instance.enemy.goblin-spearman.003",
+      "definitionId": "enemy.goblin-spearman",
+      "cardType": "enemy",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "faceUp": false
+    },
+    "instance.enemy.goblin-worg.001": {
+      "id": "instance.enemy.goblin-worg.001",
+      "definitionId": "enemy.goblin-worg",
+      "cardType": "enemy",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "faceUp": false
+    },
+    "instance.enemy.goblin-worg.002": {
+      "id": "instance.enemy.goblin-worg.002",
+      "definitionId": "enemy.goblin-worg",
+      "cardType": "enemy",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "faceUp": false
+    },
+    "instance.enemy.goblin-worg-rider.001": {
+      "id": "instance.enemy.goblin-worg-rider.001",
+      "definitionId": "enemy.goblin-worg-rider",
       "cardType": "enemy",
       "ownerEntityId": null,
       "zone": "dungeonDeck",
@@ -162,13 +405,76 @@
       "definitionId": "dungeon.goblin-warrens.tripwire",
       "cardType": "dungeonCard",
       "ownerEntityId": null,
-      "zone": "dungeonDiscardPile",
-      "zoneDetail": null,
-      "faceUp": true
+      "zone": "dungeonDeck",
+      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "faceUp": false
     },
     "instance.dungeon.goblin-warrens.tripwire.002": {
       "id": "instance.dungeon.goblin-warrens.tripwire.002",
       "definitionId": "dungeon.goblin-warrens.tripwire",
+      "cardType": "dungeonCard",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "faceUp": false
+    },
+    "instance.dungeon.goblin-warrens.mess.001": {
+      "id": "instance.dungeon.goblin-warrens.mess.001",
+      "definitionId": "dungeon.goblin-warrens.mess",
+      "cardType": "dungeonCard",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "faceUp": false
+    },
+    "instance.dungeon.goblin-warrens.mess.002": {
+      "id": "instance.dungeon.goblin-warrens.mess.002",
+      "definitionId": "dungeon.goblin-warrens.mess",
+      "cardType": "dungeonCard",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "faceUp": false
+    },
+    "instance.dungeon.goblin-warrens.mess.003": {
+      "id": "instance.dungeon.goblin-warrens.mess.003",
+      "definitionId": "dungeon.goblin-warrens.mess",
+      "cardType": "dungeonCard",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "faceUp": false
+    },
+    "instance.dungeon.goblin-warrens.mess.004": {
+      "id": "instance.dungeon.goblin-warrens.mess.004",
+      "definitionId": "dungeon.goblin-warrens.mess",
+      "cardType": "dungeonCard",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "faceUp": false
+    },
+    "instance.dungeon.goblin-warrens.goblin-stolen-goods-stash.001": {
+      "id": "instance.dungeon.goblin-warrens.goblin-stolen-goods-stash.001",
+      "definitionId": "dungeon.goblin-warrens.goblin-stolen-goods-stash",
+      "cardType": "dungeonCard",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "faceUp": false
+    },
+    "instance.dungeon.goblin-warrens.goblin-stolen-goods-stash.002": {
+      "id": "instance.dungeon.goblin-warrens.goblin-stolen-goods-stash.002",
+      "definitionId": "dungeon.goblin-warrens.goblin-stolen-goods-stash",
+      "cardType": "dungeonCard",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "faceUp": false
+    },
+    "instance.dungeon.goblin-warrens.goblin-stolen-goods-stash.003": {
+      "id": "instance.dungeon.goblin-warrens.goblin-stolen-goods-stash.003",
+      "definitionId": "dungeon.goblin-warrens.goblin-stolen-goods-stash",
       "cardType": "dungeonCard",
       "ownerEntityId": null,
       "zone": "dungeonDeck",
@@ -180,18 +486,27 @@
       "definitionId": "dungeon.goblin-warrens.goblin-alarm",
       "cardType": "dungeonCard",
       "ownerEntityId": null,
-      "zone": "dungeonDiscardPile",
-      "zoneDetail": null,
-      "faceUp": true
+      "zone": "dungeonDeck",
+      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "faceUp": false
     },
     "instance.dungeon.goblin-warrens.goblin-alarm.002": {
       "id": "instance.dungeon.goblin-warrens.goblin-alarm.002",
       "definitionId": "dungeon.goblin-warrens.goblin-alarm",
       "cardType": "dungeonCard",
       "ownerEntityId": null,
-      "zone": "dungeonRevealArea",
-      "zoneDetail": "drawnFrom:dungeonDeck:top",
-      "faceUp": true
+      "zone": "dungeonDeck",
+      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "faceUp": false
+    },
+    "instance.dungeon.goblin-warrens.goblin-alarm.003": {
+      "id": "instance.dungeon.goblin-warrens.goblin-alarm.003",
+      "definitionId": "dungeon.goblin-warrens.goblin-alarm",
+      "cardType": "dungeonCard",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "deck.goblin-warrens-catalog-smoke-test",
+      "faceUp": false
     },
     "instance.status.negative.poisoned.001": {
       "id": "instance.status.negative.poisoned.001",
@@ -311,6 +626,208 @@
       "faceUp": false,
       "lootDeckOrigin": true
     },
+    "instance.equipment.body.chainmail.001": {
+      "id": "instance.equipment.body.chainmail.001",
+      "definitionId": "equipment.body.chainmail",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.body.chainmail.002": {
+      "id": "instance.equipment.body.chainmail.002",
+      "definitionId": "equipment.body.chainmail",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.body.chainmail.003": {
+      "id": "instance.equipment.body.chainmail.003",
+      "definitionId": "equipment.body.chainmail",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.body.chainmail.004": {
+      "id": "instance.equipment.body.chainmail.004",
+      "definitionId": "equipment.body.chainmail",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "lootDeckInjection",
+      "faceUp": false,
+      "lootDeckOrigin": true,
+      "dungeonLootInjection": true
+    },
+    "instance.equipment.body.full-plate.001": {
+      "id": "instance.equipment.body.full-plate.001",
+      "definitionId": "equipment.body.full-plate",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.body.full-plate.002": {
+      "id": "instance.equipment.body.full-plate.002",
+      "definitionId": "equipment.body.full-plate",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.body.full-plate.003": {
+      "id": "instance.equipment.body.full-plate.003",
+      "definitionId": "equipment.body.full-plate",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.body.full-plate.004": {
+      "id": "instance.equipment.body.full-plate.004",
+      "definitionId": "equipment.body.full-plate",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.body.half-plate.001": {
+      "id": "instance.equipment.body.half-plate.001",
+      "definitionId": "equipment.body.half-plate",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.body.half-plate.002": {
+      "id": "instance.equipment.body.half-plate.002",
+      "definitionId": "equipment.body.half-plate",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.body.half-plate.003": {
+      "id": "instance.equipment.body.half-plate.003",
+      "definitionId": "equipment.body.half-plate",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "lootDeckInjection",
+      "faceUp": false,
+      "lootDeckOrigin": true,
+      "dungeonLootInjection": true
+    },
+    "instance.equipment.body.half-plate.004": {
+      "id": "instance.equipment.body.half-plate.004",
+      "definitionId": "equipment.body.half-plate",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.body.leather-armor.002": {
+      "id": "instance.equipment.body.leather-armor.002",
+      "definitionId": "equipment.body.leather-armor",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.body.leather-armor.003": {
+      "id": "instance.equipment.body.leather-armor.003",
+      "definitionId": "equipment.body.leather-armor",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.body.leather-armor.004": {
+      "id": "instance.equipment.body.leather-armor.004",
+      "definitionId": "equipment.body.leather-armor",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.feet.surefoot-boots.001": {
+      "id": "instance.equipment.feet.surefoot-boots.001",
+      "definitionId": "equipment.feet.surefoot-boots",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.feet.travel-boots.001": {
+      "id": "instance.equipment.feet.travel-boots.001",
+      "definitionId": "equipment.feet.travel-boots",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.feet.travel-boots.002": {
+      "id": "instance.equipment.feet.travel-boots.002",
+      "definitionId": "equipment.feet.travel-boots",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.feet.travel-boots.003": {
+      "id": "instance.equipment.feet.travel-boots.003",
+      "definitionId": "equipment.feet.travel-boots",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.feet.travel-boots.004": {
+      "id": "instance.equipment.feet.travel-boots.004",
+      "definitionId": "equipment.feet.travel-boots",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
     "instance.equipment.focus.apprentices-wand.001": {
       "id": "instance.equipment.focus.apprentices-wand.001",
       "definitionId": "equipment.focus.apprentices-wand",
@@ -321,9 +838,1243 @@
       "faceUp": false,
       "lootDeckOrigin": true
     },
+    "instance.equipment.focus.apprentices-wand.002": {
+      "id": "instance.equipment.focus.apprentices-wand.002",
+      "definitionId": "equipment.focus.apprentices-wand",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.focus.apprentices-wand.003": {
+      "id": "instance.equipment.focus.apprentices-wand.003",
+      "definitionId": "equipment.focus.apprentices-wand",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.focus.apprentices-wand.004": {
+      "id": "instance.equipment.focus.apprentices-wand.004",
+      "definitionId": "equipment.focus.apprentices-wand",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.hands.weapon-grip-gloves.001": {
+      "id": "instance.equipment.hands.weapon-grip-gloves.001",
+      "definitionId": "equipment.hands.weapon-grip-gloves",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.hands.work-gloves.001": {
+      "id": "instance.equipment.hands.work-gloves.001",
+      "definitionId": "equipment.hands.work-gloves",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.hands.work-gloves.002": {
+      "id": "instance.equipment.hands.work-gloves.002",
+      "definitionId": "equipment.hands.work-gloves",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.hands.work-gloves.003": {
+      "id": "instance.equipment.hands.work-gloves.003",
+      "definitionId": "equipment.hands.work-gloves",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.hands.work-gloves.004": {
+      "id": "instance.equipment.hands.work-gloves.004",
+      "definitionId": "equipment.hands.work-gloves",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.neck.guardian-pendant.001": {
+      "id": "instance.equipment.neck.guardian-pendant.001",
+      "definitionId": "equipment.neck.guardian-pendant",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.neck.guardian-pendant.002": {
+      "id": "instance.equipment.neck.guardian-pendant.002",
+      "definitionId": "equipment.neck.guardian-pendant",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.neck.guardian-pendant.003": {
+      "id": "instance.equipment.neck.guardian-pendant.003",
+      "definitionId": "equipment.neck.guardian-pendant",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.neck.guardian-pendant.004": {
+      "id": "instance.equipment.neck.guardian-pendant.004",
+      "definitionId": "equipment.neck.guardian-pendant",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.neck.simple-pendant.001": {
+      "id": "instance.equipment.neck.simple-pendant.001",
+      "definitionId": "equipment.neck.simple-pendant",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.neck.simple-pendant.002": {
+      "id": "instance.equipment.neck.simple-pendant.002",
+      "definitionId": "equipment.neck.simple-pendant",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.neck.simple-pendant.003": {
+      "id": "instance.equipment.neck.simple-pendant.003",
+      "definitionId": "equipment.neck.simple-pendant",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.neck.simple-pendant.004": {
+      "id": "instance.equipment.neck.simple-pendant.004",
+      "definitionId": "equipment.neck.simple-pendant",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.neck.simple-pendant.005": {
+      "id": "instance.equipment.neck.simple-pendant.005",
+      "definitionId": "equipment.neck.simple-pendant",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.neck.simple-pendant.006": {
+      "id": "instance.equipment.neck.simple-pendant.006",
+      "definitionId": "equipment.neck.simple-pendant",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.offhand.buckler.001": {
+      "id": "instance.equipment.offhand.buckler.001",
+      "definitionId": "equipment.offhand.buckler",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.offhand.buckler.002": {
+      "id": "instance.equipment.offhand.buckler.002",
+      "definitionId": "equipment.offhand.buckler",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.offhand.buckler.003": {
+      "id": "instance.equipment.offhand.buckler.003",
+      "definitionId": "equipment.offhand.buckler",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.offhand.buckler.004": {
+      "id": "instance.equipment.offhand.buckler.004",
+      "definitionId": "equipment.offhand.buckler",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.offhand.crystal-focus.001": {
+      "id": "instance.equipment.offhand.crystal-focus.001",
+      "definitionId": "equipment.offhand.crystal-focus",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "lootDeckInjection",
+      "faceUp": false,
+      "lootDeckOrigin": true,
+      "dungeonLootInjection": true
+    },
+    "instance.equipment.offhand.crystal-focus.002": {
+      "id": "instance.equipment.offhand.crystal-focus.002",
+      "definitionId": "equipment.offhand.crystal-focus",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.offhand.crystal-focus.003": {
+      "id": "instance.equipment.offhand.crystal-focus.003",
+      "definitionId": "equipment.offhand.crystal-focus",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.offhand.crystal-focus.004": {
+      "id": "instance.equipment.offhand.crystal-focus.004",
+      "definitionId": "equipment.offhand.crystal-focus",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.offhand.ember-focus.001": {
+      "id": "instance.equipment.offhand.ember-focus.001",
+      "definitionId": "equipment.offhand.ember-focus",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.offhand.ember-focus.002": {
+      "id": "instance.equipment.offhand.ember-focus.002",
+      "definitionId": "equipment.offhand.ember-focus",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.offhand.ember-focus.003": {
+      "id": "instance.equipment.offhand.ember-focus.003",
+      "definitionId": "equipment.offhand.ember-focus",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.offhand.ember-focus.004": {
+      "id": "instance.equipment.offhand.ember-focus.004",
+      "definitionId": "equipment.offhand.ember-focus",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.offhand.kite-shield.001": {
+      "id": "instance.equipment.offhand.kite-shield.001",
+      "definitionId": "equipment.offhand.kite-shield",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.offhand.kite-shield.002": {
+      "id": "instance.equipment.offhand.kite-shield.002",
+      "definitionId": "equipment.offhand.kite-shield",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.offhand.kite-shield.003": {
+      "id": "instance.equipment.offhand.kite-shield.003",
+      "definitionId": "equipment.offhand.kite-shield",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.offhand.square-shield.001": {
+      "id": "instance.equipment.offhand.square-shield.001",
+      "definitionId": "equipment.offhand.square-shield",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.offhand.square-shield.002": {
+      "id": "instance.equipment.offhand.square-shield.002",
+      "definitionId": "equipment.offhand.square-shield",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.offhand.square-shield.003": {
+      "id": "instance.equipment.offhand.square-shield.003",
+      "definitionId": "equipment.offhand.square-shield",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.offhand.sunstone-focus.001": {
+      "id": "instance.equipment.offhand.sunstone-focus.001",
+      "definitionId": "equipment.offhand.sunstone-focus",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.offhand.sunstone-focus.002": {
+      "id": "instance.equipment.offhand.sunstone-focus.002",
+      "definitionId": "equipment.offhand.sunstone-focus",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.ring.emberward-ring.001": {
+      "id": "instance.equipment.ring.emberward-ring.001",
+      "definitionId": "equipment.ring.emberward-ring",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.ring.plain-ring.001": {
+      "id": "instance.equipment.ring.plain-ring.001",
+      "definitionId": "equipment.ring.plain-ring",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.ring.plain-ring.002": {
+      "id": "instance.equipment.ring.plain-ring.002",
+      "definitionId": "equipment.ring.plain-ring",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.ring.plain-ring.003": {
+      "id": "instance.equipment.ring.plain-ring.003",
+      "definitionId": "equipment.ring.plain-ring",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.ring.plain-ring.004": {
+      "id": "instance.equipment.ring.plain-ring.004",
+      "definitionId": "equipment.ring.plain-ring",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.ring.plain-ring.005": {
+      "id": "instance.equipment.ring.plain-ring.005",
+      "definitionId": "equipment.ring.plain-ring",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.ring.plain-ring.006": {
+      "id": "instance.equipment.ring.plain-ring.006",
+      "definitionId": "equipment.ring.plain-ring",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.ring.venomward-ring.001": {
+      "id": "instance.equipment.ring.venomward-ring.001",
+      "definitionId": "equipment.ring.venomward-ring",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.ring.venomward-ring.002": {
+      "id": "instance.equipment.ring.venomward-ring.002",
+      "definitionId": "equipment.ring.venomward-ring",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.ring.venomward-ring.003": {
+      "id": "instance.equipment.ring.venomward-ring.003",
+      "definitionId": "equipment.ring.venomward-ring",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.ring.venomward-ring.004": {
+      "id": "instance.equipment.ring.venomward-ring.004",
+      "definitionId": "equipment.ring.venomward-ring",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.arming-sword.001": {
+      "id": "instance.equipment.weapon.arming-sword.001",
+      "definitionId": "equipment.weapon.arming-sword",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
     "instance.equipment.weapon.arming-sword.002": {
       "id": "instance.equipment.weapon.arming-sword.002",
       "definitionId": "equipment.weapon.arming-sword",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.arming-sword.003": {
+      "id": "instance.equipment.weapon.arming-sword.003",
+      "definitionId": "equipment.weapon.arming-sword",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.arming-sword.004": {
+      "id": "instance.equipment.weapon.arming-sword.004",
+      "definitionId": "equipment.weapon.arming-sword",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.arming-sword.005": {
+      "id": "instance.equipment.weapon.arming-sword.005",
+      "definitionId": "equipment.weapon.arming-sword",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.arming-sword.006": {
+      "id": "instance.equipment.weapon.arming-sword.006",
+      "definitionId": "equipment.weapon.arming-sword",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.battleaxe.002": {
+      "id": "instance.equipment.weapon.battleaxe.002",
+      "definitionId": "equipment.weapon.battleaxe",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.battleaxe.003": {
+      "id": "instance.equipment.weapon.battleaxe.003",
+      "definitionId": "equipment.weapon.battleaxe",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.battleaxe.004": {
+      "id": "instance.equipment.weapon.battleaxe.004",
+      "definitionId": "equipment.weapon.battleaxe",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.battleaxe.005": {
+      "id": "instance.equipment.weapon.battleaxe.005",
+      "definitionId": "equipment.weapon.battleaxe",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.battleaxe.006": {
+      "id": "instance.equipment.weapon.battleaxe.006",
+      "definitionId": "equipment.weapon.battleaxe",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.hand-axe.001": {
+      "id": "instance.equipment.weapon.hand-axe.001",
+      "definitionId": "equipment.weapon.hand-axe",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.hand-axe.002": {
+      "id": "instance.equipment.weapon.hand-axe.002",
+      "definitionId": "equipment.weapon.hand-axe",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.hand-axe.003": {
+      "id": "instance.equipment.weapon.hand-axe.003",
+      "definitionId": "equipment.weapon.hand-axe",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.hand-axe.004": {
+      "id": "instance.equipment.weapon.hand-axe.004",
+      "definitionId": "equipment.weapon.hand-axe",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.hand-axe.005": {
+      "id": "instance.equipment.weapon.hand-axe.005",
+      "definitionId": "equipment.weapon.hand-axe",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.hand-axe.006": {
+      "id": "instance.equipment.weapon.hand-axe.006",
+      "definitionId": "equipment.weapon.hand-axe",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "lootDeckInjection",
+      "faceUp": false,
+      "lootDeckOrigin": true,
+      "dungeonLootInjection": true
+    },
+    "instance.equipment.weapon.iron-spear.001": {
+      "id": "instance.equipment.weapon.iron-spear.001",
+      "definitionId": "equipment.weapon.iron-spear",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.iron-spear.002": {
+      "id": "instance.equipment.weapon.iron-spear.002",
+      "definitionId": "equipment.weapon.iron-spear",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.iron-spear.003": {
+      "id": "instance.equipment.weapon.iron-spear.003",
+      "definitionId": "equipment.weapon.iron-spear",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.iron-spear.004": {
+      "id": "instance.equipment.weapon.iron-spear.004",
+      "definitionId": "equipment.weapon.iron-spear",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.iron-spear.005": {
+      "id": "instance.equipment.weapon.iron-spear.005",
+      "definitionId": "equipment.weapon.iron-spear",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.iron-spear.006": {
+      "id": "instance.equipment.weapon.iron-spear.006",
+      "definitionId": "equipment.weapon.iron-spear",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.light-crossbow.001": {
+      "id": "instance.equipment.weapon.light-crossbow.001",
+      "definitionId": "equipment.weapon.light-crossbow",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.light-crossbow.002": {
+      "id": "instance.equipment.weapon.light-crossbow.002",
+      "definitionId": "equipment.weapon.light-crossbow",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.light-crossbow.003": {
+      "id": "instance.equipment.weapon.light-crossbow.003",
+      "definitionId": "equipment.weapon.light-crossbow",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.light-crossbow.004": {
+      "id": "instance.equipment.weapon.light-crossbow.004",
+      "definitionId": "equipment.weapon.light-crossbow",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.light-crossbow.005": {
+      "id": "instance.equipment.weapon.light-crossbow.005",
+      "definitionId": "equipment.weapon.light-crossbow",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.light-crossbow.006": {
+      "id": "instance.equipment.weapon.light-crossbow.006",
+      "definitionId": "equipment.weapon.light-crossbow",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.longbow.001": {
+      "id": "instance.equipment.weapon.longbow.001",
+      "definitionId": "equipment.weapon.longbow",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.longbow.002": {
+      "id": "instance.equipment.weapon.longbow.002",
+      "definitionId": "equipment.weapon.longbow",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.longbow.003": {
+      "id": "instance.equipment.weapon.longbow.003",
+      "definitionId": "equipment.weapon.longbow",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.longbow.004": {
+      "id": "instance.equipment.weapon.longbow.004",
+      "definitionId": "equipment.weapon.longbow",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.longbow.005": {
+      "id": "instance.equipment.weapon.longbow.005",
+      "definitionId": "equipment.weapon.longbow",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.oak-staff.001": {
+      "id": "instance.equipment.weapon.oak-staff.001",
+      "definitionId": "equipment.weapon.oak-staff",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.oak-staff.002": {
+      "id": "instance.equipment.weapon.oak-staff.002",
+      "definitionId": "equipment.weapon.oak-staff",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.oak-staff.003": {
+      "id": "instance.equipment.weapon.oak-staff.003",
+      "definitionId": "equipment.weapon.oak-staff",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.oak-staff.004": {
+      "id": "instance.equipment.weapon.oak-staff.004",
+      "definitionId": "equipment.weapon.oak-staff",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.oak-staff.005": {
+      "id": "instance.equipment.weapon.oak-staff.005",
+      "definitionId": "equipment.weapon.oak-staff",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.oak-staff.006": {
+      "id": "instance.equipment.weapon.oak-staff.006",
+      "definitionId": "equipment.weapon.oak-staff",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.runed-staff.001": {
+      "id": "instance.equipment.weapon.runed-staff.001",
+      "definitionId": "equipment.weapon.runed-staff",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.runed-staff.002": {
+      "id": "instance.equipment.weapon.runed-staff.002",
+      "definitionId": "equipment.weapon.runed-staff",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.runed-staff.003": {
+      "id": "instance.equipment.weapon.runed-staff.003",
+      "definitionId": "equipment.weapon.runed-staff",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.short-sword.001": {
+      "id": "instance.equipment.weapon.short-sword.001",
+      "definitionId": "equipment.weapon.short-sword",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.short-sword.002": {
+      "id": "instance.equipment.weapon.short-sword.002",
+      "definitionId": "equipment.weapon.short-sword",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.short-sword.003": {
+      "id": "instance.equipment.weapon.short-sword.003",
+      "definitionId": "equipment.weapon.short-sword",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.short-sword.004": {
+      "id": "instance.equipment.weapon.short-sword.004",
+      "definitionId": "equipment.weapon.short-sword",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.short-sword.005": {
+      "id": "instance.equipment.weapon.short-sword.005",
+      "definitionId": "equipment.weapon.short-sword",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.short-sword.006": {
+      "id": "instance.equipment.weapon.short-sword.006",
+      "definitionId": "equipment.weapon.short-sword",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.shortbow.001": {
+      "id": "instance.equipment.weapon.shortbow.001",
+      "definitionId": "equipment.weapon.shortbow",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.shortbow.002": {
+      "id": "instance.equipment.weapon.shortbow.002",
+      "definitionId": "equipment.weapon.shortbow",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.shortbow.003": {
+      "id": "instance.equipment.weapon.shortbow.003",
+      "definitionId": "equipment.weapon.shortbow",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.shortbow.004": {
+      "id": "instance.equipment.weapon.shortbow.004",
+      "definitionId": "equipment.weapon.shortbow",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.shortbow.005": {
+      "id": "instance.equipment.weapon.shortbow.005",
+      "definitionId": "equipment.weapon.shortbow",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "lootDeckInjection",
+      "faceUp": false,
+      "lootDeckOrigin": true,
+      "dungeonLootInjection": true
+    },
+    "instance.equipment.weapon.shortbow.006": {
+      "id": "instance.equipment.weapon.shortbow.006",
+      "definitionId": "equipment.weapon.shortbow",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.utility-dagger.001": {
+      "id": "instance.equipment.weapon.utility-dagger.001",
+      "definitionId": "equipment.weapon.utility-dagger",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.utility-dagger.002": {
+      "id": "instance.equipment.weapon.utility-dagger.002",
+      "definitionId": "equipment.weapon.utility-dagger",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.utility-dagger.003": {
+      "id": "instance.equipment.weapon.utility-dagger.003",
+      "definitionId": "equipment.weapon.utility-dagger",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.utility-dagger.004": {
+      "id": "instance.equipment.weapon.utility-dagger.004",
+      "definitionId": "equipment.weapon.utility-dagger",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.utility-dagger.005": {
+      "id": "instance.equipment.weapon.utility-dagger.005",
+      "definitionId": "equipment.weapon.utility-dagger",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.utility-dagger.006": {
+      "id": "instance.equipment.weapon.utility-dagger.006",
+      "definitionId": "equipment.weapon.utility-dagger",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.warhammer.001": {
+      "id": "instance.equipment.weapon.warhammer.001",
+      "definitionId": "equipment.weapon.warhammer",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.warhammer.002": {
+      "id": "instance.equipment.weapon.warhammer.002",
+      "definitionId": "equipment.weapon.warhammer",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.warhammer.003": {
+      "id": "instance.equipment.weapon.warhammer.003",
+      "definitionId": "equipment.weapon.warhammer",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.warhammer.004": {
+      "id": "instance.equipment.weapon.warhammer.004",
+      "definitionId": "equipment.weapon.warhammer",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.warhammer.005": {
+      "id": "instance.equipment.weapon.warhammer.005",
+      "definitionId": "equipment.weapon.warhammer",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "dungeonDeck",
+      "zoneDetail": "lootDeckInjection",
+      "faceUp": false,
+      "lootDeckOrigin": true,
+      "dungeonLootInjection": true
+    },
+    "instance.equipment.weapon.warhammer.006": {
+      "id": "instance.equipment.weapon.warhammer.006",
+      "definitionId": "equipment.weapon.warhammer",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.wooden-club.001": {
+      "id": "instance.equipment.weapon.wooden-club.001",
+      "definitionId": "equipment.weapon.wooden-club",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.wooden-club.002": {
+      "id": "instance.equipment.weapon.wooden-club.002",
+      "definitionId": "equipment.weapon.wooden-club",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.wooden-club.003": {
+      "id": "instance.equipment.weapon.wooden-club.003",
+      "definitionId": "equipment.weapon.wooden-club",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.wooden-club.004": {
+      "id": "instance.equipment.weapon.wooden-club.004",
+      "definitionId": "equipment.weapon.wooden-club",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.wooden-club.005": {
+      "id": "instance.equipment.weapon.wooden-club.005",
+      "definitionId": "equipment.weapon.wooden-club",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.wooden-club.006": {
+      "id": "instance.equipment.weapon.wooden-club.006",
+      "definitionId": "equipment.weapon.wooden-club",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.wooden-club.007": {
+      "id": "instance.equipment.weapon.wooden-club.007",
+      "definitionId": "equipment.weapon.wooden-club",
+      "cardType": "equipment",
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
+    },
+    "instance.equipment.weapon.wooden-club.008": {
+      "id": "instance.equipment.weapon.wooden-club.008",
+      "definitionId": "equipment.weapon.wooden-club",
       "cardType": "equipment",
       "ownerEntityId": null,
       "zone": "lootDeck",
@@ -357,11 +2108,10 @@
       "definitionId": "tactical-reserve.antidote",
       "cardType": "tacticalReserve",
       "ownerEntityId": null,
-      "zone": "dungeonLootArea",
-      "zoneDetail": "currentDungeonLootStash",
-      "faceUp": true,
-      "lootDeckOrigin": true,
-      "dungeonLootInjection": true
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
     },
     "instance.tactical-reserve.antidote.004": {
       "id": "instance.tactical-reserve.antidote.004",
@@ -408,22 +2158,20 @@
       "definitionId": "tactical-reserve.antidote",
       "cardType": "tacticalReserve",
       "ownerEntityId": null,
-      "zone": "dungeonDeck",
-      "zoneDetail": "lootDeckInjection",
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
       "faceUp": false,
-      "lootDeckOrigin": true,
-      "dungeonLootInjection": true
+      "lootDeckOrigin": true
     },
     "instance.tactical-reserve.bandage.001": {
       "id": "instance.tactical-reserve.bandage.001",
       "definitionId": "tactical-reserve.bandage",
       "cardType": "tacticalReserve",
       "ownerEntityId": null,
-      "zone": "dungeonDeck",
-      "zoneDetail": "lootDeckInjection",
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
       "faceUp": false,
-      "lootDeckOrigin": true,
-      "dungeonLootInjection": true
+      "lootDeckOrigin": true
     },
     "instance.tactical-reserve.bandage.002": {
       "id": "instance.tactical-reserve.bandage.002",
@@ -479,12 +2227,11 @@
       "id": "instance.tactical-reserve.barkskin-salve.003",
       "definitionId": "tactical-reserve.barkskin-salve",
       "cardType": "tacticalReserve",
-      "ownerEntityId": "entity.character.warrior.001",
-      "zone": "tacticalReserve",
-      "zoneDetail": "entity.character.warrior.001:slot2",
-      "faceUp": true,
-      "lootDeckOrigin": true,
-      "dungeonLootInjection": true
+      "ownerEntityId": null,
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
     },
     "instance.tactical-reserve.barkskin-salve.004": {
       "id": "instance.tactical-reserve.barkskin-salve.004",
@@ -501,10 +2248,11 @@
       "definitionId": "tactical-reserve.holy-water",
       "cardType": "tacticalReserve",
       "ownerEntityId": null,
-      "zone": "lootDeck",
-      "zoneDetail": "globalLootDeck",
+      "zone": "dungeonDeck",
+      "zoneDetail": "lootDeckInjection",
       "faceUp": false,
-      "lootDeckOrigin": true
+      "lootDeckOrigin": true,
+      "dungeonLootInjection": true
     },
     "instance.tactical-reserve.holy-water.002": {
       "id": "instance.tactical-reserve.holy-water.002",
@@ -531,22 +2279,20 @@
       "definitionId": "tactical-reserve.holy-water",
       "cardType": "tacticalReserve",
       "ownerEntityId": null,
-      "zone": "dungeonLootArea",
-      "zoneDetail": "currentDungeonLootStash",
-      "faceUp": true,
-      "lootDeckOrigin": true,
-      "dungeonLootInjection": true
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
     },
     "instance.tactical-reserve.scroll-of-force-dart.001": {
       "id": "instance.tactical-reserve.scroll-of-force-dart.001",
       "definitionId": "tactical-reserve.scroll-of-force-dart",
       "cardType": "tacticalReserve",
       "ownerEntityId": null,
-      "zone": "dungeonLootArea",
-      "zoneDetail": "currentDungeonLootStash",
-      "faceUp": true,
-      "lootDeckOrigin": true,
-      "dungeonLootInjection": true
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
     },
     "instance.tactical-reserve.scroll-of-force-dart.002": {
       "id": "instance.tactical-reserve.scroll-of-force-dart.002",
@@ -593,11 +2339,10 @@
       "definitionId": "tactical-reserve.smoke-bomb",
       "cardType": "tacticalReserve",
       "ownerEntityId": null,
-      "zone": "dungeonDiscardPile",
-      "zoneDetail": null,
-      "faceUp": true,
-      "lootDeckOrigin": true,
-      "dungeonLootInjection": true
+      "zone": "lootDeck",
+      "zoneDetail": "globalLootDeck",
+      "faceUp": false,
+      "lootDeckOrigin": true
     },
     "instance.tactical-reserve.smoke-bomb.003": {
       "id": "instance.tactical-reserve.smoke-bomb.003",
@@ -619,22 +2364,22 @@
       "faceUp": false,
       "lootDeckOrigin": true
     },
-    "instance.equipment-body-leather-armor.001": {
-      "id": "instance.equipment-body-leather-armor.001",
-      "definitionId": "equipment.body.leather-armor",
-      "cardType": "equipment",
-      "ownerEntityId": "entity.character.warrior.001",
-      "zone": "equipmentSlot",
-      "zoneDetail": "body",
+    "instance.hireling-roadside-sellsword.001": {
+      "id": "instance.hireling-roadside-sellsword.001",
+      "definitionId": "hireling.roadside-sellsword",
+      "cardType": "hireling",
+      "ownerEntityId": "entity.hireling-roadside-sellsword.001",
+      "zone": "playerFormation",
+      "zoneDetail": "playerFront:slot2",
       "faceUp": true
     },
-    "instance.equipment-offhand-buckler.001": {
-      "id": "instance.equipment-offhand-buckler.001",
-      "definitionId": "equipment.offhand.buckler",
-      "cardType": "equipment",
+    "instance.ability-warrior-recruit-cleave.001": {
+      "id": "instance.ability-warrior-recruit-cleave.001",
+      "definitionId": "ability.warrior.recruit-cleave",
+      "cardType": "ability",
       "ownerEntityId": "entity.character.warrior.001",
-      "zone": "equipmentSlot",
-      "zoneDetail": "offhand",
+      "zone": "skillAttachment",
+      "zoneDetail": "instance.skill.barbarian.recruit-feral-instinct.001",
       "faceUp": true
     }
   },
@@ -642,7 +2387,7 @@
     "playerFormation": {
       "frontRow": [
         "entity.character.warrior.001",
-        null,
+        "entity.hireling-roadside-sellsword.001",
         null,
         null
       ],
@@ -668,71 +2413,244 @@
       ]
     },
     "dungeonDeck": [
+      "instance.dungeon.goblin-warrens.mess.001",
+      "instance.dungeon.goblin-warrens.goblin-stolen-goods-stash.002",
+      "instance.equipment.weapon.shortbow.005",
+      "instance.enemy.goblin-raider.002",
+      "instance.enemy.goblin-cutthroat.002",
+      "instance.enemy.goblin-worg.001",
+      "instance.enemy.goblin-sneak.002",
+      "instance.enemy.goblin-archer.003",
+      "instance.enemy.goblin-bombardier.001",
+      "instance.equipment.body.chainmail.004",
+      "instance.dungeon.goblin-warrens.goblin-alarm.003",
+      "instance.enemy.goblin-archer.002",
+      "instance.enemy.goblin-bully.001",
+      "instance.enemy.goblin-skirmisher.002",
       "instance.dungeon.goblin-warrens.tripwire.002",
-      "instance.tactical-reserve.bandage.001",
-      "instance.enemy.goblin-raider.004",
       "instance.tactical-reserve.antidote.001",
-      "instance.tactical-reserve.antidote.008"
-    ],
-    "dungeonDiscardPile": [
+      "instance.enemy.goblin-cutthroat.001",
+      "instance.equipment.weapon.hand-axe.006",
+      "instance.enemy.goblin-slinger.001",
+      "instance.enemy.goblin-spearman.003",
+      "instance.enemy.goblin-raider.004",
+      "instance.enemy.goblin-spearman.001",
+      "instance.dungeon.goblin-warrens.mess.004",
+      "instance.equipment.weapon.warhammer.005",
+      "instance.enemy.goblin-skirmisher.001",
+      "instance.enemy.goblin-skirmisher.003",
+      "instance.dungeon.goblin-warrens.tripwire.001",
+      "instance.dungeon.goblin-warrens.goblin-stolen-goods-stash.003",
+      "instance.dungeon.goblin-warrens.goblin-stolen-goods-stash.001",
+      "instance.dungeon.goblin-warrens.mess.003",
+      "instance.enemy.goblin-hexer.001",
+      "instance.enemy.goblin-archer.001",
       "instance.enemy.goblin-raider.001",
       "instance.dungeon.goblin-warrens.goblin-alarm.001",
-      "instance.tactical-reserve.smoke-bomb.002",
-      "instance.enemy.goblin-raider.002",
-      "instance.dungeon.goblin-warrens.tripwire.001",
-      "instance.enemy.goblin-raider.003"
-    ],
-    "dungeonLootArea": [
-      "instance.tactical-reserve.scroll-of-force-dart.001",
-      "instance.tactical-reserve.antidote.003",
-      "instance.tactical-reserve.holy-water.004"
-    ],
-    "lootDeck": [
-      "instance.equipment.focus.apprentices-wand.001",
-      "instance.tactical-reserve.holy-water.003",
-      "instance.tactical-reserve.scroll-of-force-dart.003",
-      "instance.tactical-reserve.barkskin-salve.004",
-      "instance.tactical-reserve.antidote.006",
-      "instance.tactical-reserve.holy-water.002",
-      "instance.tactical-reserve.bandage.002",
-      "instance.tactical-reserve.antidote.005",
-      "instance.tactical-reserve.antidote.007",
-      "instance.tactical-reserve.scroll-of-force-dart.004",
-      "instance.tactical-reserve.barkskin-salve.001",
+      "instance.enemy.goblin-worg.002",
+      "instance.equipment.body.half-plate.003",
+      "instance.enemy.goblin-spearman.002",
+      "instance.enemy.goblin-worg-rider.001",
+      "instance.enemy.goblin-archer.004",
+      "instance.enemy.goblin-slinger.003",
+      "instance.equipment.offhand.crystal-focus.001",
+      "instance.dungeon.goblin-warrens.goblin-alarm.002",
+      "instance.enemy.goblin-sneak.001",
       "instance.tactical-reserve.holy-water.001",
-      "instance.tactical-reserve.bandage.003",
-      "instance.equipment.body.apprentice-robes.001",
+      "instance.enemy.goblin-raider.003",
+      "instance.enemy.goblin-slinger.002",
+      "instance.dungeon.goblin-warrens.mess.002",
+      "instance.enemy.goblin-bully.002"
+    ],
+    "dungeonDiscardPile": [],
+    "dungeonLootArea": [],
+    "lootDeck": [
+      "instance.equipment.weapon.iron-spear.006",
+      "instance.equipment.weapon.hand-axe.001",
       "instance.tactical-reserve.smoke-bomb.003",
-      "instance.tactical-reserve.scroll-of-force-dart.002",
-      "instance.tactical-reserve.smoke-bomb.004",
+      "instance.equipment.weapon.light-crossbow.001",
+      "instance.equipment.body.apprentice-robes.001",
+      "instance.equipment.weapon.utility-dagger.006",
+      "instance.tactical-reserve.bandage.003",
+      "instance.equipment.ring.venomward-ring.001",
+      "instance.equipment.offhand.buckler.004",
+      "instance.equipment.body.half-plate.001",
+      "instance.equipment.neck.simple-pendant.003",
+      "instance.tactical-reserve.bandage.001",
+      "instance.equipment.ring.plain-ring.004",
+      "instance.equipment.offhand.kite-shield.003",
+      "instance.equipment.weapon.light-crossbow.006",
+      "instance.equipment.weapon.light-crossbow.004",
+      "instance.equipment.neck.simple-pendant.005",
+      "instance.equipment.weapon.battleaxe.006",
+      "instance.equipment.weapon.light-crossbow.002",
+      "instance.equipment.weapon.short-sword.005",
+      "instance.equipment.weapon.short-sword.002",
+      "instance.equipment.neck.simple-pendant.001",
+      "instance.equipment.weapon.light-crossbow.003",
+      "instance.equipment.weapon.wooden-club.003",
+      "instance.equipment.hands.work-gloves.002",
+      "instance.equipment.body.leather-armor.002",
+      "instance.tactical-reserve.barkskin-salve.003",
+      "instance.equipment.weapon.runed-staff.002",
+      "instance.tactical-reserve.antidote.006",
+      "instance.equipment.offhand.crystal-focus.002",
+      "instance.equipment.body.full-plate.001",
+      "instance.equipment.body.chainmail.003",
+      "instance.equipment.ring.plain-ring.002",
+      "instance.equipment.weapon.hand-axe.005",
+      "instance.equipment.weapon.arming-sword.006",
+      "instance.equipment.weapon.arming-sword.005",
+      "instance.equipment.ring.emberward-ring.001",
+      "instance.equipment.weapon.hand-axe.002",
+      "instance.equipment.weapon.shortbow.003",
+      "instance.equipment.weapon.light-crossbow.005",
       "instance.tactical-reserve.antidote.002",
-      "instance.tactical-reserve.smoke-bomb.001",
-      "instance.equipment.weapon.arming-sword.002",
       "instance.tactical-reserve.bandage.004",
+      "instance.equipment.ring.venomward-ring.003",
+      "instance.equipment.weapon.wooden-club.008",
+      "instance.equipment.weapon.warhammer.002",
+      "instance.equipment.ring.venomward-ring.002",
+      "instance.equipment.weapon.longbow.003",
+      "instance.equipment.body.leather-armor.003",
+      "instance.equipment.focus.apprentices-wand.004",
+      "instance.equipment.weapon.longbow.001",
+      "instance.equipment.ring.venomward-ring.004",
+      "instance.equipment.body.chainmail.002",
+      "instance.equipment.body.half-plate.004",
+      "instance.equipment.weapon.longbow.004",
+      "instance.equipment.ring.plain-ring.003",
+      "instance.equipment.weapon.warhammer.006",
+      "instance.equipment.weapon.warhammer.001",
+      "instance.equipment.offhand.ember-focus.004",
+      "instance.equipment.focus.apprentices-wand.003",
+      "instance.equipment.weapon.utility-dagger.001",
+      "instance.equipment.weapon.utility-dagger.005",
+      "instance.tactical-reserve.scroll-of-force-dart.003",
+      "instance.equipment.offhand.square-shield.003",
+      "instance.tactical-reserve.barkskin-salve.001",
+      "instance.equipment.feet.surefoot-boots.001",
+      "instance.equipment.weapon.wooden-club.001",
       "instance.tactical-reserve.antidote.004",
-      "instance.tactical-reserve.barkskin-salve.002"
+      "instance.equipment.weapon.arming-sword.002",
+      "instance.tactical-reserve.barkskin-salve.002",
+      "instance.equipment.weapon.iron-spear.001",
+      "instance.equipment.weapon.longbow.002",
+      "instance.equipment.weapon.shortbow.002",
+      "instance.equipment.weapon.iron-spear.003",
+      "instance.equipment.weapon.warhammer.004",
+      "instance.equipment.weapon.short-sword.004",
+      "instance.equipment.weapon.arming-sword.004",
+      "instance.equipment.hands.work-gloves.003",
+      "instance.equipment.neck.guardian-pendant.001",
+      "instance.equipment.body.full-plate.004",
+      "instance.equipment.hands.work-gloves.001",
+      "instance.equipment.weapon.short-sword.006",
+      "instance.equipment.weapon.wooden-club.004",
+      "instance.equipment.focus.apprentices-wand.001",
+      "instance.equipment.neck.simple-pendant.002",
+      "instance.tactical-reserve.scroll-of-force-dart.001",
+      "instance.equipment.weapon.wooden-club.007",
+      "instance.equipment.weapon.battleaxe.004",
+      "instance.equipment.weapon.iron-spear.002",
+      "instance.tactical-reserve.antidote.008",
+      "instance.equipment.weapon.battleaxe.005",
+      "instance.equipment.offhand.buckler.002",
+      "instance.equipment.weapon.wooden-club.005",
+      "instance.equipment.weapon.oak-staff.006",
+      "instance.tactical-reserve.holy-water.002",
+      "instance.equipment.offhand.buckler.003",
+      "instance.equipment.weapon.oak-staff.001",
+      "instance.equipment.offhand.crystal-focus.003",
+      "instance.equipment.ring.plain-ring.001",
+      "instance.equipment.neck.simple-pendant.004",
+      "instance.equipment.body.chainmail.001",
+      "instance.equipment.weapon.iron-spear.005",
+      "instance.tactical-reserve.smoke-bomb.001",
+      "instance.equipment.ring.plain-ring.006",
+      "instance.equipment.neck.guardian-pendant.004",
+      "instance.tactical-reserve.antidote.007",
+      "instance.equipment.offhand.kite-shield.001",
+      "instance.equipment.weapon.battleaxe.002",
+      "instance.equipment.body.full-plate.002",
+      "instance.equipment.weapon.utility-dagger.002",
+      "instance.equipment.weapon.wooden-club.006",
+      "instance.equipment.weapon.hand-axe.004",
+      "instance.tactical-reserve.bandage.002",
+      "instance.equipment.offhand.buckler.001",
+      "instance.equipment.focus.apprentices-wand.002",
+      "instance.equipment.feet.travel-boots.003",
+      "instance.equipment.offhand.square-shield.002",
+      "instance.equipment.neck.guardian-pendant.003",
+      "instance.equipment.body.leather-armor.004",
+      "instance.equipment.weapon.hand-axe.003",
+      "instance.equipment.weapon.shortbow.004",
+      "instance.equipment.offhand.sunstone-focus.002",
+      "instance.equipment.weapon.longbow.005",
+      "instance.tactical-reserve.antidote.003",
+      "instance.equipment.weapon.arming-sword.001",
+      "instance.equipment.weapon.warhammer.003",
+      "instance.equipment.offhand.ember-focus.002",
+      "instance.equipment.weapon.oak-staff.004",
+      "instance.equipment.weapon.utility-dagger.004",
+      "instance.equipment.feet.travel-boots.002",
+      "instance.equipment.offhand.ember-focus.003",
+      "instance.equipment.offhand.ember-focus.001",
+      "instance.equipment.offhand.crystal-focus.004",
+      "instance.equipment.hands.weapon-grip-gloves.001",
+      "instance.equipment.body.full-plate.003",
+      "instance.equipment.neck.guardian-pendant.002",
+      "instance.equipment.weapon.oak-staff.005",
+      "instance.equipment.weapon.runed-staff.001",
+      "instance.equipment.offhand.kite-shield.002",
+      "instance.equipment.weapon.wooden-club.002",
+      "instance.equipment.weapon.arming-sword.003",
+      "instance.equipment.weapon.utility-dagger.003",
+      "instance.equipment.weapon.runed-staff.003",
+      "instance.equipment.weapon.battleaxe.003",
+      "instance.tactical-reserve.antidote.005",
+      "instance.equipment.weapon.short-sword.003",
+      "instance.tactical-reserve.holy-water.003",
+      "instance.tactical-reserve.holy-water.004",
+      "instance.equipment.weapon.oak-staff.002",
+      "instance.equipment.weapon.oak-staff.003",
+      "instance.equipment.weapon.iron-spear.004",
+      "instance.equipment.body.half-plate.002",
+      "instance.equipment.feet.travel-boots.004",
+      "instance.equipment.hands.work-gloves.004",
+      "instance.tactical-reserve.smoke-bomb.004",
+      "instance.equipment.neck.simple-pendant.006",
+      "instance.equipment.weapon.short-sword.001",
+      "instance.tactical-reserve.scroll-of-force-dart.004",
+      "instance.equipment.offhand.sunstone-focus.001",
+      "instance.equipment.ring.plain-ring.005",
+      "instance.tactical-reserve.smoke-bomb.002",
+      "instance.tactical-reserve.barkskin-salve.004",
+      "instance.equipment.offhand.square-shield.001",
+      "instance.equipment.feet.travel-boots.001",
+      "instance.tactical-reserve.scroll-of-force-dart.002",
+      "instance.equipment.weapon.shortbow.001",
+      "instance.equipment.weapon.shortbow.006"
     ],
     "lootDiscardPile": [],
     "expendedSummons": [],
     "statusDeck": [
-      "instance.status.negative.poisoned.002",
-      "instance.status.negative.stunned.001",
       "instance.status.negative.poisoned.008",
-      "instance.status.negative.stunned.003",
-      "instance.status.negative.poisoned.001",
-      "instance.status.negative.poisoned.004",
-      "instance.status.negative.poisoned.006",
-      "instance.status.negative.stunned.004",
       "instance.status.negative.stunned.002",
-      "instance.status.negative.poisoned.007",
+      "instance.status.negative.poisoned.002",
+      "instance.status.negative.stunned.003",
       "instance.status.negative.poisoned.005",
-      "instance.status.negative.poisoned.003"
+      "instance.status.negative.stunned.004",
+      "instance.status.negative.poisoned.007",
+      "instance.status.negative.poisoned.006",
+      "instance.status.negative.poisoned.003",
+      "instance.status.negative.poisoned.004",
+      "instance.status.negative.stunned.001",
+      "instance.status.negative.poisoned.001"
     ],
     "statusRevealArea": [],
     "statusDiscardPile": [],
-    "dungeonRevealArea": [
-      "instance.dungeon.goblin-warrens.goblin-alarm.002"
-    ],
+    "dungeonRevealArea": [],
     "unusedSupply": []
   },
   "encounter": {
@@ -745,12 +2663,12 @@
     {
       "sequence": 1,
       "type": "scenarioInstantiated",
-      "message": "Created runtime state from scenario.solo-warrior-goblin-warrens-smoke-test using seed 20260629."
+      "message": "Created runtime state from scenario.solo-warrior-goblin-warrens-smoke-test using seed fresh-1783307022270-34836-1hopn2sjnfx."
     },
     {
       "sequence": 2,
       "type": "lootDeckBuilt",
-      "message": "Built the Global Loot Deck with 31 face-down cards from eligible remaining physical copies."
+      "message": "Built the Global Loot Deck with 174 face-down cards from eligible remaining physical copies."
     },
     {
       "sequence": 3,
@@ -759,291 +2677,16 @@
     },
     {
       "sequence": 4,
-      "type": "equipmentAssigned",
-      "message": "Leather Armor was assigned to Warrior's body slot."
+      "type": "hirelingAdded",
+      "message": "Swordsman was added as an Autonomous Hireling in Player Front Row, slot 2."
     },
     {
       "sequence": 5,
-      "type": "equipmentAssigned",
-      "message": "Buckler was assigned to Warrior's offhand slot."
+      "type": "abilityAssigned",
+      "message": "Cleave was attached to Feral Instinct for Warrior."
     },
     {
       "sequence": 6,
-      "type": "zoneShuffled",
-      "message": "Dungeon Deck was explicitly shuffled."
-    },
-    {
-      "sequence": 7,
-      "type": "dungeonCardDrawn",
-      "message": "Drew Barkskin Salve from the Dungeon Deck top."
-    },
-    {
-      "sequence": 8,
-      "type": "stateDownloaded",
-      "message": "Downloaded the current runtime state as scenario-solo-warrior-goblin-warrens-smoke-test.playtest.json."
-    },
-    {
-      "sequence": 9,
-      "type": "revealedDungeonCardAddedToPlayerInventory",
-      "message": "Barkskin Salve was added directly to Warrior's inventory position 1 from the Dungeon Reveal Area."
-    },
-    {
-      "sequence": 10,
-      "type": "inventoryTacticalReserveEquipped",
-      "message": "Barkskin Salve was equipped to Warrior's Tactical Reserve slot 2."
-    },
-    {
-      "sequence": 11,
-      "type": "dungeonCardDrawn",
-      "message": "Drew Goblin Raider from the Dungeon Deck top."
-    },
-    {
-      "sequence": 12,
-      "type": "enemyDeployed",
-      "message": "Goblin Raider was deployed to Enemy Front Row, slot 1."
-    },
-    {
-      "sequence": 13,
-      "type": "abilityMovedToStatusRow",
-      "message": "Rage moved to Warrior's Status Row, slot 1. Resolve the card's action cost and rules manually."
-    },
-    {
-      "sequence": 14,
-      "type": "counterChanged",
-      "message": "Goblin Raider Damage changed from 0 to 1."
-    },
-    {
-      "sequence": 15,
-      "type": "counterChanged",
-      "message": "Goblin Raider Damage changed from 1 to 2."
-    },
-    {
-      "sequence": 16,
-      "type": "counterChanged",
-      "message": "Goblin Raider Damage changed from 2 to 3."
-    },
-    {
-      "sequence": 17,
-      "type": "counterChanged",
-      "message": "Warrior Heat changed from 0 to 1."
-    },
-    {
-      "sequence": 18,
-      "type": "counterChanged",
-      "message": "Warrior Heat changed from 1 to 2."
-    },
-    {
-      "sequence": 19,
-      "type": "counterChanged",
-      "message": "Warrior Damage changed from 0 to 1."
-    },
-    {
-      "sequence": 20,
-      "type": "dungeonCardDrawn",
-      "message": "Drew Scroll of Force Dart from the Dungeon Deck top."
-    },
-    {
-      "sequence": 21,
-      "type": "revealedDungeonCardMovedToLootStash",
-      "message": "Scroll of Force Dart was added to the current Dungeon Loot Stash."
-    },
-    {
-      "sequence": 22,
-      "type": "counterChanged",
-      "message": "Goblin Raider Damage changed from 3 to 4."
-    },
-    {
-      "sequence": 23,
-      "type": "counterChanged",
-      "message": "Goblin Raider Damage changed from 4 to 5."
-    },
-    {
-      "sequence": 24,
-      "type": "counterChanged",
-      "message": "Goblin Raider Damage changed from 5 to 6."
-    },
-    {
-      "sequence": 25,
-      "type": "enemyDefeated",
-      "message": "Goblin Raider was manually defeated and moved to the Dungeon Discard Pile."
-    },
-    {
-      "sequence": 26,
-      "type": "partyCurrencyChanged",
-      "message": "Party Currency changed from 0 to 1."
-    },
-    {
-      "sequence": 27,
-      "type": "stateDownloaded",
-      "message": "Downloaded the current runtime state as scenario-solo-warrior-goblin-warrens-smoke-test.playtest.json."
-    },
-    {
-      "sequence": 28,
-      "type": "dungeonCardDrawn",
-      "message": "Drew Antidote from the Dungeon Deck top."
-    },
-    {
-      "sequence": 29,
-      "type": "revealedDungeonCardMovedToLootStash",
-      "message": "Antidote was added to the current Dungeon Loot Stash."
-    },
-    {
-      "sequence": 30,
-      "type": "dungeonCardDrawn",
-      "message": "Drew Goblin Raider from the Dungeon Deck top."
-    },
-    {
-      "sequence": 31,
-      "type": "enemyDeployed",
-      "message": "Goblin Raider was deployed to Enemy Front Row, slot 1."
-    },
-    {
-      "sequence": 32,
-      "type": "counterChanged",
-      "message": "Warrior Damage changed from 1 to 2."
-    },
-    {
-      "sequence": 33,
-      "type": "counterChanged",
-      "message": "Goblin Raider Damage changed from 0 to 1."
-    },
-    {
-      "sequence": 34,
-      "type": "counterChanged",
-      "message": "Goblin Raider Damage changed from 1 to 2."
-    },
-    {
-      "sequence": 35,
-      "type": "counterChanged",
-      "message": "Goblin Raider Damage changed from 2 to 3."
-    },
-    {
-      "sequence": 36,
-      "type": "counterChanged",
-      "message": "Warrior Heat changed from 2 to 3."
-    },
-    {
-      "sequence": 37,
-      "type": "dungeonCardDrawn",
-      "message": "Drew Goblin Alarm from the Dungeon Deck top."
-    },
-    {
-      "sequence": 38,
-      "type": "dungeonCardDiscarded",
-      "message": "Goblin Alarm was moved to the Dungeon Discard Pile after manual resolution."
-    },
-    {
-      "sequence": 39,
-      "type": "dungeonCardDrawn",
-      "message": "Drew Holy Water from the Dungeon Deck bottom."
-    },
-    {
-      "sequence": 40,
-      "type": "zoneShuffled",
-      "message": "Dungeon Deck was explicitly shuffled."
-    },
-    {
-      "sequence": 41,
-      "type": "revealedDungeonCardMovedToLootStash",
-      "message": "Holy Water was added to the current Dungeon Loot Stash."
-    },
-    {
-      "sequence": 42,
-      "type": "dungeonCardDrawn",
-      "message": "Drew Smoke Bomb from the Dungeon Deck bottom."
-    },
-    {
-      "sequence": 43,
-      "type": "dungeonCardDiscarded",
-      "message": "Smoke Bomb was moved to the Dungeon Discard Pile after manual resolution."
-    },
-    {
-      "sequence": 44,
-      "type": "counterChanged",
-      "message": "Warrior Damage changed from 2 to 3."
-    },
-    {
-      "sequence": 45,
-      "type": "enemyDefeated",
-      "message": "Goblin Raider was manually defeated and moved to the Dungeon Discard Pile."
-    },
-    {
-      "sequence": 46,
-      "type": "partyCurrencyChanged",
-      "message": "Party Currency changed from 1 to 2."
-    },
-    {
-      "sequence": 47,
-      "type": "dungeonCardDrawn",
-      "message": "Drew Goblin Raider from the Dungeon Deck top."
-    },
-    {
-      "sequence": 48,
-      "type": "enemyDeployed",
-      "message": "Goblin Raider was deployed to Enemy Back Row, slot 1."
-    },
-    {
-      "sequence": 49,
-      "type": "counterChanged",
-      "message": "Warrior Damage changed from 3 to 4."
-    },
-    {
-      "sequence": 50,
-      "type": "counterChanged",
-      "message": "Warrior Heat changed from 3 to 4."
-    },
-    {
-      "sequence": 51,
-      "type": "counterChanged",
-      "message": "Goblin Raider Damage changed from 0 to 1."
-    },
-    {
-      "sequence": 52,
-      "type": "counterChanged",
-      "message": "Goblin Raider Damage changed from 1 to 2."
-    },
-    {
-      "sequence": 53,
-      "type": "counterChanged",
-      "message": "Goblin Raider Damage changed from 2 to 3."
-    },
-    {
-      "sequence": 54,
-      "type": "dungeonCardDrawn",
-      "message": "Drew Tripwire from the Dungeon Deck top."
-    },
-    {
-      "sequence": 55,
-      "type": "dungeonCardDiscarded",
-      "message": "Tripwire was moved to the Dungeon Discard Pile after manual resolution."
-    },
-    {
-      "sequence": 56,
-      "type": "counterChanged",
-      "message": "Warrior Damage changed from 4 to 5."
-    },
-    {
-      "sequence": 57,
-      "type": "counterChanged",
-      "message": "Warrior Damage changed from 5 to 6."
-    },
-    {
-      "sequence": 58,
-      "type": "enemyDefeated",
-      "message": "Goblin Raider was manually defeated and moved to the Dungeon Discard Pile."
-    },
-    {
-      "sequence": 59,
-      "type": "partyCurrencyChanged",
-      "message": "Party Currency changed from 2 to 3."
-    },
-    {
-      "sequence": 60,
-      "type": "dungeonCardDrawn",
-      "message": "Drew Goblin Alarm from the Dungeon Deck top."
-    },
-    {
-      "sequence": 61,
       "type": "stateDownloaded",
       "message": "Downloaded the current runtime state as scenario-solo-warrior-goblin-warrens-smoke-test.playtest.json."
     }
@@ -1051,17 +2694,17 @@
   "dungeonLootInjection": {
     "count": 8,
     "cardInstanceIds": [
-      "instance.tactical-reserve.antidote.008",
+      "instance.equipment.body.chainmail.004",
+      "instance.equipment.weapon.hand-axe.006",
+      "instance.equipment.weapon.shortbow.005",
       "instance.tactical-reserve.antidote.001",
-      "instance.tactical-reserve.smoke-bomb.002",
-      "instance.tactical-reserve.scroll-of-force-dart.001",
-      "instance.tactical-reserve.holy-water.004",
-      "instance.tactical-reserve.bandage.001",
-      "instance.tactical-reserve.antidote.003",
-      "instance.tactical-reserve.barkskin-salve.003"
+      "instance.equipment.offhand.crystal-focus.001",
+      "instance.tactical-reserve.holy-water.001",
+      "instance.equipment.body.half-plate.003",
+      "instance.equipment.weapon.warhammer.005"
     ]
   },
   "resources": {
-    "currency": 3
+    "currency": 0
   }
 }
